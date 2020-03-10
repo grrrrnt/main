@@ -1,9 +1,9 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>AddressBook Level 3 - User Guide</title><link rel="stylesheet" href="stylesheets/gh-pages.css">
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>Volant - User Guide</title><link rel="stylesheet" href="stylesheets/gh-pages.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="seedu-header"><nav class="navbar navbar-lg navbar-light bg-lighter"><div class="container"><a class="navbar-brand" href="https://se-edu.github.io/"><img src="images/SeEduLogo.png" alt="SE-EDU"></a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level1">AB-1</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level2">AB-2</a></li><li class="nav-item"><a class="nav-link active" href="index.html">AB-3</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level4">AB-4</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/collate">Collate</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/se-book">Book</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/learningresources">Resources</a></li></ul></div></nav></div><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="index.html">AddressBook-Level3</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link active" href="UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="LearningOutcomes.html">LOs</a></li><li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/se-edu/addressbook-level3"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>AddressBook Level 3 - User Guide</h1></div><div id="content"><div id="preamble">
+<link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="seedu-header"><nav class="navbar navbar-lg navbar-light bg-lighter"><div class="container"><a class="navbar-brand" href="https://se-edu.github.io/"><img src="images/SeEduLogo.png" alt="SE-EDU"></a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level1">AB-1</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level2">AB-2</a></li><li class="nav-item"><a class="nav-link active" href="index.html">AB-3</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level4">AB-4</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/collate">Collate</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/se-book">Book</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/learningresources">Resources</a></li></ul></div></nav></div><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="index.html">Volant by CS2103T-F04=9-4</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link active" href="UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="LearningOutcomes.html">LOs</a></li><li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/AY1920S2-CS2103T-F09-4/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Volant - User Guide</h1></div><div id="content"><div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>By: <code>Team SE-EDU</code>      Since: <code>Jun 2016</code>      Licence: <code>MIT</code></p>
+<p>By: <code>AY1920S2-2103T-F09-4</code>      Since: <code>Jan 2020</code>      Licence: <code>???</code></p>
 </div>
 </div>
 <div id="toc" class="toc">
@@ -13,16 +13,11 @@
 <li><a href="#quick-start">2. Quick Start</a></li>
 <li><a href="#Features">3. Features</a>
 <ul class="sectlevel2">
-<li><a href="#viewing-help-code-help-code">3.1. Viewing help : <code>help</code></a></li>
-<li><a href="#adding-a-person-code-add-code">3.2. Adding a person: <code>add</code></a></li>
-<li><a href="#listing-all-persons-code-list-code">3.3. Listing all persons : <code>list</code></a></li>
-<li><a href="#editing-a-person-code-edit-code">3.4. Editing a person : <code>edit</code></a></li>
-<li><a href="#locating-persons-by-name-code-find-code">3.5. Locating persons by name: <code>find</code></a></li>
-<li><a href="#deleting-a-person-code-delete-code">3.6. Deleting a person : <code>delete</code></a></li>
-<li><a href="#clearing-all-entries-code-clear-code">3.7. Clearing all entries : <code>clear</code></a></li>
-<li><a href="#exiting-the-program-code-exit-code">3.8. Exiting the program : <code>exit</code></a></li>
-<li><a href="#saving-the-data">3.9. Saving the data</a></li>
-<li><a href="#encrypting-data-files-code-coming-in-v2-0-code">3.10. Encrypting data files <code>[coming in v2.0]</code></a></li>
+<li><a href="#homepage-code-coming-in-v2-0-code">3.1. Homepage <code>[coming in v2.0]</code></a></li>
+<li><a href="#trips-code-coming-in-v2-0-code">3.2. Trips <code>[coming in v2.0]</code></a></li>
+<li><a href="#itinerary-code-coming-in-v2-0-code">3.3. Itinerary <code>[coming in v2.0]</code></a></li>
+<li><a href="#journal-code-coming-in-v2-0-code">3.4. Journal <code>[coming in v2.0]</code></a></li>
+<li><a href="#contact-list-code-coming-in-v2-0-code">3.5. Contact List <code>[coming in v2.0]</code></a></li>
 </ul>
 </li>
 <li><a href="#faq">4. FAQ</a></li>
@@ -34,7 +29,7 @@
 <h2 id="introduction"><a class="link" href="#introduction">1. Introduction</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>AddressBook Level 3 (AB3) is for those who <strong>prefer to use a desktop app for managing contacts</strong>. More importantly, AB3 is <strong>optimized for those who prefer to work with a Command Line Interface</strong> (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, AB3 can get your contact management tasks done faster than traditional GUI apps. Interested? Jump to the <a href="#quick-start">Section 2, &#8220;Quick Start&#8221;</a> to get started. Enjoy!</p>
+<p>Volant is a travel assistant application for solo travellers for who <strong>prefer to use a desktop app for managing people they meet during their solo travels</strong>. More importantly, Volant is <strong>optimized for those who prefer to work with a Command Line Interface</strong> (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, AB3 can get your contact management tasks done faster than traditional GUI apps. Interested? Jump to the <a href="#quick-start">Section 2, &#8220;Quick Start&#8221;</a> to get started. Enjoy!</p>
 </div>
 </div>
 </div>
@@ -47,13 +42,16 @@
 <p>Ensure you have Java <code>11</code> or above installed in your Computer.</p>
 </li>
 <li>
-<p>Download the latest <code>addressbook.jar</code> <a href="https://github.com/se-edu/addressbook-level3/releases">here</a>.</p>
+<p>Download the latest <code>volant.jar</code> <a href="{https://github.com/AY1920S2-CS2103T-F09-4/main}/releases">v1.1</a>.</p>
 </li>
 <li>
-<p>Copy the file to the folder you want to use as the home folder for your Address Book.</p>
+<p>Copy the file to the folder you want to use as the home folder for your Volant.</p>
 </li>
 <li>
-<p>Double-click the file to start the app. The GUI should appear in a few seconds.</p>
+<p>Double-click the JAR file to start the app.</p>
+</li>
+<li>
+<p>The GUI should appear in a few seconds.</p>
 <div class="imageblock">
 <div class="content">
 <img src="images/Ui.png" alt="Ui" width="790">
@@ -62,26 +60,7 @@
 </li>
 <li>
 <p>Type the command in the command box and press <kbd>Enter</kbd> to execute it.<br>
-e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> will open the help window.</p>
-</li>
-<li>
-<p>Some example commands you can try:</p>
-<div class="ulist">
-<ul>
-<li>
-<p><strong><code>list</code></strong> : lists all contacts</p>
-</li>
-<li>
-<p><strong><code>add</code></strong><code>n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01</code> : adds a contact named <code>John Doe</code> to the Address Book.</p>
-</li>
-<li>
-<p><strong><code>delete</code></strong><code>3</code> : deletes the 3rd contact shown in the current list</p>
-</li>
-<li>
-<p><strong><code>exit</code></strong> : exits the app</p>
-</li>
-</ul>
-</div>
+e.g. Typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> will open the help window.</p>
 </li>
 <li>
 <p>Refer to <a href="#Features">Section 3, &#8220;Features&#8221;</a> for details of each command.</p>
@@ -104,41 +83,82 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <p>Words in <code>UPPER_CASE</code> are the parameters to be supplied by the user e.g. in <code>add n/NAME</code>, <code>NAME</code> is a parameter which can be used as <code>add n/John Doe</code>.</p>
 </li>
 <li>
-<p>Items in square brackets are optional e.g <code>n/NAME [t/TAG]</code> can be used as <code>n/John Doe t/friend</code> or as <code>n/John Doe</code>.</p>
+<p>Items in square brackets are optional e.g <code>n/NAME [a/AGE]</code> can be used as <code>n/John Doe a/26</code> or as <code>n/John Doe</code>.</p>
 </li>
 <li>
-<p>Items with <code>…</code>​ after them can be used multiple times including zero times e.g. <code>[t/TAG]&#8230;&#8203;</code> can be used as <code>&#160;</code> (i.e. 0 times), <code>t/friend</code>, <code>t/friend t/family</code> etc.</p>
-</li>
-<li>
-<p>Parameters can be in any order e.g. if the command specifies <code>n/NAME p/PHONE_NUMBER</code>, <code>p/PHONE_NUMBER n/NAME</code> is also acceptable.</p>
+<p>Items with <code>…</code>​ after them can be used multiple times including zero times e.g. <code>[a/AGE]&#8230;&#8203;</code> can be used as <code>&#160;</code> (i.e. 0 times), <code>a/AGE</code>, <code>a/AGE p/PHONE_NUMBER</code> etc.</p>
 </li>
 </ul>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="viewing-help-code-help-code"><a class="link" href="#viewing-help-code-help-code">3.1. Viewing help : <code>help</code></a></h3>
+<h3 id="homepage-code-coming-in-v2-0-code"><a class="link" href="#homepage-code-coming-in-v2-0-code">3.1. Homepage <code>[coming in v2.0]</code></a></h3>
+<div class="sect3">
+<h4 id="opening-the-help-window-code-help-code"><a class="link" href="#opening-the-help-window-code-help-code">3.1.1. Opening the help window: <code>help</code></a></h4>
+<div class="paragraph">
+<p>Opens the Help Window.</p>
+</div>
 <div class="paragraph">
 <p>Format: <code>help</code></p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="adding-a-person-code-add-code"><a class="link" href="#adding-a-person-code-add-code">3.2. Adding a person: <code>add</code></a></h3>
+<div class="sect3">
+<h4 id="opening-the-homepage-code-home-code"><a class="link" href="#opening-the-homepage-code-home-code">3.1.2. Opening the homepage: <code>home</code></a></h4>
 <div class="paragraph">
-<p>Adds a person to the address book<br>
-Format: <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203;</code></p>
+<p>Returns to the homepage. If already at the homepage, does nothing.</p>
 </div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-A person can have any number of tags (including 0)
-</td>
-</tr>
-</table>
+<div class="paragraph">
+<p>Format: <code>home</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="navigating-to-a-trip-page-code-gototrip-code"><a class="link" href="#navigating-to-a-trip-page-code-gototrip-code">3.1.3. Navigating to a trip page: <code>gotoTrip</code></a></h4>
+<div class="paragraph">
+<p>Navigates to the context of a trip in the trip list.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>gotoTrip INDEX</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>INDEX</code> must be a positive integer within range of the list size.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>gotoTrip 12</code><br>
+Navigates to the 12th trip on the list of trips.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="trips-code-coming-in-v2-0-code"><a class="link" href="#trips-code-coming-in-v2-0-code">3.2. Trips <code>[coming in v2.0]</code></a></h3>
+<div class="paragraph">
+<p>All trips are listed on the home page.</p>
+</div>
+<div class="sect3">
+<h4 id="adding-a-trip-code-add-code"><a class="link" href="#adding-a-trip-code-add-code">3.2.1. Adding a trip: <code>add</code></a></h4>
+<div class="paragraph">
+<p>Adds a trip to the trip list.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>add n/TRIP_NAME from/TRIP_START_DATE to/TRIP_END_DATE l/LOCATION</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Please write the date range in the format <code>from/DD-MM-YYYY</code> <code>to/DD-MM-YYYY</code>.</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -146,33 +166,210 @@ A person can have any number of tags (including 0)
 <div class="ulist">
 <ul>
 <li>
-<p><code>add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01</code></p>
+<p><code>add n/Graduation Trip from/01-02-2020 to/05-02-2020 l/Bangkok</code><br>
+Adds a trip titled “Graduation Trip” to the list with the specified metadata.</p>
 </li>
 <li>
-<p><code>add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal</code></p>
+<p><code>add n/Family Trip from/05-02-2020 to/08-02-2020 l/Bangkok</code><br>
+Adds a trip titled “Family Trip” to the list with the specified metadata.</p>
 </li>
 </ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="listing-all-persons-code-list-code"><a class="link" href="#listing-all-persons-code-list-code">3.3. Listing all persons : <code>list</code></a></h3>
+<div class="sect3">
+<h4 id="deleting-a-trip-code-delete-code"><a class="link" href="#deleting-a-trip-code-delete-code">3.2.2. Deleting a trip: <code>delete</code></a></h4>
 <div class="paragraph">
-<p>Shows a list of all persons in the address book.<br>
-Format: <code>list</code></p>
+<p>Deletes a trip from the trip list.</p>
 </div>
-</div>
-<div class="sect2">
-<h3 id="editing-a-person-code-edit-code"><a class="link" href="#editing-a-person-code-edit-code">3.4. Editing a person : <code>edit</code></a></h3>
 <div class="paragraph">
-<p>Edits an existing person in the address book.<br>
-Format: <code>edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code></p>
+<p>Format: <code>delete INDEX</code></p>
 </div>
-<div class="sidebarblock">
-<div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p>Edits the person at the specified <code>INDEX</code>. The index refers to the index number shown in the displayed person list. The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+<p>INDEX must be a positive integer within range of the list size.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>delete 12</code><br>
+Deletes the 12th trip on the list of trips.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="editing-trip-metadata-code-edit-code"><a class="link" href="#editing-trip-metadata-code-edit-code">3.2.3. Editing trip metadata: <code>edit</code></a></h4>
+<div class="paragraph">
+<p>Edits item in the trip list at the specified index.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>edit INDEX [n/TRIP_NAME] [from/TRIP_START_DATE] [to/TRIP_END_DATE] [l/LOCATION]&#8230;&#8203;</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>INDEX</code> must be a positive integer within range of the list size.</p>
+</li>
+<li>
+<p>Please write the date range in the format <code>from/DD-MM-YYYY</code> <code>to/DD-MM-YYYY</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>edit 2 n/School Trip l/France</code><br>
+Edits the second trip on the list with “School Trip” as name and “France” as location.</p>
+</li>
+<li>
+<p><code>edit 1 from/01-02-2020 to/ 01-03-2020</code><br>
+Edits the first trip on the list with date range of 1 February to 1 March 2020.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="navigating-to-a-feature-in-the-trip-page-code-goto-code"><a class="link" href="#navigating-to-a-feature-in-the-trip-page-code-goto-code">3.2.4. Navigating to a feature in the trip page: <code>goto</code></a></h4>
+<div class="paragraph">
+<p>Navigates to a specific feature within each trip.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>goto FEATURE</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>List of available features:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>ITINERARY</code></p>
+</li>
+<li>
+<p><code>JOURNAL</code></p>
+</li>
+<li>
+<p><code>EXPENSES</code></p>
+</li>
+<li>
+<p><code>PACKINGLIST</code></p>
+</li>
+<li>
+<p><code>CONTACTS</code></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>goto ITINERARY</code><br>
+Navigates to the itinerary feature of the current trip.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="itinerary-code-coming-in-v2-0-code"><a class="link" href="#itinerary-code-coming-in-v2-0-code">3.3. Itinerary <code>[coming in v2.0]</code></a></h3>
+<div class="sect3">
+<h4 id="adding-an-activity-to-the-itinerary-code-add-code"><a class="link" href="#adding-an-activity-to-the-itinerary-code-add-code">3.3.1. Adding an activity to the itinerary: <code>add</code></a></h4>
+<div class="paragraph">
+<p>Adds an activity to the itinerary.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>add a/ACTIVITY d/DATE t/TIME l/LOCATION</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Date must be specified in the following format: <code>DD-MM-YYYY</code></p>
+</li>
+<li>
+<p>Time must be specified in the following format: <code>HH:MM</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>add a/Sightseeing d/12-10-2020 t/13:45 l/Mount Everest</code>
+Adds Sightseeing at Mount Everest at 12 OCT 2020 13:45 to the itinerary</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="deleting-an-activity-in-the-itinerary-code-delete-code"><a class="link" href="#deleting-an-activity-in-the-itinerary-code-delete-code">3.3.2. Deleting an activity in the itinerary: <code>delete</code></a></h4>
+<div class="paragraph">
+<p>Deletes the specified activity in the itinerary.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>delete INDEX</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Deletes the activity at the specified <code>INDEX</code>.</p>
+</li>
+<li>
+<p>The index refers to the index number shown in the displayed itinerary.</p>
+</li>
+<li>
+<p>The index must be a positive integer 1, 2, 3, …</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>delete 5</code><br>
+Deletes the 5th activity in the itinerary.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="displaying-next-activity-code-next-code"><a class="link" href="#displaying-next-activity-code-next-code">3.3.3. Displaying next activity: <code>next</code></a></h4>
+<div class="paragraph">
+<p>Displays the next activity in the itinerary.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>next</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="editing-the-itinerary-code-edit-code"><a class="link" href="#editing-the-itinerary-code-edit-code">3.3.4. Editing the itinerary: <code>edit</code></a></h4>
+<div class="paragraph">
+<p>Edits an existing itinerary.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>edit INDEX [a/ACTIVITY] [d/DATE] [t/TIME] [l/LOCATION]</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Edits the activity at the specified <code>INDEX</code>. The index refers to the index number shown in the displayed itinerary list. The index must * be a positive integer 1, 2, 3, …​</p>
 </li>
 <li>
 <p>At least one of the optional fields must be provided.</p>
@@ -181,84 +378,207 @@ Format: <code>edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;
 <p>Existing values will be updated to the input values.</p>
 </li>
 <li>
-<p>When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.</p>
+<p>Date must be specified in the following format: <code>DD-MM-YYYY</code></p>
 </li>
 <li>
-<p>You can remove all the person&#8217;s tags by typing <code>t/</code> without specifying any tags after it.</p>
+<p>Time must be specified in the following format: <code>HH:MM</code></p>
 </li>
 </ul>
 </div>
 </div>
+<div class="sect3">
+<h4 id="locating-an-activity-by-any-field-code-find-code"><a class="link" href="#locating-an-activity-by-any-field-code-find-code">3.3.5. Locating an activity by any field: <code>find</code></a></h4>
+<div class="paragraph">
+<p>Searches the itinerary for any activity that matches the input field.</p>
 </div>
 <div class="paragraph">
-<p>Examples:</p>
+<p>Format: <code>find FIELD [a/ACTIVITY] [d/DATE] [t/TIME] [l/LOCATION]</code></p>
+</div>
+<div class="paragraph">
+<p>Date must be specified in the following format: <code>DD-MM-YYYY</code>
+Time must be specified in the following format: <code>HH:MM</code></p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>edit 1 p/91234567 e/johndoe@example.com</code><br>
-Edits the phone number and email address of the 1st person to be <code>91234567</code> and <code>johndoe@example.com</code> respectively.</p>
-</li>
-<li>
-<p><code>edit 2 n/Betsy Crower t/</code><br>
-Edits the name of the 2nd person to be <code>Betsy Crower</code> and clears all existing tags.</p>
+<p><code>find Itinerary a/Climbing</code><br>
+Returns all activities related to climbing.</p>
 </li>
 </ul>
+</div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="locating-persons-by-name-code-find-code"><a class="link" href="#locating-persons-by-name-code-find-code">3.5. Locating persons by name: <code>find</code></a></h3>
+<h3 id="journal-code-coming-in-v2-0-code"><a class="link" href="#journal-code-coming-in-v2-0-code">3.4. Journal <code>[coming in v2.0]</code></a></h3>
+<div class="sect3">
+<h4 id="adding-a-journal-entry-code-add-code"><a class="link" href="#adding-a-journal-entry-code-add-code">3.4.1. Adding a journal entry: <code>add</code></a></h4>
 <div class="paragraph">
-<p>Finds persons whose names contain any of the given keywords.<br>
-Format: <code>find KEYWORD [MORE_KEYWORDS]</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>The search is case insensitive. e.g <code>hans</code> will match <code>Hans</code></p>
-</li>
-<li>
-<p>The order of the keywords does not matter. e.g. <code>Hans Bo</code> will match <code>Bo Hans</code></p>
-</li>
-<li>
-<p>Only the name is searched.</p>
-</li>
-<li>
-<p>Only full words will be matched e.g. <code>Han</code> will not match <code>Hans</code></p>
-</li>
-<li>
-<p>Persons matching at least one keyword will be returned (i.e. <code>OR</code> search). e.g. <code>Hans Bo</code> will return <code>Hans Gruber</code>, <code>Bo Yang</code></p>
-</li>
-</ul>
-</div>
-</div>
+<p>Adds a journal entry to the entry list.</p>
 </div>
 <div class="paragraph">
-<p>Examples:</p>
+<p>Format: <code>add [c/CONTENT] [img/FILE_DIRECTORY] d/DATE t/TIME [l/LOCATION] [f/FEELING] [w/WEATHER]</code></p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>find John</code><br>
-Returns <code>john</code> and <code>John Doe</code></p>
+<p>Date must be specified in the following format: <code>DD-MM-YYYY</code></p>
 </li>
 <li>
-<p><code>find Betsy Tim John</code><br>
-Returns any person having names <code>Betsy</code>, <code>Tim</code>, or <code>John</code></p>
+<p>Time must be specified in the following format: <code>HH:MM</code></p>
+</li>
+<li>
+<p>CONTENT is limited to 280 characters</p>
+</li>
+<li>
+<p>Available <code>FEELING</code> types:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>happy</p>
+</li>
+<li>
+<p>sad</p>
+</li>
+<li>
+<p>excited</p>
+</li>
+<li>
+<p>worried</p>
+</li>
+<li>
+<p>scared</p>
+</li>
+<li>
+<p>surprised</p>
+</li>
+<li>
+<p>confused</p>
 </li>
 </ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>add c/Lorem ipsum dolor sit amet, consectetur adipiscing elit d/12-09-2021 t/12:51 l/New York f/confused</code><br>
+Adds a new journal entry to the entry list with the specified content, date, time, location and feeling fields.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="sorting-a-list-of-current-journal-entries-code-sort-code"><a class="link" href="#sorting-a-list-of-current-journal-entries-code-sort-code">3.4.2. Sorting a list of current journal entries: <code>sort</code></a></h4>
+<div class="paragraph">
+<p>Sorts the list of current journal entry lists in a specified order.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>sort [SORT_TYPE]</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Available <code>SORT_TYPE</code>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Old to new - old (default if SORT_TYPE is left empty)</p>
+</li>
+<li>
+<p>New to old - new</p>
+</li>
+<li>
+<p>Location - location</p>
+</li>
+<li>
+<p>Feeling - feeling</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Default sorting of journal entries is in order of old to new</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>sort location</code><br>
+Sorts the list of journal entries sorted by locations.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="deleting-a-journal-entry-code-delete-code"><a class="link" href="#deleting-a-journal-entry-code-delete-code">3.4.3. Deleting a journal entry: <code>delete</code></a></h4>
+<div class="paragraph">
+<p>Deletes an entire journal entry or a specific metadata within a journal entry based on the chosen index number.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>delete INDEX</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="editing-a-journal-entry-code-edit-code"><a class="link" href="#editing-a-journal-entry-code-edit-code">3.4.4. Editing a journal entry: <code>edit</code></a></h4>
+<div class="paragraph">
+<p>Edits specific metadata within a chosen journal entry using index number.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>edit INDEX [c/NEW_CONTENT] [img/NEW_FILE_DIRECTORY] [d/NEW_DATE] [t/NEW_TIME] [l/NEW_LOCATION] [f/NEW_FEELING] [w/NEW_WEATHER]</code></p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>edit 4 d/21-12-2012 f/Scared</code><br>
+Changes date and feeling of fourth journal entry to “21-12-2012” and “scared” respectively</p>
+</li>
+</ul>
+</div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-a-person-code-delete-code"><a class="link" href="#deleting-a-person-code-delete-code">3.6. Deleting a person : <code>delete</code></a></h3>
+<h3 id="contact-list-code-coming-in-v2-0-code"><a class="link" href="#contact-list-code-coming-in-v2-0-code">3.5. Contact List <code>[coming in v2.0]</code></a></h3>
+<div class="sect3">
+<h4 id="adding-a-contact-code-add-code"><a class="link" href="#adding-a-contact-code-add-code">3.5.1. Adding a contact: <code>add</code></a></h4>
 <div class="paragraph">
-<p>Deletes the specified person from the address book.<br>
-Format: <code>delete INDEX</code></p>
+<p>Adds a contact to the contact list.</p>
 </div>
-<div class="sidebarblock">
-<div class="content">
+<div class="paragraph">
+<p>Format: <code>add n/NAME [p/PHONE_NUMBER] [a/AGE] l/:LOCATION [h/HOW_YOU_MET] [f/FAVOURITE]</code></p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>addContact n/John Doe p/987654321 a/23 m/In Berlin h/Asked him to take a picture of me at Brandenburg Gate p/Cheerful f/no</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="deleting-a-contact-code-delete-code"><a class="link" href="#deleting-a-contact-code-delete-code">3.5.2. Deleting a contact: <code>delete</code></a></h4>
+<div class="paragraph">
+<p>Deletes the specified contact in the contact list.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>delete INDEX</code></p>
+</div>
 <div class="ulist">
 <ul>
 <li>
@@ -268,55 +588,70 @@ Format: <code>delete INDEX</code></p>
 <p>The index refers to the index number shown in the displayed person list.</p>
 </li>
 <li>
-<p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+<p>The index must be a positive integer 1, 2, 3, …</p>
 </li>
 </ul>
 </div>
-</div>
-</div>
 <div class="paragraph">
-<p>Examples:</p>
+<p>Example:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>list</code><br>
-<code>delete 2</code><br>
-Deletes the 2nd person in the address book.</p>
-</li>
-<li>
-<p><code>find Betsy</code><br>
-<code>delete 1</code><br>
-Deletes the 1st person in the results of the <code>find</code> command.</p>
+<p><code>delete 2</code><br>
+Deletes the 2nd person in the contact list.</p>
 </li>
 </ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">3.7. Clearing all entries : <code>clear</code></a></h3>
+<div class="sect3">
+<h4 id="editing-a-contact-code-edit-code"><a class="link" href="#editing-a-contact-code-edit-code">3.5.3. Editing a contact: <code>edit</code></a></h4>
 <div class="paragraph">
-<p>Clears all entries from the address book.<br>
-Format: <code>clear</code></p>
+<p>Edits an existing person in the contact list.</p>
 </div>
-</div>
-<div class="sect2">
-<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.8. Exiting the program : <code>exit</code></a></h3>
 <div class="paragraph">
-<p>Exits the program.<br>
-Format: <code>exit</code></p>
+<p>Format: <code>edit INDEX [n/NAME] [p/PHONE_NUMBER] [a/AGE] [l/LOCATION] [h/HOW_YOU_MET] [f/FAVOURITE]</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Edits the contact at the specified <code>INDEX</code>. The index refers to the index number shown in the displayed person list. The index must be a   positive integer 1, 2, 3, …​</p>
+</li>
+<li>
+<p>At least one of the optional fields must be provided.</p>
+</li>
+<li>
+<p>Existing values will be updated to the input values.</p>
+</li>
+</ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.9. Saving the data</a></h3>
+<div class="sect3">
+<h4 id="locating-a-contact-by-any-field-code-find-code"><a class="link" href="#locating-a-contact-by-any-field-code-find-code">3.5.4. Locating a contact by any field: <code>find</code></a></h4>
 <div class="paragraph">
-<p>Address book data are saved in the hard disk automatically after any command that changes the data.<br>
-There is no need to save manually.</p>
+<p>Searches the contact list for any contact that matches the input field.</p>
 </div>
-</div>
-<div class="sect2">
-<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">3.10. Encrypting data files <code>[coming in v2.0]</code></a></h3>
 <div class="paragraph">
-<p><em>{explain how the user can enable/disable data encryption}</em></p>
+<p>Format: <code>find FIELD [n/NAME] [p/PHONE_NUMBER] [a/AGE]/ [l/LOCATION] [h/HOW_YOU_MET] [f/FAVOURITE]</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The search is case insensitive. e.g hans will match Hans</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>findContact n/John</code><br>
+Returns the contact information on John Doe and John Wick</p>
+</li>
+</ul>
+</div>
 </div>
 </div>
 </div>
@@ -336,31 +671,22 @@ There is no need to save manually.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Add</strong> <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203;</code><br>
-e.g. <code>add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague</code></p>
-</li>
-<li>
-<p><strong>Clear</strong> : <code>clear</code></p>
+<p><strong>Add</strong> <code>add n/NAME p/PHONE_NUMBER</code><br>
+e.g. <code>add n/James Ho p/22224444</code></p>
 </li>
 <li>
 <p><strong>Delete</strong> : <code>delete INDEX</code><br>
 e.g. <code>delete 3</code></p>
 </li>
 <li>
-<p><strong>Edit</strong> : <code>edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code><br>
-e.g. <code>edit 2 n/James Lee e/jameslee@example.com</code></p>
+<p><strong>Edit</strong> : <code>edit INDEX [n/NAME] [p/PHONE_NUMBER] `<br>
+e.g. `edit 2 n/James Lee</code></p>
 </li>
 <li>
-<p><strong>Find</strong> : <code>find KEYWORD [MORE_KEYWORDS]</code><br>
+<p><strong>Find</strong> : <code>find KEYWORD [n/NAME]</code><br>
 e.g. <code>find James Jake</code></p>
-</li>
-<li>
-<p><strong>List</strong> : <code>list</code></p>
-</li>
-<li>
-<p><strong>Help</strong> : <code>help</code></p>
 </li>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-02-17 07:22:38 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-03-10 17:23:59 UTC</div></div></div></body></html>
