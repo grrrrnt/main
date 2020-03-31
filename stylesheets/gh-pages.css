@@ -1,4 +1,3 @@
-@import url(https://fonts.googleapis.com/css?family=Montserrat|Open+Sans);
 @import "asciidoctor.css"; /* Default asciidoc style framework - important */
 
 /* Custom block: details */
@@ -21,7 +20,7 @@
 /* Overrides for asciidoctor.css */
 
 a {
-    color: #0074c7;
+    color: #21585a;
 }
 
 h1,
@@ -40,7 +39,7 @@ h5,
 h5 > a.link,
 h6,
 h6 > a.link {
-    color: #e46c0a;
+    color: #21585a;
 }
 
 .subheader,
@@ -62,7 +61,7 @@ table.tableblock > .title,
 .ulist > .title,
 .qlist > .title,
 .hdlist > .title {
-    color: rgb(197, 90, 17);
+    color: rgb(33, 88, 90);
 }
 
 @media screen {
@@ -105,7 +104,7 @@ table.tableblock > .title,
     display: flex;
     flex-wrap: nowrap;
     justify-content: center;
-    font-family: "Open Sans", "DejaVu Sans", sans-serif;
+    font-family: "Roboto", sans-serif;
     font-size: 1rem;
     padding: 0px 1rem;
 }
@@ -148,7 +147,7 @@ table.tableblock > .title,
 }
 
 .navbar-light .nav-link.active {
-    border-bottom: 2px #e46c0a solid;
+    border-bottom: 2px #21585a solid;
 }
 
 .navbar-lg .nav-link.active {
