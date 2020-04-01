@@ -2,6 +2,8 @@ package seedu.volant.ui.pages.trip;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import seedu.volant.trip.model.TripFeature;
@@ -23,13 +25,20 @@ public class TripPageItineraryCard extends UiPart<Region> {
     @FXML
     private Label itineraryTitle;
 
+    @FXML
+    private Label numActivities;
+
+    @FXML
+    private ImageView itineraryCardIcon;
+
     public TripPageItineraryCard(TripFeature feature) {
         super(FXML);
-        this.tripFeature = feature;
+
+        Image itineraryCardImg = new Image("/images/itineraryIcon.png");
+        itineraryCardIcon.setImage(itineraryCardImg);
+
         itineraryTitle.setText("Itinerary");
+        numActivities.setText("You have " + feature.getNumItems() + " activities in you itinerary.");
     }
 
-    public TripFeature getTripFeature() {
-        return tripFeature;
-    }
 }

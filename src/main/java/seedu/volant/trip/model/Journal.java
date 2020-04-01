@@ -43,6 +43,11 @@ public class Journal extends TripFeature {
     }
 
     @Override
+    public int getNumItems() {
+        return entryList.getEntryList().size();
+    }
+
+    @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof EntryList // instanceof handles nulls

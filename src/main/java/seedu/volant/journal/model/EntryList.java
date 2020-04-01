@@ -109,8 +109,6 @@ public class EntryList implements ReadOnlyEntryList {
     }
 
 
-
-
     public UniqueEntryList getUniqueEntryList() {
         return entries;
     }

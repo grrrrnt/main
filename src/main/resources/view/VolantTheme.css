@@ -11,7 +11,7 @@
 
 .background {
     -fx-background-color: derive(#FEFBF7, 0%);
-    background-color: #000; /* Used in the default.html file */
+    background-color: #fff; /* Used in the default.html file */
 }
 
 .root {
@@ -23,7 +23,7 @@
 .label {
     -fx-font-size: 11pt;
     -fx-font-family: "Roboto Mono";
-    -fx-text-fill: #555555;
+    -fx-text-fill: #ffffff;
     -fx-opacity: 0.9;
 }
 
@@ -65,6 +65,15 @@
     -fx-border-width: 1px 0px 2px 0px;
     -fx-border-color: black;
 }
+
+/*Header for trip list views*/
+.trip-list-header {
+    -fx-alignment: center;
+    -fx-background-color: #8BD4B1;
+    -fx-border-width: 1px 0px 2px 0px;
+    -fx-border-color: black;
+}
+
 
 .label-welcome {
     -fx-font-size: 26pt;
@@ -133,19 +142,19 @@
 
 .split-pane:horizontal .split-pane-divider {
     -fx-background-color: derive(#FEFBF7, 0%);
-    -fx-border-color: transparent transparent transparent #4d4d4d;
+    -fx-border-color: transparent transparent transparent;
 }
 
 .split-pane {
     -fx-border-radius: 1;
     -fx-border-width: 2px;
-    -fx-background-color: derive(#FEFBF7, 20%);
+    -fx-background-color: #FEFBF7;
 }
 
 .list-view {
     -fx-background-insets: 0;
     -fx-padding: 0;
-    -fx-background-color: derive(#FEFBF7, 0%);
+    -fx-background-color: #FEFBF7;
 }
 
 .list-cell {
@@ -218,8 +227,8 @@
 }
 
 .status-bar-with-border {
-    -fx-background-color: derive(#FEFBF7, 30%);
-    -fx-border-color: derive(#1d1d1d, 25%);
+    -fx-background-color: #FEFBF7;
+    -fx-border-color: #1d1d1d;
     -fx-border-width: 2px;
 }
 
@@ -228,20 +237,20 @@
 }
 
 .grid-pane {
-    -fx-background-color: derive(#FEFBF7, 0%);
-    -fx-border-color: derive(#1d1d1d, 30%);
+    -fx-background-color: #FEFBF7;
+    -fx-border-color: #1d1d1d;
 }
 
 .grid-pane .stack-pane {
-    -fx-background-color: derive(#FEFBF7, 0%);
+    -fx-background-color: #fff968;
 }
 
 .context-menu {
-    -fx-background-color: derive(#FEFBF7, 0%);
+    -fx-background-color: #fff968;
 }
 
 .context-menu .label {
-    -fx-text-fill: white;
+    -fx-text-fill: #000000;
 }
 
 /*Menu buttons*/
@@ -392,7 +401,7 @@
 
 .stackPane-ResultBox {
     -fx-background-color: #FBFCDD;
-    -fx-border-width: 1px 1px 0px 1px;
+    -fx-border-width: 2px 1px 0px 1px;
     -fx-border-color: #000;
 }
 

@@ -78,6 +78,10 @@ public class UniqueEntryList implements Iterable<Entry> {
         }
     }
 
+    public int getSize() {
+        return internalList.size();
+    }
+
     /**
      * Edits the equivalent entry from the list.
      * The entry must exist in the list.

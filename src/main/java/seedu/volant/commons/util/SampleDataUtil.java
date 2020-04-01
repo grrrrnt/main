@@ -1,4 +1,4 @@
-package seedu.volant.home.model.util;
+package seedu.volant.commons.util;
 
 import java.time.LocalDate;
 import java.util.Arrays;

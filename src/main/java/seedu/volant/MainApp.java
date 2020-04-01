@@ -21,12 +21,12 @@ import seedu.volant.commons.storage.StorageManager;
 import seedu.volant.commons.storage.UserPrefsStorage;
 import seedu.volant.commons.storage.VolantStorage;
 import seedu.volant.commons.util.ConfigUtil;
+import seedu.volant.commons.util.SampleDataUtil;
 import seedu.volant.commons.util.StringUtil;
 import seedu.volant.home.logic.HomeLogicManager;
 import seedu.volant.home.model.HomeModelManager;
 import seedu.volant.home.model.ReadOnlyTripList;
 import seedu.volant.home.model.TripList;
-import seedu.volant.home.model.util.SampleDataUtil;
 import seedu.volant.ui.Ui;
 import seedu.volant.ui.UiManager;
 
@@ -90,6 +90,7 @@ public class MainApp extends Application {
             if (!tripListOptional.isPresent()) {
                 logger.info("Data file not found. Will be starting with a sample trip list.");
             }
+
             initialData = tripListOptional.orElseGet(SampleDataUtil::getSampleTripList);
         } catch (DataConversionException e) {
             logger.warning("Data file not in the correct format. Will be starting with an empty trip list.");

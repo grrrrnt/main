@@ -46,6 +46,11 @@ public class Itinerary extends TripFeature {
     }
 
     @Override
+    public int getNumItems() {
+        return activityList.getUniqueActivityList().getSize();
+    }
+
+    @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof ActivityList // instanceof handles nulls

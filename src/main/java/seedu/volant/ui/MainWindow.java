@@ -63,7 +63,9 @@ public class MainWindow extends UiPart<Stage> {
     // Independent Ui parts residing in this Ui container
     // mainPanel is where the context switching happens
     private UiPart<Region> mainPanel;
+
     private ResultDisplay resultDisplay;
+
     private HelpWindow helpWindow;
 
     @FXML
@@ -301,6 +303,15 @@ public class MainWindow extends UiPart<Stage> {
     private CommandResult executeCommand(String commandText) throws CommandException, ParseException {
         try {
             CommandResult commandResult = logic.execute(commandText);
+
+            /* WHEN COMMAND IS BEING EXECUTED ON HOMEPAGE, REFRESH HOME PAGE AFTER EVERY COMMAND */
+            if (currentPage == HOME) {
+                HomeModelManager currentModel = ((HomeLogicManager) logic).getModel();
+                mainPanelPlaceholder.getChildren().removeAll(mainPanel.getRoot());
+                mainPanel = new HomePage(currentModel.getFilteredTripList());
+                mainPanelPlaceholder.getChildren().add(mainPanel.getRoot());
+            }
+
             logger.info("Result: " + commandResult.getFeedbackToUser());
             resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());
 
@@ -322,7 +333,6 @@ public class MainWindow extends UiPart<Stage> {
                 if (currentPage == TRIP) {
                     handleGoToTripFeature(commandResult.getTripFeature());
                 }
-
             }
 
             if (commandResult.isBack()) {

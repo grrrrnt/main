@@ -7,13 +7,30 @@
 <VBox xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1">
    <StackPane prefHeight="30.0" prefWidth="200.0" styleClass="stack-welcome" VBox.vgrow="NEVER">
       <children>
-         <Label styleClass="label-welcome" text="Welcome-Message-Here" />
+         <Label styleClass="label-welcome" text="Welcome, Nguyen :D" />
       </children>
    </StackPane>
    <StackPane prefHeight="15.0" prefWidth="200.0" styleClass="stack-header" VBox.vgrow="NEVER">
       <children>
-        <Label styleClass="label-header" text="TripList" />
+        <Label styleClass="label-header" text="TRIP LIST" />
       </children>
    </StackPane>
-   <ListView fx:id="tripListView" prefWidth="247.0" VBox.vgrow="ALWAYS" />
+
+   <StackPane prefHeight="15.0" prefWidth="200.0" styleClass="trip-list-header" style="-fx-border-width: 0px 0px 2px 0px" VBox.vgrow="NEVER">
+      <children>
+         <Label styleClass="label-header" text="UPCOMING TRIPS" />
+      </children>
+   </StackPane>
+   <ListView fx:id="tripListViewUpcoming" prefWidth="247.0" style="-fx-background-color: #999;" VBox.vgrow="ALWAYS" />
+
+   <StackPane prefHeight="15.0" prefWidth="200.0" styleClass="trip-list-header" style="-fx-border-width: 2px 0px 2px 0px" VBox.vgrow="NEVER">
+      <children>
+         <Label styleClass="label-header" text="PAST TRIPS" />
+      </children>
+   </StackPane>
+   <ListView fx:id="tripListViewPast" prefWidth="247.0" VBox.vgrow="ALWAYS">
+      <placeholder>
+         <Label text="ass"></Label>
+      </placeholder>
+   </ListView>
 </VBox>
