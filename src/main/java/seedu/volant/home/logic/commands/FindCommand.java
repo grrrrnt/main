@@ -2,12 +2,14 @@ package seedu.volant.home.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 
+import javafx.collections.ObservableList;
 import seedu.volant.commons.core.Messages;
 import seedu.volant.commons.logic.commands.Command;
 import seedu.volant.commons.logic.commands.CommandResult;
 import seedu.volant.commons.model.Model;
 import seedu.volant.home.model.HomeModelManager;
 import seedu.volant.home.model.trip.NameContainsKeywordsPredicate;
+import seedu.volant.home.model.trip.Trip;
 
 /**
  * Finds and lists all trips in trip list whose name contains any of the argument keywords.
@@ -32,9 +34,19 @@ public class FindCommand extends Command {
     public CommandResult execute(Model model) {
         requireNonNull(model);
         HomeModelManager homeModel = ((HomeModelManager) model);
+        ObservableList<Trip> currentList = homeModel.getFilteredTripList();
+
         homeModel.updateFilteredTripList(predicate);
-        return new CommandResult(
+
+        if (homeModel.getFilteredTripList().isEmpty()) {
+            homeModel.updateFilteredTripList(homeModel.getPredicateShowAllTrips());
+            return new CommandResult(
+                String.format("No trips with this keyword(s): "
+                    + predicate.toString() + " found!", currentList.size()));
+        } else {
+            return new CommandResult(
                 String.format(Messages.MESSAGE_TRIPS_LISTED_OVERVIEW, homeModel.getFilteredTripList().size()));
+        }
     }
 
     @Override

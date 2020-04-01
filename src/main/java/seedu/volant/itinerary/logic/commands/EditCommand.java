@@ -30,7 +30,8 @@ public class EditCommand extends Command {
 
     public static final String COMMAND_WORD = "edit";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the activity identified "
+    public static final String MESSAGE_USAGE = COMMAND_WORD
+            + ": Edits the details of the activity identified "
             + "by the index number used in the displayed activity list. "
             + "Existing values will be overwritten by the input values.\n"
             + "Parameters: INDEX (must be a positive integer) "
@@ -38,7 +39,7 @@ public class EditCommand extends Command {
             + "[" + PREFIX_DATE + "DATE] "
             + "[" + PREFIX_TIME + "TIME] "
             + "[" + PREFIX_LOCATION + "LOCATION] \n"
-            + "Example: " + COMMAND_WORD + " 1 ";
+            + "Example: " + COMMAND_WORD + " 1 title/Hang out with the boys.";
 
     public static final String MESSAGE_EDIT_ITINERARY_SUCCESS = "Edited Itinerary: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";

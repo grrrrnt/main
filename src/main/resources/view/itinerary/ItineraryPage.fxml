@@ -4,7 +4,7 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
-<VBox xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1">
    <StackPane prefHeight="15.0" prefWidth="200.0" styleClass="stack-header" VBox.vgrow="NEVER">
       <children>
           <Label fx:id="itineraryTitle" styleClass="label-header" />

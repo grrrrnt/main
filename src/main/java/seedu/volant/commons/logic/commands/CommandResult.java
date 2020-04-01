@@ -4,6 +4,8 @@ import static java.util.Objects.requireNonNull;
 
 import java.util.Objects;
 
+import seedu.volant.commons.logic.Page;
+import seedu.volant.commons.model.Model;
 import seedu.volant.home.model.TripList;
 import seedu.volant.home.model.trip.Trip;
 import seedu.volant.trip.model.TripFeature;
@@ -32,6 +34,12 @@ public class CommandResult {
     protected Trip trip;
 
     protected TripFeature tripFeature;
+
+    protected Page targetPage;
+
+    protected boolean isHome;
+
+    protected Model model;
 
     /**
      * Constructs a {@code CommandResult} with the specified fields.
@@ -82,9 +90,29 @@ public class CommandResult {
         this.tripFeature = tripFeature;
     }
 
+    /**
+     * Creates command result for commands to navigate to a {@param targetPage}.
+     */
+    public CommandResult(String feedbackToUser, Model model) {
+        this(feedbackToUser, false, false, false, false);
+        this.isHome = true;
+        this.model = model;
+    }
 
     public String getFeedbackToUser() {
         return feedbackToUser;
+    }
+
+    public Page getTargetPage() {
+        return targetPage;
+    }
+
+    public Model getModel() {
+        return model;
+    }
+
+    public boolean isHome() {
+        return isHome;
     }
 
     public boolean isShowHelp() {

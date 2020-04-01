@@ -63,7 +63,7 @@ public class Activity {
         }
         if (!(other instanceof Activity)) {
             result = false;
-        } else if ((this.getDate().equals(((Activity) other).getDate()))
+        } else if (this.getDate().equals(((Activity) other).getDate())
             && (this.getTime().equals(((Activity) other).getTime()))) {
             result = true;
         }
@@ -75,4 +75,5 @@ public class Activity {
     public int hashCode() {
         return Objects.hash(this.title, this.date, this.time, this.location);
     }
+
 }

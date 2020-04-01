@@ -28,4 +28,9 @@ public class NameContainsKeywordsPredicate implements Predicate<Trip> {
                 && keywords.equals(((NameContainsKeywordsPredicate) other).keywords)); // state check
     }
 
+    @Override
+    public String toString() {
+        return keywords.toString();
+    }
+
 }

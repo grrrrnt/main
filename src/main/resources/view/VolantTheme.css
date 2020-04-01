@@ -238,7 +238,6 @@
 
 .grid-pane {
     -fx-background-color: #FEFBF7;
-    -fx-border-color: #1d1d1d;
 }
 
 .grid-pane .stack-pane {
@@ -247,6 +246,8 @@
 
 .context-menu {
     -fx-background-color: #fff968;
+    -fx-border-color: #000;
+    -fx-border-width: 2px;
 }
 
 .context-menu .label {
@@ -271,6 +272,11 @@
     -fx-font-family: "Roboto Mono Bold";
     -fx-text-fill: black;
     -fx-opacity: 0.9;
+}
+
+.menu-item:hover{
+    -fx-text-fill: black;
+    -fx-background-color: transparent;
 }
 
 .menu .left-container {
@@ -305,7 +311,7 @@
     -fx-background-radius: 0;
     -fx-background-color: #8bd4b1;
     -fx-font-family: "Roboto Mono Bold", monospace;
-    -fx-font-size: 10pt;
+    -fx-font-size: 12pt;
     -fx-text-fill: black;
     -fx-background-insets: 0 0 0 0, 0, 1, 2;
 }
@@ -361,32 +367,36 @@
 
 /*SCROLL BAR */
 .scroll-bar {
+    -fx-min-width: 30px;
     -fx-background-color: derive(#F08080, 20%);
-    -fx-border-width: 2px;
+    -fx-border-width: 0px 0px 0px 2px;
     -fx-border-color: black;
 }
 
 .scroll-bar .thumb {
-    -fx-background-color: #FEFBF7;
-    -fx-border-width: 2px 0px 2px 0px;
+    -fx-min-width: 30px;
+    -fx-background-color: #fff;
+    -fx-border-width: 2px 1px 2px 0px;
     -fx-border-color: black;
+    -fx-background-radius: 0em;
+    -fx-background-insets: 0px;
 }
 
-.scroll-bar .increment-button, .scroll-bar .decrement-button {
-    -fx-padding: 0 0 0 0;
+.scroll-bar .increment-button {
+    -fx-min-width: 20px;
+    -fx-min-height: 20px;
 }
 
-.scroll-bar .increment-arrow, .scroll-bar .decrement-arrow {
-    -fx-shape: "";
+.scroll-bar .decrement-button {
+    -fx-min-width: 20px;
+    -fx-min-height: 20px;
 }
 
-.scroll-bar:vertical .increment-arrow, .scroll-bar:vertical .decrement-arrow {
-    -fx-padding: 1 8 1 8;
+.scroll-bar > .increment-button > .increment-arrow,
+.scroll-bar > .decrement-button > .decrement-arrow {
+    -fx-background-color: black;
 }
 
-.scroll-bar:horizontal .increment-arrow, .scroll-bar:horizontal .decrement-arrow {
-    -fx-padding: 8 1 8 1;
-}
 
 #cardPane {
     -fx-background-color: transparent;

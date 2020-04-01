@@ -11,6 +11,7 @@ import seedu.volant.commons.logic.commands.Command;
 import seedu.volant.commons.logic.commands.ExitCommand;
 import seedu.volant.commons.logic.commands.GotoCommand;
 import seedu.volant.commons.logic.commands.HelpCommand;
+import seedu.volant.commons.logic.commands.HomeCommand;
 import seedu.volant.commons.logic.parser.GotoCommandParser;
 import seedu.volant.commons.logic.parser.exceptions.ParseException;
 import seedu.volant.home.logic.commands.AddCommand;
@@ -38,7 +39,7 @@ public class HomeInputParser {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE));
         }
 
-        final String commandWord = matcher.group("commandWord");
+        final String commandWord = matcher.group("commandWord").toLowerCase();
         final String arguments = matcher.group("arguments");
         switch(commandWord) {
 
@@ -71,6 +72,9 @@ public class HomeInputParser {
 
         case BackCommand.COMMAND_WORD:
             return new BackCommand();
+
+        case HomeCommand.COMMAND_WORD:
+            return new HomeCommand();
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);

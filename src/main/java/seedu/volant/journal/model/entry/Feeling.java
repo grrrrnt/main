@@ -5,7 +5,7 @@ package seedu.volant.journal.model.entry;
  */
 public enum Feeling {
     NULL, TIRED, HAPPY, SAD, EXCITED, WORRIED, SCARED, ANGRY, CONFUSED;
-    public static final String MESSAGE_CONSTRAINTS = "You have entered an invalid FEELING! \n"
+    public static final String MESSAGE_CONSTRAINTS = "I feel like that FEELING... is invalid \n"
             + "Here are the available FEELING parameters: \n"
             + "TIRED, HAPPY, SAD, EXCITED, ANGRY, WORRIED, SCARED, CONFUSED";
 }

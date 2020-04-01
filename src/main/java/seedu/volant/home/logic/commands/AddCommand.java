@@ -27,7 +27,7 @@ public class AddCommand extends Command {
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_NAME + "Bali 2020 "
             + PREFIX_LOCATION + "Bali "
-            + PREFIX_DATERANGE + "2020-02-01 to 2020-02-05 ";
+            + PREFIX_DATERANGE + "02-01-2020 to 02-05-2020 ";
 
     public static final String MESSAGE_SUCCESS = "New trip added: %1$s";
     public static final String MESSAGE_DUPLICATE_PERSON = "This trip already exists in the trip list";
@@ -46,6 +46,7 @@ public class AddCommand extends Command {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
         HomeModelManager homeModel = ((HomeModelManager) model);
+
         if (homeModel.hasTrip(toAdd)) {
             throw new CommandException(MESSAGE_DUPLICATE_PERSON);
         }

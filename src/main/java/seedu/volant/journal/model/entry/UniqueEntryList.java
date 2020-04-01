@@ -31,9 +31,6 @@ public class UniqueEntryList implements Iterable<Entry> {
     private final ObservableList<Entry> internalUnmodifiableList =
             FXCollections.unmodifiableObservableList(internalList);
 
-    /* TODO: This class is adapted from UniqueTripList.
-     * Implement all these methods once implementation of Journal is complete.
-     */
 
     /**
      * Returns true if the list contains an equivalent trip as the given argument.

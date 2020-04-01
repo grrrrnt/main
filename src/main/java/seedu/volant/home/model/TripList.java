@@ -103,7 +103,7 @@ public class TripList implements ReadOnlyTripList {
 
     @Override
     public String toString() {
-        return trips.asUnmodifiableObservableList().size() + " asscheeks";
+        return trips.asUnmodifiableObservableList().size() + " ";
         // TODO: refine later
     }
 

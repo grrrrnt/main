@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
-<HBox id="activityPane" fx:id="activityPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<HBox id="activityPane" fx:id="activityPane" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1">
     <GridPane HBox.hgrow="ALWAYS">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10" prefWidth="150" />
@@ -19,19 +19,20 @@
                      <Region fx:constant="USE_PREF_SIZE" />
                  </minWidth>
              </Label>
-         <VBox alignment="CENTER_LEFT" prefHeight="90.0" prefWidth="90.0">
+         <VBox alignment="CENTER_LEFT" prefHeight="90.0" prefWidth="100.0">
             <children>
                    <Label fx:id="activityDate" styleClass="label-dateTime" text="\$activityDate" />
                    <Label fx:id="activityTime" styleClass="label-dateTime" text="\$activityTime" />
             </children>
          </VBox>
-         <StackPane prefHeight="90.0" prefWidth="600.0" HBox.hgrow="ALWAYS">
+
+         <StackPane prefHeight="90.0" prefWidth="500.0" HBox.hgrow="ALWAYS">
             <children>
                <VBox alignment="CENTER_LEFT" prefHeight="90.0" prefWidth="100.0"
                 styleClass="vBox-itineraryTitleLocation">
                   <children>
-                         <Label fx:id="activityLocation" styleClass="label-location" text="\$activityLocation" />
-                         <Label fx:id="activityTitle" styleClass="cell_small_label" text="\$activityTitle" />
+                      <Label fx:id="activityTitle" styleClass="label-location" text="\$activityTitle" />
+                      <Label fx:id="activityLocation" styleClass="cell_small_label" text="\$activityLocation" />
                   </children>
                </VBox>
             </children>

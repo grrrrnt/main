@@ -19,6 +19,7 @@ import seedu.volant.commons.logic.parser.ParserUtil;
 import seedu.volant.commons.logic.parser.Prefix;
 import seedu.volant.commons.logic.parser.exceptions.ParseException;
 import seedu.volant.home.model.trip.Location;
+import seedu.volant.journal.exceptions.ContentTooLongException;
 import seedu.volant.journal.logic.commands.AddCommand;
 import seedu.volant.journal.model.entry.Entry;
 import seedu.volant.journal.model.entry.Feeling;
@@ -35,7 +36,7 @@ public class AddCommandParser implements Parser<AddCommand> {
      * and returns an AddCommand object for execution.
      * @throws ParseException if the user input does not conform the expected format
      */
-    public AddCommand parse(String args) throws ParseException {
+    public AddCommand parse(String args) throws ParseException, ContentTooLongException {
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_DATE, PREFIX_TIME, PREFIX_LOCATION,
                         PREFIX_FEELING, PREFIX_WEATHER, PREFIX_TEXT);

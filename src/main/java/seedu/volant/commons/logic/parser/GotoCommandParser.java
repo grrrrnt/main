@@ -9,7 +9,7 @@ import static seedu.volant.commons.logic.Page.TRIP;
 import seedu.volant.commons.core.index.Index;
 import seedu.volant.commons.logic.Page;
 import seedu.volant.commons.logic.commands.GotoCommand;
-import seedu.volant.commons.logic.commands.GotoHomeCommand;
+import seedu.volant.commons.logic.commands.HomeCommand;
 import seedu.volant.commons.logic.parser.exceptions.ParseException;
 import seedu.volant.home.logic.commands.GotoTripCommand;
 import seedu.volant.home.model.trip.Trip;
@@ -49,6 +49,7 @@ public class GotoCommandParser implements Parser<GotoCommand> {
      */
     @Override
     public GotoCommand parse(String argument) throws ParseException {
+        GotoCommand gotoCommand = null;
         try {
             String argumentTrimmed = argument.trim();
             if (page == TRIP) {
@@ -68,20 +69,20 @@ public class GotoCommandParser implements Parser<GotoCommand> {
 
             if (page == ITINERARY || page == JOURNAL) {
                 if (argumentTrimmed.equals("home")) {
-                    return new GotoHomeCommand();
+                    return new HomeCommand();
                 }
             }
 
-            //TODO: Figure out what to do here
+            /* If this statement is reached, it means that the command is invalid therefore throw exception */
             throw new ParseException("");
 
-        } catch (ParseException pe) {
+        } catch (ParseException pE) {
             if (page == HOME) {
                 throw new ParseException(
-                        String.format(MESSAGE_INVALID_COMMAND_FORMAT, GotoCommand.MESSAGE_USAGE_HOME, pe));
+                        String.format(MESSAGE_INVALID_COMMAND_FORMAT, GotoCommand.MESSAGE_USAGE_HOME, pE));
             } else {
                 throw new ParseException(
-                        String.format(MESSAGE_INVALID_COMMAND_FORMAT, GotoCommand.MESSAGE_USAGE_TRIP, pe));
+                        String.format(MESSAGE_INVALID_COMMAND_FORMAT, GotoCommand.MESSAGE_USAGE_TRIP, pE));
             }
         }
     }
