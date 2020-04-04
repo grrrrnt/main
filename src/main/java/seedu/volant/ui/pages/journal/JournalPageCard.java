@@ -11,7 +11,7 @@ import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import javafx.scene.paint.Color;
-import seedu.volant.journal.model.entry.Entry;
+import seedu.volant.journal.model.Entry;
 import seedu.volant.ui.UiPart;
 import seedu.volant.ui.pages.home.HomePageTripCard;
 
@@ -122,6 +122,10 @@ public class JournalPageCard extends UiPart<Region> {
         case "EXCITED":
             entryFeeling.setBackground(new Background(new BackgroundFill(
                 Color.rgb(240, 216, 21), CornerRadii.EMPTY, Insets.EMPTY)));
+            break;
+        case "WORRIED":
+            entryFeeling.setBackground(new Background(new BackgroundFill(
+                    Color.rgb(128, 0, 128), CornerRadii.EMPTY, Insets.EMPTY)));
             break;
         default:
             entryFeeling.setText("NULL");

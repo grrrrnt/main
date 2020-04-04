@@ -15,10 +15,12 @@ import seedu.volant.home.model.tag.Tag;
 import seedu.volant.home.model.trip.DateRange;
 import seedu.volant.home.model.trip.Location;
 import seedu.volant.home.model.trip.Name;
+import seedu.volant.home.model.trip.exceptions.StartAfterEndException;
 import seedu.volant.itinerary.model.activity.Title;
 import seedu.volant.journal.exceptions.ContentTooLongException;
-import seedu.volant.journal.model.entry.Feeling;
-import seedu.volant.journal.model.entry.Weather;
+import seedu.volant.journal.model.Feeling;
+import seedu.volant.journal.model.Weather;
+import seedu.volant.journal.model.util.SortType;
 
 /**
  * Contains utility methods used for parsing strings in the various *Parser classes.
@@ -98,6 +100,13 @@ public class ParserUtil {
         try {
             parsedFromDate = LocalDate.of(fromYear, fromMonth, fromDay);
             parsedToDate = LocalDate.of(toYear, toMonth, toDay);
+            if (parsedFromDate.compareTo(parsedToDate) > 0) {
+                throw new StartAfterEndException(String.format("Hey, your trip start date: %s, occurs"
+                                + " after your trip end date: %s.\nRevise the dates and try again!",
+                        parsedFromDate, parsedToDate));
+            }
+        } catch (StartAfterEndException e) {
+            throw new StartAfterEndException(e.getMessage());
         } catch (Exception e) {
             throw new ParseException("Please input a valid date in DD-MM-YYYY format!");
         }
@@ -131,17 +140,21 @@ public class ParserUtil {
         }
         return tagSet;
     }
+
     /**
      * Parses {@code String s} into title
      * @param title String to be parsed
      * @return title of activity.
      */
-    public static Title parseTitle(String title) {
+    public static Title parseTitle(String title) throws ParseException {
+        if (title.isEmpty()) {
+            throw new ParseException(Title.MESSAGE_CONSTRAINTS);
+        }
         return new Title(title);
     }
     /**
      * Parses a {@code String feeling} into a {@code Feeling}.
-     * @param feeling
+     * @param feeling String containing feeling described by user.
      * @return corresponding Feeling after parsing
      * @throws ParseException if given string does not correspond to an existing feeling
      */
@@ -165,9 +178,9 @@ public class ParserUtil {
         String[] dateFields = date.strip().split("-", 3);
         LocalDate parsedDate;
         try {
-            int day = Integer.valueOf(dateFields[0]);
-            int month = Integer.valueOf(dateFields[1]);
-            int year = Integer.valueOf(dateFields[2]);
+            int day = Integer.parseInt(dateFields[0]);
+            int month = Integer.parseInt(dateFields[1]);
+            int year = Integer.parseInt(dateFields[2]);
             parsedDate = LocalDate.of(year, month, day);
         } catch (Exception e) {
             throw new ParseException("Please input a valid date in DD-MM-YYYY format!");
@@ -183,8 +196,8 @@ public class ParserUtil {
         String[] timeFields = time.strip().split(":", 2);
         LocalTime parsedTime;
         try {
-            int hour = Integer.valueOf(timeFields[0]);
-            int minute = Integer.valueOf(timeFields[1]);
+            int hour = Integer.parseInt(timeFields[0]);
+            int minute = Integer.parseInt(timeFields[1]);
             parsedTime = LocalTime.of(hour, minute);
         } catch (Exception e) {
             throw new ParseException("Please input a valid time in HH:MM format!");
@@ -218,5 +231,29 @@ public class ParserUtil {
             throw new ContentTooLongException(charactersOverLimit);
         }
         return text.trim();
+    }
+
+    /**
+     * Parses {@code String sortType} into a {@code SortType}.
+     */
+    public static SortType parseSortType(String sortType) throws ParseException {
+        requireNonNull(sortType);
+        try {
+            String formattedSortType = sortType.trim().toLowerCase().substring(0, 1);
+            switch (formattedSortType) {
+            case "o":
+                return SortType.OLD;
+            case "n":
+                return SortType.NEW;
+            case "l":
+                return SortType.LOCATION;
+            case "f":
+                return SortType.FEELING;
+            default:
+                throw new ParseException(SortType.MESSAGE_CONSTRAINTS);
+            }
+        } catch (Exception e) {
+            throw new ParseException(SortType.MESSAGE_CONSTRAINTS);
+        }
     }
 }

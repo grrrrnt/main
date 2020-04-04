@@ -49,7 +49,6 @@ public class GotoCommandParser implements Parser<GotoCommand> {
      */
     @Override
     public GotoCommand parse(String argument) throws ParseException {
-        GotoCommand gotoCommand = null;
         try {
             String argumentTrimmed = argument.trim();
             if (page == TRIP) {

@@ -70,6 +70,18 @@ public class ActivityList implements ReadOnlyActivityList {
     }
 
     /**
+     * Returns true if a activity with the same date and time as {@code activity} exists in
+     * the activity list.
+     * @param activity Activity to be added.
+     * @return True if activity list contains a activity whose date and time clashes with the
+     * date and time of the activity to be added.
+     */
+    public boolean hasTimeClash(Activity activity) {
+        requireNonNull(activity);
+        return activities.containsDateTime(activity);
+    }
+
+    /**
      * Adds a activity to the activity list.
      * The trip must not already exist in the address book.
      */

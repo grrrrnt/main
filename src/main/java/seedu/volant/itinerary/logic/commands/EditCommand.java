@@ -33,15 +33,24 @@ public class EditCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Edits the details of the activity identified "
             + "by the index number used in the displayed activity list. "
-            + "Existing values will be overwritten by the input values.\n"
-            + "Parameters: INDEX (must be a positive integer) "
-            + "[" + PREFIX_TITLE + "TITLE] "
+            + "Existing values will be overwritten by the input values."
+
+            + "\nParameters:\t"
+            + "INDEX "
+            + "[" + PREFIX_TITLE + "ACTIVITY_TITLE] "
             + "[" + PREFIX_DATE + "DATE] "
             + "[" + PREFIX_TIME + "TIME] "
-            + "[" + PREFIX_LOCATION + "LOCATION] \n"
-            + "Example: " + COMMAND_WORD + " 1 title/Hang out with the boys.";
+            + "[" + PREFIX_LOCATION + "LOCATION]"
 
-    public static final String MESSAGE_EDIT_ITINERARY_SUCCESS = "Edited Itinerary: %1$s";
+            + "\nExample:\t"
+            + COMMAND_WORD + " 1 "
+            + PREFIX_TITLE + " Hang out with the boys."
+
+            + "\nNOTE:\n"
+            + "+ INDEX has to be a positive integer within range of the itinerary size.\n"
+            + "+ At least one of the parameters must be provided.";
+
+    public static final String MESSAGE_EDIT_ITINERARY_SUCCESS = "Edited activity: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
     public static final String MESSAGE_DUPLICATE_ACTIVITY = "This activity already exists in the itinerary.";
 
@@ -78,7 +87,7 @@ public class EditCommand extends Command {
         }
 
         itineraryModel.setActivity(activityToEdit, editedActivity);
-        itineraryModel.updateFilteredActivityList(itineraryModel.getPredicateShowAllTrips());
+        itineraryModel.updateFilteredActivityList(itineraryModel.getPredicateShowAllActivities());
         return new CommandResult(String.format(MESSAGE_EDIT_ITINERARY_SUCCESS, editedActivity));
     }
 

@@ -57,7 +57,7 @@ public class JsonVolantStorage implements VolantStorage {
 
         Optional<JsonSerializableTripList> jsonTripList = JsonUtil.readJsonFile(
                 filePath, JsonSerializableTripList.class);
-        if (!jsonTripList.isPresent()) {
+        if (jsonTripList.isEmpty()) {
             return Optional.empty();
         }
 
@@ -88,17 +88,17 @@ public class JsonVolantStorage implements VolantStorage {
     }
 
     @Override
-    public Optional<ReadOnlyEntryList> readEntryList() throws DataConversionException, IOException {
+    public Optional<ReadOnlyEntryList> readEntryList() throws DataConversionException {
         return readEntryList(filePath);
     }
 
     @Override
-    public Optional<ReadOnlyEntryList> readEntryList(Path filePath) throws DataConversionException, IOException {
+    public Optional<ReadOnlyEntryList> readEntryList(Path filePath) throws DataConversionException {
         requireNonNull(filePath);
 
         Optional<JsonSerializableEntryList> jsonEntryList = JsonUtil.readJsonFile(
                 filePath, JsonSerializableEntryList.class);
-        if (!jsonEntryList.isPresent()) {
+        if (jsonEntryList.isEmpty()) {
             return Optional.empty();
         }
 
@@ -125,17 +125,17 @@ public class JsonVolantStorage implements VolantStorage {
     }
 
     @Override
-    public Optional<ReadOnlyActivityList> readActivityList() throws DataConversionException, IOException {
+    public Optional<ReadOnlyActivityList> readActivityList() throws DataConversionException {
         return readActivityList(filePath);
     }
 
     @Override
-    public Optional<ReadOnlyActivityList> readActivityList(Path filePath) throws DataConversionException, IOException {
+    public Optional<ReadOnlyActivityList> readActivityList(Path filePath) throws DataConversionException {
         requireNonNull(filePath);
 
         Optional<JsonSerializableActivityList> jsonActivityList = JsonUtil.readJsonFile(
                 filePath, JsonSerializableActivityList.class);
-        if (!jsonActivityList.isPresent()) {
+        if (jsonActivityList.isEmpty()) {
             return Optional.empty();
         }
 

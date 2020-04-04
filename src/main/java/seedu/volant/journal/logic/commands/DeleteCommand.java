@@ -9,8 +9,8 @@ import seedu.volant.commons.logic.commands.Command;
 import seedu.volant.commons.logic.commands.CommandResult;
 import seedu.volant.commons.logic.commands.exceptions.CommandException;
 import seedu.volant.commons.model.Model;
+import seedu.volant.journal.model.Entry;
 import seedu.volant.journal.model.JournalModelManager;
-import seedu.volant.journal.model.entry.Entry;
 
 /**
  * Deletes an entry identified using its displayed index from the journal.
@@ -19,11 +19,13 @@ public class DeleteCommand extends Command {
     public static final String COMMAND_WORD = "delete";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Deletes the entry identified by the index number used in the journal.\n"
-            + "Parameters: INDEX (must be a positive integer)\n"
-            + "Example: " + COMMAND_WORD + " 1";
+            + ": Deletes the entry identified by the index number used in the journal."
+            + "\nParameters:\tINDEX"
+            + "\nExample:\t" + COMMAND_WORD + " 1"
+            + "\nNOTE:\n"
+            + "+ INDEX must be a positive integer within range of the number of entries in the journal.";
 
-    public static final String MESSAGE_DELETE_ENTRY_SUCCESS = "Deleted Entry: %1$s";
+    public static final String MESSAGE_DELETE_ENTRY_SUCCESS = "Deleted entry: %1$s";
 
     public static final String MESSAGE_INVALID_ENTRY_DISPLAYED_INDEX = "The entry index provided is invalid.";
 

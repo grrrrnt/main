@@ -91,7 +91,7 @@ public class CommandResult {
     }
 
     /**
-     * Creates command result for commands to navigate to a {@param targetPage}.
+     * Creates command result for commands to navigate to the Home page.
      */
     public CommandResult(String feedbackToUser, Model model) {
         this(feedbackToUser, false, false, false, false);

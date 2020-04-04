@@ -1,6 +1,8 @@
-package seedu.volant.itinerary.model.activity;
+package seedu.volant.itinerary.model.activity.util;
 
 import java.util.Comparator;
+
+import seedu.volant.itinerary.model.activity.Activity;
 
 /**
  * Comparator class that compares activities in activity list by date and time.

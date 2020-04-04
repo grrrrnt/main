@@ -20,10 +20,10 @@ import seedu.volant.commons.logic.commands.exceptions.CommandException;
 import seedu.volant.commons.model.Model;
 import seedu.volant.commons.util.CollectionUtil;
 import seedu.volant.home.model.trip.Location;
+import seedu.volant.journal.model.Entry;
+import seedu.volant.journal.model.Feeling;
 import seedu.volant.journal.model.JournalModelManager;
-import seedu.volant.journal.model.entry.Entry;
-import seedu.volant.journal.model.entry.Feeling;
-import seedu.volant.journal.model.entry.Weather;
+import seedu.volant.journal.model.Weather;
 
 /**
  * Adds an entry to the Journal.
@@ -42,10 +42,14 @@ public class EditCommand extends Command {
             + "[" + PREFIX_FEELING + "FEELING] "
             + "[" + PREFIX_WEATHER + "WEATHER] \n"
 
-            + "Example: " + COMMAND_WORD + " "
-            + "1 "
+            + "Example:\n"
+            + COMMAND_WORD + " 1 "
             + PREFIX_TEXT + "I love watermelon "
-            + PREFIX_LOCATION + "Watermelon Centre ";
+            + PREFIX_LOCATION + "Watermelon Centre "
+
+            + "\nNOTE:\n"
+            + "+ INDEX must be a positive integer within range of the number of entires in the journal.\n"
+            + "+ At least one of the parameters must be provided.";
 
     public static final String MESSAGE_EDIT_ENTRY_SUCCESS = "Entry edited: %1$s";
     public static final String MESSAGE_INVALID_ENTRY_DISPLAYED_INDEX = "The entry index provided is invalid.";

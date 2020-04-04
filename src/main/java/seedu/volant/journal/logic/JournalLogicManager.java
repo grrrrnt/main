@@ -9,7 +9,6 @@ import seedu.volant.commons.logic.commands.Command;
 import seedu.volant.commons.logic.commands.CommandResult;
 import seedu.volant.commons.logic.commands.exceptions.CommandException;
 import seedu.volant.commons.logic.parser.exceptions.ParseException;
-import seedu.volant.commons.model.Model;
 import seedu.volant.commons.storage.Storage;
 import seedu.volant.home.model.TripList;
 import seedu.volant.home.model.trip.Trip;
@@ -32,7 +31,7 @@ public class JournalLogicManager implements Logic {
         this.inputParser = new JournalInputParser(model.getJournal());
     }
 
-    public Model getModel() {
+    public JournalModelManager getModel() {
         return model;
     }
 

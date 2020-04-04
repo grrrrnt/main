@@ -40,14 +40,14 @@ public interface Model {
     void setGuiSettings(GuiSettings guiSettings);
 
     /**
-     * Returns the user prefs' address book file path.
+     * Returns the user prefs' volant file path.
      */
     Path getVolantFilePath();
 
     /**
-     * Sets the user prefs' address book file path.
+     * Sets the user prefs' volant file path.
      */
-    void setVolantFilePath(Path addressBookFilePath);
+    void setVolantFilePath(Path volantFilePath);
 
 
 }

@@ -11,6 +11,7 @@ import seedu.volant.commons.logic.commands.exceptions.CommandException;
 import seedu.volant.commons.model.Model;
 import seedu.volant.home.model.HomeModelManager;
 import seedu.volant.home.model.trip.Trip;
+import seedu.volant.itinerary.exceptions.TimeClashException;
 
 /**
  * Adds a trip to the address book.
@@ -20,17 +21,19 @@ public class AddCommand extends Command {
     public static final String COMMAND_WORD = "add";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a trip to the trip list. "
-            + "Parameters: "
+            + "\nParameters:\t"
             + PREFIX_NAME + "NAME "
             + PREFIX_LOCATION + "LOCATION "
-            + PREFIX_DATERANGE + "DATE RANGE \n"
-            + "Example: " + COMMAND_WORD + " "
+            + PREFIX_DATERANGE + "DATE RANGE"
+
+            + "\nExample:\t"
+            + COMMAND_WORD + " "
             + PREFIX_NAME + "Bali 2020 "
             + PREFIX_LOCATION + "Bali "
             + PREFIX_DATERANGE + "02-01-2020 to 02-05-2020 ";
 
     public static final String MESSAGE_SUCCESS = "New trip added: %1$s";
-    public static final String MESSAGE_DUPLICATE_PERSON = "This trip already exists in the trip list";
+    public static final String MESSAGE_DUPLICATE_TRIP = "This trip already exists in the trip list";
 
     private final Trip toAdd;
 
@@ -48,7 +51,14 @@ public class AddCommand extends Command {
         HomeModelManager homeModel = ((HomeModelManager) model);
 
         if (homeModel.hasTrip(toAdd)) {
-            throw new CommandException(MESSAGE_DUPLICATE_PERSON);
+            throw new CommandException(MESSAGE_DUPLICATE_TRIP);
+        }
+
+        if (homeModel.hasClash(toAdd)) {
+            throw new TimeClashException(String.format("Sorry, another trip is going on between %s.\n "
+                            + "You can try editing:\n"
+                            + "     that entry's date range\n     your new trip's date range.",
+                    toAdd.getDateRange()));
         }
 
         homeModel.addTrip(toAdd);

@@ -9,9 +9,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonRootName;
 
 import seedu.volant.commons.exceptions.IllegalValueException;
+import seedu.volant.journal.model.Entry;
 import seedu.volant.journal.model.EntryList;
 import seedu.volant.journal.model.ReadOnlyEntryList;
-import seedu.volant.journal.model.entry.Entry;
 
 /**
  * An Immutable EntryList that is serializable to JSON format.

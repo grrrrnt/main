@@ -5,8 +5,7 @@ import static java.util.Objects.requireNonNull;
 import java.util.List;
 
 import javafx.collections.ObservableList;
-import seedu.volant.journal.model.entry.Entry;
-import seedu.volant.journal.model.entry.UniqueEntryList;
+import seedu.volant.journal.model.util.SortType;
 
 /**
  * Wraps all data at the Journal level
@@ -97,6 +96,10 @@ public class EntryList implements ReadOnlyEntryList {
     */
     public void removeEntry(Entry key) {
         entries.remove(key);
+    }
+
+    public void sortEntries(SortType sortType) {
+        entries.sortEntries(sortType);
     }
 
 

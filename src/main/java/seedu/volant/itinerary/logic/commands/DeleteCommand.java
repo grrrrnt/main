@@ -22,11 +22,13 @@ public class DeleteCommand extends Command {
     public static final String COMMAND_WORD = "delete";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Deletes the activity identified by the index number used in the displayed itinerary.\n"
-            + "Parameters: INDEX (must be a positive integer)\n"
-            + "Example: " + COMMAND_WORD + " 1";
+            + ": Deletes the activity identified by the index number used in the displayed itinerary."
+            + "\nParameters:\tINDEX"
+            + "\nExample:\t" + COMMAND_WORD + " 1"
+            + "\nNOTE:\n"
+            + "+ INDEX must be a positive integer within range of the itinerary size.";
 
-    public static final String MESSAGE_DELETE_ACTIVITY_SUCCESS = "Deleted Activity: %1$s";
+    public static final String MESSAGE_DELETE_ACTIVITY_SUCCESS = "Deleted activity: %1$s";
 
     private final Index targetIndex;
 

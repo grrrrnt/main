@@ -31,6 +31,9 @@
           <Menu mnemonicParsing="false" text="Help (F1)">
             <MenuItem fx:id="helpMenuItem" mnemonicParsing="false" onAction="#handleHelp" text="Help" />
           </Menu>
+          <Menu mnemonicParsing="false" text="Refresh (F5)">
+            <MenuItem fx:id="refreshMenuItem" mnemonicParsing="false" onAction="#handleRefresh" text="Refresh" />
+          </Menu>
         </MenuBar>
 
         <!--  MAIN PANEL: THIS SWITCHES WITH EVERY NAVIGATION COMMAND -->

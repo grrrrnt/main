@@ -28,11 +28,6 @@ public class UniqueActivityList implements Iterable<Activity> {
     private final ObservableList<Activity> internalUnmodifiableList =
             FXCollections.unmodifiableObservableList(internalList);
 
-    /* TODO: This class is adapted from UniqueTripList.
-        Implement all these methods once implementation of Itinerary is complete.
-<<<<<<< HEAD
-     */
-
     /**
      * Returns true if the list contains an equivalent activity as the given argument.
     */
@@ -44,6 +39,14 @@ public class UniqueActivityList implements Iterable<Activity> {
     }
 
     /**
+     * Returns true if the list contains an activity with equivalent date and time as the argument.
+     */
+    public boolean containsDateTime(Activity toCheck) {
+        requireNonNull(toCheck);
+        return internalList.stream().anyMatch(toCheck::equalsDateTime);
+    }
+
+    /**
      * Adds a activity to the list.
      * The activity must not already exist in the list.
      */
@@ -51,7 +54,7 @@ public class UniqueActivityList implements Iterable<Activity> {
     public void add(Activity toAdd) {
         requireNonNull(toAdd);
         if (contains(toAdd)) {
-            //throw new DuplicateActivityException();
+            throw new DuplicateActivityException();
         }
         internalList.add(toAdd);
     }
@@ -62,7 +65,6 @@ public class UniqueActivityList implements Iterable<Activity> {
 
     /*TODO uncomment out for v1.3
      /** Replaces the activity {@code target} in the list with {@code editedActivity}.
->>>>>>> cafbc4bb8c90a1173db72169bfd25978ed73f08b
      * {@code target} must exist in the list.
      * The activity identity of {@code editedActivity} must not be the same as another existing activity in the list.
 

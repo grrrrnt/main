@@ -1,4 +1,4 @@
-package seedu.volant.journal.model.entry;
+package seedu.volant.journal.model;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.volant.commons.util.CollectionUtil.requireAllNonNull;
@@ -6,6 +6,7 @@ import static seedu.volant.commons.util.CollectionUtil.requireAllNonNull;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.HashMap;
+import java.util.InputMismatchException;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -14,6 +15,11 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.volant.home.model.trip.Location;
 import seedu.volant.journal.model.exceptions.EntryNotFoundException;
+import seedu.volant.journal.model.util.FeelingComparator;
+import seedu.volant.journal.model.util.LocationComparator;
+import seedu.volant.journal.model.util.NewestDateTimeComparator;
+import seedu.volant.journal.model.util.OldestDateTimeComparator;
+import seedu.volant.journal.model.util.SortType;
 
 /**
  * A list of persons that enforces uniqueness between its elements and does not allow nulls.
@@ -135,6 +141,29 @@ public class UniqueEntryList implements Iterable<Entry> {
     }
 
    */
+
+    /**
+     * Sorts the EntryList based on given SortType
+     */
+    public void sortEntries(SortType sortType) {
+        requireNonNull(sortType);
+        switch (sortType) {
+        case NEW:
+            FXCollections.sort(internalList, new NewestDateTimeComparator());
+            break;
+        case OLD:
+            FXCollections.sort(internalList, new OldestDateTimeComparator());
+            break;
+        case LOCATION:
+            FXCollections.sort(internalList, new LocationComparator());
+            break;
+        case FEELING:
+            FXCollections.sort(internalList, new FeelingComparator());
+            break;
+        default:
+            throw new InputMismatchException(SortType.MESSAGE_CONSTRAINTS);
+        }
+    }
 
     /**
      * Returns the backing list as an unmodifiable {@code ObservableList}.

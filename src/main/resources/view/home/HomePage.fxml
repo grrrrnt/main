@@ -7,7 +7,9 @@
 <VBox xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1">
    <StackPane prefHeight="30.0" prefWidth="200.0" styleClass="stack-welcome" VBox.vgrow="NEVER">
       <children>
-         <Label styleClass="label-welcome" text="Welcome, Nguyen :D" />
+
+         <!-- WELCOME MESSAGE -->
+         <Label styleClass="label-welcome" text="Hi! I'm Volant :)" />
       </children>
    </StackPane>
    <StackPane prefHeight="15.0" prefWidth="200.0" styleClass="stack-header" VBox.vgrow="NEVER">

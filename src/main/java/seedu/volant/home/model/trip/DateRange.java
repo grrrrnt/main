@@ -1,14 +1,14 @@
 package seedu.volant.home.model.trip;
 
+import static seedu.volant.commons.util.StringUtil.formatDate;
+
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
 /**
  * Represents date range of a trip.
  */
 public class DateRange {
 
-    public static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("dd MMM yyyy");
     public static final String MESSAGE_CONSTRAINTS = "Please enter date range in \"DD-MM-YYYY to DD-MM-YYYY\" format!!";
     public static final String VALIDATION_REGEX = "^([0]?[1-9]|[1|2][0-9]|[3][0|1])[./-]"
             + "([0]?[1-9]|[1][0-2])[./-]([0-9]{4}|[0-9]{2})( to )([0]?[1-9]|[1|2][0-9]|[3][0|1])[./-]"
@@ -45,7 +45,7 @@ public class DateRange {
 
     @Override
     public String toString() {
-        return from.format(DATE_TIME_FORMATTER) + " - " + to.format(DATE_TIME_FORMATTER);
+        return formatDate(from) + " - " + formatDate(to);
     }
 
     @Override
@@ -57,7 +57,7 @@ public class DateRange {
     public boolean equals(Object other) {
         return other == this
                 || (other instanceof DateRange)
-                && value.equals(value); // state check
+                && other.toString().equals(this.toString()); // state check
     }
 
 }

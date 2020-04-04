@@ -38,17 +38,21 @@ public class BackCommand extends Command {
             commandResult = new CommandResult(BACK_TRIP, t.getTripList());
             commandResult.setBack();
             return commandResult;
+
         } else if (page.equals(ITINERARY)) { // If in the itinerary page
             ItineraryModelManager t = ((ItineraryModelManager) model);
-            commandResult = new CommandResult(BACK_FEATURE, t.getTrip());
+            commandResult = new CommandResult(String.format(BACK_FEATURE,
+                t.getTrip().getName().toString()), t.getTrip());
             commandResult.setBack();
             return commandResult;
+
         } else if (page.equals(JOURNAL)) { // If in the journal page
             JournalModelManager t = ((JournalModelManager) model);
             commandResult = new CommandResult(String.format(BACK_FEATURE,
                     t.getTrip().getName().toString()), t.getTrip());
             commandResult.setBack();
             return commandResult;
+
         } else if (page.equals(HOME)) { // If in the home page
             throw new CommandException(BACK_HOMEPAGE);
         } else {

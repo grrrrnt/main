@@ -21,7 +21,7 @@ import seedu.volant.commons.model.UserPrefs;
 import seedu.volant.commons.storage.Storage;
 import seedu.volant.home.model.TripList;
 import seedu.volant.home.model.trip.Trip;
-import seedu.volant.journal.model.entry.Entry;
+import seedu.volant.journal.model.util.SortType;
 import seedu.volant.trip.model.Journal;
 
 /**
@@ -120,6 +120,14 @@ public class JournalModelManager implements Model {
      */
     public void editEntry(Entry entry, Entry editedEntry) {
         this.entryList.setEntry(entry, editedEntry);
+        updateFilteredEntryList(predicateShowAllEntries);
+    }
+
+    /**
+     * Sorts the EntryList based on given SortType
+     */
+    public void sortEntries(SortType sortType) {
+        entryList.sortEntries(sortType);
         updateFilteredEntryList(predicateShowAllEntries);
     }
 

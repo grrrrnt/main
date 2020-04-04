@@ -12,8 +12,9 @@ import seedu.volant.commons.logic.commands.Command;
 import seedu.volant.commons.logic.commands.CommandResult;
 import seedu.volant.commons.logic.commands.exceptions.CommandException;
 import seedu.volant.commons.model.Model;
+import seedu.volant.journal.model.Entry;
 import seedu.volant.journal.model.JournalModelManager;
-import seedu.volant.journal.model.entry.Entry;
+import seedu.volant.journal.model.util.SortType;
 
 /**
  * Adds an entry to the Journal.
@@ -33,14 +34,14 @@ public class AddCommand extends Command {
 
             + "Example: \n"
             + COMMAND_WORD + " "
-            + PREFIX_DATE + "11-09-2001 "
-            + PREFIX_TIME + "04:20 "
-            + PREFIX_TEXT + "I have coronavirus and my wife has left me "
-            + PREFIX_LOCATION + "Wuhan "
-            + PREFIX_FEELING + "SCARED "
-            + PREFIX_WEATHER + "COOL";
+            + PREFIX_DATE + "05-03-2020 "
+            + PREFIX_TIME + "14:20 "
+            + PREFIX_TEXT + "It's a really good day today! Excited to explore Germany... "
+            + PREFIX_LOCATION + "Brandenburg Gate "
+            + PREFIX_FEELING + "EXCITED "
+            + PREFIX_WEATHER + "COOL ";
 
-    public static final String MESSAGE_SUCCESS = "New entry added: %1$s";
+    public static final String MESSAGE_SUCCESS = "New journal entry added: %1$s";
     public static final String MESSAGE_DUPLICATE_ENTRY = "This entry already exists in the journal.";
 
     private final Entry toAdd;
@@ -62,6 +63,7 @@ public class AddCommand extends Command {
         }
 
         journalModel.addEntry(toAdd);
+        journalModel.sortEntries(SortType.NEW);
         return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
     }
 

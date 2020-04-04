@@ -1,10 +1,10 @@
-package seedu.volant.journal.model.entry;
+package seedu.volant.journal.model;
 
 import static seedu.volant.commons.util.StringUtil.formatDate;
+import static seedu.volant.commons.util.StringUtil.formatTime;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 
 import seedu.volant.home.model.trip.Location;
 
@@ -56,8 +56,7 @@ public class Entry {
     }
 
     public String getTimeAsString() {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm a");
-        return time.format(formatter);
+        return formatTime(time);
     }
 
     public LocalDate getDate() {
@@ -110,6 +109,33 @@ public class Entry {
 
     @Override
     public String toString() {
-        return getText();
+        String f;
+        String w;
+
+        if (feeling.equals(Feeling.NULL)) {
+            f = "Not Specified";
+        } else {
+            f = feeling.toString();
+        }
+
+        if (weather.equals(Weather.NULL)) {
+            w = "Not Specified";
+        } else {
+            w = weather.toString();
+        }
+
+        final StringBuilder builder = new StringBuilder();
+        builder.append("\nDate: ")
+                .append(formatDate(getDate()))
+                .append("\nTime: ")
+                .append(formatTime(getTime()))
+                .append("\nFeeling: ")
+                .append(f)
+                .append("\nWeather: ")
+                .append(w)
+                .append("\nText: ")
+                .append(getText());
+
+        return builder.toString();
     }
 }

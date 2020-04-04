@@ -10,10 +10,12 @@ import seedu.volant.commons.logic.commands.BackCommand;
 import seedu.volant.commons.logic.commands.Command;
 import seedu.volant.commons.logic.commands.HelpCommand;
 import seedu.volant.commons.logic.commands.HomeCommand;
+import seedu.volant.commons.logic.commands.RefreshCommand;
 import seedu.volant.commons.logic.parser.exceptions.ParseException;
 import seedu.volant.itinerary.logic.commands.AddCommand;
 import seedu.volant.itinerary.logic.commands.DeleteCommand;
 import seedu.volant.itinerary.logic.commands.EditCommand;
+import seedu.volant.itinerary.logic.commands.FindCommand;
 import seedu.volant.itinerary.model.ActivityList;
 
 /**
@@ -62,6 +64,12 @@ public class ItineraryInputParser {
 
         case HomeCommand.COMMAND_WORD:
             return new HomeCommand();
+
+        case FindCommand.COMMAND_WORD:
+            return new FindCommandParser().parse(arguments);
+
+        case RefreshCommand.COMMAND_WORD:
+            return new RefreshCommand();
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND_ITINERARY);

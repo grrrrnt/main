@@ -21,9 +21,9 @@ import seedu.volant.commons.logic.parser.exceptions.ParseException;
 import seedu.volant.home.model.trip.Location;
 import seedu.volant.journal.exceptions.ContentTooLongException;
 import seedu.volant.journal.logic.commands.AddCommand;
-import seedu.volant.journal.model.entry.Entry;
-import seedu.volant.journal.model.entry.Feeling;
-import seedu.volant.journal.model.entry.Weather;
+import seedu.volant.journal.model.Entry;
+import seedu.volant.journal.model.Feeling;
+import seedu.volant.journal.model.Weather;
 
 
 /**

@@ -9,7 +9,7 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.Region;
 import seedu.volant.commons.core.LogsCenter;
-import seedu.volant.journal.model.entry.Entry;
+import seedu.volant.journal.model.Entry;
 import seedu.volant.ui.UiPart;
 import seedu.volant.ui.pages.home.HomePage;
 

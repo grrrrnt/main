@@ -66,6 +66,14 @@ public class HomeModelManager implements Model {
     }
 
     /**
+     * Returns true if the date range of trip to be added clashes with existing trips within model.
+     */
+    public boolean hasClash(Trip trip) {
+        requireNonNull(trip);
+        return tripList.hasClash(trip);
+    }
+
+    /**
      * Removes specified target {@code Trip} from trip list within model.
      */
     public void deleteTrip(Trip target) {

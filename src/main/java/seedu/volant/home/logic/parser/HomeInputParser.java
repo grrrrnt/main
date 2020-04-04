@@ -12,6 +12,7 @@ import seedu.volant.commons.logic.commands.ExitCommand;
 import seedu.volant.commons.logic.commands.GotoCommand;
 import seedu.volant.commons.logic.commands.HelpCommand;
 import seedu.volant.commons.logic.commands.HomeCommand;
+import seedu.volant.commons.logic.commands.RefreshCommand;
 import seedu.volant.commons.logic.parser.GotoCommandParser;
 import seedu.volant.commons.logic.parser.exceptions.ParseException;
 import seedu.volant.home.logic.commands.AddCommand;
@@ -19,7 +20,6 @@ import seedu.volant.home.logic.commands.ClearCommand;
 import seedu.volant.home.logic.commands.DeleteCommand;
 import seedu.volant.home.logic.commands.EditCommand;
 import seedu.volant.home.logic.commands.FindCommand;
-import seedu.volant.home.logic.commands.ListCommand;
 
 /**
  * Parses user input when on the HOME page.
@@ -58,9 +58,6 @@ public class HomeInputParser {
         case FindCommand.COMMAND_WORD:
             return new FindCommandParser().parse(arguments);
 
-        case ListCommand.COMMAND_WORD:
-            return new ListCommand();
-
         case ExitCommand.COMMAND_WORD:
             return new ExitCommand();
 
@@ -75,6 +72,9 @@ public class HomeInputParser {
 
         case HomeCommand.COMMAND_WORD:
             return new HomeCommand();
+
+        case RefreshCommand.COMMAND_WORD:
+            return new RefreshCommand();
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);

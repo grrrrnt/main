@@ -321,7 +321,7 @@ If you would like to plan a new activity for the itinerary, this command allows 
 *Usage*
 [cols="1h, 5"]
 |=======================
-|Syntax     |`add a/ACTIVITY l/LOCATION d/DATE t/TIME`
+|Syntax     |`add a/ACTIVITY_TITLE l/LOCATION d/DATE t/TIME`
 |Example    |`add a/Visit Central Park l/New York d/01-04-2020 t/09:00`
 |=======================
 
@@ -365,7 +365,7 @@ If you would like to update the details of a particular activity in the itinerar
 *Usage*
 [cols="1h, 5"]
 |=======================
-|Syntax     |`edit INDEX [a/ACTIVITY] [l/LOCATION] [d/DATE] [t/TIME]`
+|Syntax     |`edit INDEX [a/ACTIVITY_TITLE] [l/LOCATION] [d/DATE] [t/TIME]`
 |Example    |`edit 2 l/Starbucks t/10:00`
 |=======================
 
@@ -390,7 +390,7 @@ allows you to find the activity/activities that match(es) the search keyword.
 *Usage*
 [cols="1h, 5"]
 |=======================
-|Syntax     |`find [a/ACTIVITY] [l/LOCATION] [d/DATE] [t/TIME]`
+|Syntax     |`find [a/ACTIVITY_TITLE] [l/LOCATION] [d/DATE] [t/TIME]`
 |Example    |`find a/Climbing`
 |=======================
 
@@ -434,6 +434,15 @@ If you would like to record a new journal entry, this command adds a new entry t
 ** `SCARED`
 ** `SURPRISED`
 ** `CONFUSED`
+* Available `WEATHER` types (can be typed in any case):
+** `SUNNY`
+** `RAINY`
+** `SNOWY`
+** `CLOUDY`
+** `COLD`
+** `DARK`
+** `HOT`
+** `COOL`
 ====
 
 *Expected Outcome*
@@ -551,10 +560,10 @@ Use this list as a quick reference.
 * *Navigate to feature*: `goto FEATURE` +
 
 === Itinerary
-* *Add activity*: `add title/TITLE l/LOCATION d/DATE t/TIME` +
+* *Add activity*: `add a/ACTIVITY_TITLE l/LOCATION d/DATE t/TIME` +
 * *Delete activity*: `delete INDEX` +
-* *Edit activity*: `edit INDEX [title/TITLE] [l/LOCATION] [d/DATE] [t/TIME]` +
-* *Find activity*: `find FIELD [title/TITLE] [l/LOCATION] [d/DATE] [t/TIME]` +
+* *Edit activity*: `edit INDEX [a/ACTIVITY_TITLE] [l/LOCATION] [d/DATE] [t/TIME]` +
+* *Find activity*: `find FIELD [a/ACTIVITY_TITLE] [l/LOCATION] [d/DATE] [t/TIME]` +
 
 === Journal
 * *Add entry*: `add d/DATE t/TIME c/CONTENT [l/LOCATION] [f/FEELING] [w/WEATHER]` +

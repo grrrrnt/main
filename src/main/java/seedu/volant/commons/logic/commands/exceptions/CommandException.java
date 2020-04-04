@@ -1,5 +1,7 @@
 package seedu.volant.commons.logic.commands.exceptions;
 
+import seedu.volant.commons.logic.commands.Command;
+
 /**
  * Represents an error which occurs during execution of a {@link Command}.
  */

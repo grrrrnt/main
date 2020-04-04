@@ -86,6 +86,6 @@ public class StringUtil {
      * @return formatted time
      */
     public static String formatTime(LocalTime time) {
-        return time.format(DateTimeFormatter.ofPattern("HH:mm a"));
+        return time.format(DateTimeFormatter.ofPattern("hh:mm a"));
     }
 }

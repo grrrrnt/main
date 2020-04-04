@@ -26,7 +26,9 @@
                 <Label fx:id="entryTime" styleClass="label-entry-metadata" text="\$entryTime" />
                 <Region prefHeight="40.0" />
                 <HBox alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="200.0" styleClass="hBox-feeling" HBox.hgrow="ALWAYS">
-                    <Label fx:id="entryFeeling" styleClass="label-feeling" text="\$entryFeeling" />
+
+                    <!-- If feeling not specified, will show nothing -->
+                    <Label fx:id="entryFeeling" styleClass="label-feeling" />
                 </HBox>
             </HBox>
 

@@ -9,7 +9,8 @@ import static seedu.volant.commons.util.AppUtil.checkArgument;
  */
 public class Location {
 
-    public static final String MESSAGE_CONSTRAINTS = "Addresses can take any values, and it should not be blank";
+    public static final String MESSAGE_CONSTRAINTS = "Location can take any alphanumeric value,"
+            + " and it should not be blank";
 
     /*
      * The first character of the address must not be a whitespace,

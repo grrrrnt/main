@@ -37,6 +37,14 @@ public class UniqueTripList implements Iterable<Trip> {
     }
 
     /**
+     * Returns true if the list contains a trip whose date range conincides with {@code toCheck}.
+     */
+    public boolean clashes(Trip toCheck) {
+        requireNonNull(toCheck);
+        return internalList.stream().anyMatch(toCheck::isWithinSameDateRange);
+    }
+
+    /**
      * Adds a trip to the list.
      * The trip must not already exist in the list.
      */
@@ -143,4 +151,5 @@ public class UniqueTripList implements Iterable<Trip> {
         }
         return true;
     }
+
 }

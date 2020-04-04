@@ -9,9 +9,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.volant.commons.exceptions.IllegalValueException;
 import seedu.volant.home.model.trip.Location;
-import seedu.volant.journal.model.entry.Entry;
-import seedu.volant.journal.model.entry.Feeling;
-import seedu.volant.journal.model.entry.Weather;
+import seedu.volant.journal.model.Entry;
+import seedu.volant.journal.model.Feeling;
+import seedu.volant.journal.model.Weather;
 
 /**
  * Jackson-friendly version of {@link Entry}.
@@ -69,13 +69,14 @@ class JsonAdaptedEntry {
         if (date == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, "Date"));
         }
+
         DateTimeFormatter dateParser = DateTimeFormatter.ofPattern("dd MMM yyyy");
         final LocalDate modelDate = LocalDate.parse(date, dateParser);
 
         if (time == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, "Time"));
         }
-        DateTimeFormatter timeParser = DateTimeFormatter.ofPattern("HH:mm a");
+        DateTimeFormatter timeParser = DateTimeFormatter.ofPattern("hh:mm a");
         final LocalTime modelTime = LocalTime.parse(time, timeParser);
 
         if (feeling == null) {

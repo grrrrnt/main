@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.volant.commons.exceptions.IllegalValueException;
-import seedu.volant.journal.model.entry.Entry;
+import seedu.volant.journal.model.Entry;
 import seedu.volant.trip.model.Journal;
 
 /**
