@@ -10,11 +10,13 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <VBox stylesheets="@../VolantTheme.css" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1">
+
    <StackPane prefHeight="15.0" prefWidth="200.0" styleClass="stack-header" VBox.vgrow="NEVER">
       <children>
          <Label styleClass="label-header" text="TRIP" />
       </children>
    </StackPane>
+
    <HBox fx:id="tripNameCardPane">
       <children>
          <GridPane HBox.hgrow="ALWAYS">
@@ -39,5 +41,6 @@
          </GridPane>
       </children>
    </HBox>
-     <ListView fx:id="tripFeaturesListView" prefHeight="73.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+
+   <ListView fx:id="tripFeaturesListView" prefWidth="200.0" minHeight="310"/>
 </VBox>

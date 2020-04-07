@@ -5,13 +5,17 @@ import static seedu.volant.commons.logic.Page.ITINERARY;
 import static seedu.volant.commons.logic.Page.JOURNAL;
 import static seedu.volant.commons.logic.Page.TRIP;
 
+import java.io.IOException;
 import java.nio.file.Paths;
+import java.util.NoSuchElementException;
+import java.util.Optional;
 import java.util.logging.Logger;
 
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextInputControl;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
@@ -20,6 +24,7 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import seedu.volant.commons.core.GuiSettings;
 import seedu.volant.commons.core.LogsCenter;
+import seedu.volant.commons.exceptions.DataConversionException;
 import seedu.volant.commons.logic.Logic;
 import seedu.volant.commons.logic.Page;
 import seedu.volant.commons.logic.commands.CommandResult;
@@ -27,20 +32,28 @@ import seedu.volant.commons.logic.commands.RefreshCommandResult;
 import seedu.volant.commons.logic.commands.exceptions.CommandException;
 import seedu.volant.commons.logic.parser.exceptions.ParseException;
 import seedu.volant.commons.model.UserPrefs;
+import seedu.volant.commons.util.SampleDataUtil;
 import seedu.volant.home.logic.HomeLogicManager;
 import seedu.volant.home.model.HomeModelManager;
+import seedu.volant.home.model.ReadOnlyTripList;
 import seedu.volant.home.model.TripList;
 import seedu.volant.home.model.trip.Trip;
 import seedu.volant.itinerary.logic.ItineraryLogicManager;
+import seedu.volant.itinerary.model.ActivityList;
 import seedu.volant.itinerary.model.ItineraryModelManager;
+import seedu.volant.itinerary.model.ReadOnlyActivityList;
 import seedu.volant.itinerary.model.activity.Activity;
 import seedu.volant.journal.logic.JournalLogicManager;
+import seedu.volant.journal.model.EntryList;
 import seedu.volant.journal.model.JournalModelManager;
+import seedu.volant.journal.model.ReadOnlyEntryList;
 import seedu.volant.trip.logic.TripLogicManager;
 import seedu.volant.trip.model.Itinerary;
 import seedu.volant.trip.model.Journal;
 import seedu.volant.trip.model.TripFeature;
+import seedu.volant.trip.model.TripFeatureList;
 import seedu.volant.trip.model.TripModelManager;
+import seedu.volant.ui.pages.home.HomeHelpWindow;
 import seedu.volant.ui.pages.home.HomePage;
 import seedu.volant.ui.pages.itinerary.ItineraryPage;
 import seedu.volant.ui.pages.journal.JournalPage;
@@ -68,7 +81,7 @@ public class MainWindow extends UiPart<Stage> {
 
     private ResultDisplay resultDisplay;
 
-    private HelpWindow helpWindow;
+    private HomeHelpWindow homeHelpWindow;
 
     @FXML
     private StackPane commandBoxPlaceholder;
@@ -78,6 +91,9 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private MenuItem refreshMenuItem;
+
+    @FXML
+    private ScrollPane scrollPane;
 
     @FXML
     private StackPane mainPanelPlaceholder;
@@ -95,12 +111,14 @@ public class MainWindow extends UiPart<Stage> {
         this.primaryStage = primaryStage;
         this.logic = logic;
 
+        primaryStage.setMaxHeight(794);
+
         // Configure the UI
         setWindowDefaultSize(logic.getGuiSettings());
-
         setAccelerators();
 
-        helpWindow = new HelpWindow();
+        homeHelpWindow = new HomeHelpWindow();
+        scrollPane.setFitToWidth(true);
     }
 
     public Stage getPrimaryStage() {
@@ -192,7 +210,7 @@ public class MainWindow extends UiPart<Stage> {
      */
     private void handleBack(CommandResult commandResult) {
         if (currentPage == TRIP) {
-            handleGoToHome(commandResult.getTripList());
+            handleGoToHome(commandResult);
         }
 
         if (currentPage == ITINERARY || currentPage == JOURNAL) {
@@ -221,10 +239,10 @@ public class MainWindow extends UiPart<Stage> {
      */
     @FXML
     public void handleHelp() {
-        if (!helpWindow.isShowing()) {
-            helpWindow.show();
+        if (!homeHelpWindow.isShowing()) {
+            homeHelpWindow.show();
         } else {
-            helpWindow.focus();
+            homeHelpWindow.focus();
         }
     }
 
@@ -236,8 +254,13 @@ public class MainWindow extends UiPart<Stage> {
         GuiSettings guiSettings = new GuiSettings(primaryStage.getWidth(), primaryStage.getHeight(),
             (int) primaryStage.getX(), (int) primaryStage.getY());
         logic.setGuiSettings(guiSettings);
-        helpWindow.hide();
+        homeHelpWindow.hide();
         primaryStage.hide();
+    }
+
+    private void updateStatusBar() {
+        StatusBarFooter statusBarFooter = new StatusBarFooter(logic.getVolantFilePath());
+        statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());
     }
 
     /**
@@ -246,24 +269,29 @@ public class MainWindow extends UiPart<Stage> {
      */
     @FXML
     public void handleGotoTrip(Trip trip) {
-        TripList t;
-        if (currentPage == ITINERARY) {
-            t = ((ItineraryLogicManager) logic).getTripList();
-        } else if (currentPage == JOURNAL) {
-            t = ((JournalLogicManager) logic).getTripList();
-        } else {
-            t = ((HomeLogicManager) logic).getTripList();
+        ActivityList activityList;
+        EntryList entryList;
+        try {
+            logic.getStorage().setVolantFilePath(Paths.get("data", trip.getName() + "/itinerary.json"));
+            Optional<ReadOnlyActivityList> activityListOptional = logic.getStorage().readActivityList();
+            activityList = new ActivityList(activityListOptional.get());
+            logic.getStorage().setVolantFilePath(Paths.get("data", trip.getName() + "/journal.json"));
+            Optional<ReadOnlyEntryList> entryListOptional = logic.getStorage().readEntryList();
+            entryList = new EntryList(entryListOptional.get());
+        } catch (IOException | DataConversionException | NoSuchElementException e) {
+            activityList = new ActivityList();
+            entryList = new EntryList();
         }
         UserPrefs newUserPrefs = new UserPrefs();
         newUserPrefs.setVolantFilePath(Paths.get("data", trip.getName().toString()));
         logic.getStorage().setVolantFilePath(Paths.get("data", trip.getName().toString()));
-        logic = new TripLogicManager(new TripModelManager(t, trip, newUserPrefs), logic.getStorage());
+        trip.setTripFeatureList(new TripFeatureList(new Itinerary(activityList), new Journal(entryList)));
+        logic = new TripLogicManager(new TripModelManager(trip, newUserPrefs), logic.getStorage());
 
         mainPanelPlaceholder.getChildren().removeAll(mainPanel.getRoot()); // Remove GUI nodes from prev. display
         mainPanel = new TripPage(trip);
         mainPanelPlaceholder.getChildren().add(mainPanel.getRoot());
-        StatusBarFooter statusBarFooter = new StatusBarFooter(logic.getVolantFilePath());
-        statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());
+        updateStatusBar();
         setCurrentPage(TRIP);
     }
 
@@ -295,8 +323,8 @@ public class MainWindow extends UiPart<Stage> {
         logic.getStorage().setVolantFilePath(Paths.get("data", t.getTrip().getName()
             + "/itinerary.json"));
 
-        ItineraryModelManager itineraryModelManager = new ItineraryModelManager((TripList) t.getTripList(),
-            t.getTrip(), (Itinerary) tripFeature, newUserPrefs, logic.getStorage());
+        ItineraryModelManager itineraryModelManager = new ItineraryModelManager(t.getTrip(),
+                (Itinerary) tripFeature, newUserPrefs, logic.getStorage());
 
         logic = new ItineraryLogicManager(itineraryModelManager, logic.getStorage());
 
@@ -304,8 +332,7 @@ public class MainWindow extends UiPart<Stage> {
         ObservableList<Activity> activityObservableList = itineraryModelManager.getFilteredActivityList();
         mainPanel = new ItineraryPage(activityObservableList);
         mainPanelPlaceholder.getChildren().add(mainPanel.getRoot());
-        StatusBarFooter statusBarFooter = new StatusBarFooter(logic.getVolantFilePath());
-        statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());
+        updateStatusBar();
         setCurrentPage(ITINERARY);
     }
 
@@ -323,37 +350,53 @@ public class MainWindow extends UiPart<Stage> {
         logic.getStorage().setVolantFilePath(Paths.get("data", t.getTrip().getName()
             + "/journal.json"));
 
-        JournalModelManager journalModelManager = new JournalModelManager((TripList) t.getTripList(),
-            t.getTrip(), (Journal) tripFeature, newUserPrefs, logic.getStorage());
+        JournalModelManager journalModelManager = new JournalModelManager(t.getTrip(),
+                (Journal) tripFeature, newUserPrefs, logic.getStorage());
 
         logic = new JournalLogicManager(journalModelManager, logic.getStorage());
 
         mainPanelPlaceholder.getChildren().removeAll(mainPanel.getRoot()); // Remove GUI nodes from prev. display
         mainPanel = new JournalPage(journalModelManager.getFilteredEntryList());
         mainPanelPlaceholder.getChildren().add(mainPanel.getRoot());
-        StatusBarFooter statusBarFooter = new StatusBarFooter(logic.getVolantFilePath());
-        statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());
+        updateStatusBar();
         setCurrentPage(JOURNAL);
+    }
+
+    private ReadOnlyTripList getTripList() {
+        Optional<ReadOnlyTripList> tripListOptional;
+        ReadOnlyTripList tripList;
+        try {
+            tripListOptional = logic.getStorage().readTripList();
+            if (!tripListOptional.isPresent()) {
+                logger.info("Data file not found. Will be starting with a sample trip list.");
+            }
+
+            tripList = tripListOptional.orElseGet(SampleDataUtil::getSampleTripList);
+        } catch (DataConversionException e) {
+            logger.warning("Data file not in the correct format. Will be starting with an empty trip list.");
+            tripList = new TripList();
+        } catch (IOException e) {
+            logger.warning("Problem while reading from the file. Will be starting with an empty trip list.");
+            tripList = new TripList();
+        }
+        return tripList;
     }
 
     /**
      * Handles command to go to HOME page from any page.
      */
     @FXML
-    public void handleGoToHome(TripList tripList) {
+    public void handleGoToHome(CommandResult commandResult) {
         UserPrefs newUserPrefs = new UserPrefs();
         newUserPrefs.setVolantFilePath(Paths.get("data", "volant.json"));
-
-        HomeModelManager homeModelManager = new HomeModelManager(tripList, newUserPrefs);
-
         logic.getStorage().setVolantFilePath(Paths.get("data", "volant.json"));
+        HomeModelManager homeModelManager = new HomeModelManager(getTripList(), newUserPrefs);
         logic = new HomeLogicManager(homeModelManager, logic.getStorage());
 
         mainPanelPlaceholder.getChildren().removeAll(mainPanel.getRoot()); // Remove GUI nodes from prev. display
         mainPanel = new HomePage(homeModelManager.getFilteredTripList());
         mainPanelPlaceholder.getChildren().add(mainPanel.getRoot());
-        StatusBarFooter statusBarFooter = new StatusBarFooter(logic.getVolantFilePath());
-        statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());
+        updateStatusBar();
         setCurrentPage(HOME);
     }
 
@@ -405,7 +448,7 @@ public class MainWindow extends UiPart<Stage> {
         }
 
         if (commandResult.isHome()) {
-            handleGoToHome(commandResult.getModel().getTripList());
+            handleGoToHome(commandResult);
         }
 
         if (commandResult instanceof RefreshCommandResult) {

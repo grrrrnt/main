@@ -24,16 +24,11 @@ public class JournalPage extends UiPart<Region> {
     @FXML
     private Label journalTitle;
 
-    // TODO: Complete Itinerary page once Itinerary has been fully implemented.
-
     @FXML
     private ListView<Entry> entryListView;
 
     public JournalPage(ObservableList<Entry> entries) {
         super(FXML);
-
-        // Get entry list from journal
-        //UniqueEntryList entryList = journal.getEntryList().getUniqueEntryList();
 
         journalTitle.setText("JOURNAL");
 

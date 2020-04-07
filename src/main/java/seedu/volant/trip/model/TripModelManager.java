@@ -11,7 +11,6 @@ import seedu.volant.commons.logic.Page;
 import seedu.volant.commons.model.Model;
 import seedu.volant.commons.model.ReadOnlyUserPrefs;
 import seedu.volant.commons.model.UserPrefs;
-import seedu.volant.home.model.TripList;
 import seedu.volant.home.model.trip.Trip;
 
 /**
@@ -19,7 +18,6 @@ import seedu.volant.home.model.trip.Trip;
  */
 public class TripModelManager implements Model {
 
-    private final TripList tripList;
     private final Trip trip;
     private final UserPrefs userPrefs;
     private final Page page = TRIP;
@@ -27,12 +25,11 @@ public class TripModelManager implements Model {
     /**
      * Initializes a TripModelManager with the given trip and userPrefs.
      */
-    public TripModelManager(TripList tripList, Trip trip, ReadOnlyUserPrefs userPrefs) {
-        requireAllNonNull(tripList, trip, userPrefs);
+    public TripModelManager(Trip trip, ReadOnlyUserPrefs userPrefs) {
+        requireAllNonNull(trip, userPrefs);
 
         LOGGER.fine("Initializing with trip: " + trip + " and user prefs " + userPrefs);
 
-        this.tripList = new TripList(tripList);
         this.trip = new Trip(trip.getName(), trip.getLocation(), trip.getDateRange());
         this.userPrefs = new UserPrefs(userPrefs);
     }
@@ -43,10 +40,6 @@ public class TripModelManager implements Model {
     @Override
     public Page getPage() {
         return page;
-    }
-
-    public TripList getTripList() {
-        return tripList;
     }
 
     public Trip getTrip() {

@@ -25,6 +25,38 @@ public class BackCommand extends Command {
     public static final String BACK_TRIP = "You have gone back to the home page.";
     public static final String BACK_FEATURE = "You have returned to the trip page of TRIP: %s";
 
+    /**
+     * Handles back command if command was entered from the Trip page.
+     */
+    private CommandResult handleBackFromTrip(Model model) {
+        TripModelManager t = ((TripModelManager) model);
+        CommandResult commandResult = new CommandResult(BACK_TRIP);
+        commandResult.setBack();
+        return commandResult;
+    }
+
+    /**
+     * Handles back command if command was entered from the Itinerary page.
+     */
+    private CommandResult handleBackFromItinerary(Model model) {
+        ItineraryModelManager t = ((ItineraryModelManager) model);
+        CommandResult commandResult = new CommandResult(String.format(BACK_FEATURE,
+                t.getTrip().getName().toString()), t.getTrip());
+        commandResult.setBack();
+        return commandResult;
+    }
+
+    /**
+     * Handles back command if command was entered from the Journal page.
+     */
+    private CommandResult handleBackFromJournal(Model model) {
+        JournalModelManager t = ((JournalModelManager) model);
+        CommandResult commandResult = new CommandResult(String.format(BACK_FEATURE,
+                t.getTrip().getName().toString()), t.getTrip());
+        commandResult.setBack();
+        return commandResult;
+    }
+
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
@@ -34,24 +66,13 @@ public class BackCommand extends Command {
 
         // If in a TRIP page, go back to HOME page.
         if (page.equals(TRIP)) {
-            TripModelManager t = ((TripModelManager) model);
-            commandResult = new CommandResult(BACK_TRIP, t.getTripList());
-            commandResult.setBack();
-            return commandResult;
+            return handleBackFromTrip(model);
 
         } else if (page.equals(ITINERARY)) { // If in the itinerary page
-            ItineraryModelManager t = ((ItineraryModelManager) model);
-            commandResult = new CommandResult(String.format(BACK_FEATURE,
-                t.getTrip().getName().toString()), t.getTrip());
-            commandResult.setBack();
-            return commandResult;
+            return handleBackFromItinerary(model);
 
         } else if (page.equals(JOURNAL)) { // If in the journal page
-            JournalModelManager t = ((JournalModelManager) model);
-            commandResult = new CommandResult(String.format(BACK_FEATURE,
-                    t.getTrip().getName().toString()), t.getTrip());
-            commandResult.setBack();
-            return commandResult;
+            return handleBackFromJournal(model);
 
         } else if (page.equals(HOME)) { // If in the home page
             throw new CommandException(BACK_HOMEPAGE);

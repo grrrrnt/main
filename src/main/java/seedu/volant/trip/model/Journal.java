@@ -50,8 +50,8 @@ public class Journal extends TripFeature {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof EntryList // instanceof handles nulls
-                && entryList.equals(((EntryList) other).getEntryList()));
+                || (other instanceof Journal // instanceof handles nulls
+                && entryList.equals(((Journal) other).getEntryList()));
     }
 
     @Override

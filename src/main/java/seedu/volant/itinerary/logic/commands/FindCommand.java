@@ -18,10 +18,12 @@ import seedu.volant.commons.model.Model;
 import seedu.volant.commons.util.CollectionUtil;
 import seedu.volant.itinerary.model.ItineraryModelManager;
 import seedu.volant.itinerary.model.activity.Activity;
+
 import seedu.volant.itinerary.model.activity.util.DateContainsKeywordsPredicate;
 import seedu.volant.itinerary.model.activity.util.LocationContainsKeywordsPredicate;
 import seedu.volant.itinerary.model.activity.util.TimeContainsKeywordsPredicate;
 import seedu.volant.itinerary.model.activity.util.TitleContainsKeywordsPredicate;
+
 
 
 /**
@@ -48,6 +50,7 @@ public class FindCommand extends Command {
             + COMMAND_WORD + " " + PREFIX_TITLE + "visit " + PREFIX_LOCATION + "Brandenburg"
 
             + "\nNOTE:\t\tAt least one of the parameters must be provided.";
+
 
     public static final String MESSAGE_EMPTY_FIELD = "At least one field to find must be provided.";
 

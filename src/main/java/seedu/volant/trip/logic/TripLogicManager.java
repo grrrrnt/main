@@ -9,7 +9,6 @@ import seedu.volant.commons.logic.commands.CommandResult;
 import seedu.volant.commons.logic.commands.exceptions.CommandException;
 import seedu.volant.commons.logic.parser.exceptions.ParseException;
 import seedu.volant.commons.storage.Storage;
-import seedu.volant.home.model.ReadOnlyTripList;
 import seedu.volant.home.model.trip.Trip;
 import seedu.volant.trip.logic.parser.TripInputParser;
 import seedu.volant.trip.model.TripModelManager;
@@ -48,10 +47,6 @@ public class TripLogicManager implements Logic {
 
     public Storage getStorage() {
         return storage;
-    }
-
-    public ReadOnlyTripList getTripList() {
-        return model.getTripList();
     }
 
     public Trip getTrip() {

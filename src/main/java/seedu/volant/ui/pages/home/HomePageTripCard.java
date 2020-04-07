@@ -41,6 +41,7 @@ public class HomePageTripCard extends UiPart<Region> {
         name.setText(trip.getName().tripName);
         place.setText(trip.getLocation().toString());
         dateRange.setText(trip.getDateRange().toString());
+        cardPane.setMaxHeight(100);
     }
 
     @Override

@@ -27,7 +27,8 @@ import seedu.volant.journal.model.util.SortType;
  */
 public class ParserUtil {
 
-    public static final String MESSAGE_INVALID_INDEX = "Index is not a non-zero unsigned integer.";
+    public static final String MESSAGE_INVALID_INDEX = "You seem to have input an invalid index.\n"
+            + "Indexes can be found on the bottom right of a trip/activity/entry :)";
 
     /**
      * Parses {@code oneBasedIndex} into an {@code Index} and returns it. Leading and trailing whitespaces will be
@@ -85,21 +86,12 @@ public class ParserUtil {
         if (!DateRange.isValidDateRange(trimmedDateRange)) {
             throw new ParseException(DateRange.MESSAGE_CONSTRAINTS);
         }
-
-        String[] splitDate = trimmedDateRange.split(" to ");
-        String[] fromFields = splitDate[0].strip().split("-");
-        int fromDay = Integer.valueOf(fromFields[0]);
-        int fromMonth = Integer.valueOf(fromFields[1]);
-        int fromYear = Integer.valueOf(fromFields[2]);
+        Integer[] dateFields = getDateFields(trimmedDateRange);
         LocalDate parsedFromDate;
-        String[] toFields = splitDate[1].strip().split("-");
-        int toDay = Integer.valueOf(toFields[0]);
-        int toMonth = Integer.valueOf(toFields[1]);
-        int toYear = Integer.valueOf(toFields[2]);
         LocalDate parsedToDate;
         try {
-            parsedFromDate = LocalDate.of(fromYear, fromMonth, fromDay);
-            parsedToDate = LocalDate.of(toYear, toMonth, toDay);
+            parsedFromDate = LocalDate.of(dateFields[2], dateFields[1], dateFields[0]);
+            parsedToDate = LocalDate.of(dateFields[5], dateFields[4], dateFields[3]);
             if (parsedFromDate.compareTo(parsedToDate) > 0) {
                 throw new StartAfterEndException(String.format("Hey, your trip start date: %s, occurs"
                                 + " after your trip end date: %s.\nRevise the dates and try again!",
@@ -111,6 +103,15 @@ public class ParserUtil {
             throw new ParseException("Please input a valid date in DD-MM-YYYY format!");
         }
         return new DateRange(parsedFromDate, parsedToDate);
+    }
+
+    private static Integer[] getDateFields(String dateRange) {
+        String[] strFields = dateRange.strip().split("-| to ");
+        Integer[] dateFields = new Integer[6];
+        for (int i = 0; i < strFields.length; i++) {
+            dateFields[i] = Integer.valueOf(strFields[i]);
+        }
+        return dateFields;
     }
 
 

@@ -19,7 +19,6 @@ import seedu.volant.commons.model.Model;
 import seedu.volant.commons.model.ReadOnlyUserPrefs;
 import seedu.volant.commons.model.UserPrefs;
 import seedu.volant.commons.storage.Storage;
-import seedu.volant.home.model.TripList;
 import seedu.volant.home.model.trip.Trip;
 import seedu.volant.itinerary.model.activity.Activity;
 import seedu.volant.itinerary.model.activity.util.DateTimeComparator;
@@ -32,7 +31,6 @@ import seedu.volant.trip.model.TripFeature;
 public class ItineraryModelManager implements Model {
 
     private final Predicate<Activity> predicateShowAllActivities = unused -> true;
-    private final TripList tripList;
     private final Trip trip;
     private final Itinerary itinerary;
     private final UserPrefs userPrefs;
@@ -42,16 +40,14 @@ public class ItineraryModelManager implements Model {
 
     /**
      * Constructs an ItineraryModelManager that helps to keep track of in application memory.
-     * @param tripList keeps track of trip list to go back to.
      * @param trip keeps track of trip that itinerary list is in from.
      */
-    public ItineraryModelManager(TripList tripList, Trip trip, Itinerary itinerary, ReadOnlyUserPrefs userPrefs,
+    public ItineraryModelManager(Trip trip, Itinerary itinerary, ReadOnlyUserPrefs userPrefs,
                                  Storage storage) {
-        requireAllNonNull(tripList, trip, userPrefs, storage);
+        requireAllNonNull(trip, userPrefs, storage);
 
         LOGGER.fine("You are now in the ITINERARY page of TRIP: " + trip + ".");
 
-        this.tripList = tripList;
         this.trip = trip;
         this.itinerary = itinerary;
         this.userPrefs = new UserPrefs(userPrefs);
@@ -126,10 +122,6 @@ public class ItineraryModelManager implements Model {
     @Override
     public Page getPage() {
         return page;
-    }
-
-    public TripList getTripList() {
-        return tripList;
     }
 
     public Trip getTrip() {

@@ -34,10 +34,14 @@ public class ItineraryPageCard extends UiPart<Region> {
     @FXML
     private Label activityLocation;
 
+    @FXML
+    private Label activityIndex;
 
-    public ItineraryPageCard(Activity activity) {
+
+    public ItineraryPageCard(Activity activity, int displayedIndex) {
         super(FXML);
         this.activity = activity;
+        activityIndex.setText(Integer.toString(displayedIndex));
         activityTitle.setText(activity.getTitle().toString());
         activityDate.setText(formatDate(activity.getDate()));
         activityTime.setText(formatTime(activity.getTime()));

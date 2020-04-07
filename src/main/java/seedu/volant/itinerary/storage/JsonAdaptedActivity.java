@@ -94,7 +94,7 @@ public class JsonAdaptedActivity {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
                     LocalTime.class.getSimpleName()));
         }
-        DateTimeFormatter timeParser = DateTimeFormatter.ofPattern("HH:mm a");
+        DateTimeFormatter timeParser = DateTimeFormatter.ofPattern("hh:mm a");
         final LocalTime modelTime = LocalTime.parse(time, timeParser);
         /*
         TODO resolve this if necessary

@@ -19,7 +19,6 @@ import seedu.volant.commons.model.Model;
 import seedu.volant.commons.model.ReadOnlyUserPrefs;
 import seedu.volant.commons.model.UserPrefs;
 import seedu.volant.commons.storage.Storage;
-import seedu.volant.home.model.TripList;
 import seedu.volant.home.model.trip.Trip;
 import seedu.volant.journal.model.util.SortType;
 import seedu.volant.trip.model.Journal;
@@ -30,7 +29,6 @@ import seedu.volant.trip.model.Journal;
 public class JournalModelManager implements Model {
 
     private final Predicate<Entry> predicateShowAllEntries = unused -> true;
-    private final TripList tripList;
     private final Trip trip;
     private final Journal journal;
     private EntryList entryList;
@@ -41,13 +39,12 @@ public class JournalModelManager implements Model {
     /**
      * Initializes a JournalModelManager with the given tripList, trip, journal, and userPrefs.
      */
-    public JournalModelManager(TripList tripList, Trip trip, Journal journal, ReadOnlyUserPrefs userPrefs,
+    public JournalModelManager(Trip trip, Journal journal, ReadOnlyUserPrefs userPrefs,
                                Storage storage) {
-        requireAllNonNull(tripList, trip, userPrefs, storage);
+        requireAllNonNull(trip, userPrefs, storage);
 
         LOGGER.fine("You are now in the JOURNAL page of TRIP: " + trip + ".");
 
-        this.tripList = tripList;
         this.trip = trip;
         this.journal = journal;
         this.userPrefs = new UserPrefs(userPrefs);
@@ -70,10 +67,6 @@ public class JournalModelManager implements Model {
     }
 
     // TODO: Complete implementation of methods once implementation of Journal has been completed.
-
-    public TripList getTripList() {
-        return tripList;
-    }
 
     public Trip getTrip() {
         return trip;
@@ -168,8 +161,7 @@ public class JournalModelManager implements Model {
 
         // state check
         JournalModelManager other = (JournalModelManager) obj;
-        return tripList.equals(other.tripList)
-                && trip.equals(other.trip)
+        return trip.equals(other.trip)
                 && userPrefs.equals(other.userPrefs);
     }
 

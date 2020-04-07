@@ -10,7 +10,6 @@ import seedu.volant.commons.logic.commands.CommandResult;
 import seedu.volant.commons.logic.commands.exceptions.CommandException;
 import seedu.volant.commons.logic.parser.exceptions.ParseException;
 import seedu.volant.commons.storage.Storage;
-import seedu.volant.home.model.TripList;
 import seedu.volant.home.model.trip.Trip;
 import seedu.volant.itinerary.logic.parser.ItineraryInputParser;
 import seedu.volant.itinerary.model.ItineraryModelManager;
@@ -36,10 +35,6 @@ public class ItineraryLogicManager implements Logic {
 
     public Storage getStorage() {
         return storage;
-    }
-
-    public TripList getTripList() {
-        return model.getTripList();
     }
 
     public Trip getTrip() {

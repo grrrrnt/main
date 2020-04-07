@@ -51,6 +51,10 @@ public class Trip {
         return tripFeatureList;
     }
 
+    public void setTripFeatureList(TripFeatureList tripFeatureList) {
+        this.tripFeatureList = tripFeatureList;
+    }
+
     public Journal getJournal() {
         return tripFeatureList.getJournal();
     }

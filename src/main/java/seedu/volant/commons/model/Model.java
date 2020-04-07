@@ -6,7 +6,6 @@ import java.util.logging.Logger;
 import seedu.volant.commons.core.GuiSettings;
 import seedu.volant.commons.core.LogsCenter;
 import seedu.volant.commons.logic.Page;
-import seedu.volant.home.model.TripList;
 
 /**
  * The API of the Model component.
@@ -14,8 +13,6 @@ import seedu.volant.home.model.TripList;
 public interface Model {
 
     Logger LOGGER = LogsCenter.getLogger(Model.class);
-
-    TripList getTripList();
 
     Page getPage();
 

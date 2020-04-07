@@ -53,8 +53,8 @@ public class Itinerary extends TripFeature {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof ActivityList // instanceof handles nulls
-                && activityList.equals(((ActivityList) other).getActivityList()));
+                || (other instanceof Itinerary // instanceof handles nulls
+                && activityList.equals(((Itinerary) other).getActivityList()));
     }
 
     @Override
