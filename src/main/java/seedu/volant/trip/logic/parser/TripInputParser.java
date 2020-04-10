@@ -8,6 +8,7 @@ import java.util.regex.Matcher;
 
 import seedu.volant.commons.logic.commands.BackCommand;
 import seedu.volant.commons.logic.commands.Command;
+import seedu.volant.commons.logic.commands.ExitCommand;
 import seedu.volant.commons.logic.commands.GotoCommand;
 import seedu.volant.commons.logic.commands.HelpCommand;
 import seedu.volant.commons.logic.commands.HomeCommand;
@@ -54,6 +55,12 @@ public class TripInputParser {
 
         case HomeCommand.COMMAND_WORD:
             return new HomeCommand();
+
+        case ExitCommand.COMMAND_WORD:
+            return new ExitCommand();
+
+        case HelpCommand.COMMAND_WORD:
+            return new HelpCommand();
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);

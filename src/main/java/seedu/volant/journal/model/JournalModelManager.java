@@ -4,21 +4,16 @@ import static java.util.Objects.requireNonNull;
 import static seedu.volant.commons.logic.Page.JOURNAL;
 import static seedu.volant.commons.util.CollectionUtil.requireAllNonNull;
 
-import java.io.IOException;
 import java.nio.file.Path;
-import java.util.NoSuchElementException;
-import java.util.Optional;
 import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.volant.commons.core.GuiSettings;
-import seedu.volant.commons.exceptions.DataConversionException;
 import seedu.volant.commons.logic.Page;
 import seedu.volant.commons.model.Model;
 import seedu.volant.commons.model.ReadOnlyUserPrefs;
 import seedu.volant.commons.model.UserPrefs;
-import seedu.volant.commons.storage.Storage;
 import seedu.volant.home.model.trip.Trip;
 import seedu.volant.journal.model.util.SortType;
 import seedu.volant.trip.model.Journal;
@@ -39,25 +34,15 @@ public class JournalModelManager implements Model {
     /**
      * Initializes a JournalModelManager with the given tripList, trip, journal, and userPrefs.
      */
-    public JournalModelManager(Trip trip, Journal journal, ReadOnlyUserPrefs userPrefs,
-                               Storage storage) {
-        requireAllNonNull(trip, userPrefs, storage);
+    public JournalModelManager(Trip trip, ReadOnlyUserPrefs userPrefs) {
+        requireAllNonNull(trip, userPrefs);
 
         LOGGER.fine("You are now in the JOURNAL page of TRIP: " + trip + ".");
 
         this.trip = trip;
-        this.journal = journal;
+        this.journal = trip.getTripFeatureList().getJournal();
         this.userPrefs = new UserPrefs(userPrefs);
-        Optional<ReadOnlyEntryList> optionalEntryList;
-        try {
-            optionalEntryList = storage.readEntryList();
-            if (!optionalEntryList.isPresent()) {
-                this.entryList = new EntryList();
-            }
-            this.entryList = new EntryList(optionalEntryList.get());
-        } catch (IOException | DataConversionException | NoSuchElementException e) {
-            this.entryList = new EntryList();
-        }
+        this.entryList = journal.getEntryList();
         this.filteredEntries = new FilteredList<>(this.entryList.getEntryList());
     }
 

@@ -43,6 +43,10 @@ public class HomeModelManager implements Model {
         filteredTrips = new FilteredList<>(this.tripList.getTripList());
     }
 
+    public HomeModelManager() {
+        this(new TripList(), new UserPrefs());
+    }
+
     //=========== TripList ================================================================================
 
     public void setTripList(ReadOnlyTripList tripList) {
@@ -50,10 +54,6 @@ public class HomeModelManager implements Model {
     }
 
     public TripList getTripList() {
-        return tripList;
-    }
-
-    public ReadOnlyTripList getReadOnlyTripList() {
         return tripList;
     }
 

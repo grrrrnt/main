@@ -30,7 +30,7 @@ public class TripModelManager implements Model {
 
         LOGGER.fine("Initializing with trip: " + trip + " and user prefs " + userPrefs);
 
-        this.trip = new Trip(trip.getName(), trip.getLocation(), trip.getDateRange());
+        this.trip = trip;
         this.userPrefs = new UserPrefs(userPrefs);
     }
 

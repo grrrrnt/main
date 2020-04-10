@@ -17,6 +17,10 @@ public class HomeCommand extends GotoCommand {
     public static final String RESULT_INVALID = "You are already on the home page.";
     public static final String RESULT_SUCCESS = "You are now on the home page.";
 
+    public static final String MESSAGE_USAGE = COMMAND_WORD
+            + ": Goes back to the HOME page.\n"
+            + "Example: " + COMMAND_WORD;
+
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);

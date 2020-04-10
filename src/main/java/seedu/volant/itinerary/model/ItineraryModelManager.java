@@ -4,21 +4,16 @@ import static java.util.Objects.requireNonNull;
 import static seedu.volant.commons.logic.Page.ITINERARY;
 import static seedu.volant.commons.util.CollectionUtil.requireAllNonNull;
 
-import java.io.IOException;
 import java.nio.file.Path;
-import java.util.NoSuchElementException;
-import java.util.Optional;
 import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.volant.commons.core.GuiSettings;
-import seedu.volant.commons.exceptions.DataConversionException;
 import seedu.volant.commons.logic.Page;
 import seedu.volant.commons.model.Model;
 import seedu.volant.commons.model.ReadOnlyUserPrefs;
 import seedu.volant.commons.model.UserPrefs;
-import seedu.volant.commons.storage.Storage;
 import seedu.volant.home.model.trip.Trip;
 import seedu.volant.itinerary.model.activity.Activity;
 import seedu.volant.itinerary.model.activity.util.DateTimeComparator;
@@ -42,25 +37,15 @@ public class ItineraryModelManager implements Model {
      * Constructs an ItineraryModelManager that helps to keep track of in application memory.
      * @param trip keeps track of trip that itinerary list is in from.
      */
-    public ItineraryModelManager(Trip trip, Itinerary itinerary, ReadOnlyUserPrefs userPrefs,
-                                 Storage storage) {
-        requireAllNonNull(trip, userPrefs, storage);
+    public ItineraryModelManager(Trip trip, ReadOnlyUserPrefs userPrefs) {
+        requireAllNonNull(trip, userPrefs);
 
         LOGGER.fine("You are now in the ITINERARY page of TRIP: " + trip + ".");
 
         this.trip = trip;
-        this.itinerary = itinerary;
+        this.itinerary = trip.getTripFeatureList().getItinerary();
         this.userPrefs = new UserPrefs(userPrefs);
-        Optional<ReadOnlyActivityList> activityListOptional;
-        try {
-            activityListOptional = storage.readActivityList();
-            if (!activityListOptional.isPresent()) {
-                this.activityList = new ActivityList();
-            }
-            this.activityList = new ActivityList(activityListOptional.get());
-        } catch (IOException | DataConversionException | NoSuchElementException e) {
-            this.activityList = new ActivityList();
-        }
+        this.activityList = itinerary.getActivityList();
         this.filteredActivities = new FilteredList<>(this.activityList.getActivityList());
 
     }

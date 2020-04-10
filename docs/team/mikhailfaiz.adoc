@@ -5,6 +5,12 @@
 
 == Introduction
 
+Hey there, my name is Mikhail! I am currently a second year computer science undergraduate at the National University
+of Singapore.
+
+Thank you for using *Volant*! I am one of the five student developers who worked on this project.
+*Volant* was developed for our CS2103T Software Engineering module.
+
 == PROJECT: Volant
 
 Volant is a travel assistant desktop application aimed at assisting solo travellers with the logistics of planning
@@ -12,6 +18,13 @@ their travels. The user interacts with it using a CLI, and it has a GUI created 
 it is primarily based off of the Address Book 3 application developed by the CS2103T teaching team.
 
 === Summary of Contributions
+You can view my code contributions to this project
+https://nus-cs2103-ay1920s2.github.io/tp-dashboard/#search=raniceyue&sort=groupTitle&sortWithin=title&since=&timeframe=commit&mergegroup=false&groupSelect=groupByRepos&breakdown=false[on RepoSense].
+
+* *Major Enhancement:* Implemented Journal page of application (with Grant)
+** What it does: Allow users to view and manipulate the list of journal entries in the application.
+
+* *Major Enhancement:*
 
 === Contributions to User Guide
 ==== Sections Written

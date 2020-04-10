@@ -161,7 +161,9 @@ public class CommandResult {
         CommandResult otherCommandResult = (CommandResult) other;
         return feedbackToUser.equals(otherCommandResult.feedbackToUser)
                 && isShowHelp == otherCommandResult.isShowHelp
-                && isExit == otherCommandResult.isExit;
+                && isExit == otherCommandResult.isExit
+                && isGoto == otherCommandResult.isGoto
+                && isBack == otherCommandResult.isBack;
     }
 
     @Override

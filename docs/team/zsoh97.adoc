@@ -4,6 +4,13 @@
 :stylesDir: ../stylesheets
 
 == Introduction
+Hello, my name is Zeke. At the time of this project (AY19/20), I was a Year 2 Computer Science undergraduate.
+
+I am a developer for `PROJECT: Volant`.
+
+You can find out more about who I am at these links:
+
+* https://www.linkedin.com/in/zsoh97/[LinkedIn]
 
 == PROJECT: Volant
 
@@ -12,6 +19,26 @@ their travels. The user interacts with it using a CLI, and it has a GUI created 
 it is primarily based off of the Address Book 3 application developed by the CS2103T teaching team.
 
 === Summary of Contributions
+You can view my code contributions to this project
+https://nus-cs2103-ay1920s2.github.io/tp-dashboard/#search=zsoh97&sort=totalCommits%20dsc&sortWithin=title&since=2020-02-14&timeframe=commit&mergegroup=false&groupSelect=groupByRepos&breakdown=false[on RepoSense].
+
+* *Major Enhancement:* Implemented storage for the entire project.
+** What it does: Allowed users to save and load their data when using the project.
+** Highlights: The implementation of the storage was a bottleneck for our team project as in order to
+implement and test the functionalities of our features, developers had to have data to work with.
+
+* *Major Enhancement:* Implemented the Itinerary page (with Nguyen).
+** What it does: Allows users to view and manipulate the itinerary activities in the application.
+
+* *Major Enhancement:* Implemented exceptions for catching logic bugs for Trip and Itinerary feature.
+** Justification: In placing these exceptions, the functionality of the project is not compromised.
+** What it does: Catches logically invalid commands that the user may enter. E.g. The timing for an activity in the itinerary being outside of the date range of the trip.
+
+* *Major Enhancement:* Implemented the GUI for the application.
+
+* *Other Contributions*
+** Documentation
+*** Wrote the initial draft for UserGuide.
 
 === Contributions to User Guide
 ==== Sections Written
@@ -21,7 +48,7 @@ it is primarily based off of the Address Book 3 application developed by the CS2
 
 === Contributions to Developer Guide
 ==== Sections Written
-* Section 1
+* UML diagrams for Storage and goto('back') command
 * Section 2
 * Section 3
 

@@ -13,7 +13,7 @@ import seedu.volant.home.model.trip.Trip;
 /**
  * Jackson-friendly version of {@link Trip}.
  */
-class JsonAdaptedTrip {
+public class JsonAdaptedTrip {
 
     public static final String MISSING_FIELD_MESSAGE_FORMAT = "Trip's %s field is missing!";
 

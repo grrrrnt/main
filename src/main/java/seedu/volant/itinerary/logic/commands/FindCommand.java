@@ -18,7 +18,6 @@ import seedu.volant.commons.model.Model;
 import seedu.volant.commons.util.CollectionUtil;
 import seedu.volant.itinerary.model.ItineraryModelManager;
 import seedu.volant.itinerary.model.activity.Activity;
-
 import seedu.volant.itinerary.model.activity.util.DateContainsKeywordsPredicate;
 import seedu.volant.itinerary.model.activity.util.LocationContainsKeywordsPredicate;
 import seedu.volant.itinerary.model.activity.util.TimeContainsKeywordsPredicate;

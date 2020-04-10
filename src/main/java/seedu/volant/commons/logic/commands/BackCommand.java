@@ -21,6 +21,10 @@ public class BackCommand extends Command {
 
     public static final String COMMAND_WORD = "back";
 
+    public static final String MESSAGE_USAGE = COMMAND_WORD
+            + ": Goes back to the previous page."
+            + "\nExample: " + COMMAND_WORD;
+
     public static final String BACK_HOMEPAGE = "You are already on the home page.";
     public static final String BACK_TRIP = "You have gone back to the home page.";
     public static final String BACK_FEATURE = "You have returned to the trip page of TRIP: %s";
