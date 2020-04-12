@@ -24,7 +24,7 @@ public class AddCommand extends Command {
             + "\nParameters:\t"
             + PREFIX_NAME + "NAME "
             + PREFIX_LOCATION + "LOCATION "
-            + PREFIX_DATERANGE + "DATE RANGE"
+            + PREFIX_DATERANGE + "DATE_RANGE"
 
             + "\nExample:\t"
             + COMMAND_WORD + " "

@@ -37,7 +37,7 @@ public class EditCommand extends Command {
             + "INDEX "
             + "[" + PREFIX_NAME + "NAME] "
             + "[" + PREFIX_LOCATION + "LOCATION] "
-            + "[" + PREFIX_DATERANGE + "DATE RANGE]"
+            + "[" + PREFIX_DATERANGE + "DATE_RANGE]"
 
             + "\nExample:\t"
             + COMMAND_WORD + " 1 " + PREFIX_NAME + "Bali Trip 2020"
