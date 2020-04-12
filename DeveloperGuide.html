@@ -208,7 +208,7 @@ View switching is executed by the <code>Ui</code> component.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/gotoCommand.png" alt="gotoCommand">
+<img src="images/gotoCommandSequenceDiagram.png" alt="gotoCommandSequenceDiagram">
 </div>
 <div class="title">Figure 4. Component interactions for <code>goto 1</code> command in the <code>HomePage</code> view.</div>
 </div>
@@ -373,7 +373,7 @@ For example, <code>goto</code>, <code>back</code> and <code>home</code> navigati
 <h3 id="Design-Storage"><a class="link" href="#Design-Storage">3.5. Storage component</a></h3>
 <div class="imageblock">
 <div class="content">
-<img src="images/StorageDiagram.png" alt="StorageDiagram">
+<img src="images/StorageClassDiagram.png" alt="StorageClassDiagram">
 </div>
 <div class="title">Figure 11. Structure of the Storage Component</div>
 </div>
@@ -641,13 +641,19 @@ appropriate functions to facilitate view switching.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">edit the entries in my itinerary list</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">can amend any mistakes when entering data, or change my travel plans</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">amend any mistakes when entering data, or change my travel plans</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">see a chronological timeline of the activities in the itinerary</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">can have a clear idea of my travel plans and schedule dur</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">have a clear idea of my travel plans and schedule</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">view my itinerary and journal separately</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">view them in a less cluttered manner</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
@@ -665,25 +671,25 @@ appropriate functions to facilitate view switching.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">delete contacts</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">can get rid of contacts that I have not been in touch with for some time</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">get rid of contacts that I have not been in touch with for some time</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">view my itineraries, contact lists and journals specific to the trip they are relevant to</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">can effectively plan for multiple trips simultaneously</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">effectively plan for multiple trips simultaneously</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">customize trip names</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">can distinguish between different trips that happen in the same location within similar date ranges</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">distinguish between different trips that happen in the same location within similar date ranges</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">frequent traveler</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">to be able to see a timeline view of all my short journal entries and photos, including the location and time of the photos and entries, per trip</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">??</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">relieve the memories of the trip in its original sequence</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
@@ -699,8 +705,14 @@ appropriate functions to facilitate view switching.</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">record items in a packing list</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">remind myself what I will need on a trip</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">busy user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">list and record items in a packing list</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">list</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">easily reference what I need for a trip at a glance</p></td>
 </tr>
 <tr>
@@ -738,7 +750,7 @@ appropriate functions to facilitate view switching.</p>
 <p>User enters details of trip to be added</p>
 </li>
 <li>
-<p>V writes added trip into data files and displays new trip in the trip list</p>
+<p>V adds trip to trip list</p>
 <div class="paragraph">
 <p>Use case ends</p>
 </div>
@@ -755,9 +767,6 @@ appropriate functions to facilitate view switching.</p>
 </li>
 <li>
 <p>1a1. V outputs error informing user of invalid characters</p>
-</li>
-<li>
-<p>1a2. V terminates the command</p>
 <div class="paragraph">
 <p>Use case ends</p>
 </div>
@@ -771,9 +780,6 @@ appropriate functions to facilitate view switching.</p>
 </li>
 <li>
 <p>1b1. V outputs error informing user of missing fields</p>
-</li>
-<li>
-<p>1b2. V terminates the command</p>
 <div class="paragraph">
 <p>Use case ends</p>
 </div>
@@ -787,9 +793,6 @@ appropriate functions to facilitate view switching.</p>
 </li>
 <li>
 <p>1c1. V outputs error informing user of invalid keyword</p>
-</li>
-<li>
-<p>1c2. V terminates the command</p>
 <div class="paragraph">
 <p>Use case ends</p>
 </div>
@@ -809,7 +812,7 @@ appropriate functions to facilitate view switching.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User requests to edit trip at specified index</p>
+<p>User requests to edit certain detail(s) of trip at specified index</p>
 </li>
 <li>
 <p>V requests for details to be overwritten/edited</p>
@@ -818,7 +821,7 @@ appropriate functions to facilitate view switching.</p>
 <p>User enters new trip details</p>
 </li>
 <li>
-<p>V writes new details back into data files and displays edited trip in the trip list</p>
+<p>V edits trip in the trip list</p>
 <div class="paragraph">
 <p>Use case ends</p>
 </div>
@@ -835,9 +838,19 @@ appropriate functions to facilitate view switching.</p>
 </li>
 <li>
 <p>3a1. V outputs error informing user of invalid index specified</p>
+<div class="paragraph">
+<p>Use case ends</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3b. V detects invalid characters for the details</p>
 </li>
 <li>
-<p>3a2. V terminates the command</p>
+<p>3b1. V outputs error informing user of invalid characters</p>
 <div class="paragraph">
 <p>Use case ends</p>
 </div>
@@ -851,21 +864,18 @@ appropriate functions to facilitate view switching.</p>
 </li>
 <li>
 <p>3b1. V outputs error informing user of invalid keyword</p>
-</li>
-<li>
-<p>3b2. V terminates the command</p>
 <div class="paragraph">
 <p>Use case ends</p>
 </div>
 </li>
 </ul>
 </div>
-<h3 id="uc03-accessing-a-trip-folder" class="discrete">UC03 - Accessing a Trip Folder</h3>
+<h3 id="uc03-navigating-to-trip-folder" class="discrete">UC03 - Navigating to Trip Folder</h3>
 <div class="paragraph">
-<p><strong>Precondition:</strong> User is in the hope page and the trip to access exists</p>
+<p><strong>Precondition:</strong> User has added a trip</p>
 </div>
 <div class="paragraph">
-<p><strong>Guarantee:</strong> User is now in Trip Folder</p>
+<p><strong>Guarantee:</strong> User will be moved to the Trip page</p>
 </div>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
@@ -876,7 +886,7 @@ appropriate functions to facilitate view switching.</p>
 <p>User changes directory to specific trip folder in trip list using index</p>
 </li>
 <li>
-<p>V loads data in trip folder and displays items in trip folder</p>
+<p>V loads and displays trip page</p>
 <div class="paragraph">
 <p>Use case ends</p>
 </div>
@@ -893,9 +903,6 @@ appropriate functions to facilitate view switching.</p>
 </li>
 <li>
 <p>1a1. V outputs error informing user of invalid index specified</p>
-</li>
-<li>
-<p>1a2. V terminates the command</p>
 <div class="paragraph">
 <p>Use case ends</p>
 </div>
@@ -909,16 +916,13 @@ appropriate functions to facilitate view switching.</p>
 </li>
 <li>
 <p>1b1. V outputs error informing user of invalid keyword</p>
-</li>
-<li>
-<p>1b2. V terminates the command</p>
 <div class="paragraph">
 <p>Use case ends</p>
 </div>
 </li>
 </ul>
 </div>
-<h3 id="uc04-accessing-pages-contact-list-trip-itinerary-journal" class="discrete">UC04 - Accessing Pages (Contact List / Trip Itinerary / Journal)</h3>
+<h3 id="uc04-accessing-pages-contact-list-itinerary-journal" class="discrete">UC04 - Accessing Pages (Contact List/ Itinerary / Journal)</h3>
 <div class="paragraph">
 <p><strong>Precondition:</strong> User is in the home page</p>
 </div>
@@ -954,9 +958,6 @@ appropriate functions to facilitate view switching.</p>
 </li>
 <li>
 <p>2a1. V outputs error informing user of incorrect command</p>
-</li>
-<li>
-<p>2a2. V terminates the command</p>
 <div class="paragraph">
 <p>Use case ends</p>
 </div>
@@ -970,9 +971,6 @@ appropriate functions to facilitate view switching.</p>
 </li>
 <li>
 <p>2b1. V outputs error informing user of invalid keyword</p>
-</li>
-<li>
-<p>2b2. V terminates the command</p>
 <div class="paragraph">
 <p>Use case ends</p>
 </div>
@@ -1012,9 +1010,6 @@ appropriate functions to facilitate view switching.</p>
 </li>
 <li>
 <p>1a1. V outputs error informing user of invalid characters</p>
-</li>
-<li>
-<p>1a2. V terminates the command</p>
 <div class="paragraph">
 <p>Use case ends</p>
 </div>
@@ -1028,9 +1023,6 @@ appropriate functions to facilitate view switching.</p>
 </li>
 <li>
 <p>1b1. V outputs error informing user of missing contact entry</p>
-</li>
-<li>
-<p>1b2. V terminates the command</p>
 <div class="paragraph">
 <p>Use case ends</p>
 </div>
@@ -1044,9 +1036,6 @@ appropriate functions to facilitate view switching.</p>
 </li>
 <li>
 <p>1c1. V outputs error informing user of invalid keyword</p>
-</li>
-<li>
-<p>1c2. V terminates the command</p>
 <div class="paragraph">
 <p>Use case ends</p>
 </div>
@@ -1082,13 +1071,10 @@ appropriate functions to facilitate view switching.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a. V detects invalid characters into travel entry</p>
+<p>1a. V detects invalid characters in travel entry</p>
 </li>
 <li>
 <p>1a1. V outputs error informing user of invalid characters</p>
-</li>
-<li>
-<p>1a2. V terminates the command</p>
 <div class="paragraph">
 <p>Use case ends</p>
 </div>
@@ -1102,9 +1088,6 @@ appropriate functions to facilitate view switching.</p>
 </li>
 <li>
 <p>1b1. V outputs error informing user of missing travel entry</p>
-</li>
-<li>
-<p>1b2. V terminates the command</p>
 <div class="paragraph">
 <p>Use case ends</p>
 </div>
@@ -1118,19 +1101,16 @@ appropriate functions to facilitate view switching.</p>
 </li>
 <li>
 <p>1c1. V outputs error informing user of invalid keyword</p>
-</li>
-<li>
-<p>1c2. V terminates the command</p>
 <div class="paragraph">
 <p>Use case ends</p>
 </div>
 </li>
 </ul>
 </div>
-<h3 id="uc07-adding-activities-into-trip-itinerary" class="discrete">UC07 - Adding Activities into Trip Itinerary</h3>
+<h3 id="uc07-adding-activities-into-itinerary" class="discrete">UC07 - Adding Activities into Itinerary</h3>
 <div class="paragraph">
 <p><strong>Precondition: </strong>User is already in the Itinerary page of the Trip
-<strong>Guarantee: </strong>A new activity will be added to the Trip Itinerary</p>
+<strong>Guarantee: </strong>A new activity will be added to the Itinerary</p>
 </div>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
@@ -1138,7 +1118,7 @@ appropriate functions to facilitate view switching.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User enters activity name, date, time and location</p>
+<p>User enters details of activity</p>
 </li>
 <li>
 <p>V confirms successful entry and displays updated itinerary</p>
@@ -1158,9 +1138,6 @@ appropriate functions to facilitate view switching.</p>
 </li>
 <li>
 <p>1a1. V outputs error informing user of invalid characters</p>
-</li>
-<li>
-<p>1a2. V terminates the command</p>
 <div class="paragraph">
 <p>Use case ends</p>
 </div>
@@ -1174,9 +1151,6 @@ appropriate functions to facilitate view switching.</p>
 </li>
 <li>
 <p>1b1. V outputs error informing user of missing activity entry</p>
-</li>
-<li>
-<p>1b2. V terminates the command</p>
 <div class="paragraph">
 <p>Use case ends</p>
 </div>
@@ -1190,9 +1164,6 @@ appropriate functions to facilitate view switching.</p>
 </li>
 <li>
 <p>1c1. V outputs error informing user of invalid keyword</p>
-</li>
-<li>
-<p>1c2. V terminates the command</p>
 <div class="paragraph">
 <p>Use case ends</p>
 </div>
@@ -1215,7 +1186,7 @@ appropriate functions to facilitate view switching.</p>
 <p>User requests to delete a contact in the contact list at the specified index</p>
 </li>
 <li>
-<p>V deletes the contact at the specified index and display the new contact list</p>
+<p>V deletes the contact at the specified index and updates the displayed list</p>
 </li>
 <li>
 <p>Use case ends</p>
@@ -1232,9 +1203,6 @@ appropriate functions to facilitate view switching.</p>
 </li>
 <li>
 <p>1a1. V outputs error informing user of invalid index specified</p>
-</li>
-<li>
-<p>1a2. V terminates the command</p>
 <div class="paragraph">
 <p>Use case ends</p>
 </div>
@@ -1248,9 +1216,6 @@ appropriate functions to facilitate view switching.</p>
 </li>
 <li>
 <p>1b1. V outputs error informing user of invalid keyword</p>
-</li>
-<li>
-<p>1b2. V terminates the command</p>
 <div class="paragraph">
 <p>Use case ends</p>
 </div>
@@ -1268,16 +1233,31 @@ appropriate functions to facilitate view switching.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Should work on any <a href="#mainstream-os">mainstream OS</a> as long as it has Java <code>11</code> or above installed.</p>
+<p>Volant should work on any <a href="#mainstream-os">mainstream OS</a> as long as it has Java <code>11</code> or above installed.</p>
 </li>
 <li>
-<p>Should be able to hold up to 100 trips without a noticeable sluggishness in performance for typical usage.</p>
+<p>Volant should work without any internet connection.</p>
 </li>
 <li>
-<p>A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.</p>
+<p>Volant should be able to hold up to 100 trips without noticing a increase in response time from the system for typical usage.</p>
+</li>
+<li>
+<p>A user who is able to type above 40 words per minute (wpm) for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.</p>
 </li>
 <li>
 <p>Commands should be <a href="#one-shot-c">one-shot</a> commands as opposed to <a href="#multi-level-c">multi-level commands</a>.</p>
+</li>
+<li>
+<p>A user should have minimum 100 Megabytes (MB) free disk space on their computer to store the program.</p>
+</li>
+<li>
+<p>Input by the user should only be in English.</p>
+</li>
+<li>
+<p>Volant source code should be covered by tests as much as possible.</p>
+</li>
+<li>
+<p>Volant should work for a single user only.</p>
 </li>
 </ol>
 </div>
@@ -1291,19 +1271,25 @@ appropriate functions to facilitate view switching.</p>
 <div class="sectionbody">
 <div class="dlist">
 <dl>
-<dt class="hdlist1"><a id="mss"></a> MSS</dt>
 <dt class="hdlist1"><a id="extensions"></a> Extensions</dt>
+<dd>
+<p>"add-on"s to the MSS that describe exceptional/alternative flow of events.</p>
+</dd>
 <dt class="hdlist1"><a id="mainstream-os"></a> Mainstream OS</dt>
 <dd>
 <p>Windows, Linux, Unix, OS-X</p>
 </dd>
-<dt class="hdlist1"><a id="one-shot-c"></a> One-shot Commands</dt>
+<dt class="hdlist1"><a id="mss"></a> MSS</dt>
 <dd>
-<p>Commands that are executed using only a single line of user input.</p>
+<p>Main Success Scenario</p>
 </dd>
 <dt class="hdlist1"><a id="multi-level-c"></a> Multi-level Commands</dt>
 <dd>
 <p>Commands that require multiple lines of user input for execution.</p>
+</dd>
+<dt class="hdlist1"><a id="one-shot-c"></a> One-shot Commands</dt>
+<dd>
+<p>Commands that are executed using only a single line of user input.</p>
 </dd>
 </dl>
 </div>
@@ -1519,4 +1505,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-07 14:45:25 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-12 10:35:42 UTC</div></div></div></body></html>
