@@ -70,19 +70,16 @@ public class JournalPageCard extends UiPart<Region> {
         entryDate.setText(entry.getDateAsString() + ",");
         entryTime.setText(entry.getTimeAsString());
 
+        entryLocation.setGraphic(locationIcon);
         if (entry.getLocationAsString().equals("null")) {
             entryLocation.setText("Not specified");
-            entryLocation.setGraphic(locationIcon);
-
         } else {
             entryLocation.setText(entry.getLocation().toString());
-            entryLocation.setGraphic(locationIcon);
         }
 
+        entryWeather.setGraphic(weatherIcon);
         if (entry.getWeather().toString().equals("NULL")) {
             entryWeather.setText("Not specified");
-            entryWeather.setGraphic(weatherIcon);
-
         } else {
             String weather = entry.getWeather().toString();
             entryWeather.setText(weather.substring(0, 1) + weather.substring(1).toLowerCase());
