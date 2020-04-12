@@ -10,6 +10,7 @@ import java.time.format.DateTimeFormatter;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import seedu.volant.commons.core.Messages;
 import seedu.volant.commons.exceptions.IllegalValueException;
 import seedu.volant.home.model.trip.Location;
 import seedu.volant.itinerary.model.activity.Activity;
@@ -81,27 +82,27 @@ public class JsonAdaptedActivity {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
                     LocalDate.class.getSimpleName()));
         }
+
         DateTimeFormatter dateParser = DateTimeFormatter.ofPattern("dd MMM yyyy");
-        final LocalDate modelDate = LocalDate.parse(date, dateParser);
-        /*
-        TODO resolve this if possible
-        if (!LocalDate.isValidDate(date)) {
-            throw new IllegalValueException(LocalDate.MESSAGE_CONSTRAINTS);
+        LocalDate modelDate;
+        try {
+            modelDate = LocalDate.parse(date, dateParser);
+        } catch (Exception e) {
+            throw new IllegalValueException(Messages.MESSAGE_ERROR_LOADING_DATE);
         }
-         */
 
         if (time == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
                     LocalTime.class.getSimpleName()));
         }
+
         DateTimeFormatter timeParser = DateTimeFormatter.ofPattern("hh:mm a");
-        final LocalTime modelTime = LocalTime.parse(time, timeParser);
-        /*
-        TODO resolve this if necessary
-        if (!LocalTime.isValidTime(time)) {
-            throw new IllegalValueException(LocalTime.MESSAGE_CONSTRAINTS);
+        final LocalTime modelTime;
+        try {
+            modelTime = LocalTime.parse(time, timeParser);
+        } catch (Exception e) {
+            throw new IllegalValueException(Messages.MESSAGE_ERROR_LOADING_TIME);
         }
-         */
 
         return new Activity(modelTitle, modelDate, modelTime, modelLocation);
     }

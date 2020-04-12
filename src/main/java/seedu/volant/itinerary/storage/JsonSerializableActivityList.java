@@ -20,7 +20,7 @@ import seedu.volant.itinerary.model.activity.Activity;
 @JsonRootName(value = "volant")
 public class JsonSerializableActivityList {
 
-    public static final String MESSAGE_DUPLICATE_PERSON = "Trip list contains duplicate activities.";
+    public static final String MESSAGE_DUPLICATE_ACTIVITY = "Trip list contains duplicate activities.";
 
     private final List<JsonAdaptedActivity> activities = new ArrayList<>();
 
@@ -51,7 +51,7 @@ public class JsonSerializableActivityList {
         for (JsonAdaptedActivity jsonAdaptedActivity : activities) {
             Activity activity = jsonAdaptedActivity.toModelType();
             if (activityList.hasActivity(activity)) {
-                throw new IllegalValueException(MESSAGE_DUPLICATE_PERSON);
+                throw new IllegalValueException(MESSAGE_DUPLICATE_ACTIVITY);
             }
             activityList.addActivity(activity);
         }

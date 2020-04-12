@@ -122,11 +122,11 @@ public class ActivityList implements ReadOnlyActivityList {
 
     @Override
     public String toString() {
-        String s = "";
+        StringBuilder s = new StringBuilder();
         for (int i = 0; i < activities.asUnmodifiableObservableList().size(); i++) {
-            s += activities.asUnmodifiableObservableList().get(i) + System.lineSeparator();
+            s.append(activities.asUnmodifiableObservableList().get(i)).append(System.lineSeparator());
         }
-        return s;
+        return s.toString();
     }
 
     public UniqueActivityList getUniqueActivityList() {

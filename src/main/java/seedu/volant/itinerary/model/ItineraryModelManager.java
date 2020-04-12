@@ -59,9 +59,7 @@ public class ItineraryModelManager implements Model {
         Location tripLocation = new Location("Berlin, Germany");
         DateRange tripDateRange = new DateRange(LocalDate.parse("2022-06-10"), LocalDate.parse("2022-06-21"));
 
-        Trip placeholder = new Trip(tripName, tripLocation, tripDateRange);
-
-        this.trip = placeholder;
+        this.trip = new Trip(tripName, tripLocation, tripDateRange);
         this.itinerary = trip.getTripFeatureList().getItinerary();
         this.userPrefs = new UserPrefs();
         this.activityList = itinerary.getActivityList();

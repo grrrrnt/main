@@ -8,25 +8,25 @@ import seedu.volant.home.model.trip.Trip;
  */
 public class TripListBuilder {
 
-    private TripList addressBook;
+    private TripList tripList;
 
     public TripListBuilder() {
-        addressBook = new TripList();
+        tripList = new TripList();
     }
 
-    public TripListBuilder(TripList addressBook) {
-        this.addressBook = addressBook;
+    public TripListBuilder(TripList tripList) {
+        this.tripList = tripList;
     }
 
     /**
      * Adds a new {@code Trip} to the {@code TripList} that we are building.
      */
-    public TripListBuilder withPerson(Trip trip) {
-        addressBook.addTrip(trip);
+    public TripListBuilder withTrip(Trip trip) {
+        tripList.addTrip(trip);
         return this;
     }
 
     public TripList build() {
-        return addressBook;
+        return tripList;
     }
 }

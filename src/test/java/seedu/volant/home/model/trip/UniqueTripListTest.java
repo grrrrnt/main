@@ -39,7 +39,7 @@ public class UniqueTripListTest {
     }
 
     @Test
-    public void contains_tripnWithSameMetaFieldsInList_returnsTrue() {
+    public void contains_tripWithSameMetaFieldsInList_returnsTrue() {
         uniqueTripList.add(A);
         Trip editedAlice = new TripBuilder(A).withLocation(VALID_LOCATION_CNY)
                 .build();

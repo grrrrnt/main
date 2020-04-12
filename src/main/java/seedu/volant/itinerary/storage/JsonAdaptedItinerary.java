@@ -22,8 +22,6 @@ public class JsonAdaptedItinerary {
 
     /**
      * Constructs a {@code JsonAdaptedItinerary} with the given title and activity list.
-     * @param title
-     * @param activityList
      */
     @JsonCreator
     public JsonAdaptedItinerary(@JsonProperty("title") String title,

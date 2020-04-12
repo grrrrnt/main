@@ -8,6 +8,7 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
+import seedu.volant.commons.core.Messages;
 import seedu.volant.commons.core.index.Index;
 import seedu.volant.commons.logic.parser.exceptions.ParseException;
 import seedu.volant.commons.util.StringUtil;
@@ -29,6 +30,8 @@ public class ParserUtil {
 
     public static final String MESSAGE_INVALID_INDEX = "You seem to have input an invalid index.\n"
             + "Indexes can be found on the bottom right of a trip/activity/entry :)";
+    private static final String MESSAGE_START_AFTER_END = "Hey, your trip start date: %s, occurs"
+            + " after your trip end date: %s.\nRevise the dates and try again!";
 
     /**
      * Parses {@code oneBasedIndex} into an {@code Index} and returns it. Leading and trailing whitespaces will be
@@ -93,14 +96,13 @@ public class ParserUtil {
             parsedFromDate = LocalDate.of(dateFields[2], dateFields[1], dateFields[0]);
             parsedToDate = LocalDate.of(dateFields[5], dateFields[4], dateFields[3]);
             if (parsedFromDate.compareTo(parsedToDate) > 0) {
-                throw new StartAfterEndException(String.format("Hey, your trip start date: %s, occurs"
-                                + " after your trip end date: %s.\nRevise the dates and try again!",
+                throw new StartAfterEndException(String.format(MESSAGE_START_AFTER_END,
                         parsedFromDate, parsedToDate));
             }
         } catch (StartAfterEndException e) {
             throw new StartAfterEndException(e.getMessage());
         } catch (Exception e) {
-            throw new ParseException("Please input a valid date in DD-MM-YYYY format!");
+            throw new ParseException(Messages.MESSAGE_INVALID_DATE);
         }
         return new DateRange(parsedFromDate, parsedToDate);
     }
@@ -184,7 +186,7 @@ public class ParserUtil {
             int year = Integer.parseInt(dateFields[2]);
             parsedDate = LocalDate.of(year, month, day);
         } catch (Exception e) {
-            throw new ParseException("Please input a valid date in DD-MM-YYYY format!");
+            throw new ParseException(Messages.MESSAGE_INVALID_DATE);
         }
         return parsedDate;
     }
@@ -201,7 +203,7 @@ public class ParserUtil {
             int minute = Integer.parseInt(timeFields[1]);
             parsedTime = LocalTime.of(hour, minute);
         } catch (Exception e) {
-            throw new ParseException("Please input a valid time in HH:MM format!");
+            throw new ParseException(Messages.MESSAGE_INVALID_TIME);
         }
         return parsedTime;
     }

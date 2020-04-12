@@ -1,5 +1,6 @@
 package seedu.volant.home.model.trip;
 
+import static java.util.Objects.requireNonNull;
 import static seedu.volant.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.Objects;
@@ -35,6 +36,16 @@ public class Trip {
         tripFeatureList = new TripFeatureList();
     }
 
+    public Trip(Trip trip) {
+        requireNonNull(trip);
+        this.name = trip.getName();
+        this.location = trip.getLocation();
+        this.dateRange = trip.getDateRange();
+        Journal journal = trip.getTripFeatureList().getJournal();
+        Itinerary itinerary = trip.getTripFeatureList().getItinerary();
+        this.tripFeatureList = new TripFeatureList(itinerary, journal);
+    }
+
     public Name getName() {
         return name;
     }
@@ -61,14 +72,6 @@ public class Trip {
 
     public Itinerary getItinerary() {
         return tripFeatureList.getItinerary();
-    }
-
-    public Itinerary goToItinerary() {
-        return getItinerary();
-    }
-
-    public Journal goToJournal() {
-        return getJournal();
     }
 
     /**

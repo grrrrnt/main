@@ -76,6 +76,18 @@ public class Activity {
         return result;
     }
 
+    /**
+     * Compares 2 activities to see if they are the same.
+     * @param other The other Activity to be compared to.
+     * @return True if the 2 activities are the same.
+     */
+    public boolean isSameActivity(Activity other) {
+        return this.getTitle().equals(other.getTitle())
+                && this.getLocation().equals(other.getLocation())
+                && this.getDate().equals(other.getDate())
+                && this.getTime().equals(other.getTime());
+    }
+
     @Override
     public boolean equals(Object other) {
         boolean result = false;

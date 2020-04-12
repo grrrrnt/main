@@ -1,0 +1,23 @@
+{
+  "activities" : [ {
+    "title" : "Visit the War Museum",
+    "location" : "Berlin, Germany",
+    "date" : "11 Jun 2022",
+    "time" : "08:00 PM"
+  }, {
+    "title" : "Eat some McDonald Chicken nuggets",
+    "location" : "Berlin, Germany",
+    "date" : "12 Jun 2022",
+    "time" : "02:00 AM"
+  }, {
+    "title" : "Build a snowman",
+    "location" : "Berlin, Germany",
+    "date" : "13 Jun 2022",
+    "time" : "04:30 PM"
+  }, {
+    "title" : "Visit the Brandenburg Gate",
+    "location" : "Berlin, Germany",
+    "date" : "14 Jun 2022",
+    "time" : "10:30 AM"
+  } ]
+}
