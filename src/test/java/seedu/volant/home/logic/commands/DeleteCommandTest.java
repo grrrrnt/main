@@ -1,7 +1,7 @@
 package seedu.volant.home.logic.commands;
 
 import static seedu.volant.home.logic.commands.CommandTestUtil.assertCommandSuccess;
-import static seedu.volant.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
+import static seedu.volant.testutil.TypicalIndexes.INDEX_FIRST_ITEM;
 import static seedu.volant.testutil.TypicalTrips.getTypicalTripList;
 
 import org.junit.jupiter.api.Test;
@@ -20,8 +20,8 @@ public class DeleteCommandTest {
 
     @Test
     public void execute_validIndexUnfilteredList_success() {
-        Trip tripToDelete = model.getFilteredTripList().get(INDEX_FIRST_PERSON.getZeroBased());
-        DeleteCommand deleteCommand = new DeleteCommand(INDEX_FIRST_PERSON);
+        Trip tripToDelete = model.getFilteredTripList().get(INDEX_FIRST_ITEM.getZeroBased());
+        DeleteCommand deleteCommand = new DeleteCommand(INDEX_FIRST_ITEM);
 
         String expectedMessage = String.format(DeleteCommand.MESSAGE_DELETE_PERSON_SUCCESS, tripToDelete);
 

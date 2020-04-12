@@ -40,6 +40,8 @@ public class TripPage extends UiPart<Region> {
         place.setText(trip.getLocation().toString());
         dateRange.setText(trip.getDateRange().toString());
 
+        tripFeaturesListView.setPrefHeight(300);
+
         tripFeaturesListView.setItems(trip.getTripFeatureList().getReadOnlyFeatureList());
         tripFeaturesListView.setCellFactory(listView -> new TripFeaturesListViewCell());
     }
@@ -55,8 +57,7 @@ public class TripPage extends UiPart<Region> {
             super.updateItem(tripFeature, empty);
 
             if (empty || tripFeature == null) {
-                setGraphic(null);
-                setText(null);
+                setStyle("-fx-background-color: #fff;");
             } else {
                 if (tripFeature instanceof Journal) {
                     setGraphic(new TripPageJournalCard(tripFeature).getRoot());

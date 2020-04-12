@@ -46,8 +46,7 @@ public class JournalPage extends UiPart<Region> {
         protected void updateItem(Entry entry, boolean empty) {
             super.updateItem(entry, empty);
             if (empty || entry == null) {
-                setGraphic(null);
-                setText(null);
+                setStyle("-fx-background-color: #fff;");
             } else {
                 setGraphic(new JournalPageCard(entry, getIndex() + 1).getRoot());
             }

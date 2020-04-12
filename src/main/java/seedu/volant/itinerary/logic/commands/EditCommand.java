@@ -13,12 +13,15 @@ import java.util.Optional;
 
 import seedu.volant.commons.core.Messages;
 import seedu.volant.commons.core.index.Index;
+import seedu.volant.commons.exceptions.DatePassedException;
+import seedu.volant.commons.exceptions.DateRangeOutOfBoundsException;
 import seedu.volant.commons.logic.commands.Command;
 import seedu.volant.commons.logic.commands.CommandResult;
 import seedu.volant.commons.logic.commands.exceptions.CommandException;
 import seedu.volant.commons.model.Model;
 import seedu.volant.commons.util.CollectionUtil;
 import seedu.volant.home.model.trip.Location;
+import seedu.volant.itinerary.exceptions.TimeClashException;
 import seedu.volant.itinerary.model.ItineraryModelManager;
 import seedu.volant.itinerary.model.activity.Activity;
 import seedu.volant.itinerary.model.activity.Title;
@@ -50,9 +53,18 @@ public class EditCommand extends Command {
             + "+ INDEX has to be a positive integer within range of the itinerary size.\n"
             + "+ At least one of the parameters must be provided.";
 
-    public static final String MESSAGE_EDIT_ITINERARY_SUCCESS = "Edited activity: %1$s";
+    public static final String MESSAGE_EDIT_ACTIVITY_SUCCESS = "Edited activity: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
     public static final String MESSAGE_DUPLICATE_ACTIVITY = "This activity already exists in the itinerary.";
+    public static final String MESSAGE_OUT_OF_RANGE_BEFORE = "Date of activity is before the trip!\n"
+            + "Please enter a date within the duration of the trip: %s";
+    public static final String MESSAGE_OUT_OF_RANGE_AFTER = "Date of activity is after the trip!\n"
+            + "Please enter a date within the duration of the trip: %s";
+    public static final String MESSAGE_DATE_PASSED = "Date of activity has passed. "
+            + "Please entire a current or future date.";
+    public static final String MESSAGE_TIME_CLASH = "There is already another activity scheduled on %s at %s. "
+            + "Try another timing.";
+
 
     private final Index index;
     private final EditItineraryDescriptor editItineraryDescriptor;
@@ -86,9 +98,36 @@ public class EditCommand extends Command {
             throw new CommandException(MESSAGE_DUPLICATE_ACTIVITY);
         }
 
+        checkIfDateOutOfRange(itineraryModel, editedActivity);
+
+        if (editedActivity.getDate().compareTo(LocalDate.now()) < 0) {
+            throw new DatePassedException(MESSAGE_DATE_PASSED);
+        }
+
+        if (itineraryModel.hasTimeClash(editedActivity)) {
+            throw new TimeClashException(String.format(MESSAGE_TIME_CLASH,
+                    editedActivity.getDate(), editedActivity.getTime()));
+        }
+
         itineraryModel.setActivity(activityToEdit, editedActivity);
         itineraryModel.updateFilteredActivityList(itineraryModel.getPredicateShowAllActivities());
-        return new CommandResult(String.format(MESSAGE_EDIT_ITINERARY_SUCCESS, editedActivity));
+        return new CommandResult(String.format(MESSAGE_EDIT_ACTIVITY_SUCCESS, editedActivity));
+    }
+
+    /**
+     * Throws command exception if date of {@code editedActivity} is out of range of the trip.
+     */
+    private void checkIfDateOutOfRange(ItineraryModelManager itineraryModel,
+                                   Activity editedActivity) throws DateRangeOutOfBoundsException {
+        if (editedActivity.getDate().compareTo(itineraryModel.getTrip().getDateRange().getFrom()) < 0) {
+            throw new DateRangeOutOfBoundsException(String.format(MESSAGE_OUT_OF_RANGE_BEFORE,
+                    itineraryModel.getTrip().getDateRange()));
+        }
+
+        if (editedActivity.getDate().compareTo(itineraryModel.getTrip().getDateRange().getTo()) > 0) {
+            throw new DateRangeOutOfBoundsException(String.format(MESSAGE_OUT_OF_RANGE_AFTER,
+                    itineraryModel.getTrip().getDateRange()));
+        }
     }
 
     /**

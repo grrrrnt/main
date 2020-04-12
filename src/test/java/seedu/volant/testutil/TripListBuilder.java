@@ -4,9 +4,7 @@ import seedu.volant.home.model.TripList;
 import seedu.volant.home.model.trip.Trip;
 
 /**
- * A utility class to help with building Addressbook objects.
- * Example usage: <br>
- *     {@code TripList ab = new TripListBuilder().withPerson("John", "Doe").build();}
+ * A utility class to help with building TripList objects.
  */
 public class TripListBuilder {
 

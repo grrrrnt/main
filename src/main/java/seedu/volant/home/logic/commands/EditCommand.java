@@ -21,6 +21,7 @@ import seedu.volant.home.model.trip.DateRange;
 import seedu.volant.home.model.trip.Location;
 import seedu.volant.home.model.trip.Name;
 import seedu.volant.home.model.trip.Trip;
+import seedu.volant.itinerary.exceptions.TimeClashException;
 
 /**
  * Edits the details of an existing trip in the location book.
@@ -48,6 +49,9 @@ public class EditCommand extends Command {
     public static final String MESSAGE_EDIT_TRIP_SUCCESS = "Edited Trip: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
     public static final String MESSAGE_DUPLICATE_TRIP = "This trip already exists in the location book.";
+    public static final String MESSAGE_TIME_CLASH = "Sorry, another trip is going on between %s.\n "
+            + "You can try editing:\n"
+            + "     that entry's date range\n     your new trip's date range.";
 
     private final Index index;
     private final EditTripDescriptor editTripDescriptor;
@@ -79,6 +83,10 @@ public class EditCommand extends Command {
 
         if (!tripToEdit.isSameTrip(editedTrip) && homeModel.hasTrip(editedTrip)) {
             throw new CommandException(MESSAGE_DUPLICATE_TRIP);
+        }
+
+        if (homeModel.hasClash(editedTrip)) {
+            throw new TimeClashException(String.format(MESSAGE_TIME_CLASH, editedTrip.getDateRange()));
         }
 
         if (!tripToEdit.getName().equals(editedTrip.getName())) {

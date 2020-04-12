@@ -38,15 +38,15 @@
           </MenuBar>
 
           <!--  MAIN PANEL: THIS SWITCHES WITH EVERY NAVIGATION COMMAND -->
-          <ScrollPane fx:id="scrollPane" styleClass="edge-to-edge" minHeight="440">
             <VBox fx:id="mainPanel" minWidth="340" prefWidth="340" VBox.vgrow="ALWAYS">
-              <StackPane fx:id="mainPanelPlaceholder" VBox.vgrow="ALWAYS"/>
+              <ScrollPane fx:id="scrollPane" styleClass="edge-to-edge" VBox.vgrow="ALWAYS" fitToHeight="true">
+                <StackPane fx:id="mainPanelPlaceholder" VBox.vgrow="ALWAYS"/>
+              </ScrollPane>
             </VBox>
-          </ScrollPane>
 
 
           <!--  RESULT DISPLAY: APP FEEDBACK MESSAGES APPEAR HERE -->
-          <StackPane fx:id="resultDisplayPlaceholder" styleClass="stackPane-ResultBox" maxHeight="100" minHeight="100" prefHeight="100" VBox.vgrow="ALWAYS">
+          <StackPane fx:id="resultDisplayPlaceholder" styleClass="stackPane-ResultBox" maxHeight="100" minHeight="100">
             <padding>
               <Insets bottom="5" left="10" right="10" top="5" />
             </padding>

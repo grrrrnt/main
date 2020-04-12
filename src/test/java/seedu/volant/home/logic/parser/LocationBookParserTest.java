@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.volant.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.volant.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 import static seedu.volant.testutil.Assert.assertThrows;
-import static seedu.volant.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
+import static seedu.volant.testutil.TypicalIndexes.INDEX_FIRST_ITEM;
 
 import java.util.Arrays;
 import java.util.List;
@@ -47,8 +47,8 @@ public class LocationBookParserTest {
     @Test
     public void parseCommand_delete() throws Exception {
         DeleteCommand command = (DeleteCommand) parser.parseCommand(
-                DeleteCommand.COMMAND_WORD + " " + INDEX_FIRST_PERSON.getOneBased());
-        assertEquals(new DeleteCommand(INDEX_FIRST_PERSON), command);
+                DeleteCommand.COMMAND_WORD + " " + INDEX_FIRST_ITEM.getOneBased());
+        assertEquals(new DeleteCommand(INDEX_FIRST_ITEM), command);
     }
 
     @Test
@@ -56,8 +56,8 @@ public class LocationBookParserTest {
         Trip trip = new TripBuilder().build();
         EditCommand.EditTripDescriptor descriptor = new EditTripDescriptorBuilder(trip).build();
         EditCommand command = (EditCommand) parser.parseCommand(EditCommand.COMMAND_WORD + " "
-                + INDEX_FIRST_PERSON.getOneBased() + " " + TripUtil.getEditPersonDescriptorDetails(descriptor));
-        assertEquals(new EditCommand(INDEX_FIRST_PERSON, descriptor), command);
+                + INDEX_FIRST_ITEM.getOneBased() + " " + TripUtil.getEditTripDescriptorDetails(descriptor));
+        assertEquals(new EditCommand(INDEX_FIRST_ITEM, descriptor), command);
     }
 
     @Test

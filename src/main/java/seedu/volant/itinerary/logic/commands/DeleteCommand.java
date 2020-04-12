@@ -42,7 +42,6 @@ public class DeleteCommand extends Command {
         ItineraryModelManager itineraryModel = ((ItineraryModelManager) model);
 
         List<Activity> lastShownList = itineraryModel.getFilteredActivityList();
-        //ActivityList activityList = itineraryModel.getActivityList();
 
         if (targetIndex.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_TRIP_DISPLAYED_INDEX);

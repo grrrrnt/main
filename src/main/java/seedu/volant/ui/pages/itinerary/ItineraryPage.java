@@ -46,8 +46,7 @@ public class ItineraryPage extends UiPart<Region> {
         protected void updateItem(Activity activity, boolean empty) {
             super.updateItem(activity, empty);
             if (empty || activity == null) {
-                setGraphic(null);
-                setText(null);
+                setStyle("-fx-background-color: #fff;");
             } else {
                 setGraphic(new ItineraryPageCard(activity, getIndex() + 1).getRoot());
             }

@@ -27,7 +27,7 @@ import seedu.volant.commons.storage.StorageManager;
 import seedu.volant.home.model.HomeModelManager;
 import seedu.volant.home.model.ReadOnlyTripList;
 
-public class LogicManagerTest {
+public class HomeLogicManagerTest {
     private static final IOException DUMMY_IO_EXCEPTION = new IOException("dummy exception");
 
     @TempDir

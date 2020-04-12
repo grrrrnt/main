@@ -16,7 +16,7 @@ import seedu.volant.commons.model.UserPrefs;
 
 //TODO: Refine test cases
 
-public class ModelManagerTest {
+public class HomeModelManagerTest {
 
     private HomeModelManager modelManager = new HomeModelManager();
 

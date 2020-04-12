@@ -40,6 +40,14 @@ public class AddCommand extends Command {
 
     public static final String MESSAGE_SUCCESS = "New activity added: %1$s";
     public static final String MESSAGE_DUPLICATE_ITEM = "This activity already exists in your itinerary.";
+    public static final String MESSAGE_OUT_OF_RANGE_BEFORE = "Date of activity is before the trip!\n"
+            + "Please enter a date within the duration of the trip: %s";
+    public static final String MESSAGE_OUT_OF_RANGE_AFTER = "Date of activity is after the trip!\n"
+            + "Please enter a date within the duration of the trip: %s";
+    public static final String MESSAGE_DATE_PASSED = "Date of activity has passed. "
+            + "Please entire a current or future date.";
+    public static final String MESSAGE_TIME_CLASH = "There is already another activity scheduled on %s at %s. "
+            + "Try another timing.";
 
     private final Activity toAdd;
 
@@ -61,28 +69,23 @@ public class AddCommand extends Command {
             throw new CommandException(MESSAGE_DUPLICATE_ITEM);
         }
 
-        if (toAdd.getDate().compareTo(itineraryModel.getTrip()
-                .getDateRange().getFrom()) < 0) {
-            throw new DateRangeOutOfBoundsException("Date of activity is before the trip!\n"
-                    + "Please enter a date within the duration of the trip: "
-                    + itineraryModel.getTrip().getDateRange());
+        if (toAdd.getDate().compareTo(itineraryModel.getTrip().getDateRange().getFrom()) < 0) {
+            throw new DateRangeOutOfBoundsException(String.format(MESSAGE_OUT_OF_RANGE_BEFORE,
+                    itineraryModel.getTrip().getDateRange()));
         }
 
-        if (toAdd.getDate().compareTo(itineraryModel.getTrip()
-                .getDateRange().getTo()) > 0) {
-            throw new DateRangeOutOfBoundsException("Date of activity is after the trip!\n"
-                    + "Please enter a date within the duration of the trip: "
-                    + itineraryModel.getTrip().getDateRange());
+        if (toAdd.getDate().compareTo(itineraryModel.getTrip().getDateRange().getTo()) > 0) {
+            throw new DateRangeOutOfBoundsException(String.format(MESSAGE_OUT_OF_RANGE_AFTER,
+                    itineraryModel.getTrip().getDateRange()));
         }
 
         if (toAdd.getDate().compareTo(LocalDate.now()) < 0) {
-            throw new DatePassedException("Date of activity has passed. "
-                    + "Please entire a current or future date.");
+            throw new DatePassedException(MESSAGE_DATE_PASSED);
         }
 
         if (itineraryModel.hasTimeClash(toAdd)) {
-            throw new TimeClashException("There is already another activity scheduled for "
-                    + toAdd.getDate() + " " + toAdd.getTime() + ". Try another timing.");
+            throw new TimeClashException(String.format(MESSAGE_TIME_CLASH,
+                    toAdd.getDate(), toAdd.getTime()));
         }
     }
 

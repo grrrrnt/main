@@ -48,7 +48,7 @@ public class Activity {
         builder.append("\nTitle: ")
                 .append(getTitle())
                 .append("\nLocation: ")
-                .append(this.getTitle())
+                .append(this.getLocation())
                 .append("\nDate: ")
                 .append(formatDate(getDate()))
                 .append("\nTime: ")

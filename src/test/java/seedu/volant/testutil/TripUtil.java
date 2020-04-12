@@ -34,7 +34,7 @@ public class TripUtil {
     /**
      * Returns the part of command string for the given {@code EditPersonDescriptor}'s details.
      */
-    public static String getEditPersonDescriptorDetails(EditCommand.EditTripDescriptor descriptor) {
+    public static String getEditTripDescriptorDetails(EditCommand.EditTripDescriptor descriptor) {
         StringBuilder sb = new StringBuilder();
         descriptor.getName().ifPresent(name -> sb.append(PREFIX_NAME).append(name).append(" "));
         descriptor.getLocation().ifPresent(location -> sb.append(PREFIX_LOCATION).append(location.value).append(" "));

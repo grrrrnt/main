@@ -9,9 +9,9 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
-<VBox stylesheets="@../VolantTheme.css" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1">
 
-   <StackPane prefHeight="15.0" prefWidth="200.0" styleClass="stack-header" VBox.vgrow="NEVER">
+<VBox stylesheets="@../VolantTheme.css" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1">
+   <StackPane prefHeight="15.0" prefWidth="200.0" styleClass="stack-header">
       <children>
          <Label styleClass="label-header" text="TRIP" />
       </children>
@@ -42,5 +42,5 @@
       </children>
    </HBox>
 
-   <ListView fx:id="tripFeaturesListView" prefWidth="200.0" minHeight="310"/>
+   <ListView fx:id="tripFeaturesListView" prefWidth="200.0"/>
 </VBox>

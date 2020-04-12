@@ -6,21 +6,22 @@
 <?import javafx.scene.layout.VBox?>
 <VBox xmlns="http://javafx.com/javafx/11.0.0" xmlns:fx="http://javafx.com/fxml/1">
    <!-- WELCOME MESSAGE -->
-   <StackPane prefHeight="30.0" prefWidth="200.0" styleClass="stack-welcome" VBox.vgrow="NEVER">
+
+   <StackPane maxHeight="30.0" prefWidth="200.0" styleClass="stack-welcome" VBox.vgrow="ALWAYS">
       <children>
          <Label styleClass="label-welcome" text="Hi! I'm Volant :)" />
       </children>
    </StackPane>
 
    <!-- PAGE HEADER -->
-   <StackPane prefHeight="15.0" prefWidth="200.0" styleClass="stack-header" style="-fx-border-width: 1px 0px 2px 0px" VBox.vgrow="NEVER">
+   <StackPane maxHeight="15.0" prefWidth="200.0" styleClass="stack-header" style="-fx-border-width: 1px 0px 2px 0px" VBox.vgrow="ALWAYS">
       <children>
         <Label styleClass="label-header" text="TRIP LIST" />
       </children>
    </StackPane>
 
    <!-- UPCOMING TRIPS HEADER -->
-   <StackPane prefHeight="15.0" prefWidth="200.0" styleClass="trip-list-header" style="-fx-border-width: 0px 0px 2px 0px" VBox.vgrow="NEVER">
+   <StackPane maxHeight="15.0" prefWidth="200.0" styleClass="trip-list-header" style="-fx-border-width: 0px 0px 2px 0px" VBox.vgrow="ALWAYS">
       <children>
          <Label styleClass="label-header" text="UPCOMING TRIPS" />
       </children>
@@ -28,7 +29,7 @@
    <ListView fx:id="tripListViewUpcoming" prefWidth="247.0" style="-fx-background-color: #fff; -fx-border-width: 1px 0px 2px 0px;" VBox.vgrow="ALWAYS" />
 
    <!-- PAST TRIPS HEADER -->
-   <StackPane prefHeight="15.0" prefWidth="200.0" styleClass="trip-list-header" style="-fx-border-width: 0px 0px 2px 0px;" VBox.vgrow="NEVER">
+   <StackPane maxHeight="15.0" prefWidth="200.0" styleClass="trip-list-header" style="-fx-border-width: 0px 0px 2px 0px;" VBox.vgrow="ALWAYS">
       <children>
          <Label styleClass="label-header" text="PAST TRIPS" />
       </children>

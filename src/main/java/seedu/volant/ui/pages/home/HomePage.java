@@ -42,13 +42,21 @@ public class HomePage extends UiPart<Region> {
 
 
         if (upcoming.isEmpty()) {
-            tripListViewUpcoming.setPrefHeight(0);
+            tripListViewUpcoming.setMaxHeight(0);
         } else {
-            tripListViewUpcoming.setPrefHeight(upcoming.size() * 105);
+            tripListViewUpcoming.setMinHeight(upcoming.size() * 105);
+            tripListViewUpcoming.setMaxHeight(upcoming.size() * 105);
         }
 
         tripListViewUpcoming.setItems(upcoming);
         tripListViewUpcoming.setCellFactory(listViewUpcoming -> new TripListViewCellUpcoming());
+
+        if (past.isEmpty()) {
+            tripListViewPast.setMaxHeight(0);
+        } else {
+            tripListViewPast.setMinHeight(past.size() * 105);
+            tripListViewPast.setMaxHeight(past.size() * 105);
+        }
 
         tripListViewPast.setItems(past);
         tripListViewPast.setCellFactory(listViewPast -> new TripListViewCellPast(upcoming.size()));

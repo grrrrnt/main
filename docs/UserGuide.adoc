@@ -13,6 +13,7 @@
 ifdef::env-github[]
 :tip-caption: :bulb:
 :note-caption: :information_source:
+:important-caption: :warning:
 endif::[]
 :repoURL: https://github.com/AY1920S2-CS2103T-F09-4/main
 
@@ -30,7 +31,7 @@ image::Ui.png[width="790"]
 
 Volant is *optimized for those who prefer to work with a Command Line Interface* (CLI) while still having the benefits of a Graphical User Interface (GUI).
 If you can type fast, Volant can get you planning, executing and reflecting on your trip faster than traditional GUI apps. All while enjoying our retro inspired GUI.
-Interested? Wait no further and jump to <<Quick Start>> to get started. Enjoy!
+Interested? Wait no further, jump to <<Quick Start>> to get started. Enjoy!
 
 === Reading this User Guide
 Before you begin, here are some important notations that you should take note of when reading this user guide!
@@ -68,7 +69,7 @@ There will also be certain markdown notations to distinguish between normal text
 Follow this installation guide to get Volant up and running on your computer.
 
 .  Ensure you have *Java 11* or above installed on your computer.
-.  Download the latest `volant.jar` file here:{https://github.com/AY1920S2-CS2103T-F09-4/main}/releases[releases page].
+.  Download the latest `volant.jar` file here: https://github.com/AY1920S2-CS2103T-F09-4/main/releases [releases page].
 .  Copy the file to the folder you want to use as the home folder for the application.
 .  Double-click the JAR file to start the app.
 .  The GUI should appear in a few seconds.
@@ -79,7 +80,7 @@ e.g. Typing *`help`* and pressing kbd:[Enter] will open a help window.
 
 [[Features]]
 == Features
-This section describes the various features available in Volant. 
+This section describes the various features available in Volant.
 These include front-end features that you can interact with, such as the Trip Page, as well as back-end features such as the auto-saving of data.
 
 === Trips
@@ -176,7 +177,7 @@ image::user-guide/journal-page.png[width="300"]
 
 A page displaying the `JOURNAL` of a specific trip.
 |`ITINERARY` page       a| .`ITINERARY` page
-image::user-guide/itinerary-page.png[width="300"] [caption=]
+image::user-guide/itinerary-page.png[width="300"]
 
 A page displaying the `ITINERARY` of a specific trip.
 |===
@@ -194,7 +195,7 @@ Words in plain `UPPER_CASE` are compulsory parameters to be supplied by you. +
 e.g. In `add n/NAME`, `NAME` is a compulsory parameter and must be used as `add n/John Doe`.
 * *Parameters in `[SQUARE_BRACKETS]`* +
 Words in square brackets (i.e. `[f/FEELING]`), are optional parameters to be supplied by you. +
-e.g `n/NAME [a/AGE]` can be used as `n/John Doe a/26` or as `n/John Doe`.
+e.g `n/NAME [f/FEELING]` can be used as `n/John Doe f/SAD` or as `n/John Doe`.
 ====
 
 <<<<
@@ -313,11 +314,11 @@ command will conveniently move you directly to the `HOME` page.
 
 .`home` command on `ITINERARY` page
 image::user-guide/back-command-before.png[width="300"]
-1) You are on the `ITINERARY` page of a specific `TRIP`
+1) You are on the `ITINERARY` page of a specific `TRIP`.
 
 .Result of `home` command
 image::user-guide/home-page.png[width="300"]
-2) After using the `home` command, you will be moved to the `HOME` page
+2) After using the `home` command, you will be moved to the `HOME` page.
 
 === Commands for the Home Page
 
@@ -374,7 +375,9 @@ After you add a `TRIP` to Volant, a new folder with the name `TRIP_NAME` will be
 
 [NOTE]
 ====
-* The date range pf your `TRIP` should be written in the format `d/DD-MM-YYYY to DD-MM-YYYY`.
+* The date range of your `TRIP` should be written in the format `d/DD-MM-YYYY to DD-MM-YYYY`.
+* The start date of the trip must be before or on the same date as the end date of the trip.
+* The date range of the trip cannot coincide with the date range of existing trips.
 * Two `TRIP` s cannot have the same `TRIP_NAME`, as data folders containing the data of each trip are named after the `TRIP_NAME` of each `TRIP`. +
 See <<data-storage, Data Storage>> for more details.
 ====
@@ -389,11 +392,11 @@ Entering the command `add n/Graduation Trip l/Bangkok d/01-06-2020 to 05-06-2020
 
 .`add` command on `HOME` page
 image::user-guide/home-add-before.png[width="300"]
-1) You would like to add a `TRIP` to your trip list and enter the `add` command including the specific metadata of the `TRIP`
+1) You would like to add a `TRIP` to your trip list and enter the `add` command including the specific metadata of the `TRIP`.
 
 .Result of `add` command
 image::user-guide/home-add-after.png[width="600"]
-2) After using the `add` command, the new `TRIP` will be added to your trip list and displayed under _UPCOMING TRIPS_
+2) After using the `add` command, the new `TRIP` will be added to your trip list and displayed under _UPCOMING TRIPS_.
 
 
 ==== Deleting a trip: `delete`
@@ -414,6 +417,11 @@ Upon deletion of the `TRIP`, the folder containing the trip and its associated d
 * `INDEX` must be a positive integer value, within range of the number of trips in your trip list.
 ====
 
+[TIP]
+====
+* Figure 15 in <<Commands for the Home Page>> shows where you can find the `INDEX` on the page
+====
+
 *Expected Outcome*
 
 For example, you would like to delete the second `TRIP` on your trip list, _Graduation Trip_.
@@ -422,11 +430,11 @@ Entering the command `delete 2`, will delete the second `TRIP` from your trip li
 
 .`delete` command on `HOME` page
 image::user-guide/home-delete-before.png[width="600"]
-1) You want to delete the second trip on your trip list, "Graduation Trip"
+1) You want to delete the second trip on your trip list, "Graduation Trip".
 
 .Result of `delete` command
 image::user-guide/home-delete-after.png[width="300"]
-2) After using the `delete` command, the trip will be removed from your trip list
+2) After using the `delete` command, the trip will be removed from your trip list.
 
 [IMPORTANT]
 ====
@@ -438,7 +446,7 @@ See <<data-storage>> for more details.
 ====
 
 ==== Editing trip details: `edit`
-Edits the details of a trip, this command allows you to conveniently edit the details of the trip at a specified `INDEX`.
+Edits the details of a trip at a specified `INDEX`.
 
 [caption=]
 .Usage
@@ -451,7 +459,9 @@ Edits the details of a trip, this command allows you to conveniently edit the de
 [NOTE]
 ====
 * `INDEX` must be a positive integer value, within range of the number of trips in your trip list.
-* The date range should be written in the format `d/DD-MM-YYYY to DD-MM-YYYY`.
+* The date range must be written in the format `d/DD-MM-YYYY to DD-MM-YYYY`.
+* The start date of must be before or on the end date.
+* The date range must not coincide with the date range of existing trips.
 * If you were to edit the `TRIP_NAME` of a `TRIP`, the name of the data folder of the specific `TRIP` will simultaneously be renamed. +
 +
 See <<data-storage>> for more details.
@@ -468,11 +478,11 @@ and these changes will be reflected on Volant's GUI.
 
 .`edit` command on `HOME` page
 image::user-guide/home-edit-before.png[width="600"]
-1) You want to edit the `TRIP_NAME` and `LOCATION` of the first `TRIP` in your trip list
+1) You want to edit the `TRIP_NAME` and `LOCATION` of the first `TRIP` in your trip list.
 
 .Result of `edit` command
 image::user-guide/home-edit-after.png[width="600"]
-2) After using the `edit` command, the `TRIP_NAME` and `LOCATION` of the `TRIP` will be changed accordingly
+2) After using the `edit` command, the `TRIP_NAME` and `LOCATION` of the `TRIP` will be changed accordingly.
 
 [[home-find]]
 ==== Finding a trip in the list: `find`
@@ -502,11 +512,11 @@ Volant will locate all `TRIP` s with the `KEYWORD`, "fuji", and display all matc
 
 .`find` command on `HOME` page
 image::user-guide/home-find-before.png[width="300"]
-1) You want to search for all `TRIP` s with names containing the `KEYWORD`, "fuji"
+1) You want to search for all `TRIP` s with names containing the `KEYWORD`, "fuji".
 
 .Result of `find` command
 image::user-guide/home-find-after.png[width="300"]
-2) After using the `find` command, Volant will display all trips with the specified `KEYWORD`
+2) After using the `find` command, Volant will display all trips with the specified `KEYWORD`.
 
 [TIP]
 ====
@@ -549,14 +559,15 @@ For example, you are on the `TRIP` page and would like to view your itinerary fo
 
 .`goto` command on `TRIP` page
 image::user-guide/trip-page.png[width="300"]
-1) You are on the `TRIP` page of the trip "Family Trip"
+1) You are on the `TRIP` page of the trip "Family Trip".
 
 .Result of `goto` command
 image::user-guide/trip-goto-after.png[width="300"]
-2) After using the `goto` command, you will be navigated to the `TRIP` 's `ITINERARY` page
+2) After using the `goto` command, you will be navigated to the `TRIP` 's `ITINERARY` page.
 
 === Itinerary Page
 The `ITINERARY` page of a specific trip consists of a list of all the planned activities for a specific trip.
+Here, you can manipulate the list of `JOURNAL` entries, as well as navigate to other pages.
 
 .`ITINERARY` page
 image::user-guide/itinerary-components.png[width="600"]
@@ -564,7 +575,7 @@ image::user-guide/itinerary-components.png[width="600"]
 From this page, you can manipulate the itinerary, as well as navigate to other pages.
 
 ==== Adding an activity: `add`
-This command allows you to add a new activity to the itinerary.
+Adds a new activity to your itinerary.
 
 [caption=]
 .Usage
@@ -578,17 +589,13 @@ This command allows you to add a new activity to the itinerary.
 ====
 * Date must be specified in the following format: `DD-MM-YYYY`
 * Date must be between the date range of the `TRIP`.
-* Time must be specified in the following format: `HH:MM` (24-hour military time, e.g. 23:00) (24-hour military time, e.g. 23:00)
+* Time must be specified in the following format: `HH:MM` (24-hour Format, e.g. 23:00)
 * Date and Time must be in the future; no use planning for the past!
 ====
 
 *Expected Outcome*
 
-For example, you would like to add a new activity titled *Flight to Singapore* at *Berlin Brandenburg Airport* at
-*07:00 AM* on *24th December 2020*.
-
-After entering the command `add a/Flight to Singapore l/Berlin Brandenburg Airport d/24-12-2020 t/19:00`,
-a new `ACTIVITY` will be added to the `TRIP` 's `ITINERARY`.
+A new activity titled *Flight to Singapore* at *Berlin Brandenburg Airport* at *07:00 AM* on *24th December 2020* is added to the `TRIP` 's `ITINERARY`.
 
 .`add` command on `ITINERARY` page
 image::user-guide/itinerary-add-before.png[width="300"]
@@ -596,7 +603,7 @@ image::user-guide/itinerary-add-before.png[width="300"]
 
 .Result of `add` command
 image::user-guide/itinerary-add-after.png[width="600"]
-2) After using the `add` command, a new `ACTIVITY` will be added to the `ITINERARY`
+2) After using the `add` command, a new `ACTIVITY` will be added to the `ITINERARY`.
 
 
 
@@ -615,21 +622,25 @@ Deletes the activity at a specified `INDEX`.
 ====
 * `INDEX` must be a positive integer value, within range of the number of activities in the `ITINERARY`.
 ====
+[TIP]
+====
+* Figure 28 in <<Itinerary Page>> shows where you can find the `INDEX` on the page.
+====
 
 *Expected Outcome*
 
-The fourth `ACTIVITY` will be deleted from the `ITINERARY`.
+The fourth `ACTIVITY` on the `ITINERARY` is deleted.
 
 .`delete` command on `ITINERARY` page
 image::user-guide/itinerary-delete-before.png[width="600"]
-1) You wish to delete the `ACTIVITY` at `INDEX` 4 from your `ITINERARY`
+1) You wish to delete the `ACTIVITY` at `INDEX` 4 from your `ITINERARY`.
 
 .Result of `delete` command
 image::user-guide/itinerary-delete-after.png[width="300"]
 2) After using `delete` command, the `ACTIVITY` at `INDEX` 4 is deleted.
 
 ==== Editing an activity: `edit`
-Edits the details of an existing activity in the itinerary.
+Edits the details of an existing `ACTIVITY` in the `ITINERARY`.
 
 [caption=]
 .Usage
@@ -643,13 +654,17 @@ Edits the details of an existing activity in the itinerary.
 ====
 * `INDEX` must be a positive integer value, within range of the number of activities in the `ITINERARY`.
 * At least one of the optional fields must be provided.
-* Date must be specified in the following format: `DD-MM-YYYY`
-* Time must be specified in the following format: `HH:MM` (24-hour military time, e.g. 23:00)
+* When editing the date:
+** Date must be specified in the following format: `DD-MM-YYYY`
+** Date must be within the date range of the trip.
+* When editing the time:
+** Time must be specified in the following format: `HH:MM` (24-hour Format, e.g. 23:00)
+** New time cannot clash with the time of any existing `ACTIVITY`.
 ====
 
 *Expected Outcome*
 
-The second `ACTIVITY` in the `ITINERARY` will be edited to reflect the new location *Starbucks* and the new time *10:00AM*.
+The second `ACTIVITY` in the `ITINERARY` has been edited to reflect the new location *Starbucks* and the new time *10:00AM*.
 
 .`edit` command on `ITINERARY` page
 image::user-guide/itinerary-edit-before.png[width="600"]
@@ -661,7 +676,7 @@ image::user-guide/itinerary-edit-after.png[width="600"]
 updated accordingly.
 
 ==== Locating an activity: `find`
-Filters the activity list of your itinerary for activity/activities that match(es) the `KEYWORD` based on the different components of an `ACTIVITY` and displays them.
+Filters the activity list of your itinerary for activity/activities that match(es) the `KEYWORD` based on the different metadata of an `ACTIVITY` and displays them.
 
 [caption=]
 .Usage
@@ -674,16 +689,16 @@ Filters the activity list of your itinerary for activity/activities that match(e
 [NOTE]
 ====
 * Date must be specified in the following format: `DD-MM-YYYY`
-* Time must be specified in the following format: `HH:MM` (24-hour military time, e.g. 23:00)
+* Time must be specified in the following format: `HH:MM` (24-hour Format, e.g. 23:00)
 ====
 
 *Expected Outcome*
 
-Displays all activities that include the keyword "ferry".
+All activities whose name consists of the keyword "ferry" are displayed.
 
 .`find` command on `ITINERARY` page
 image::user-guide/itinerary-find-before.png[width="300"]
-1) You wish to `find` all `ACTIVITY`(s) that include the keyword "ferry".
+1) You wish to `find` all activities that include the keyword "ferry".
 
 .Result of `find` command
 image::user-guide/itinerary-find-after.png[width="300"]
@@ -712,7 +727,7 @@ If you would like to record a new `JOURNAL` entry, this command adds a new entry
 [NOTE]
 ====
 * Date must be specified in the following format: `DD-MM-YYYY`
-* Time must be specified in the following format: `HH:MM` (24-hour military time, e.g. 23:00)
+* Time must be specified in the following format: `HH:MM` (24-hour Format, e.g. 23:00)
 * `CONTENT` is limited to 280 characters
 * Available `FEELING` types (case insensitive)
 ** `HAPPY`
@@ -761,6 +776,11 @@ If you would like to remove an `ENTRY` from the journal, this command deletes th
 [NOTE]
 ====
 * `INDEX` must be a positive integer value, within range of the number of trips in your trip list.
+====
+
+[TIP]
+====
+* Figure 37 in <<Journal Page>> shows where you can find the `INDEX` on the page
 ====
 
 *Expected Outcome*
@@ -845,6 +865,9 @@ This section discusses some frequently asked questions about Volant.
 *Q: Is Volant free?* +
 *A*: Yes, Volant is absolutely free to use!
 
+*Q: I have Volant.jar downloaded but cannot start the application. Is there anything I can do? +
+*A*: Yes, open the command prompt on your computer, navigate to the directory which you have stored Volant.jar in and type `java -jar Volant.jar`.
+
 *Q: Is Volant safe to use?* +
 *A*: Yes, Volant is safe to use! We regularly review our code to ensure that hackers are unable to exploit the security structure of our software.
 
@@ -868,28 +891,29 @@ This section discusses some frequently asked questions about Volant.
 == Command Summary
 This section summarises the syntax of all the commands available in the Volant app.
 Use this list as a quick and convenient reference.
+[%autowidth]
+|====================================================
+| *Section* | *Command* |*Format*
+.5+|Home page
+|*Help* | `help`
+|*Navigate to trip* | `goto INDEX`
+|*Add trip* | `add n/TRIP_NAME l/LOCATION d/TRIP_START_DATE to TRIP_END_DATE`
+|*Delete trip* | `delete INDEX`
+|*Edit trip* | `edit INDEX [n/TRIP_NAME]  [l/LOCATION] [d/TRIP_START_DATE to TRIP_END_DATE]`
+.1+|Trip page
+|*Navigate to feature* | `goto FEATURE`
+.4+|Itinerary
+|*Add activity* | `add a/ACTIVITY_TITLE l/LOCATION d/DATE t/TIME`
+|*Delete activity* | `delete INDEX`
+|*Edit activity* | `edit INDEX [a/ACTIVITY_TITLE] [l/LOCATION] [d/DATE] [t/TIME]`
+|*Find activity* | `find FIELD [a/ACTIVITY_TITLE] [l/LOCATION] [d/DATE] [t/TIME]`
+.4+|Journal
+|*Add entry* | `add d/DATE t/TIME c/CONTENT [l/LOCATION] [f/FEELING] [w/WEATHER]`
+|*Delete entry* | `delete INDEX`
+|*Edit entry* | `edit INDEX [d/NEW_DATE] [t/NEW_TIME] [c/NEW_CONTENT] [l/NEW_LOCATION] [f/NEW_FEELING] [w/NEW_WEATHER]`
+|*Sort entries* | `sort [SORT_TYPE]` |
 
-=== Home Page
-* *Help*: `help` +
-* *Navigate to trip*: `goto INDEX` +
-* *Add trip*: `add n/TRIP_NAME l/LOCATION d/TRIP_START_DATE to TRIP_END_DATE` +
-* *Delete trip*: `delete INDEX` +
-* *Edit trip*: `edit INDEX [n/TRIP_NAME]  [l/LOCATION] [d/TRIP_START_DATE to TRIP_END_DATE]` +
-
-=== Trip page
-* *Navigate to feature*: `goto FEATURE` +
-
-=== Itinerary
-* *Add activity*: `add a/ACTIVITY_TITLE l/LOCATION d/DATE t/TIME` +
-* *Delete activity*: `delete INDEX` +
-* *Edit activity*: `edit INDEX [a/ACTIVITY_TITLE] [l/LOCATION] [d/DATE] [t/TIME]` +
-* *Find activity*: `find FIELD [a/ACTIVITY_TITLE] [l/LOCATION] [d/DATE] [t/TIME]` +
-
-=== Journal
-* *Add entry*: `add d/DATE t/TIME c/CONTENT [l/LOCATION] [f/FEELING] [w/WEATHER]` +
-* *Delete entry*: `delete INDEX` +
-* *Edit entry*: `edit INDEX [d/NEW_DATE] [t/NEW_TIME] [c/NEW_CONTENT] [l/NEW_LOCATION] [f/NEW_FEELING] [w/NEW_WEATHER]` +
-* *Sort entries*: `sort [SORT_TYPE]` +
+|====================================================
 
 <<<<
 

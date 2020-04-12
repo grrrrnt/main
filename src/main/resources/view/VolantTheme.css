@@ -380,17 +380,15 @@
     -fx-text-fill: #fff;
 }
 
-.dialog-pane:header *.header-panel {
-    -fx-background-color: derive(#FEFBF7, 0%);
+/*SCROLL PANE*/
+
+.scroll-pane > .viewport {
+    -fx-background-color: transparent;
 }
 
-.dialog-pane:header *.header-panel *.label {
-    -fx-font-size: 18px;
-    -fx-font-style: italic;
-    -fx-fill: #fff;
-    -fx-text-fill: #fff;
+.scroll-pane {
+    -fx-background-color: #fff;
 }
-
 
 /*SCROLL BAR */
 .scroll-bar {
@@ -599,7 +597,7 @@
 }
 
 #tripListView .list-cell {
-    -fx-border-width: 1px 0px 1px 0px;
+    -fx-border-width: 1px 0px 0px 0px;
     -fx-background-color:#FEFBF7;
 }
 

@@ -24,8 +24,9 @@ public class TypicalTrips {
     public static final Trip D = new TripBuilder().withName("India Laa Bois")
             .withLocation("New Delhi, India")
             .withDateRange("2018-12-12", "2018-12-21").build();
-
-    public static final String KEYWORD_MATCHING_BALI = "Bali"; // A keyword that matches MEIER
+    public static final Trip E = new TripBuilder().withName("Berlin berlin")
+            .withLocation("Berlin, Germany")
+            .withDateRange("2022-06-10", "2022-06-21").build();
 
     private TypicalTrips() {} // prevents instantiation
 
@@ -42,5 +43,9 @@ public class TypicalTrips {
 
     public static List<Trip> getTypicalTrips() {
         return new ArrayList<>(Arrays.asList(A, B, C, D));
+    }
+
+    public static Trip getGermanyTrip() {
+        return E;
     }
 }

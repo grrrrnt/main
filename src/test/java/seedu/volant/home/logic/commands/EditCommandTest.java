@@ -5,7 +5,8 @@ import static seedu.volant.home.logic.commands.CommandTestUtil.VALID_DATETO_CNY;
 import static seedu.volant.home.logic.commands.CommandTestUtil.VALID_LOCATION_CNY;
 import static seedu.volant.home.logic.commands.CommandTestUtil.VALID_TRIPNAME_CNY;
 import static seedu.volant.home.logic.commands.CommandTestUtil.assertCommandSuccess;
-import static seedu.volant.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
+
+import static seedu.volant.testutil.TypicalIndexes.INDEX_FIRST_ITEM;
 import static seedu.volant.testutil.TypicalTrips.getTypicalTripList;
 
 import org.junit.jupiter.api.Test;
@@ -29,7 +30,7 @@ public class EditCommandTest {
     public void execute_allFieldsSpecifiedUnfilteredList_success() {
         Trip editedTrip = new TripBuilder().build();
         EditCommand.EditTripDescriptor descriptor = new EditTripDescriptorBuilder(editedTrip).build();
-        EditCommand editCommand = new EditCommand(INDEX_FIRST_PERSON, descriptor);
+        EditCommand editCommand = new EditCommand(INDEX_FIRST_ITEM, descriptor);
 
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_TRIP_SUCCESS, editedTrip);
 

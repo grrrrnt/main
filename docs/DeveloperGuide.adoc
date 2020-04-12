@@ -100,7 +100,7 @@ View switching is executed by the `Ui` component.
 
 .Component interactions for `goto 1` command in the `HomePage` view.
 
-image::gotoCommand.png[]
+image::gotoCommandSequenceDiagram.png[]
 
 The sections below give more details about each component.
 
@@ -187,7 +187,7 @@ The `Model`,
 === Storage component
 
 .Structure of the Storage Component
-image::StorageDiagram.png[]
+image::StorageClassDiagram.png[]
 
 *API* : link:{repoURL}/src/main/java/seedu/location/storage/Storage.java[`Storage.java`]
 
@@ -387,27 +387,31 @@ Refer to the guide <<DevOps#, here>>.
 
 |`* * *` |user |tag a location to each activity in the itinerary |view where each activity is taking place
 
-|`* * *` |user |edit the entries in my itinerary list |can amend any mistakes when entering data, or change my travel plans
+|`* * *` |user |edit the entries in my itinerary list |amend any mistakes when entering data, or change my travel plans
 
-|`* * *` |user | see a chronological timeline of the activities in the itinerary | can have a clear idea of my travel plans and schedule dur
+|`* * *` |user |see a chronological timeline of the activities in the itinerary |have a clear idea of my travel plans and schedule
+
+|`* * *` |user |view my itinerary and journal separately |view them in a less cluttered manner
 
 |`* * *` |frequent traveler |see a record of all my past itineraries |can review my past travels
 
 |`* * *` |traveler always meeting new people overseas |add a contact that I met during my trip with metadata including their name, age, phone number, location where I met them, and their country of origin |can keep in contact with them
 
-|`* * *` |user |delete contacts |can get rid of contacts that I have not been in touch with for some time
+|`* * *` |user |delete contacts |get rid of contacts that I have not been in touch with for some time
 
-|`* * *` |user |view my itineraries, contact lists and journals specific to the trip they are relevant to |can effectively plan for multiple trips simultaneously
+|`* * *` |user |view my itineraries, contact lists and journals specific to the trip they are relevant to |effectively plan for multiple trips simultaneously
 
-|`* * *` |user |customize trip names |can distinguish between different trips that happen in the same location within similar date ranges
+|`* * *` |user |customize trip names |distinguish between different trips that happen in the same location within similar date ranges
 
-|`* *` |frequent traveler |to be able to see a timeline view of all my short journal entries and photos, including the location and time of the photos and entries, per trip| ??
+|`* *` |frequent traveler |to be able to see a timeline view of all my short journal entries and photos, including the location and time of the photos and entries, per trip |relieve the memories of the trip in its original sequence
 
 |`* *` |food lover |add a meal with description, photo, price and location |keep track of what I ate
 
 |`* *` |user |sort my travel entries by category depending on the ‘feeling’ tag of each travel entry |see my best moments
 
-|`* *` |busy user |list and record items in a packing list |easily reference what I need for a trip at a glance
+|`* *` |user |record items in a packing list|remind myself what I will need on a trip
+
+|`* *` |busy user |list |easily reference what I need for a trip at a glance
 
 |`* *` |fickle-minded user |delete packing list entries |remove items I feel I no longer need for the trip from the packing list
 
@@ -430,7 +434,7 @@ _{All user stories can be viewed in our issue tracker.}_
 *<<mss, MSS>>*
 
 1. User enters details of trip to be added
-2. V writes added trip into data files and displays new trip in the trip list
+2. V adds trip to trip list
 +
 Use case ends
 
@@ -439,21 +443,18 @@ Use case ends
 [none]
 * 1a. V detects invalid characters in trip details
 * 1a1. V outputs error informing user of invalid characters
-* 1a2. V terminates the command
 +
 Use case ends
 
 [none]
 * 1b. V detects missing fields in trip details
 * 1b1. V outputs error informing user of missing fields
-* 1b2. V terminates the command
 +
 Use case ends
 
 [none]
 * 1c. V is unable to detect a valid keyword
 * 1c1. V outputs error informing user of invalid keyword
-* 1c2. V terminates the command
 +
 Use case ends
 
@@ -466,10 +467,10 @@ Use case ends
 
 *MSS*
 
-1. User requests to edit trip at specified index
+1. User requests to edit certain detail(s) of trip at specified index
 2. V requests for details to be overwritten/edited
 3. User enters new trip details
-4. V writes new details back into data files and displays edited trip in the trip list
+4. V edits trip in the trip list
 +
 Use case ends
 
@@ -478,28 +479,32 @@ Use case ends
 [none]
 * 3a. V detects an invalid index i.e. index out of range or negative index
 * 3a1. V outputs error informing user of invalid index specified
-* 3a2. V terminates the command
++
+Use case ends
+
+[none]
+* 3b. V detects invalid characters for the details
+* 3b1. V outputs error informing user of invalid characters
 +
 Use case ends
 
 [none]
 * 3b. V is unable to detect a valid keyword
 * 3b1. V outputs error informing user of invalid keyword
-* 3b2. V terminates the command
 +
 Use case ends
 
 [discrete]
-=== UC03 - Accessing a Trip Folder
+=== UC03 - Navigating to Trip Folder
 
-*Precondition:* User is in the hope page and the trip to access exists
+*Precondition:* User has added a trip
 
-*Guarantee:* User is now in Trip Folder
+*Guarantee:* User will be moved to the Trip page
 
 *MSS*
 
 1. User changes directory to specific trip folder in trip list using index
-2. V loads data in trip folder and displays items in trip folder
+2. V loads and displays trip page
 +
 Use case ends
 
@@ -508,19 +513,17 @@ Use case ends
 [none]
 * 1a. V detects an invalid index i.e. index out of range or negative index
 * 1a1. V outputs error informing user of invalid index specified
-* 1a2. V terminates the command
 +
 Use case ends
 
 [none]
 * 1b. V is unable to detect a valid keyword
 * 1b1. V outputs error informing user of invalid keyword
-* 1b2. V terminates the command
 +
 Use case ends
 
 [discrete]
-=== UC04 - Accessing Pages (Contact List / Trip Itinerary / Journal)
+=== UC04 - Accessing Pages (Contact List/ Itinerary / Journal)
 
 *Precondition:* User is in the home page
 
@@ -539,14 +542,12 @@ Use case ends
 [none]
 * 2a. V detects incorrect command to navigate to the page
 * 2a1. V outputs error informing user of incorrect command
-* 2a2. V terminates the command
 +
 Use case ends
 
 [none]
 * 2b. V is unable to detect a valid keyword
 * 2b1. V outputs error informing user of invalid keyword
-* 2b2. V terminates the command
 +
 Use case ends
 
@@ -569,21 +570,18 @@ Use case ends
 [none]
 * 1a. V detects invalid characters in contact entry
 * 1a1. V outputs error informing user of invalid characters
-* 1a2. V terminates the command
 +
 Use case ends
 
 [none]
 * 1b. V detects missing fields in contact entry
 * 1b1. V outputs error informing user of missing contact entry
-* 1b2. V terminates the command
 +
 Use case ends
 
 [none]
 * 1c. V is unable to detect a valid keyword
 * 1c1. V outputs error informing user of invalid keyword
-* 1c2. V terminates the command
 +
 Use case ends
 
@@ -604,35 +602,32 @@ Use case ends
 *Extensions*
 
 [none]
-* 1a. V detects invalid characters into travel entry
+* 1a. V detects invalid characters in travel entry
 * 1a1. V outputs error informing user of invalid characters
-* 1a2. V terminates the command
 +
 Use case ends
 
 [none]
 * 1b. V detects missing fields in travel entry
 * 1b1. V outputs error informing user of missing travel entry
-* 1b2. V terminates the command
 +
 Use case ends
 
 [none]
 * 1c. V is unable to detect a valid keyword
 * 1c1. V outputs error informing user of invalid keyword
-* 1c2. V terminates the command
 +
 Use case ends
 
 [discrete]
-=== UC07 - Adding Activities into Trip Itinerary
+=== UC07 - Adding Activities into Itinerary
 
 **Precondition: **User is already in the Itinerary page of the Trip
-**Guarantee: **A new activity will be added to the Trip Itinerary
+**Guarantee: **A new activity will be added to the Itinerary
 
 *MSS*
 
-1. User enters activity name, date, time and location
+1. User enters details of activity
 2. V confirms successful entry and displays updated itinerary
 +
 Use case ends
@@ -642,21 +637,18 @@ Use case ends
 [none]
 * 1a. V detects invalid characters into activity entry
 * 1a1. V outputs error informing user of invalid characters
-* 1a2. V terminates the command
 +
 Use case ends
 
 [none]
 * 1b. V detects missing fields in activity entry
 * 1b1. V outputs error informing user of missing activity entry
-* 1b2. V terminates the command
 +
 Use case ends
 
 [none]
 * 1c. V is unable to detect a valid keyword
 * 1c1. V outputs error informing user of invalid keyword
-* 1c2. V terminates the command
 +
 Use case ends
 
@@ -671,7 +663,7 @@ Use case ends
 
 [none]
 1. User requests to delete a contact in the contact list at the specified index
-2. V deletes the contact at the specified index and display the new contact list
+2. V deletes the contact at the specified index and updates the displayed list
 3. Use case ends
 
 *Extensions*
@@ -679,14 +671,12 @@ Use case ends
 [none]
 * 1a. V detects an invalid index i.e. index out of range or negative index
 * 1a1. V outputs error informing user of invalid index specified
-* 1a2. V terminates the command
 +
 Use case ends
 
 [none]
 * 1b. V is unable to detect a valid keyword
 * 1b1. V outputs error informing user of invalid keyword
-* 1b2. V terminates the command
 +
 Use case ends
 
@@ -696,28 +686,34 @@ _{More use cases will be added and current use cases may be edited in the future
 [appendix]
 == Non Functional Requirements
 
-.  Should work on any <<mainstream-os,mainstream OS>> as long as it has Java `11` or above installed.
-.  Should be able to hold up to 100 trips without a noticeable sluggishness in performance for typical usage.
-.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
+.  Volant should work on any <<mainstream-os,mainstream OS>> as long as it has Java `11` or above installed.
+.  Volant should work without any internet connection.
+.  Volant should be able to hold up to 100 trips without noticing a increase in response time from the system for typical usage.
+.  A user who is able to type above 40 words per minute (wpm) for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
 .  Commands should be <<one-shot-c,one-shot>> commands as opposed to <<multi-level-c, multi-level commands>>.
+.  A user should have minimum 100 Megabytes (MB) free disk space on their computer to store the program.
+.  Input by the user should only be in English.
+.  Volant source code should be covered by tests as much as possible.
+.  Volant should work for a single user only.
 
 _{More to be added in future development}_
 
 [appendix]
 == Glossary
-
-[[mss]] MSS::
-
 [[extensions]] Extensions::
+"add-on"s to the MSS that describe exceptional/alternative flow of events.
 
 [[mainstream-os]] Mainstream OS::
 Windows, Linux, Unix, OS-X
 
-[[one-shot-c]] One-shot Commands::
-Commands that are executed using only a single line of user input.
+[[mss]] MSS::
+Main Success Scenario
 
 [[multi-level-c]] Multi-level Commands::
 Commands that require multiple lines of user input for execution.
+
+[[one-shot-c]] One-shot Commands::
+Commands that are executed using only a single line of user input.
 
 
 [appendix]

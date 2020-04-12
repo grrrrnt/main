@@ -5,6 +5,7 @@ import static seedu.volant.home.logic.commands.CommandTestUtil.DATERANGE_DESC_RE
 import static seedu.volant.home.logic.commands.CommandTestUtil.LOCATION_DESC_RECESS;
 import static seedu.volant.home.logic.commands.CommandTestUtil.NAME_DESC_RECESS;
 import static seedu.volant.home.logic.commands.CommandTestUtil.PREAMBLE_WHITESPACE;
+
 import static seedu.volant.home.logic.parser.CommandParserTestUtil.assertParseSuccess;
 import static seedu.volant.testutil.TypicalTrips.B;
 

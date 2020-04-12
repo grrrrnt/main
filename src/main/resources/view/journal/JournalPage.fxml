@@ -5,10 +5,10 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <VBox xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1">
-   <StackPane prefHeight="15.0" prefWidth="200.0" styleClass="stack-header" VBox.vgrow="ALWAYS">
-      <children>
-          <Label fx:id="journalTitle" styleClass="label-header" />
-      </children>
-   </StackPane>
-    <ListView fx:id="entryListView" minHeight="416"/>
+    <StackPane maxHeight="15.0" prefWidth="200.0" styleClass="stack-header" VBox.vgrow="ALWAYS">
+        <children>
+            <Label fx:id="journalTitle" styleClass="label-header"/>
+        </children>
+    </StackPane>
+    <ListView fx:id="entryListView" VBox.vgrow="ALWAYS"/>
 </VBox>

@@ -5,6 +5,7 @@ import static seedu.volant.commons.logic.Page.ITINERARY;
 import static seedu.volant.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.nio.file.Path;
+import java.time.LocalDate;
 import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
@@ -14,6 +15,9 @@ import seedu.volant.commons.logic.Page;
 import seedu.volant.commons.model.Model;
 import seedu.volant.commons.model.ReadOnlyUserPrefs;
 import seedu.volant.commons.model.UserPrefs;
+import seedu.volant.home.model.trip.DateRange;
+import seedu.volant.home.model.trip.Location;
+import seedu.volant.home.model.trip.Name;
 import seedu.volant.home.model.trip.Trip;
 import seedu.volant.itinerary.model.activity.Activity;
 import seedu.volant.itinerary.model.activity.util.DateTimeComparator;
@@ -49,6 +53,21 @@ public class ItineraryModelManager implements Model {
         this.filteredActivities = new FilteredList<>(this.activityList.getActivityList());
 
     }
+
+    public ItineraryModelManager() {
+        Name tripName = new Name("Berlin berlin");
+        Location tripLocation = new Location("Berlin, Germany");
+        DateRange tripDateRange = new DateRange(LocalDate.parse("2022-06-10"), LocalDate.parse("2022-06-21"));
+
+        Trip placeholder = new Trip(tripName, tripLocation, tripDateRange);
+
+        this.trip = placeholder;
+        this.itinerary = trip.getTripFeatureList().getItinerary();
+        this.userPrefs = new UserPrefs();
+        this.activityList = itinerary.getActivityList();
+        this.filteredActivities = new FilteredList<>(this.activityList.getActivityList());
+    }
+
 
     //==========ActivityList============================================================================
 
@@ -98,6 +117,11 @@ public class ItineraryModelManager implements Model {
     public void setActivity(Activity target, Activity editedTrip) {
         requireAllNonNull(target, editedTrip);
         activityList.setActivities(target, editedTrip);
+    }
+
+    public void setActivityList(ActivityList activityList) {
+        requireAllNonNull(activityList);
+        this.activityList = activityList;
     }
 
     public Predicate<Activity> getPredicateShowAllActivities() {
@@ -173,4 +197,22 @@ public class ItineraryModelManager implements Model {
         userPrefs.setVolantFilePath(volantFilePath);
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        // short circuit if same object
+        if (obj == this) {
+            return true;
+        }
+
+        // instanceof handles nulls
+        if (!(obj instanceof ItineraryModelManager)) {
+            return false;
+        }
+
+        // state check
+        ItineraryModelManager other = (ItineraryModelManager) obj;
+        return trip.equals(other.trip)
+                && userPrefs.equals(other.userPrefs)
+                && filteredActivities.equals(other.filteredActivities);
+    }
 }
