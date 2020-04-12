@@ -20,7 +20,7 @@ public class SortCommand extends Command {
             + "Parameters:\t" + "SORT_TYPE \n"
             + "Example:\t" + COMMAND_WORD + " FEELING"
             + "\nNOTE:\t\t"
-            + "Available SORT_TYPEs: OLD, NEW, LOCATION, FEELING";
+            + "Available SORT_TYPE: OLD, NEW, LOCATION, FEELING";
 
     public static final String MESSAGE_SORT_SUCCESS = "Entries sorted successfully by ";
 
