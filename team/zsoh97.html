@@ -4,10 +4,9 @@
 <h2 id="introduction"><a class="link" href="#introduction">Introduction</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Hello, my name is Zeke. At the time of this project (AY19/20), I was a Year 2 Computer Science undergraduate.</p>
-</div>
-<div class="paragraph">
-<p>I am a developer for <code>PROJECT: Volant</code>.</p>
+<p>Hello, my name is Zeke. At the time of this project (AY19/20), I was a Year 2 Computer Science undergraduate at the National University of Singapore. Additionally, I am a software developer in Team Volant. That&#8217;s the team that is working on this
+wonderful travel companion app! We&#8217;re really passionate about this project, so we hope that you enjoy the product
+as much as we enjoy the process.</p>
 </div>
 <div class="paragraph">
 <p>You can find out more about who I am at these links:</p>
@@ -15,7 +14,10 @@
 <div class="ulist">
 <ul>
 <li>
-<p><a href="https://www.linkedin.com/in/zsoh97/">LinkedIn</a></p>
+<p><a href="https://www.linkedin.com/in/zsoh97/">My LinkedIn profile</a></p>
+</li>
+<li>
+<p><a href="https://www.github.com/zsoh97">My github profile</a></p>
 </li>
 </ul>
 </div>
@@ -47,6 +49,9 @@ it is primarily based off of the Address Book 3 application developed by the CS2
 <li>
 <p>Highlights: The implementation of the storage was a bottleneck for our team project as in order to
 implement and test the functionalities of our features, developers had to have data to work with.</p>
+<div class="paragraph">
+<p>This was a challenging task as the functionality of our app required the storage to work and I had to figure it out so fast so my team could meet the assigned deadline. The task involved understanding of how data was originally stored in address book in json file which I have previously read up on, but was not completely familiar with. As a result, I had to trace the entire workings of the program in order to figure out the project.</p>
+</div>
 </li>
 </ul>
 </div>
@@ -78,6 +83,17 @@ implement and test the functionalities of our features, developers had to have d
 <p><strong>Major Enhancement:</strong> Implemented the GUI for the application.</p>
 </li>
 <li>
+<p><strong>Testing:</strong> Did JUnit testing for <code>ITINERARY</code> (with Nguyen)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Highlights: I added JUnit tests for itinerary&#8217;s commands and parsers, while Zeke
+added JUnit tests for itinerary&#8217;s model and storage.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
 <p><strong>Other Contributions</strong></p>
 <div class="ulist">
 <ul>
@@ -86,8 +102,7 @@ implement and test the functionalities of our features, developers had to have d
 <div class="ulist">
 <ul>
 <li>
-<p>Did cosmetic tweaks to existing contents of the User Guide:
-**Community</p>
+<p>Did cosmetic tweaks to existing contents of the User Guide:</p>
 </li>
 <li>
 <p>PRs reviewed(with non-trivial review comments):</p>
@@ -108,13 +123,19 @@ implement and test the functionalities of our features, developers had to have d
 <div class="ulist">
 <ul>
 <li>
-<p>include::../UserGuide.adoc[tag=Introduction]</p>
+<p>Transferred early stage user guide in google doc to adoc.</p>
 </li>
 <li>
-<p>include::../UserGuide.adoc[tag=Features]</p>
+<p><a href="https://github.com/AY1920S2-CS2103T-F09-4/main/blob/master/docs/UserGuide.adoc#1-introduction">Section 1. Introduction</a></p>
 </li>
 <li>
-<p>include::../UserGuide.adoc[tag=Home commands]</p>
+<p><a href="https://github.com/AY1920S2-CS2103T-F09-4/main/blob/master/docs/UserGuide.adoc#3-features">Section 3. Features</a></p>
+</li>
+<li>
+<p><a href="https://github.com/AY1920S2-CS2103T-F09-4/main/blob/master/docs/UserGuide.adoc#commands-for-the-home-page">Section 4.4. Commands for the Home Page</a></p>
+</li>
+<li>
+<p>Formatted command summary to table form</p>
 </li>
 </ul>
 </div>
@@ -127,16 +148,44 @@ implement and test the functionalities of our features, developers had to have d
 <div class="ulist">
 <ul>
 <li>
-<p>include::../DeveloperGuide.adoc[tag=Storage]</p>
+<p><a href="https://ay1920s2-cs2103t-f09-4.github.io/main/DeveloperGuide.html#Design-Storage">3.5 Storage component</a></p>
 </li>
 <li>
-<p>include::../DeveloperGuide.adoc[tag=Views in Volant]</p>
+<p><a href="https://ay1920s2-cs2103t-f09-4.github.io/main/DeveloperGuide.html#adding-a-trip-in-home-page">4.3. Adding a trip in Home Page</a></p>
 </li>
 <li>
-<p>include::../DeveloperGuide.adoc[tag=Adding a trip]</p>
+<p><a href="https://ay1920s2-cs2103t-f09-4.github.io/main/DeveloperGuide.html#sorting-entries-in-journal-page">4.4. Sorting Entries in <code>JOURNAL</code> Page</a></p>
 </li>
 <li>
-<p>include::../DeveloperGuide.adoc[tag=Sorting entries in journal]</p>
+<p><a href="https://ay1920s2-cs2103t-f09-4.github.io/main/DeveloperGuide.html#deleting-trip-in-home-page">4.5. Deleting Trip in <code>HOME</code> Page</a></p>
+</li>
+<li>
+<p><a href="https://ay1920s2-cs2103t-f09-4.github.io/main/DeveloperGuide.html#refreshing-trips-in-home-page">4.8. Refreshing trips in <code>HOME</code> page</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="diagrams"><a class="link" href="#diagrams">Diagrams</a></h4>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://ay1920s2-cs2103t-f09-4.github.io/main/DeveloperGuide.html#Design-Architecture">Figure 4. Component interactions for <code>goto 1</code> command in the <code>HOME</code> page view.</a></p>
+</li>
+<li>
+<p><a href="https://ay1920s2-cs2103t-f09-4.github.io/main/DeveloperGuide.html#Design-Storage">Figure 11. Structure of the Storage Component</a></p>
+</li>
+<li>
+<p><a href="https://ay1920s2-cs2103t-f09-4.github.io/main/DeveloperGuide.html#deleting-trip-in-home-page">Figure 15. Activity Diagram for <code>delete</code> Command</a></p>
+</li>
+<li>
+<p><a href="https://ay1920s2-cs2103t-f09-4.github.io/main/DeveloperGuide.html#refreshing-trips-in-home-page">Figure 18. Activity Diagram for <code>rf</code> Command</a></p>
+</li>
+<li>
+<p><a href="https://ay1920s2-cs2103t-f09-4.github.io/main/DeveloperGuide.html#data-storage">Figure 20. Activity diagram for adding a new trip</a></p>
+</li>
+<li>
+<p><a href="https://ay1920s2-cs2103t-f09-4.github.io/main/DeveloperGuide.html#data-storage">Figure 21. Activity diagram for adding a new activity</a></p>
 </li>
 </ul>
 </div>
@@ -146,4 +195,4 @@ implement and test the functionalities of our features, developers had to have d
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 14:53:02 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 14:56:29 UTC</div></div></div></body></html>
