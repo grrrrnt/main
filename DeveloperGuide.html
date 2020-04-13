@@ -25,8 +25,8 @@
 <ul class="sectlevel2">
 <li><a href="#implementation-view-switching">4.1. View Switching for Navigation Commands</a></li>
 <li><a href="#data-storage">4.2. Data Storage</a></li>
-<li><a href="#some-other-command">4.3. Some Other Command</a></li>
-<li><a href="#some-other-command-2">4.4. Some Other Command</a></li>
+<li><a href="#add-trip-command-in-home-page">4.3. Add Trip Command in Home Page</a></li>
+<li><a href="#sorting-entries-in-journal-page">4.4. Sorting entries in Journal Page</a></li>
 <li><a href="#logging">4.5. Logging</a></li>
 <li><a href="#Implementation-Configuration">4.6. Configuration</a></li>
 </ul>
@@ -685,25 +685,161 @@ summarises what happens when a user deletes a journal entry or itinerary activit
 </div>
 </div>
 <div class="sect2">
-<h3 id="some-other-command"><a class="link" href="#some-other-command">4.3. Some Other Command</a></h3>
+<h3 id="add-trip-command-in-home-page"><a class="link" href="#add-trip-command-in-home-page">4.3. Add Trip Command in Home Page</a></h3>
 <div class="sect3">
 <h4 id="implementation-3"><a class="link" href="#implementation-3">4.3.1. Implementation</a></h4>
-
+<div class="paragraph">
+<p>Adding a trip</p>
+</div>
+<div class="paragraph">
+<p>The add trip feature allows user to add a trip to Volant. This feature is facilitated by <code>HomeInputParser</code>, <code>AddCommandParser</code> and <code>AddCommand</code>.</p>
+</div>
+<div class="paragraph">
+<p>Given below is an example usage scenario and how the trip add mechanism behaves at each step:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The user executes the add command in <code>HOME</code> page and provides the required metadata in the correct format to be added.</p>
+</li>
+<li>
+<p><code>HomeInputParser</code> parses the input by the user to check if the input provided contains a valid command keyword.</p>
+</li>
+<li>
+<p><code>AddCommandParser</code> parses the remaining input by the user for metadata denoted with prefixes.</p>
+</li>
+<li>
+<p><code>AddCommandParser</code> checks if the metadata input by the user is in the desired format.</p>
+</li>
+<li>
+<p><code>AddCommandParser</code> creates a new <code>AddCommand</code> based on the metadata provided.</p>
+</li>
+<li>
+<p><code>HomeLogicManager</code> executes the <code>AddCommand</code>.</p>
+</li>
+<li>
+<p><code>HomeModelManager</code> checks if the new <code>TRIP</code> has any logical conflicts with existing <code>TRIP</code>(s)</p>
+</li>
+<li>
+<p><code>HomeModelManager</code> adds the module to the <code>UniqueActivityList</code>.</p>
+</li>
+<li>
+<p>A new folder with the <code>TRIP</code> name is created.</p>
+</li>
+<li>
+<p><code>HomeLogicManager</code> updates storage with updated <code>UniqueActivityList</code>.</p>
+</li>
+<li>
+<p><code>MainWindow</code> receives <code>CommandResult</code> from <code>HomeLogicManager</code> containing success message to be displayed to user.</p>
+</li>
+<li>
+<p>Trips displayed in <code>MainWindow</code> are updated and <code>MainWindow</code> displays success message.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The following activity diagram summarizes what happens when a user executes a add trip command:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/AddTripActivityDiagram.png" alt="AddTripActivityDiagram">
+</div>
+<div class="title">Figure 17. Activity Diagram for <code>add</code> Command</div>
+</div>
 </div>
 <div class="sect3">
 <h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">4.3.2. Design Considerations</a></h4>
-
+<div class="sect4">
+<h5 id="aspect-how-data-is-stored"><a class="link" href="#aspect-how-data-is-stored">Aspect: How data is stored</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Saves the trip details in main volant json folder and create a folder corresponding to <code>TRIP</code> name.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to implement.</p>
+</li>
+<li>
+<p>Cons: Less organised as all trip details are stored in one location. Any error in the way one trip is stored will cause all trips not to be loaded.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Create a individual json file for each trip details.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: An error in the file of one trip will not affect the loading of other trips.</p>
+</li>
+<li>
+<p>Cons: Harder to implement retrieval</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="some-other-command-2"><a class="link" href="#some-other-command-2">4.4. Some Other Command</a></h3>
+<h3 id="sorting-entries-in-journal-page"><a class="link" href="#sorting-entries-in-journal-page">4.4. Sorting entries in Journal Page</a></h3>
 <div class="sect3">
 <h4 id="implementation-4"><a class="link" href="#implementation-4">4.4.1. Implementation</a></h4>
-
+<div class="paragraph">
+<p>Sorting journal entries</p>
 </div>
-<div class="sect3">
-<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">4.4.2. Design Considerations</a></h4>
-
+<div class="paragraph">
+<p>The sort feature allows user to sort the entries in the <code>JOURNAL</code> of a trip. This feature is facilitated by <code>JournalInputParser</code>, <code>SortCommandParser</code> and <code>SortCommand</code>.</p>
+</div>
+<div class="paragraph">
+<p>Given below is an example usage scenario and how the trip add mechanism behaves at each step:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The user executes the sort command in <code>JOURNAL</code> page and provides a field which they want the entries to be sorted by.</p>
+</li>
+<li>
+<p><code>JournalInputParser</code> parses the input by the user to check if the input provided contains a valid command keyword.</p>
+</li>
+<li>
+<p><code>SortCommandParser</code> parses the remaining input by the user for field.</p>
+</li>
+<li>
+<p><code>SortCommandParser</code> checks if the field input by the user is a valid field to sort by.</p>
+</li>
+<li>
+<p><code>SortCommandParser</code> creates a new <code>SortCommand</code> based on the field provided.</p>
+</li>
+<li>
+<p><code>JournalLogicManager</code> executes the <code>SortCommand</code>.</p>
+</li>
+<li>
+<p><code>JournalModelManager</code> sorts the entries according to the input field.</p>
+</li>
+<li>
+<p><code>JournalLogicManager</code> updates storage with updated <code>UniqueEntryList</code>.</p>
+</li>
+<li>
+<p><code>MainWindow</code> receives <code>CommandResult</code> from <code>HomeLogicManager</code> containing success message to be displayed to user.</p>
+</li>
+<li>
+<p>Jounral entries displayed in <code>MainWindow</code> are updated and <code>MainWindow</code> displays success message.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The following activity diagram summarizes what happens when a user executes a add trip command:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/sortActivityDiagram.png" alt="sortActivityDiagram">
+</div>
+<div class="title">Figure 18. Activity Diagram for <code>sort</code> Command</div>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -1747,4 +1883,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 07:40:37 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 07:55:23 UTC</div></div></div></body></html>

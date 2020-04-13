@@ -38,32 +38,79 @@ it is primarily based off of the Address Book 3 application developed by the CS2
 <p>You can view my code contributions to this project
 <a href="https://nus-cs2103-ay1920s2.github.io/tp-dashboard/#search=raniceyue&amp;sort=groupTitle&amp;sortWithin=title&amp;since=&amp;timeframe=commit&amp;mergegroup=false&amp;groupSelect=groupByRepos&amp;breakdown=false">on RepoSense</a>.</p>
 </div>
+<div class="sect3">
+<h4 id="enhancements-implemented"><a class="link" href="#enhancements-implemented">Enhancements Implemented</a></h4>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major Enhancement:</strong> Implemented mechanism for view switching</p>
+<p><strong>Major Enhancement:</strong> Implemented mechanism for view switching through <code>MainWindow.java</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: Allows users to navigate between different pages in the application and execute commands in different contexts.
+<p><strong>What it does</strong><br>
+    Allows users to navigate between different pages in the application and execute commands in different contexts.
 More information about this enhancement can be found <a href="https://www.ranice.net/main/DeveloperGuide.html#view-switching">here</a>.</p>
 </li>
 <li>
-<p>Justification: Rather than placing all features in one messy singular view, users are able to focus on one single view.</p>
+<p><strong>Justification</strong><br>
+Rather than placing all features in one messy singular view, users are able to focus on one single view.</p>
 </li>
 <li>
-<p>Highlights: The implementation of the view switching mechanism was a bottleneck for our team project as in order to
+<p><strong>Highlights</strong><br>
+    The implementation of the view switching mechanism was a bottleneck for our team project as in order to
 implement and test the other features of the application, developers must be able to switch between views.</p>
+<div class="paragraph">
+<p>This was not easy to do, I spent a lot of time trying to figure out the mechanics of how to do it as it involves refactoring
+the logic of the program and the <code>.fxml</code> files in order to see the results. Because of this mechanism, every page has to
+have its own logic and model to accommodate similar keywords being used on each page.</p>
+</div>
+<div class="paragraph">
+<p>Rather than creating custom commands for each page and a single logic component, it is neater to abstract and create a
+logic and model component for each page. That way commands with a single keyword e.g. <code>add</code>, <code>delete</code> can be used on
+multiple pages. This also makes it more convenient and user friendly for users.</p>
+</div>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Major Enhancement:</strong> Implemented Home Page of application</p>
+<p><strong>Major Enhancement:</strong> Implemented all navigation commands</p>
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: Allows users to view and manipulate the trip list in the application.</p>
+<p><strong>What it does</strong><br>
+Allows users to navigate between different pages conveniently through short commands such as <code>back</code> and <code>goto</code>.<br></p>
+</li>
+<li>
+<p><strong>Justification</strong><br>
+Rather than moving the mouse to click buttons, users can easily navigate through the pages without moving their hands away
+from the keyboard.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>Map of Navigation Commands</strong><br></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/navigation-cheatsheet.png" alt="navigation cheatsheet" width="600">
+</div>
+</div>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Major Enhancement:</strong> Implemented Home Page of application<br></p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: Allows users to view and manipulate the trip list in the application, and view past and upcoming trips.</p>
 </li>
 </ul>
 </div>
@@ -73,59 +120,36 @@ implement and test the other features of the application, developers must be abl
 <div class="ulist">
 <ul>
 <li>
-<p>Credits: Main design was inspired by <a href="https://en.wikipedia.org/wiki/Windows_1.0">Windows 1.0</a></p>
+<p><strong>Justification</strong><br>
+I wanted to completely move away from the Address Book 3 design and differentiate our application from
+the rest of the teams.</p>
+</li>
+<li>
+<p><strong>Credits</strong><br>
+Main design was inspired by <a href="https://en.wikipedia.org/wiki/Windows_1.0">Windows 1.0</a></p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Other Contributions</strong></p>
+<p><strong>Major Enhancement:</strong> Implemented Help Windows for different views</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Project management</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Managed overall team workflow as a team leader</p>
+<p><strong>What it does</strong><br>
+Every view on the application has a custom Help Window detailing the commands that can be used on each page.</p>
 </li>
 <li>
-<p>Managed and reviewed team PRs before merging</p>
-</li>
-<li>
-<p>Managed other miscellaneous logistics on Github such as the issue tracker</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Documentation</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Customised the <code>asciidoctor.css</code> file to create a more aesthetically pleasing application.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Project Branding</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Designed the Volant&#8217;s logo</p>
-</li>
-<li>
-<p>Credits: Logo design was inspired
-by <a href="https://www.google.com/search?q=patagonia+logo&amp;tbm=isch&amp;ved=2ahUKEwjrrpjwlrroAhUaj0sFHeZuDbkQ2-cCegQIABAA&amp;oq=patagonia+logo&amp;gs_lcp=CgNpbWcQAzIECCMQJzIECCMQJzIECAAQQzIECAAQQzICCAAyAggAMgIIADICCAAyAggAMgIIAFCTJFijJWDPJmgAcAB4AIABMogBXpIBATKYAQCgAQGqAQtnd3Mtd2l6LWltZw&amp;sclient=img&amp;ei=hbF9XqvYKZqertoP5t21yAs&amp;bih=629&amp;biw=1340#imgrc=3QLx2EoUdugRJM">Patagonia</a>.</p>
+<p><strong>Justification</strong><br>
+Implementing a general help page with every single command is not convenient for users as they have to scroll through
+the entire help page to find the commands for the page they are on. It is much more convenient to directly show users
+what commands can be used on the page they are specifically on.</p>
 </li>
 </ul>
 </div>
 </li>
 </ul>
 </div>
-</li>
-</ul>
 </div>
 </div>
 <div class="sect2">
@@ -135,7 +159,7 @@ by <a href="https://www.google.com/search?q=patagonia+logo&amp;tbm=isch&amp;ved=
 <div class="ulist">
 <ul>
 <li>
-<p>Section 1</p>
+<p>Created all screenshots in the UG.</p>
 </li>
 <li>
 <p>Section 2</p>
@@ -164,10 +188,72 @@ by <a href="https://www.google.com/search?q=patagonia+logo&amp;tbm=isch&amp;ved=
 </li>
 </ul>
 </div>
+</div>
+<div class="sect3">
+<h4 id="diagrams"><a class="link" href="#diagrams">Diagrams</a></h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Figure n</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="contributions-to-team-based-tasks"><a class="link" href="#contributions-to-team-based-tasks">Contributions to team-based tasks</a></h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Project Management</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Managed overall team workflow as a team leader.</p>
+</li>
+<li>
+<p>Managed and reviewed team PRs before merging.</p>
+</li>
+<li>
+<p>Managed other miscellaneous logistics on Github such as the issue tracker, Travis and Codacy.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Team Website</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Customised the <code>asciidoctor.css</code> file to create a more aesthetically pleasing website.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Project Branding</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Designed Volant&#8217;s logo and repo thumbnail.</p>
+</li>
+<li>
+<p>Credits: Logo design was inspired
+by <a href="https://www.google.com/search?q=patagonia+logo&amp;tbm=isch&amp;ved=2ahUKEwjrrpjwlrroAhUaj0sFHeZuDbkQ2-cCegQIABAA&amp;oq=patagonia+logo&amp;gs_lcp=CgNpbWcQAzIECCMQJzIECCMQJzIECAAQQzIECAAQQzICCAAyAggAMgIIADICCAAyAggAMgIIAFCTJFijJWDPJmgAcAB4AIABMogBXpIBATKYAQCgAQGqAQtnd3Mtd2l6LWltZw&amp;sclient=img&amp;ei=hbF9XqvYKZqertoP5t21yAs&amp;bih=629&amp;biw=1340#imgrc=3QLx2EoUdugRJM">Patagonia</a>.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="contributions-beyond-the-project-team"><a class="link" href="#contributions-beyond-the-project-team">Contributions beyond the project team</a></h3>
 <div class="paragraph">
-<p><em>{To be updated in the future}</em></p>
+<p><a href="https://github.com/nus-cs2103-AY1920S2/forum/issues?q=is%3Aissue+author%3Araniceyue">
+Here is a link to the issues I have made in the module&#8217;s Github forum.</a>
+I have made a total of 7 issues, one sharing technical information and another which I resolved on my own.</p>
 </div>
 </div>
 </div>
-</div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 07:40:37 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 07:55:23 UTC</div></div></div></body></html>
