@@ -83,7 +83,9 @@ public class JournalPageCard extends UiPart<Region> {
         } else {
             String weather = entry.getWeather().toString();
             entryWeather.setText(weather.substring(0, 1) + weather.substring(1).toLowerCase());
-            entryWeather.setGraphic(weatherIcon);
+        }
+
+        if (!entry.getFeeling().toString().equals("NULL")) {
             String feeling = entry.getFeeling().toString();
             setFeeling(feeling);
         }
