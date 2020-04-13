@@ -24,11 +24,31 @@
 <li><a href="#implementation">4. Implementation</a>
 <ul class="sectlevel2">
 <li><a href="#implementation-view-switching">4.1. View Switching for Navigation Commands</a></li>
-<li><a href="#data-storage">4.2. Data Storage</a></li>
-<li><a href="#add-trip-command-in-home-page">4.3. Add Trip Command in Home Page</a></li>
-<li><a href="#sorting-entries-in-journal-page">4.4. Sorting entries in Journal Page</a></li>
-<li><a href="#adding-activities-in-itinerary-page">4.5. Adding activities in Itinerary Page</a></li>
-<li><a href="#finding-activities-in-itinerary-page">4.6. Finding activities in Itinerary Page</a></li>
+<li><a href="#adding-a-trip-in-home-page">4.2. Adding a trip in Home Page</a></li>
+<li><a href="#sorting-entries-in-journal-page">4.3. Sorting entries in Journal Page</a></li>
+<li><a href="#adding-an-activity-in-itinerary-page">4.4. Adding an activity in Itinerary Page</a></li>
+<li><a href="#finding-activities-in-itinerary-page">4.5. Finding activities in Itinerary Page</a></li>
+<li><a href="#data-storage">4.6. Data Storage</a></li>
+<li><a href="#logging">4.7. Logging</a></li>
+<li><a href="#Implementation-Configuration">4.8. Configuration</a></li>
+</ul>
+</li>
+<li><a href="#documentation">5. Documentation</a></li>
+<li><a href="#testing">6. Testing</a></li>
+<li><a href="#dev-ops">7. Dev Ops</a></li>
+<li><a href="#product-scope">Appendix A: Product Scope</a></li>
+<li><a href="#user-stories">Appendix B: User Stories</a></li>
+<li><a href="#use-cases">Appendix C: Use Cases</a></li>
+<li><a href="#non-functional-requirements">Appendix D: Non Functional Requirements</a></li>
+<li><a href="#glossary">Appendix E: Glossary</a></li>
+<li><a href="#product-survey">Appendix F: Product Survey</a></li>
+<li><a href="#instructions-for-manual-testing">Appendix G: Instructions for Manual Testing</a>
+<ul class="sectlevel2">
+<li><a href="#launch-and-shutdown">G.1. Launch and Shutdown</a></li>
+<li><a href="#deleting-a-code-trip-code">G.2. Deleting a <code>TRIP</code></a></li>
+<li><a href="#saving-data">G.3. Saving data</a></li>
+<li><a href="#deleting-an-code-activity-code">G.4. Deleting an <code>activity</code></a></li>
+<li><a href="#deleting-an-code-entry-code">G.5. Deleting an <code>entry</code></a></li>
 </ul>
 </li>
 </ul>
@@ -459,220 +479,9 @@ displayed.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="data-storage"><a class="link" href="#data-storage">4.2. Data Storage</a></h3>
-<div class="paragraph">
-<p>All data (trip details, journal entry details and itinerary details) is saved in the <code>main.data</code> directory.</p>
-</div>
+<h3 id="adding-a-trip-in-home-page"><a class="link" href="#adding-a-trip-in-home-page">4.2. Adding a trip in Home Page</a></h3>
 <div class="sect3">
-<h4 id="organisation"><a class="link" href="#organisation">4.2.1. Organisation</a></h4>
-<div class="imageblock" style="text-align: center">
-<div class="content">
-<img src="images/user-guide/data-storage.png" alt="data storage">
-</div>
-<div class="title">Figure 12. Data Storage in Volant</div>
-</div>
-<div class="paragraph">
-<p>The data files are organised in a way that trip details are stored in <code>volant.json</code>, while journal and itinerary details
-are stored in a <code>journal.json</code> file and a <code>itinerary.json</code> file respectively. Both of these data files are organised
-under a directory that represents the trip that the journal and itinerary are associated with.</p>
-</div>
-<div class="paragraph">
-<p>The following explanation provides more details about these data files:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Within the <code>main.data</code> directory, the <code>volant.json</code> file contains a list of JSON objects, each representing a trip,
-with key-value pairs identifying the trip name, location and date range.Upon creation of a trip named "ABC", the
-<code>volant.json</code> file is updated with a new JSON object representing the trip. The <code>main.data.ABC</code> directory is also
-created.</p>
-</li>
-<li>
-<p>When an activity is added to the itinerary, a <code>itinerary.json</code> file is created in the <code>main.data.ABC</code> directory,
-containing a list of JSON objects, each representing an activity, with key-value pairs identifying the activity title,
-location, date and time.</p>
-</li>
-<li>
-<p>When an entry is added to the journal, a <code>journal.json</code> file is created in the <code>main.data.ABC</code> directory, containing
-a list of JSON objects, each representing a journal entry, with key-value pairs identifying the entry content, date,
-time, location, feeling and weather.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="design-considerations"><a class="link" href="#design-considerations">4.2.2. Design Considerations</a></h4>
-<div class="paragraph">
-<p>Pros:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Each data file can be kept small in size.</p>
-</li>
-<li>
-<p>This allows for faster retrieval of trip/journal/itinerary information from these data files.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Cons:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>There is no single data file that provides an overview of all of a user&#8217;s data.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="implementation-adding-a-new-trip-activity"><a class="link" href="#implementation-adding-a-new-trip-activity">4.2.3. Implementation: Adding a new trip/activity</a></h4>
-<div class="paragraph">
-<p>Given below is an example usage scenario where a user adds a new trip:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>The user executes the add command and provides the name, location and date range.</p>
-</li>
-<li>
-<p>A new <code>Trip</code> object is created with the specified name, location and date range.</p>
-</li>
-<li>
-<p>In <code>HomeModelManager</code>, the <code>Trip</code> object is added to the <code>TripList</code>.</p>
-</li>
-<li>
-<p>A new folder is created in the <code>main.data</code> directory with the specified trip name.</p>
-</li>
-<li>
-<p><code>HomeLogicManager</code> accesses the <code>volant.json</code> file in the <code>main.data</code> directory.</p>
-</li>
-<li>
-<p>Each <code>Trip</code> object in the <code>TripList</code> is converted into a <code>JsonAdaptedTrip</code> object.</p>
-</li>
-<li>
-<p>A new <code>JsonSerializableTripList</code> object is created with the <code>JsonAdaptedTrip</code> objects.</p>
-</li>
-<li>
-<p>The new <code>JsonSerializableTripList</code> object is saved to the <code>volant.json</code> data file.</p>
-</li>
-<li>
-<p>The program log displays a success message.</p>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p>The following activity diagram summarises what happens when a user adds a new trip:</p>
-</div>
-<div class="imageblock" style="text-align: center">
-<div class="content">
-<img src="images/addTripStorageActivityDiagram.png" alt="addTripStorageActivityDiagram">
-</div>
-<div class="title">Figure 13. Activity diagram for adding a new trip</div>
-</div>
-<div class="paragraph">
-<p>The process is similar for the scenario where the user adds a new activity to the itinerary, and the <code>itinerary.json</code>
-data file is updated. The following activity diagram summarises this process:</p>
-</div>
-<div class="imageblock" style="text-align: center">
-<div class="content">
-<img src="images/addActivityStorageActivityDiagram.png" alt="addActivityStorageActivityDiagram">
-</div>
-<div class="title">Figure 14. Activity diagram for adding a new activity</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="implementation-editing-a-trip"><a class="link" href="#implementation-editing-a-trip">4.2.4. Implementation: Editing a trip</a></h4>
-<div class="paragraph">
-<p>Given below is an example usage scenario where a user edits a trip:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>The user executes the edit command and provides the updated details.</p>
-</li>
-<li>
-<p><code>HomeLogicManager</code> checks if the name of the trip was updated. If it was, a new directory will be created with the
-new trip name. Data files in the previous folder are moved into this new folder. Following that, the old folder is
-deleted.</p>
-</li>
-<li>
-<p><code>HomeLogicManager</code> accesses the <code>volant.json</code> file in the <code>main.data</code> directory.</p>
-</li>
-<li>
-<p>Each <code>Trip</code> object in the <code>TripList</code> is converted into a <code>JsonAdaptedTrip</code> object.</p>
-</li>
-<li>
-<p>A new <code>JsonSerializableTripList</code> object is created with the <code>JsonAdaptedTrip</code> objects.</p>
-</li>
-<li>
-<p>The new <code>JsonSerializableTripList</code> object is saved to the <code>volant.json</code> data file.</p>
-</li>
-<li>
-<p>The program log displays a success message.</p>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p>The following activity diagram summarises what happens when a user edits a trip:</p>
-</div>
-<div class="imageblock" style="text-align: center">
-<div class="content">
-<img src="images/editTripStorageActivityDiagram.png" alt="editTripStorageActivityDiagram">
-</div>
-<div class="title">Figure 15. Activity diagram for editing a trip</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="implementation-deleting-a-journal-entry-itinerary-activity"><a class="link" href="#implementation-deleting-a-journal-entry-itinerary-activity">4.2.5. Implementation: Deleting a journal entry/itinerary activity</a></h4>
-<div class="paragraph">
-<p>Given below is an example usage scenario where a user deletes a journal entry:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>The user executes the delete command.</p>
-</li>
-<li>
-<p>In <code>JournalModelManager</code>, the identified <code>Entry</code> is removed from the <code>EntryList</code>.</p>
-</li>
-<li>
-<p><code>JournalLogicManager</code> accesses the <code>journal.json</code> file in the specific trip directory.</p>
-</li>
-<li>
-<p>Each remaining <code>Entry</code> object in the <code>EntryList</code> is converted into a <code>JsonAdaptedEntry</code> object.</p>
-</li>
-<li>
-<p>A new <code>JsonSerializableEntryList</code> object is created with the <code>JsonAdaptedEntry</code> objects.</p>
-</li>
-<li>
-<p>The new <code>JsonSerializableEntryList</code> object is saved to the <code>journal.json</code> data file.</p>
-</li>
-<li>
-<p>The program log displays a success message.</p>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p>This process is the same for scenarios where the user deletes an itinerary activity. The following activity diagram
-summarises what happens when a user deletes a journal entry or itinerary activity:</p>
-</div>
-<div class="imageblock" style="text-align: center">
-<div class="content">
-<img src="images/deleteStorageActivityDiagram.png" alt="deleteStorageActivityDiagram">
-</div>
-<div class="title">Figure 16. Activity diagram for deleting a journal entry/itinerary activity</div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="add-trip-command-in-home-page"><a class="link" href="#add-trip-command-in-home-page">4.3. Add Trip Command in Home Page</a></h3>
-<div class="sect3">
-<h4 id="implementation-3"><a class="link" href="#implementation-3">4.3.1. Implementation</a></h4>
-<div class="paragraph">
-<p>Adding a trip</p>
-</div>
+<h4 id="implementation-3"><a class="link" href="#implementation-3">4.2.1. Implementation</a></h4>
 <div class="paragraph">
 <p>The add trip feature allows user to add a trip to Volant. This feature is facilitated by <code>HomeInputParser</code>, <code>AddCommandParser</code>, and <code>AddCommand</code>.</p>
 </div>
@@ -720,17 +529,17 @@ summarises what happens when a user deletes a journal entry or itinerary activit
 </ol>
 </div>
 <div class="paragraph">
-<p>The following activity diagram summarizes what happens when a user executes a add trip command:</p>
+<p>The following activity diagram summarises what happens when a user executes a add trip command:</p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/AddTripActivityDiagram.png" alt="AddTripActivityDiagram">
 </div>
-<div class="title">Figure 17. Activity Diagram for <code>add</code> Command</div>
+<div class="title">Figure 12. Activity Diagram for <code>add</code> Command</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">4.3.2. Design Considerations</a></h4>
+<h4 id="design-considerations"><a class="link" href="#design-considerations">4.2.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-data-is-stored"><a class="link" href="#aspect-how-data-is-stored">Aspect: How data is stored</a></h5>
 <div class="ulist">
@@ -767,9 +576,9 @@ summarises what happens when a user deletes a journal entry or itinerary activit
 </div>
 </div>
 <div class="sect2">
-<h3 id="sorting-entries-in-journal-page"><a class="link" href="#sorting-entries-in-journal-page">4.4. Sorting entries in Journal Page</a></h3>
+<h3 id="sorting-entries-in-journal-page"><a class="link" href="#sorting-entries-in-journal-page">4.3. Sorting entries in Journal Page</a></h3>
 <div class="sect3">
-<h4 id="implementation-4"><a class="link" href="#implementation-4">4.4.1. Implementation</a></h4>
+<h4 id="implementation-4"><a class="link" href="#implementation-4">4.3.1. Implementation</a></h4>
 <div class="paragraph">
 <p>Sorting journal entries</p>
 </div>
@@ -814,23 +623,20 @@ summarises what happens when a user deletes a journal entry or itinerary activit
 </ol>
 </div>
 <div class="paragraph">
-<p>The following activity diagram summarizes what happens when a user executes a sort journal command:</p>
+<p>The following activity diagram summarises what happens when a user executes a sort journal command:</p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
-<img src="images/sortActivityDiagram.png" alt="sortActivityDiagram" width="]">
+<img src="images/SortActivityDiagram.png" alt="SortActivityDiagram" width="]">
 </div>
-<div class="title">Figure 18. Activity Diagram for <code>sort</code> Command</div>
+<div class="title">Figure 13. Activity Diagram for <code>sort</code> Command</div>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="adding-activities-in-itinerary-page"><a class="link" href="#adding-activities-in-itinerary-page">4.5. Adding activities in Itinerary Page</a></h3>
+<h3 id="adding-an-activity-in-itinerary-page"><a class="link" href="#adding-an-activity-in-itinerary-page">4.4. Adding an activity in Itinerary Page</a></h3>
 <div class="sect3">
-<h4 id="implementation-5"><a class="link" href="#implementation-5">4.5.1. Implementation</a></h4>
-<div class="paragraph">
-<p>Adding an activity</p>
-</div>
+<h4 id="implementation-5"><a class="link" href="#implementation-5">4.4.1. Implementation</a></h4>
 <div class="paragraph">
 <p>The add activity feature allows user to add an activity to a current trip. This feature is faciliated by <code>ItineraryInputParser</code>, <code>AddCommandParser</code>, and <code>AddCommand</code>.</p>
 </div>
@@ -878,17 +684,17 @@ summarises what happens when a user deletes a journal entry or itinerary activit
 </ol>
 </div>
 <div class="paragraph">
-<p>The following activity diagram summarizes what happens when a user executes a add activity command:</p>
+<p>The following activity diagram summarises what happens when a user executes an add activity command:</p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/AddActivity.png" alt="AddActivity" width="]">
 </div>
-<div class="title">Figure 19. Activity Diagram for <code>add</code> Command</div>
+<div class="title">Figure 14. Activity Diagram for <code>add</code> Command</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">4.5.2. Design Considerations</a></h4>
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">4.4.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-prerequisite-of-the-command"><a class="link" href="#aspect-prerequisite-of-the-command">Aspect: Prerequisite of the command</a></h5>
 <div class="paragraph">
@@ -898,12 +704,9 @@ summarises what happens when a user deletes a journal entry or itinerary activit
 </div>
 </div>
 <div class="sect2">
-<h3 id="finding-activities-in-itinerary-page"><a class="link" href="#finding-activities-in-itinerary-page">4.6. Finding activities in Itinerary Page</a></h3>
+<h3 id="finding-activities-in-itinerary-page"><a class="link" href="#finding-activities-in-itinerary-page">4.5. Finding activities in Itinerary Page</a></h3>
 <div class="sect3">
-<h4 id="implementation-6"><a class="link" href="#implementation-6">4.6.1. Implementation</a></h4>
-<div class="paragraph">
-<p>Finding an activity</p>
-</div>
+<h4 id="implementation-6"><a class="link" href="#implementation-6">4.5.1. Implementation</a></h4>
 <div class="paragraph">
 <p>The find activity feature allows user to find one or several activities in the current trip with matching keywords provided. This feature is faciliated by <code>ItineraryInputParser</code>, <code>FindCommandParser</code>, and <code>FindCommand</code>.</p>
 </div>
@@ -943,22 +746,22 @@ summarises what happens when a user deletes a journal entry or itinerary activit
 <p><code>MainWindow</code> receives <code>CommandResult</code> from <code>ItineraryLogicManager</code> containing success message to be displayed to user.</p>
 </li>
 <li>
-<p>Jounral entries displayed in <code>MainWindow</code> are updated and <code>MainWindow</code> displays success message.</p>
+<p>Journal entries displayed in <code>MainWindow</code> are updated and <code>MainWindow</code> displays success message.</p>
 </li>
 </ol>
 </div>
 <div class="paragraph">
-<p>The following activity diagram summarizes what happens when a user executes a find activity command:</p>
+<p>The following activity diagram summarises what happens when a user executes a find activity command:</p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/FindItinerary.png" alt="FindItinerary" width="]">
 </div>
-<div class="title">Figure 20. Activity Diagram for <code>find</code> Command</div>
+<div class="title">Figure 15. Activity Diagram for <code>find</code> Command</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">4.6.2. Design Considerations</a></h4>
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">4.5.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-syntax-of-the-find-command"><a class="link" href="#aspect-syntax-of-the-find-command">Aspect: Syntax of the find command</a></h5>
 <div class="ulist">
@@ -991,23 +794,226 @@ summarises what happens when a user deletes a journal entry or itinerary activit
 </li>
 </ul>
 </div>
-<div class="exampleblock">
-<div class="content">
-<div class="imageblock">
-<div class="content">
-<img src="images/SortActivityDiagram.png" alt="SortActivityDiagram">
 </div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="data-storage"><a class="link" href="#data-storage">4.6. Data Storage</a></h3>
+<div class="paragraph">
+<p>All data (trip details, journal entry details and itinerary details) is saved in the <code>main.data</code> directory.</p>
+</div>
+<div class="sect3">
+<h4 id="organisation"><a class="link" href="#organisation">4.6.1. Organisation</a></h4>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="images/user-guide/data-storage.png" alt="data storage">
+</div>
+<div class="title">Figure 16. Data Storage in Volant</div>
 </div>
 <div class="paragraph">
-<p>=== Logging</p>
+<p>The data files are organised in a way that trip details are stored in <code>volant.json</code>, while journal and itinerary details
+are stored in a <code>journal.json</code> file and a <code>itinerary.json</code> file respectively. Both of these data files are organised
+under a directory that represents the trip that the journal and itinerary are associated with.</p>
 </div>
+<div class="paragraph">
+<p>The following explanation provides more details about these data files:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Within the <code>main.data</code> directory, the <code>volant.json</code> file contains a list of JSON objects, each representing a trip,
+with key-value pairs identifying the trip name, location and date range.Upon creation of a trip named "ABC", the
+<code>volant.json</code> file is updated with a new JSON object representing the trip. The <code>main.data.ABC</code> directory is also
+created.</p>
+</li>
+<li>
+<p>When an activity is added to the itinerary, a <code>itinerary.json</code> file is created in the <code>main.data.ABC</code> directory,
+containing a list of JSON objects, each representing an activity, with key-value pairs identifying the activity title,
+location, date and time.</p>
+</li>
+<li>
+<p>When an entry is added to the journal, a <code>journal.json</code> file is created in the <code>main.data.ABC</code> directory, containing
+a list of JSON objects, each representing a journal entry, with key-value pairs identifying the entry content, date,
+time, location, feeling and weather.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">4.6.2. Design Considerations</a></h4>
+<div class="paragraph">
+<p>Pros:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Each data file can be kept small in size.</p>
+</li>
+<li>
+<p>This allows for faster retrieval of trip/journal/itinerary information from these data files.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Cons:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>There is no single data file that provides an overview of all of a user&#8217;s data.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="data-storage-implementation-adding-a-new-trip-activity"><a class="link" href="#data-storage-implementation-adding-a-new-trip-activity">4.6.3. Data storage implementation: Adding a new trip/activity</a></h4>
+<div class="paragraph">
+<p>Given below is an example usage scenario where a user adds a new trip:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The user executes the add command and provides the name, location and date range.</p>
+</li>
+<li>
+<p>A new <code>Trip</code> object is created with the specified name, location and date range.</p>
+</li>
+<li>
+<p>In <code>HomeModelManager</code>, the <code>Trip</code> object is added to the <code>TripList</code>.</p>
+</li>
+<li>
+<p>A new folder is created in the <code>main.data</code> directory with the specified trip name.</p>
+</li>
+<li>
+<p><code>HomeLogicManager</code> accesses the <code>volant.json</code> file in the <code>main.data</code> directory.</p>
+</li>
+<li>
+<p>Each <code>Trip</code> object in the <code>TripList</code> is converted into a <code>JsonAdaptedTrip</code> object.</p>
+</li>
+<li>
+<p>A new <code>JsonSerializableTripList</code> object is created with the <code>JsonAdaptedTrip</code> objects.</p>
+</li>
+<li>
+<p>The new <code>JsonSerializableTripList</code> object is saved to the <code>volant.json</code> data file.</p>
+</li>
+<li>
+<p>The program log displays a success message.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The following activity diagram summarises what happens when a user adds a new trip:</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="images/addTripStorageActivityDiagram.png" alt="addTripStorageActivityDiagram">
+</div>
+<div class="title">Figure 17. Activity diagram for adding a new trip</div>
+</div>
+<div class="paragraph">
+<p>The process is similar for the scenario where the user adds a new activity to the itinerary, and the <code>itinerary.json</code>
+data file is updated. The following activity diagram summarises this process:</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="images/addActivityStorageActivityDiagram.png" alt="addActivityStorageActivityDiagram">
+</div>
+<div class="title">Figure 18. Activity diagram for adding a new activity</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="data-storage-implementation-editing-a-trip"><a class="link" href="#data-storage-implementation-editing-a-trip">4.6.4. Data storage implementation: Editing a trip</a></h4>
+<div class="paragraph">
+<p>Given below is an example usage scenario where a user edits a trip:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The user executes the edit command and provides the updated details.</p>
+</li>
+<li>
+<p><code>HomeLogicManager</code> checks if the name of the trip was updated. If it was, a new directory will be created with the
+new trip name. Data files in the previous folder are moved into this new folder. Following that, the old folder is
+deleted.</p>
+</li>
+<li>
+<p><code>HomeLogicManager</code> accesses the <code>volant.json</code> file in the <code>main.data</code> directory.</p>
+</li>
+<li>
+<p>Each <code>Trip</code> object in the <code>TripList</code> is converted into a <code>JsonAdaptedTrip</code> object.</p>
+</li>
+<li>
+<p>A new <code>JsonSerializableTripList</code> object is created with the <code>JsonAdaptedTrip</code> objects.</p>
+</li>
+<li>
+<p>The new <code>JsonSerializableTripList</code> object is saved to the <code>volant.json</code> data file.</p>
+</li>
+<li>
+<p>The program log displays a success message.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The following activity diagram summarises what happens when a user edits a trip:</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="images/editTripStorageActivityDiagram.png" alt="editTripStorageActivityDiagram">
+</div>
+<div class="title">Figure 19. Activity diagram for editing a trip</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="data-storage-implementation-deleting-a-journal-entry-itinerary-activity"><a class="link" href="#data-storage-implementation-deleting-a-journal-entry-itinerary-activity">4.6.5. Data storage implementation: Deleting a journal entry/itinerary activity</a></h4>
+<div class="paragraph">
+<p>Given below is an example usage scenario where a user deletes a journal entry:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The user executes the delete command.</p>
+</li>
+<li>
+<p>In <code>JournalModelManager</code>, the identified <code>Entry</code> is removed from the <code>EntryList</code>.</p>
+</li>
+<li>
+<p><code>JournalLogicManager</code> accesses the <code>journal.json</code> file in the specific trip directory.</p>
+</li>
+<li>
+<p>Each remaining <code>Entry</code> object in the <code>EntryList</code> is converted into a <code>JsonAdaptedEntry</code> object.</p>
+</li>
+<li>
+<p>A new <code>JsonSerializableEntryList</code> object is created with the <code>JsonAdaptedEntry</code> objects.</p>
+</li>
+<li>
+<p>The new <code>JsonSerializableEntryList</code> object is saved to the <code>journal.json</code> data file.</p>
+</li>
+<li>
+<p>The program log displays a success message.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>This process is the same for scenarios where the user deletes an itinerary activity. The following activity diagram
+summarises what happens when a user deletes a journal entry or itinerary activity:</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="images/deleteStorageActivityDiagram.png" alt="deleteStorageActivityDiagram">
+</div>
+<div class="title">Figure 20. Activity diagram for deleting a journal entry/itinerary activity</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="logging"><a class="link" href="#logging">4.7. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">[Implementation-Configuration]</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 4.8, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -1036,33 +1042,42 @@ summarises what happens when a user deletes a journal entry or itinerary activit
 </li>
 </ul>
 </div>
-<div id="Implementation-Configuration" class="paragraph">
-<p>=== Configuration</p>
 </div>
+<div class="sect2">
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">4.8. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
-<div class="paragraph">
-<p>== Documentation</p>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="documentation"><a class="link" href="#documentation">5. Documentation</a></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>Refer to the guide <a href="Documentation.html">here</a>.</p>
 </div>
-<div class="paragraph">
-<p>== Testing</p>
 </div>
+</div>
+<div class="sect1">
+<h2 id="testing"><a class="link" href="#testing">6. Testing</a></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>Refer to the guide <a href="Testing.html">here</a>.</p>
 </div>
-<div class="paragraph">
-<p>== Dev Ops</p>
 </div>
+</div>
+<div class="sect1">
+<h2 id="dev-ops"><a class="link" href="#dev-ops">7. Dev Ops</a></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>Refer to the guide <a href="DevOps.html">here</a>.</p>
 </div>
-<div class="paragraph">
-<p>== Product Scope</p>
 </div>
+</div>
+<div class="sect1">
+<h2 id="product-scope"><a class="link" href="#product-scope">Appendix A: Product Scope</a></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><strong>Target user profile</strong>:</p>
 </div>
@@ -1088,9 +1103,11 @@ summarises what happens when a user deletes a journal entry or itinerary activit
 <div class="paragraph">
 <p><strong>Value proposition</strong>: convenient travel assistant to for solo travelers who are always on their feet.</p>
 </div>
-<div class="paragraph">
-<p>== User Stories</p>
 </div>
+</div>
+<div class="sect1">
+<h2 id="user-stories"><a class="link" href="#user-stories">Appendix B: User Stories</a></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><strong>Priorities</strong></p>
 </div>
@@ -1236,9 +1253,11 @@ summarises what happens when a user deletes a journal entry or itinerary activit
 <div class="paragraph">
 <p><em>{All user stories can be viewed in our issue tracker.}</em></p>
 </div>
-<div class="paragraph">
-<p>== Use Cases</p>
 </div>
+</div>
+<div class="sect1">
+<h2 id="use-cases"><a class="link" href="#use-cases">Appendix C: Use Cases</a></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>(For all use cases below, the <strong>System</strong> is <code>Volant (V)</code> and the <strong>Actor</strong> is the <code>user</code>, unless specified otherwise)</p>
 </div>
@@ -1733,9 +1752,11 @@ summarises what happens when a user deletes a journal entry or itinerary activit
 <div class="paragraph">
 <p><em>{More use cases will be added and current use cases may be edited in the future.}</em></p>
 </div>
-<div class="paragraph">
-<p>== Non Functional Requirements</p>
 </div>
+</div>
+<div class="sect1">
+<h2 id="non-functional-requirements"><a class="link" href="#non-functional-requirements">Appendix D: Non Functional Requirements</a></h2>
+<div class="sectionbody">
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -1770,9 +1791,11 @@ summarises what happens when a user deletes a journal entry or itinerary activit
 <div class="paragraph">
 <p><em>{More to be added in future development}</em></p>
 </div>
-<div class="paragraph">
-<p>== Glossary</p>
 </div>
+</div>
+<div class="sect1">
+<h2 id="glossary"><a class="link" href="#glossary">Appendix E: Glossary</a></h2>
+<div class="sectionbody">
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><a id="extensions"></a> Extensions</dt>
@@ -1801,9 +1824,11 @@ summarises what happens when a user deletes a journal entry or itinerary activit
 </dd>
 </dl>
 </div>
-<div class="paragraph">
-<p>== Product Survey</p>
 </div>
+</div>
+<div class="sect1">
+<h2 id="product-survey"><a class="link" href="#product-survey">Appendix F: Product Survey</a></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><strong>Volant</strong></p>
 </div>
@@ -1846,9 +1871,11 @@ summarises what happens when a user deletes a journal entry or itinerary activit
 </dd>
 </dl>
 </div>
-<div class="paragraph">
-<p>== Instructions for Manual Testing</p>
 </div>
+</div>
+<div class="sect1">
+<h2 id="instructions-for-manual-testing"><a class="link" href="#instructions-for-manual-testing">Appendix G: Instructions for Manual Testing</a></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>Given below are instructions to test the app manually.</p>
 </div>
@@ -1864,9 +1891,8 @@ These instructions only provide a starting point for testers to work on; testers
 </tr>
 </table>
 </div>
-<div class="paragraph">
-<p>=== Launch and Shutdown</p>
-</div>
+<div class="sect2">
+<h3 id="launch-and-shutdown"><a class="link" href="#launch-and-shutdown">G.1. Launch and Shutdown</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -1902,9 +1928,9 @@ Expected: The most recent window size and location is retained.</p>
 <div class="paragraph">
 <p><em>{ more test cases &#8230;&#8203; }</em></p>
 </div>
-<div class="paragraph">
-<p>=== Deleting a <code>TRIP</code></p>
 </div>
+<div class="sect2">
+<h3 id="deleting-a-code-trip-code"><a class="link" href="#deleting-a-code-trip-code">G.2. Deleting a <code>TRIP</code></a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -1934,9 +1960,9 @@ Expected: Similar to previous.</p>
 <div class="paragraph">
 <p><em>{ more test cases &#8230;&#8203; }</em></p>
 </div>
-<div class="paragraph">
-<p>=== Saving data</p>
 </div>
+<div class="sect2">
+<h3 id="saving-data"><a class="link" href="#saving-data">G.3. Saving data</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -1954,9 +1980,9 @@ Expected: Similar to previous.</p>
 <div class="paragraph">
 <p><em>{ more test cases &#8230;&#8203; }</em></p>
 </div>
-<div class="paragraph">
-<p>=== Deleting an <code>activity</code></p>
 </div>
+<div class="sect2">
+<h3 id="deleting-an-code-activity-code"><a class="link" href="#deleting-an-code-activity-code">G.4. Deleting an <code>activity</code></a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -1986,9 +2012,9 @@ Expected: Similar to previous.</p>
 <div class="paragraph">
 <p><em>{more test cases &#8230;&#8203;}</em></p>
 </div>
-<div class="paragraph">
-<p>=== Deleting an <code>entry</code></p>
 </div>
+<div class="sect2">
+<h3 id="deleting-an-code-entry-code"><a class="link" href="#deleting-an-code-entry-code">G.5. Deleting an <code>entry</code></a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2020,8 +2046,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div>
-</div>
-</div>
-</div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 09:01:24 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 09:10:25 UTC</div></div></div></body></html>
