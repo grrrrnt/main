@@ -38,18 +38,27 @@ implement and test the functionalities of our features, developers had to have d
 
 * *Other Contributions*
 ** Documentation
-*** Wrote the initial draft for UserGuide.
+*** Did cosmetic tweaks to existing contents of the User Guide:
+**Community
+*** PRs reviewed(with non-trivial review comments):
 
 === Contributions to User Guide
 ==== Sections Written
-* Section 1
-* Section 2
-* Section 3
+
+* include::../UserGuide.adoc[tag=Introduction]
+
+* include::../UserGuide.adoc[tag=Features]
+
+* include::../UserGuide.adoc[tag=Home commands]
 
 === Contributions to Developer Guide
 ==== Sections Written
-* UML diagrams for Storage and goto('back') command
-* Section 2
-* Section 3
+* include::../DeveloperGuide.adoc[tag=Storage]
+
+* include::../DeveloperGuide.adoc[tag=Views in Volant]
+
+* include::../DeveloperGuide.adoc[tag=Adding a trip]
+
+* include::../DeveloperGuide.adoc[tag=Sorting entries in journal]
 
 _{To be updated in the future}_

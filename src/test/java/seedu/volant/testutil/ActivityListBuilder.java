@@ -19,7 +19,7 @@ public class ActivityListBuilder {
     }
 
     /**
-     * Adds a new {@code Trip} to the {@code TripList} that we are building.
+     * Adds a new {@code Activitiy} to the {@code ActivityList} that we are building.
      */
     public ActivityListBuilder withActivity(Activity activity) {
         activityList.addActivity(activity);

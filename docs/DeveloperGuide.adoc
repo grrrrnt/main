@@ -25,9 +25,17 @@ application work together.
 ====
 *Reading this Developer Guide*
 
-TIP: This icon denotes useful tips to note of during development.
+* *Important Notations* +
+[TIP]
+This icon denotes useful tips to note of during development.
+[NOTE]
+This icon denotes important details to take note of during development.
 
-NOTE: This icon denotes important details to take note of during development.
+* *Understanding Diagrams* +
+The diagrams in this Developer Guide are colour coded according to the different components.
++
+image::/{imagesDir}/dg-diagram-legend.png[]
+
 ====
 
 == Setting up
@@ -91,14 +99,16 @@ image::JournalLogic.png[align="center"]
 The _Sequence Diagram_ below shows how the components interact with each other for the scenario where the user issues
 the command `back` when in a `TRIP` view. View switching is executed by the `Ui` component.
 
+[[view-switch-sequence]]
 .Component interactions for `back` command in the `TRIP` view.
 image::ArchitectureSequenceDiagram.png[align="center"]
 
 
-The _Sequence Diagram_ below illustrates how the components interact with each other for the scenario where the user issues the command `goto 1` when in a `HomePage` view.
+The _Sequence Diagram_ below illustrates how the components interact with each other for the scenario where the user
+issues the command `goto 1` when in a `HOME` page view.
 View switching is executed by the `Ui` component.
 
-.Component interactions for `goto 1` command in the `HomePage` view.
+.Component interactions for `goto 1` command in the `HOME` page view.
 
 image::gotoCommandSequenceDiagram.png[align="center"]
 
@@ -135,8 +145,7 @@ For example, if a user is switching from a `TRIP` view to the `HOME` view throug
 . Reassign the `Model` component from `TripPageModelManager` to a new `HomePageModelManager`.
 . Reassign the value of `StackPane` `mainPanel` from `TripPage` to `HomePage`.
 
-.Component interactions for `back` command in the `TRIP` view.
-image::ArchitectureSequenceDiagram.png[align="center"]
+<<view-switch-sequence, You can view the sequence diagram for this process here.>>
 ====
 
 _More details on the implementation of view switching can be found in <<implementation-view-switching>>._
@@ -149,7 +158,7 @@ _More details on the implementation of view switching can be found in <<implemen
 image::JournalLogic.png[align="center"]
 
 *API* :
-link:{repoURL}/src/main/java/seedu/location/logic/Logic.java[`Logic.java`]
+link:https://github.com/AY1920S2-CS2103T-F09-4/main/blob/master/src/main/java/seedu/volant/commons/logic/Logic.java[`Logic.java`]
 
 .  `Logic` uses the `JournalInputParser` class of the current feature to parse the user command.
 .  This results in a `Command` object which is executed by the `JournalLogicManager` of the current feature.
@@ -181,6 +190,7 @@ The `Model` for `JOURNAL`,
 image::ItineraryModelDiagram.png[align="center"]
 
 The `Model` for `ITINERARY`,
+*API* : link:https://github.com/AY1920S2-CS2103T-F09-4/main/blob/master/src/main/java/seedu/volant/commons/model/Model.java[`Model.java`]
 
 * stores a `UserPref` object that represents the user's preferences.
 * stores an `Activity` 's data.
@@ -194,7 +204,7 @@ The `Model` for `ITINERARY`,
 .Structure of the Storage Component
 image::StorageClassDiagram.png[align="center"]
 
-*API* : link:{repoURL}/src/main/java/seedu/location/storage/Storage.java[`Storage.java`]
+*API* : link:https://github.com/AY1920S2-CS2103T-F09-4/main/blob/master/src/main/java/seedu/volant/commons/storage/Storage.java[`Storage.java`]
 
 The `Storage` component,
 
@@ -212,7 +222,7 @@ This section describes some noteworthy details on how certain features are imple
 
 [[implementation-view-switching]]
 === View Switching for Navigation Commands
-The entire process of view switching is done in the `MainWindow` class.
+The entire process of view switching is executed in the `MainWindow.java` class.
 
 [TIP]
 ====
@@ -270,7 +280,6 @@ image::AddTripActivityDiagram.png[align="center"]
 === Sorting entries in Journal Page
 ==== Implementation
 Sorting journal entries
-
 The sort feature allows user to sort the entries in the `JOURNAL` of a trip. This feature is facilitated by `JournalInputParser`, `SortCommandParser`, and `SortCommand`.
 
 Given below is an example usage scenario and how the journal sort mechanism behaves at each step:

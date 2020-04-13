@@ -5,6 +5,7 @@ import static seedu.volant.commons.logic.Page.JOURNAL;
 import static seedu.volant.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.nio.file.Path;
+import java.time.LocalDate;
 import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
@@ -14,6 +15,9 @@ import seedu.volant.commons.logic.Page;
 import seedu.volant.commons.model.Model;
 import seedu.volant.commons.model.ReadOnlyUserPrefs;
 import seedu.volant.commons.model.UserPrefs;
+import seedu.volant.home.model.trip.DateRange;
+import seedu.volant.home.model.trip.Location;
+import seedu.volant.home.model.trip.Name;
 import seedu.volant.home.model.trip.Trip;
 import seedu.volant.journal.model.util.SortType;
 import seedu.volant.trip.model.Journal;
@@ -46,12 +50,23 @@ public class JournalModelManager implements Model {
         this.filteredEntries = new FilteredList<>(this.entryList.getEntryList());
     }
 
+    public JournalModelManager() {
+        Name tripName = new Name("Berlin berlin");
+        Location tripLocation = new Location("Berlin, Germany");
+        DateRange tripDateRange = new DateRange(LocalDate.parse("2022-06-10"), LocalDate.parse("2022-06-21"));
+
+        Trip placeholder = new Trip(tripName, tripLocation, tripDateRange);
+        this.trip = placeholder;
+        this.journal = trip.getTripFeatureList().getJournal();
+        this.userPrefs = new UserPrefs();
+        this.entryList = journal.getEntryList();
+        this.filteredEntries = new FilteredList<>(this.entryList.getEntryList());
+    }
+
     @Override
     public Page getPage() {
         return page;
     }
-
-    // TODO: Complete implementation of methods once implementation of Journal has been completed.
 
     public Trip getTrip() {
         return trip;
@@ -69,9 +84,8 @@ public class JournalModelManager implements Model {
      * Returns true if entry is within the entry list within model.
      */
     public boolean hasEntry(Entry entry) {
-        // requireNonNull(entry);
-        // return entryList.hasEntry(entry);
-        return false;
+        requireNonNull(entry);
+        return entryList.hasEntry(entry);
     }
 
     /**

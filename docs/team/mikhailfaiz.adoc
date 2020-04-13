@@ -11,6 +11,9 @@ of Singapore.
 Thank you for using *Volant*! I am one of the five student developers who worked on this project.
 *Volant* was developed for our CS2103T Software Engineering module.
 
+You can find more about me via https://www.linkedin.com/in/mikhailfaiz[my LinkedIn profile] and
+https://github.com/mikhailfaiz[my GitHub profile].
+
 == PROJECT: Volant
 
 Volant is a travel assistant desktop application aimed at assisting solo travellers with the logistics of planning
@@ -19,35 +22,35 @@ it is primarily based off of the Address Book 3 application developed by the CS2
 
 === Summary of Contributions
 You can view my code contributions to this project
-https://nus-cs2103-ay1920s2.github.io/tp-dashboard/#search=raniceyue&sort=groupTitle&sortWithin=title&since=&timeframe=commit&mergegroup=false&groupSelect=groupByRepos&breakdown=false[on RepoSense].
+https://nus-cs2103-ay1920s2.github.io/tp-dashboard/#search=mikhailfaiz&sort=groupTitle&sortWithin=title&since=2020-02-14&timeframe=commit&mergegroup=false&groupSelect=groupByRepos&breakdown=false&until=2020-04-09[on RepoSense].
 
 * *Major Enhancement:* Implemented Journal page of application (with Grant)
 ** What it does: Allow users to view and manipulate the list of journal entries in the application.
 
-* *Major Enhancement:*
+* *Major Enhancement:* Implemented add command for Journal
+** What it does: Allow users to add new entries to the journal of a trip.
+
+* *Major Enhancement:* Implemented sort command for Journal
+** What it does: Allow users to sort journal entries based on a chosen sorting criteria. Entries are also automatically
+sorted each time a new entry is added.
+** Justification: Since the journal entries are not given titles, we chose not to implement a find command. However, to
+make searching for a specific entry easier, the sort command arranges the entries is a logical manner such that the user
+can easily locate a specific entry.
+
+* *Other Contributions*
+** JUnit testing for Journal commands and functionality.
+** Discussed and reviewed Volant logo design with Ranice (who created the designs).
 
 === Contributions to User Guide
 ==== Sections Written
-* Section 1
-* Section 2
-* Section 3
+* GUI
+** Introduced the major components of Volant's GUI and the purpose of each of these components.
+* Pages
+** Introduced the four pages that Volant offers and a brief overview of what each page is for.
+* Trip Commands
+** Explained what commands are available on the trip page and examples of usage of the commands.
 
 === Contributions to Developer Guide
 ==== Sections Written
-* Section 1
-* Section 2
-* Section 3
+* Activity Diagrams
 
-_Week 8_
-
-Designed logic and model for Journal with Grant.
-
-_Week 9_
-
-Worked on logic and model of Journal with Grant.
-
-Implemented add command and parser for Journal.
-
-_Week 10_
-
-Worked on edit command for Journal with Grant.

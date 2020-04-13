@@ -41,11 +41,12 @@ public class UniqueEntryList implements Iterable<Entry> {
     /**
      * Returns true if the list contains an equivalent trip as the given argument.
      *
+     */
     public boolean contains(Entry toCheck) {
         requireNonNull(toCheck);
         return internalList.stream().anyMatch(toCheck::isSameEntry);
     }
-    */
+
     /**
      * Adds an entry to the list.
      * The entry must not already exist in the list.

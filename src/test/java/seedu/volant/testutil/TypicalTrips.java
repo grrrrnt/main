@@ -48,4 +48,8 @@ public class TypicalTrips {
     public static Trip getGermanyTrip() {
         return E;
     }
+
+    public static Trip getIndiaTrip() {
+        return D;
+    }
 }

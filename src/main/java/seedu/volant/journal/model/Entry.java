@@ -129,13 +129,20 @@ public class Entry {
                 .append(formatDate(getDate()))
                 .append("\nTime: ")
                 .append(formatTime(getTime()))
+                .append("\nText: ")
+                .append(getText())
+                .append("\nLocation: ")
+                .append(getLocation())
                 .append("\nFeeling: ")
                 .append(f)
                 .append("\nWeather: ")
-                .append(w)
-                .append("\nText: ")
-                .append(getText());
+                .append(w);
+
 
         return builder.toString();
+    }
+
+    public boolean isSameEntry(Entry entry) {
+        return this.equals(entry);
     }
 }

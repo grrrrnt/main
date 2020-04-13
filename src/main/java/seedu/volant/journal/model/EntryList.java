@@ -61,18 +61,11 @@ public class EntryList implements ReadOnlyEntryList {
     }
 
     /**
-     * TODO: Complete all these methods after full implementation of Itinerary as the methods here are reliant on
-     *  UniqueEntryList which can only be fully implemented after full implementation of Itinerary.
-     */
-
-    //// entry-level operations
-    //TODO implement contain in unique entry list
-    /**
      * Returns true if a entry with the same identity as {@code entry} exists in the address book.
      */
     public boolean hasEntry(Entry entry) {
         requireNonNull(entry);
-        return false; //entries.contains(entry);
+        return entries.contains(entry);
     }
 
 
