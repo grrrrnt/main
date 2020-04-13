@@ -17,7 +17,6 @@ import seedu.volant.commons.logic.commands.ExitCommand;
 import seedu.volant.commons.logic.commands.HelpCommand;
 import seedu.volant.commons.logic.parser.exceptions.ParseException;
 import seedu.volant.home.logic.commands.AddCommand;
-import seedu.volant.home.logic.commands.ClearCommand;
 import seedu.volant.home.logic.commands.DeleteCommand;
 import seedu.volant.home.logic.commands.EditCommand;
 import seedu.volant.home.logic.commands.FindCommand;
@@ -27,7 +26,7 @@ import seedu.volant.testutil.EditTripDescriptorBuilder;
 import seedu.volant.testutil.TripBuilder;
 import seedu.volant.testutil.TripUtil;
 
-public class LocationBookParserTest {
+public class LocationTripParserTest {
 
     private final HomeInputParser parser = new HomeInputParser();
 
@@ -36,12 +35,6 @@ public class LocationBookParserTest {
         Trip trip = new TripBuilder().build();
         AddCommand command = (AddCommand) parser.parseCommand(TripUtil.getAddCommand(trip));
         assertEquals(new AddCommand(trip), command);
-    }
-
-    @Test
-    public void parseCommand_clear() throws Exception {
-        assertTrue(parser.parseCommand(ClearCommand.COMMAND_WORD) instanceof ClearCommand);
-        assertTrue(parser.parseCommand(ClearCommand.COMMAND_WORD + " 3") instanceof ClearCommand);
     }
 
     @Test

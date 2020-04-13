@@ -2,6 +2,10 @@ package seedu.volant.itinerary.logic.commands;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.volant.commons.logic.parser.CliSyntax.PREFIX_DATE;
+import static seedu.volant.commons.logic.parser.CliSyntax.PREFIX_LOCATION;
+import static seedu.volant.commons.logic.parser.CliSyntax.PREFIX_TIME;
+import static seedu.volant.commons.logic.parser.CliSyntax.PREFIX_TITLE;
 import static seedu.volant.testutil.Assert.assertThrows;
 
 import java.util.ArrayList;
@@ -16,11 +20,55 @@ import seedu.volant.itinerary.model.ActivityList;
 import seedu.volant.itinerary.model.ItineraryModelManager;
 import seedu.volant.itinerary.model.activity.Activity;
 import seedu.volant.itinerary.model.activity.TitleContainsKeywordsPredicate;
+import seedu.volant.testutil.EditItineraryDescriptorBuilder;
 
 /**
  * Contains helper methods for testing commands.
  */
 public class CommandTestUtil {
+    public static final String VALID_TITLE_ZOO = "Go to the zoo";
+    public static final String VALID_TITLE_SING = "Singing in the rain";
+
+    public static final String VALID_LOCATION_ZOO = "Bali Indonesia";
+    public static final String VALID_LOCATION_SING = "Jinsoul LOONA";
+
+    public static final String VALID_DATE_ZOO = "2020-10-14";
+    public static final String VALID_DATE_SING = "2021-06-02";
+
+    public static final String FORMATTED_DATE_ZOO = "14-10-2020";
+    public static final String FORMATTED_DATE_SING = "02-06-2021";
+
+    public static final String VALID_TIME_ZOO = "12:00";
+    public static final String VALID_TIME_SING = "02:00";
+
+    public static final String TITLE_DESC_ZOO = " " + PREFIX_TITLE + VALID_TITLE_ZOO;
+    public static final String TITLE_DESC_SING = " " + PREFIX_TITLE + VALID_TITLE_SING;
+
+    public static final String LOCATION_DESC_ZOO = " " + PREFIX_LOCATION + VALID_LOCATION_ZOO;
+    public static final String LOCATION_DESC_SING = " " + PREFIX_LOCATION + VALID_LOCATION_SING;
+
+    public static final String TIME_DESC_ZOO = " " + PREFIX_TIME + VALID_TIME_ZOO;
+    public static final String TIME_DESC_SING = " " + PREFIX_TIME + VALID_TIME_SING;
+
+    public static final String DATE_DESC_ZOO = " " + PREFIX_DATE + FORMATTED_DATE_ZOO;
+    public static final String DATE_DESC_SING = " " + PREFIX_DATE + FORMATTED_DATE_SING;
+
+    public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
+
+    public static final EditItineraryDescriptorBuilder DESC_ITINERARY_ZOO;
+    public static final EditItineraryDescriptorBuilder DESC_ITINERARY_SING;
+
+    static {
+        DESC_ITINERARY_ZOO =
+                new EditItineraryDescriptorBuilder().withTitle(VALID_TITLE_ZOO)
+                        .withLocation(VALID_LOCATION_ZOO).withDate(VALID_DATE_ZOO)
+                        .withTime(VALID_TIME_ZOO);
+
+        DESC_ITINERARY_SING =
+                new EditItineraryDescriptorBuilder().withTitle(VALID_TITLE_SING)
+                        .withLocation(VALID_LOCATION_SING).withDate(VALID_DATE_SING)
+                        .withTime(VALID_TIME_SING);
+    }
 
     /**
      * Executes the given {@code command}, confirms that <br>

@@ -37,7 +37,7 @@ public class JsonAdaptedTrip {
      */
     public JsonAdaptedTrip(Trip source) {
         name = source.getName().tripName;
-        location = source.getLocation().value;
+        location = source.getLocation().location;
         dateRange = source.getDateRange().value;
     }
 

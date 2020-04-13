@@ -1,5 +1,8 @@
 package seedu.volant.home.model.trip;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import org.junit.jupiter.api.Test;
 
 import seedu.volant.testutil.TripBuilder;
@@ -7,84 +10,42 @@ import seedu.volant.testutil.TripBuilder;
 public class TripTest {
 
     @Test
-    public void asObservableList_modifyList_throwsUnsupportedOperationException() {
-        Trip trip = new TripBuilder().build();
-        /*
-        assertThrows(UnsupportedOperationException.class, () -> trip);
-        */
-    }
-
-    @Test
     public void isSameTrip() {
-        /*
+        Trip trip = new TripBuilder().build();
         // same object -> returns true
-        assertTrue(ALICE.isSamePerson(ALICE));
+        assertTrue(trip.isSameTrip(trip));
 
         // null -> returns false
-        assertFalse(ALICE.isSamePerson(null));
-
-        // different phone and email -> returns false
-        Trip editedAlice = new TripBuilder(ALICE).withPhone(VALID_PHONE_BOB).withEmail(VALID_EMAIL_BOB).build();
-        assertFalse(ALICE.isSamePerson(editedAlice));
-
-        // different name -> returns false
-        editedAlice = new TripBuilder(ALICE).withName(VALID_NAME_BOB).build();
-        assertFalse(ALICE.isSamePerson(editedAlice));
-
-        // same name, same phone, different attributes -> returns true
-        editedAlice = new TripBuilder(ALICE).withEmail(VALID_EMAIL_BOB).withAddress(VALID_ADDRESS_BOB)
-                .withTags(VALID_TAG_HUSBAND).build();
-        assertTrue(ALICE.isSamePerson(editedAlice));
-
-        // same name, same email, different attributes -> returns true
-        editedAlice = new TripBuilder(ALICE).withPhone(VALID_PHONE_BOB).withAddress(VALID_ADDRESS_BOB)
-                .withTags(VALID_TAG_HUSBAND).build();
-        assertTrue(ALICE.isSamePerson(editedAlice));
-
-        // same name, same phone, same email, different attributes -> returns true
-        editedAlice = new TripBuilder(ALICE).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND).build();
-        assertTrue(ALICE.isSamePerson(editedAlice));
-        */
+        assertFalse(trip.isSameTrip(null));
     }
 
     @Test
     public void equals() {
-        /*
         // same values -> returns true
-        Trip aliceCopy = new TripBuilder(ALICE).build();
-        assertTrue(ALICE.equals(aliceCopy));
+        Trip trip = new TripBuilder().build();
+        Trip tripCopy = new TripBuilder().build();
+        assertTrue(trip.equals(tripCopy));
 
         // same object -> returns true
-        assertTrue(ALICE.equals(ALICE));
+        assertTrue(trip.equals(trip));
 
         // null -> returns false
-        assertFalse(ALICE.equals(null));
+        assertFalse(trip.equals(null));
 
         // different type -> returns false
-        assertFalse(ALICE.equals(5));
-
-        // different trip -> returns false
-        assertFalse(ALICE.equals(BOB));
+        assertFalse(trip.equals(5));
 
         // different name -> returns false
-        Trip editedAlice = new TripBuilder(ALICE).withName(VALID_NAME_BOB).build();
-        assertFalse(ALICE.equals(editedAlice));
+        Trip editedTrip = new TripBuilder().withName("wot").build();
+        assertFalse(trip.equals(editedTrip));
 
-        // different phone -> returns false
-        editedAlice = new TripBuilder(ALICE).withPhone(VALID_PHONE_BOB).build();
-        assertFalse(ALICE.equals(editedAlice));
+        // different location -> returns false
+        editedTrip = new TripBuilder().withLocation("Singapore").build();
+        assertFalse(trip.equals(editedTrip));
 
-        // different email -> returns false
-        editedAlice = new TripBuilder(ALICE).withEmail(VALID_EMAIL_BOB).build();
-        assertFalse(ALICE.equals(editedAlice));
+        // different date range -> returns false
+        editedTrip = new TripBuilder().withDateRange("2010-10-10", "2010-10-15").build();
+        assertFalse(trip.equals(editedTrip));
 
-        // different address -> returns false
-        editedAlice = new TripBuilder(ALICE).withAddress(VALID_ADDRESS_BOB).build();
-        assertFalse(ALICE.equals(editedAlice));
-
-        // different tags -> returns false
-        editedAlice = new TripBuilder(ALICE).withTags(VALID_TAG_HUSBAND).build();
-        assertFalse(ALICE.equals(editedAlice));
-         */
     }
 }

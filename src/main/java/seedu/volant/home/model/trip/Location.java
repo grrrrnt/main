@@ -18,7 +18,7 @@ public class Location {
      */
     public static final String VALIDATION_REGEX = "[^\\s].*";
 
-    public final String value;
+    public final String location;
 
     /**
      * Constructs an {@code Location}.
@@ -28,7 +28,7 @@ public class Location {
     public Location(String location) {
         requireNonNull(location);
         checkArgument(isValidLocation(location), MESSAGE_CONSTRAINTS);
-        value = location;
+        this.location = location;
     }
 
     /**
@@ -40,19 +40,19 @@ public class Location {
 
     @Override
     public String toString() {
-        return value;
+        return location;
     }
 
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof Location // instanceof handles nulls
-                && value.equals(((Location) other).value)); // state check
+                && location.equals(((Location) other).location)); // state check
     }
 
     @Override
     public int hashCode() {
-        return value.hashCode();
+        return location.hashCode();
     }
 
 }

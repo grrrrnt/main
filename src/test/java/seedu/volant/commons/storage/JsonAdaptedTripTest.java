@@ -23,55 +23,54 @@ public class JsonAdaptedTripTest {
     private static final String VALID_DATERANGE = B.getDateRange().toString();
 
     @Test
-    public void toModelType_validPersonDetails_returnsPerson() throws Exception {
-        JsonAdaptedTrip person = new JsonAdaptedTrip(B);
-        assertEquals(B, person.toModelType());
+    public void toModelType_validTripDetails_returnsTrip() throws Exception {
+        JsonAdaptedTrip trip = new JsonAdaptedTrip(B);
+        assertEquals(B, trip.toModelType());
     }
 
     @Test
     public void toModelType_invalidName_throwsIllegalValueException() {
-        JsonAdaptedTrip person =
+        JsonAdaptedTrip trip =
                 new JsonAdaptedTrip(INVALID_NAME, VALID_LOCATION, VALID_DATERANGE);
         String expectedMessage = Name.MESSAGE_CONSTRAINTS;
-        assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
+        assertThrows(IllegalValueException.class, expectedMessage, trip::toModelType);
     }
 
     @Test
     public void toModelType_nullName_throwsIllegalValueException() {
-        JsonAdaptedTrip person = new JsonAdaptedTrip(null, VALID_LOCATION, VALID_DATERANGE);
+        JsonAdaptedTrip trip = new JsonAdaptedTrip(null, VALID_LOCATION, VALID_DATERANGE);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Name.class.getSimpleName());
-        assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
+        assertThrows(IllegalValueException.class, expectedMessage, trip::toModelType);
     }
 
     @Test
     public void toModelType_invalidLocation_throwsIllegalValueException() {
-        JsonAdaptedTrip person =
+        JsonAdaptedTrip trip =
                 new JsonAdaptedTrip(VALID_NAME, INVALID_LOCATION, VALID_DATERANGE);
         String expectedMessage = Location.MESSAGE_CONSTRAINTS;
-        assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
+        assertThrows(IllegalValueException.class, expectedMessage, trip::toModelType);
     }
 
     @Test
-    public void toModelType_nullAddress_throwsIllegalValueException() {
-        JsonAdaptedTrip person = new JsonAdaptedTrip(VALID_NAME, null, VALID_DATERANGE);
+    public void toModelType_nullLocation_throwsIllegalValueException() {
+        JsonAdaptedTrip trip = new JsonAdaptedTrip(VALID_NAME, null, VALID_DATERANGE);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Location.class.getSimpleName());
-        assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
+        assertThrows(IllegalValueException.class, expectedMessage, trip::toModelType);
     }
 
     @Test
     public void toModelType_invalidDateRange_throwsIllegalValueException() {
-        JsonAdaptedTrip person =
+        JsonAdaptedTrip trip =
                 new JsonAdaptedTrip(VALID_NAME, VALID_LOCATION, INVALID_DATERANGE);
         String expectedMessage = DateRange.MESSAGE_CONSTRAINTS;
-        assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
+        assertThrows(IllegalValueException.class, expectedMessage, trip::toModelType);
     }
 
     @Test
-    public void toModelType_nullEmail_throwsIllegalValueException() {
-        JsonAdaptedTrip person = new JsonAdaptedTrip(VALID_NAME, VALID_LOCATION, null);
+    public void toModelType_nullDateRange_throwsIllegalValueException() {
+        JsonAdaptedTrip trip = new JsonAdaptedTrip(VALID_NAME, VALID_LOCATION, null);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, DateRange.class.getSimpleName());
-        assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
+        assertThrows(IllegalValueException.class, expectedMessage, trip::toModelType);
     }
-
 
 }

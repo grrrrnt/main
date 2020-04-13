@@ -47,33 +47,33 @@ public class UniqueTripListTest {
     }
 
     @Test
-    public void add_nullPerson_throwsNullPointerException() {
+    public void add_nullTrip_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> uniqueTripList.add(null));
     }
 
     @Test
-    public void add_duplicatePerson_throwsDuplicatePersonException() {
+    public void add_duplicateTrip_throwsDuplicateTripException() {
         uniqueTripList.add(A);
         assertThrows(DuplicateTripException.class, () -> uniqueTripList.add(A));
     }
 
     @Test
-    public void setPerson_nullTargetPerson_throwsNullPointerException() {
+    public void setTrip_nullTargetTrip_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> uniqueTripList.setTrip(null, A));
     }
 
     @Test
-    public void setPerson_nullEditedPerson_throwsNullPointerException() {
+    public void setTrip_nullEditedTrip_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> uniqueTripList.setTrip(A, null));
     }
 
     @Test
-    public void setPerson_targetPersonNotInList_throwsPersonNotFoundException() {
+    public void setTrip_targetTripNotInList_throwsTripNotFoundException() {
         assertThrows(TripNotFoundException.class, () -> uniqueTripList.setTrip(A, A));
     }
 
     @Test
-    public void setPerson_editedPersonIsSamePerson_success() {
+    public void setTrip_editedTripIsSameTrip_success() {
         uniqueTripList.add(A);
         uniqueTripList.setTrip(A, A);
         UniqueTripList expectedUniqueTripList = new UniqueTripList();
@@ -82,7 +82,7 @@ public class UniqueTripListTest {
     }
 
     @Test
-    public void setPerson_editedPersonHasSameIdentity_success() {
+    public void setTrip_editedTripHasSameIdentity_success() {
         uniqueTripList.add(A);
         Trip editedAlice = new TripBuilder(A).withLocation(VALID_LOCATION_CNY)
                 .build();
@@ -93,7 +93,7 @@ public class UniqueTripListTest {
     }
 
     @Test
-    public void setPerson_editedPersonHasDifferentIdentity_success() {
+    public void setTrip_editedTripHasDifferentIdentity_success() {
         uniqueTripList.add(A);
         uniqueTripList.setTrip(A, B);
         UniqueTripList expectedUniqueTripList = new UniqueTripList();
@@ -102,24 +102,24 @@ public class UniqueTripListTest {
     }
 
     @Test
-    public void setPerson_editedPersonHasNonUniqueIdentity_throwsDuplicatePersonException() {
+    public void setTrip_editedTripHasNonUniqueIdentity_throwsDuplicateTripException() {
         uniqueTripList.add(A);
         uniqueTripList.add(B);
         assertThrows(DuplicateTripException.class, () -> uniqueTripList.setTrip(A, B));
     }
 
     @Test
-    public void remove_nullPerson_throwsNullPointerException() {
+    public void remove_nullTrip_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> uniqueTripList.remove(null));
     }
 
     @Test
-    public void remove_personDoesNotExist_throwsPersonNotFoundException() {
+    public void remove_tripDoesNotExist_throwsTripNotFoundException() {
         assertThrows(TripNotFoundException.class, () -> uniqueTripList.remove(A));
     }
 
     @Test
-    public void remove_existingPerson_removesPerson() {
+    public void remove_existingTrip_removesTrip() {
         uniqueTripList.add(A);
         uniqueTripList.remove(A);
         UniqueTripList expectedUniqueTripList = new UniqueTripList();
@@ -127,12 +127,12 @@ public class UniqueTripListTest {
     }
 
     @Test
-    public void setPersons_nullUniquePersonList_throwsNullPointerException() {
+    public void setTrips_nullUniqueTripList_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> uniqueTripList.setTrips((UniqueTripList) null));
     }
 
     @Test
-    public void setPersons_uniquePersonList_replacesOwnListWithProvidedUniquePersonList() {
+    public void setTrips_uniqueTripList_replacesOwnListWithProvidedUniqueTripList() {
         uniqueTripList.add(A);
         UniqueTripList expectedUniqueTripList = new UniqueTripList();
         expectedUniqueTripList.add(B);
@@ -141,12 +141,12 @@ public class UniqueTripListTest {
     }
 
     @Test
-    public void setPersons_nullList_throwsNullPointerException() {
+    public void setTrips_nullList_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> uniqueTripList.setTrips((List<Trip>) null));
     }
 
     @Test
-    public void setPersons_list_replacesOwnListWithProvidedList() {
+    public void setTrips_list_replacesOwnListWithProvidedList() {
         uniqueTripList.add(A);
         List<Trip> tripList = Collections.singletonList(B);
         uniqueTripList.setTrips(tripList);
@@ -156,7 +156,7 @@ public class UniqueTripListTest {
     }
 
     @Test
-    public void setPersons_listWithDuplicatePersons_throwsDuplicatePersonException() {
+    public void setTrips_listWithDuplicateTrips_throwsDuplicateTripException() {
         List<Trip> listWithDuplicateTrips = Arrays.asList(A, A);
         assertThrows(DuplicateTripException.class, () -> uniqueTripList.setTrips(listWithDuplicateTrips));
     }

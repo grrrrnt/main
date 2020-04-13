@@ -1,13 +1,9 @@
 package seedu.volant.commons.util;
 
 import java.time.LocalDate;
-import java.util.Arrays;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 import seedu.volant.home.model.ReadOnlyTripList;
 import seedu.volant.home.model.TripList;
-import seedu.volant.home.model.tag.Tag;
 import seedu.volant.home.model.trip.DateRange;
 import seedu.volant.home.model.trip.Location;
 import seedu.volant.home.model.trip.Name;
@@ -34,15 +30,6 @@ public class SampleDataUtil {
             sampleAb.addTrip(sampleTrip);
         }
         return sampleAb;
-    }
-
-    /**
-     * Returns a tag set containing the list of strings given.
-     */
-    public static Set<Tag> getTagSet(String... strings) {
-        return Arrays.stream(strings)
-                .map(Tag::new)
-                .collect(Collectors.toSet());
     }
 
 }

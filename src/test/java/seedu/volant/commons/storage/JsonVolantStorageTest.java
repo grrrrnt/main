@@ -39,47 +39,6 @@ public class JsonVolantStorageTest {
         assertFalse(readTripList("NonExistentFile.json").isPresent());
     }
 
-    //    @Test
-    //    public void read_notJsonFormat_exceptionThrown() {
-    //        assertThrows(DataConversionException.class, () -> readTripList("notJsonFormatTripList.json"));
-    //    }
-    //
-    //    @Test
-    //    public void readTripList_invalidPersonTripList_throwDataConversionException() {
-    //        assertThrows(DataConversionException.class, () -> readTripList("invalidPersonTripList.json"));
-    //    }
-    //
-    //    @Test
-    //    public void readTripList_invalidAndValidPersonTripList_throwDataConversionException() {
-    //        assertThrows(DataConversionException.class, () -> readTripList("invalidAndValidPersonTripList.json"));
-    //    }
-    //
-    //    @Test
-    //    public void readAndSaveTripList_allInOrder_success() throws Exception {
-    //        Path filePath = testFolder.resolve("TempTripList.json");
-    //        TripList original = getTypicalTripList();
-    //        JsonVolantStorage jsonTripListStorage = new JsonVolantStorage(filePath);
-    //
-    //        // Save in new file and read back
-    //        jsonTripListStorage.saveTripList(original, filePath);
-    //        ReadOnlyTripList readBack = jsonTripListStorage.readTripList(filePath).get();
-    //        assertEquals(original, new TripList(readBack));
-    //
-    //        // Modify data, overwrite exiting file, and read back
-    //        original.addTrip(B);
-    //        original.removeTrip(A);
-    //        jsonTripListStorage.saveTripList(original, filePath);
-    //        readBack = jsonTripListStorage.readTripList(filePath).get();
-    //        assertEquals(original, new TripList(readBack));
-    //
-    //        // Save and read without specifying file path
-    //        original.addTrip(C);
-    //        jsonTripListStorage.saveTripList(original); // file path not specified
-    //        readBack = jsonTripListStorage.readTripList().get(); // file path not specified
-    //        assertEquals(original, new TripList(readBack));
-    //
-    //    }
-
     @Test
     public void saveTripList_nullTripList_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> saveTripList(null, "SomeFile.json"));

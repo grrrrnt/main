@@ -9,8 +9,6 @@ import org.junit.jupiter.api.Test;
 
 import seedu.volant.commons.logic.commands.CommandResult;
 
-//TODO: Refine these test cases
-
 public class CommandResultTest {
     @Test
     public void equals() {

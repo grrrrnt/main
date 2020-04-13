@@ -40,7 +40,7 @@ Refer to the guide <<SettingUp#, here>>.
 === Architecture
 
 .Architecture Diagram
-image::ArchitectureDiagram.png[]
+image::ArchitectureDiagram.png[align="center"]
 
 The *_Architecture Diagram_* given above explains the high-level design of the App. Given below is a quick overview of each component.
 
@@ -83,7 +83,7 @@ For example, the `JOURNAL` view has its own `JournalLogicManager` and `JournalMo
 for command execution on the `JOURNAL` page.
 
 .Class Diagram of the Journal Logic Component
-image::JournalLogicDiagram.png[]
+image::JournalLogicDiagram.png[align="center"]
 
 [discrete]
 ==== How the architecture components interact with each other
@@ -92,7 +92,7 @@ The _Sequence Diagram_ below shows how the components interact with each other f
 the command `back` when in a `TRIP` view. View switching is executed by the `Ui` component.
 
 .Component interactions for `back` command in the `TRIP` view.
-image::ArchitectureSequenceDiagram.png[]
+image::ArchitectureSequenceDiagram.png[align="center"]
 
 
 The _Sequence Diagram_ below illustrates how the components interact with each other for the scenario where the user issues the command `goto 1` when in a `HomePage` view.
@@ -100,7 +100,7 @@ View switching is executed by the `Ui` component.
 
 .Component interactions for `goto 1` command in the `HomePage` view.
 
-image::gotoCommandSequenceDiagram.png[]
+image::gotoCommandSequenceDiagram.png[align="center"]
 
 The sections below give more details about each component.
 
@@ -108,7 +108,7 @@ The sections below give more details about each component.
 === UI component
 
 .Structure of the UI Component when a user is on a `TRIP` page
-image::UIClassDiagram.png[]
+image::UIClassDiagram.png[align="center"]
 
 *API* : link:{repoURL}/src/main/java/seedu/location/ui/Ui.java[`Ui.java`]
 
@@ -136,10 +136,8 @@ For example, if a user is switching from a `TRIP` view to the `HOME` view throug
 . Reassign the value of `StackPane` `mainPanel` from `TripPage` to `HomePage`.
 
 .Component interactions for `back` command in the `TRIP` view.
-image::ArchitectureSequenceDiagram.png[]
+image::ArchitectureSequenceDiagram.png[align="center"]
 ====
-
-DIAGRAM TO BE INSERTED HERE
 
 _More details on the implementation of view switching can be found in <<implementation-view-switching>>._
 
@@ -148,7 +146,7 @@ _More details on the implementation of view switching can be found in <<implemen
 
 [[fig-LogicClassDiagram1]]
 .Structure of the Logic Component
-image::JournalLogicDiagram.png[]
+image::JournalLogicDiagram.png[align="center"]
 
 *API* :
 link:{repoURL}/src/main/java/seedu/location/logic/Logic.java[`Logic.java`]
@@ -162,24 +160,31 @@ link:{repoURL}/src/main/java/seedu/location/logic/Logic.java[`Logic.java`]
 Given below is the Sequence Diagram for interactions within the `Logic` component of the Itinerary feature for the `execute("delete 1")` API call.
 
 .Interactions Inside the Logic Component for the `delete 1` Command
-image::DeleteCommandItinerary.png[]
+image::DeleteCommandItinerary.png[align="center"]
 
 [[Design-Model]]
 === Model component
 
 .Structure of the Model Component in Journal
-image::JournalModelClassDiagram.png[]
-
-.Structure of the Model Component in Itinerary
-image::ItineraryModel.png[]
+image::JournalModelClassDiagram.png[align="center"]
 
 *API* : link:{repoURL}/src/main/java/seedu/location/model/Model.java[`Model.java`]
 
-The `Model`,
+The `Model` for `JOURNAL`,
 
 * stores a `UserPref` object that represents the user's preferences.
-* stores the Address Book data.
-* exposes an unmodifiable `ObservableList<Person>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
+* stores an `Entry` 's data.
+* exposes an unmodifiable `ObservableList<Entry>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
+* does not depend on any of the other three components.
+
+.Structure of the Model Component in Itinerary
+image::ItineraryModel.png[align="center"]
+
+The `Model` for `ITINERARY`,
+
+* stores a `UserPref` object that represents the user's preferences.
+* stores an `Activity` 's data.
+* exposes an unmodifiable `ObservableList<Activity>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
 * does not depend on any of the other three components.
 
 
@@ -187,14 +192,14 @@ The `Model`,
 === Storage component
 
 .Structure of the Storage Component
-image::StorageClassDiagram.png[]
+image::StorageClassDiagram.png[align="center"]
 
 *API* : link:{repoURL}/src/main/java/seedu/location/storage/Storage.java[`Storage.java`]
 
 The `Storage` component,
 
 * can save `UserPref` objects in json format and read it back.
-* can save the XYZList data in json format and read it back.
+* can save the `XYZList` data in json format and read it back.
 
 [[Design-Commons]]
 === Common classes
@@ -225,8 +230,9 @@ Each `CommandResult` from an execution in the `MainWindow` class stores data on
 appropriate functions to facilitate view switching.
 
 
-==== Design Considerations
-
+==== Special Cases
+When `back` command is used in the <<root-page>>, this would not have any effect on the current GUI being
+displayed.
 
 // Please refer to above template
 === Some Other Command
@@ -700,6 +706,7 @@ _{More to be added in future development}_
 
 [appendix]
 == Glossary
+
 [[extensions]] Extensions::
 "add-on"s to the MSS that describe exceptional/alternative flow of events.
 
@@ -712,26 +719,30 @@ Main Success Scenario
 [[multi-level-c]] Multi-level Commands::
 Commands that require multiple lines of user input for execution.
 
+[[root-page]] Root Page::
+The first page the shows up when Volant is opened. By default, this is the `HOME` page.
+
 [[one-shot-c]] One-shot Commands::
 Commands that are executed using only a single line of user input.
-
 
 [appendix]
 == Product Survey
 
-*Product Name*
+*Volant*
 
-Author: ...
+Author: Team Volant
 
-Pros:
+Pros::
 
-* ...
-* ...
+* The product is effective in assisting solo travellers to plan and execute their trips.
+* GUI is very aesthetic looking, pleasing to the eyes.
+* The available commands are intuitive, and are easy to use and remember.
 
-Cons:
+Cons::
 
-* ...
-* ...
+* The fremium model proposed can be a bit expensive.
+* A dark mode can be included. Some users prefer a GUI with dark mode.
+* More features can be integrated. These features can be included in version 2.0.
 
 [appendix]
 == Instructions for Manual Testing
@@ -757,16 +768,16 @@ These instructions only provide a starting point for testers to work on; testers
 
 _{ more test cases ... }_
 
-=== Deleting a trip
+=== Deleting a `TRIP`
 
-. Deleting a trip while all trips are listed
+. Deleting a `TRIP` while all `TRIPS` are listed
 
-.. Prerequisites: List all trips using the `list` command. Multiple trips in the list.
+.. Prerequisites: List all `TRIPS` using the `list` command. Multiple `TRIPS` are present in the list.
 .. Test case: `delete 1` +
-   Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
+   Expected: First contact is deleted from the list. Details of the deleted `TRIP` are shown in the status message. Timestamp in the status bar is updated.
 .. Test case: `delete 0` +
-   Expected: No trip is deleted. Error details shown in the status message. Status bar remains the same.
-.. Other incorrect delete commands to try: `delete`, `delete x` (where x is larger than the list size) _{give more}_ +
+   Expected: No `TRIP` is deleted. Error details shown in the status message. Status bar remains the same.
+.. Other incorrect delete commands to try: `delete`, `delete x` (where x is larger than the list size)  +
    Expected: Similar to previous.
 
 _{ more test cases ... }_
@@ -779,30 +790,30 @@ _{ more test cases ... }_
 
 _{ more test cases ... }_
 
-=== Deleting an activity
+=== Deleting an `activity`
 
-. Deleting an activity in the activity list
+. Deleting an `activity` in the `ITINERARY`
 
-.. Prerequisites: A trip has already been created.
+.. Prerequisites: A `TRIP` has already been created.
 .. Test case: `delete 1` +
-   Expected: First activity is deleted from the itinerary of the current trip. Current activity list is updated.
+   Expected: First `activity` is deleted from the `ITINERARY` of the current `TRIP`. Current `activity` list is updated.
 .. Test case: `delete 0` +
-   Expected: No activity is deleted. Error details shown in the status message
-.. Other incorrect delete commands to try: `delete`, `delete x` (where x is larger than the itinerary size) _{give more}_ +
+   Expected: No `activity` is deleted. Error details shown in the status message
+.. Other incorrect delete commands to try: `delete`, `delete x` (where x is larger than the itinerary size) +
    Expected: Similar to previous.
 
 _{more test cases ...}_
 
-=== Deleting a journal entry
+=== Deleting an `entry`
 
-. Deleting an entry in the entry list
+. Deleting an `entry` in the `JOURNAL`
 
-.. Prerequisites: A trip has already been created.
+.. Prerequisites: A `TRIP` has already been created.
 .. Test case: `delete 1` +
-   Expected: First entry is deleted from the journal of the current trip. Current entry list is updated.
+   Expected: First `entry` is deleted from the `JOURNAL` of the current `TRIP`. Current `entry` list is updated.
 .. Test case: `delete 0` +
-   Expected: No entry is deleted. Error details shown in the status message
-.. Other incorrect delete commands to try: `delete`, `delete x` (where x is larger than the journal size) _{give more}_ +
+   Expected: No `entry` is deleted. Error details shown in the status message
+.. Other incorrect delete commands to try: `delete`, `delete x` (where x is larger than the journal size) +
    Expected: Similar to previous.
 
 _{more test cases ...}_

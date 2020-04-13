@@ -15,7 +15,6 @@ import seedu.volant.testutil.EditTripDescriptorBuilder;
 
 public class EditTripDescriptorTest {
 
-    // TODO: Refine these tests
     @Test
     public void equals() {
         // same values -> returns true

@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import static seedu.volant.testutil.TypicalActivities.A;
 import static seedu.volant.testutil.TypicalActivities.B;
 
@@ -80,5 +79,4 @@ public class ActivityTest {
         editedA = new ActivityBuilder(A).withTime(B.getTime().toString()).build();
         assertFalse(A.isSameActivity(editedA));
     }
-
 }

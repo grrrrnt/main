@@ -4,15 +4,11 @@ import static java.util.Objects.requireNonNull;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
 
 import seedu.volant.commons.core.Messages;
 import seedu.volant.commons.core.index.Index;
 import seedu.volant.commons.logic.parser.exceptions.ParseException;
 import seedu.volant.commons.util.StringUtil;
-import seedu.volant.home.model.tag.Tag;
 import seedu.volant.home.model.trip.DateRange;
 import seedu.volant.home.model.trip.Location;
 import seedu.volant.home.model.trip.Name;
@@ -114,34 +110,6 @@ public class ParserUtil {
             dateFields[i] = Integer.valueOf(strFields[i]);
         }
         return dateFields;
-    }
-
-
-    /**
-     * Parses a {@code String tag} into a {@code Tag}.
-     * Leading and trailing whitespaces will be trimmed.
-     *
-     * @throws ParseException if the given {@code tag} is invalid.
-     */
-    public static Tag parseTag(String tag) throws ParseException {
-        requireNonNull(tag);
-        String trimmedTag = tag.trim();
-        if (!Tag.isValidTagName(trimmedTag)) {
-            throw new ParseException(Tag.MESSAGE_CONSTRAINTS);
-        }
-        return new Tag(trimmedTag);
-    }
-
-    /**
-     * Parses {@code Collection<String> tags} into a {@code Set<Tag>}.
-     */
-    public static Set<Tag> parseTags(Collection<String> tags) throws ParseException {
-        requireNonNull(tags);
-        final Set<Tag> tagSet = new HashSet<>();
-        for (String tagName : tags) {
-            tagSet.add(parseTag(tagName));
-        }
-        return tagSet;
     }
 
     /**

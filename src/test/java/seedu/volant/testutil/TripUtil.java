@@ -26,7 +26,7 @@ public class TripUtil {
     public static String getPersonDetails(Trip trip) {
         StringBuilder sb = new StringBuilder();
         sb.append(PREFIX_NAME + trip.getName().toString() + " ");
-        sb.append(PREFIX_LOCATION + trip.getLocation().value + " ");
+        sb.append(PREFIX_LOCATION + trip.getLocation().location + " ");
         sb.append(PREFIX_DATERANGE + trip.getDateRange().value + " ");
         return sb.toString();
     }
@@ -37,7 +37,8 @@ public class TripUtil {
     public static String getEditTripDescriptorDetails(EditCommand.EditTripDescriptor descriptor) {
         StringBuilder sb = new StringBuilder();
         descriptor.getName().ifPresent(name -> sb.append(PREFIX_NAME).append(name).append(" "));
-        descriptor.getLocation().ifPresent(location -> sb.append(PREFIX_LOCATION).append(location.value).append(" "));
+        descriptor.getLocation().ifPresent(location -> sb.append(PREFIX_LOCATION)
+                .append(location.location).append(" "));
         descriptor.getDateRange().ifPresent(dateRange -> sb.append(PREFIX_DATERANGE)
                 .append(dateRange.value).append(" "));
         return sb.toString();

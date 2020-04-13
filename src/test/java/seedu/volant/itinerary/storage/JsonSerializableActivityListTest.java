@@ -1,7 +1,6 @@
 package seedu.volant.itinerary.storage;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import static seedu.volant.testutil.Assert.assertThrows;
 
 import java.nio.file.Path;

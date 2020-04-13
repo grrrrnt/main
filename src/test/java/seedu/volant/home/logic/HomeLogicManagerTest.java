@@ -9,7 +9,6 @@ import static seedu.volant.commons.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.volant.home.logic.commands.AddCommand.COMMAND_WORD;
 import static seedu.volant.testutil.Assert.assertThrows;
 
-import java.io.IOException;
 import java.nio.file.Path;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -25,10 +24,8 @@ import seedu.volant.commons.storage.JsonUserPrefsStorage;
 import seedu.volant.commons.storage.JsonVolantStorage;
 import seedu.volant.commons.storage.StorageManager;
 import seedu.volant.home.model.HomeModelManager;
-import seedu.volant.home.model.ReadOnlyTripList;
 
 public class HomeLogicManagerTest {
-    private static final IOException DUMMY_IO_EXCEPTION = new IOException("dummy exception");
 
     @TempDir
     public Path temporaryFolder;
@@ -71,26 +68,6 @@ public class HomeLogicManagerTest {
 
         assertCommandSuccess(addCommand, expectedMessage, model);
     }
-
-    /*    @Test
-        public void execute_storageThrowsIoException_throwsCommandException() {
-            // Setup HomeLogicManager with JsonVolantIoExceptionThrowingStub
-            JsonVolantStorage volantStorage =
-                    new JsonVolantIoExceptionThrowingStub(temporaryFolder.resolve("ioExceptionvolant.json"));
-            JsonUserPrefsStorage userPrefsStorage =
-                    new JsonUserPrefsStorage(temporaryFolder.resolve("ioExceptionUserPrefs.json"));
-            StorageManager storage = new StorageManager(volantStorage, userPrefsStorage);
-            logic = new HomeLogicManager((HomeModelManager) model, storage);
-
-            // Execute add command
-            String addCommand = AddCommand.COMMAND_WORD + NAME_DESC_CNY + LOCATION_DESC_CNY + DATERANGE_DESC_CNY;
-            Trip expectedTrip = new TripBuilder().withName(VALID_TRIPNAME_CNY).withLocation(VALID_LOCATION_CNY)
-                    .withDateRange(VALID_DATEFROM_CNY, VALID_DATETO_CNY).build();
-            HomeModelManager expectedModel = new HomeModelManager();
-            expectedModel.addTrip(expectedTrip);
-            String expectedMessage = HomeLogicManager.FILE_OPS_ERROR_MESSAGE + DUMMY_IO_EXCEPTION;
-            assertCommandFailure(addCommand, ParseException.class, expectedMessage, expectedModel);
-        }*/
 
     @Test
     public void getFilteredPersonList_modifyList_throwsUnsupportedOperationException() {
@@ -150,17 +127,4 @@ public class HomeLogicManagerTest {
         assertEquals(expectedModel, model);
     }
 
-    /**
-     * A stub class to throw an {@code IOException} when the save method is called.
-     */
-    private static class JsonVolantIoExceptionThrowingStub extends JsonVolantStorage {
-        private JsonVolantIoExceptionThrowingStub(Path filePath) {
-            super(filePath);
-        }
-
-        @Override
-        public void saveTripList(ReadOnlyTripList tripList, Path filePath) throws IOException {
-            throw DUMMY_IO_EXCEPTION;
-        }
-    }
 }

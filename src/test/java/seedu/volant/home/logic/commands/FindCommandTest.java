@@ -51,18 +51,6 @@ public class FindCommandTest {
         assertFalse(findFirstCommand.equals(findSecondCommand));
     }
 
-    /*
-        @Test
-        public void execute_oneKeywords_multipleTripFound() {
-            String expectedMessage = String.format(MESSAGE_TRIPS_LISTED_OVERVIEW, 2);
-            NameContainsKeywordsPredicate predicate = preparePredicate("2020");
-            FindCommand command = new FindCommand(predicate);
-            expectedModel.updateFilteredTripList(predicate);
-            assertCommandSuccess(command, model, expectedMessage, expectedModel);
-            assertEquals(Arrays.asList(B, C), expectedModel.getFilteredTripList());
-        }
-    */
-
     @Test
     public void execute_oneKeywords_oneTripFound() {
         String expectedMessage = String.format(MESSAGE_TRIPS_LISTED_OVERVIEW, 1);

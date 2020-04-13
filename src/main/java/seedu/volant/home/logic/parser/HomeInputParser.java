@@ -16,7 +16,6 @@ import seedu.volant.commons.logic.commands.RefreshCommand;
 import seedu.volant.commons.logic.parser.GotoCommandParser;
 import seedu.volant.commons.logic.parser.exceptions.ParseException;
 import seedu.volant.home.logic.commands.AddCommand;
-import seedu.volant.home.logic.commands.ClearCommand;
 import seedu.volant.home.logic.commands.DeleteCommand;
 import seedu.volant.home.logic.commands.EditCommand;
 import seedu.volant.home.logic.commands.FindCommand;
@@ -51,9 +50,6 @@ public class HomeInputParser {
 
         case DeleteCommand.COMMAND_WORD:
             return new DeleteCommandParser().parse(arguments);
-
-        case ClearCommand.COMMAND_WORD:
-            return new ClearCommand();
 
         case FindCommand.COMMAND_WORD:
             return new FindCommandParser().parse(arguments);

@@ -1,7 +1,13 @@
 package seedu.volant.home.model.trip;
 
-// TODO: Write test cases
+import static seedu.volant.testutil.Assert.assertThrows;
+
+import org.junit.jupiter.api.Test;
 
 public class DateRangeTest {
+    @Test
+    public void constructor_null_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> new DateRange(null, null));
+    }
 
 }

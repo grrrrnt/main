@@ -28,6 +28,11 @@ public class TypicalActivities {
             .withLocation("Berlin, Germany")
             .withDate("2022-06-14")
             .withTime("10:30").build();
+    public static final Activity E = new ActivityBuilder().withTitle("Singing in the rain")
+            .withLocation("Jinsoul LOONA")
+            .withDate("2021-06-02")
+            .withTime("02:00").build();
+
 
     private TypicalActivities() {} // prevents instantiation
 

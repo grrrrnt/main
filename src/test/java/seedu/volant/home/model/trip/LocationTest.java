@@ -6,7 +6,6 @@ import static seedu.volant.testutil.Assert.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
-//TODO: Refine test cases
 public class LocationTest {
 
     @Test
@@ -25,11 +24,11 @@ public class LocationTest {
         // null Location
         assertThrows(NullPointerException.class, () -> Location.isValidLocation(null));
 
-        // invalid Locationes
+        // invalid Locations
         assertFalse(Location.isValidLocation("")); // empty string
         assertFalse(Location.isValidLocation(" ")); // spaces only
 
-        // valid Locationes
+        // valid Locations
         assertTrue(Location.isValidLocation("Blk 456, Den Road, #01-355"));
         assertTrue(Location.isValidLocation("-")); // one character
         assertTrue(Location.isValidLocation("Leng Inc; 1234 Market St; San Francisco CA 2349879; USA"));

@@ -99,7 +99,7 @@ public class FindCommand extends Command {
                     String.format("No activity with these keyword(s) found!", currentList.size()));
         } else {
             return new CommandResult(
-                    String.format(Messages.MESSAGE_TRIPS_LISTED_OVERVIEW,
+                    String.format(Messages.MESSAGE_ACTIVITIES_LISTED_OVERVIEW,
                             itineraryModel.getFilteredActivityList().size()));
         }
     }

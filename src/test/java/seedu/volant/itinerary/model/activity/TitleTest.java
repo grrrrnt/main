@@ -37,5 +37,4 @@ public class TitleTest {
         assertTrue(Title.isValidTitle("Mountain Climbing")); // with capital letters
         assertTrue(Title.isValidTitle("Gonna go visit the golden gate bridge")); // long Titles
     }
-
 }

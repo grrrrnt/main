@@ -23,63 +23,63 @@ import seedu.volant.testutil.TripBuilder;
 
 public class TripListTest {
 
-    private final TripList addressBook = new TripList();
+    private final TripList tripList = new TripList();
 
     @Test
     public void constructor() {
-        assertEquals(Collections.emptyList(), addressBook.getTripList());
+        assertEquals(Collections.emptyList(), tripList.getTripList());
     }
 
     @Test
     public void resetData_null_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> addressBook.resetData(null));
+        assertThrows(NullPointerException.class, () -> tripList.resetData(null));
     }
 
     @Test
-    public void resetData_withValidReadOnlyAddressBook_replacesData() {
+    public void resetData_withValidReadOnlyTripList_replacesData() {
         TripList newData = getTypicalTripList();
-        addressBook.resetData(newData);
-        assertEquals(newData, addressBook);
+        tripList.resetData(newData);
+        assertEquals(newData, tripList);
     }
 
     @Test
-    public void resetData_withDuplicatePersons_throwsDuplicatePersonException() {
+    public void resetData_withDuplicateTrips_throwsDuplicateTripException() {
         // Two trips with the same identity fields
         Trip editedAlice = new TripBuilder(A).withLocation(VALID_LOCATION_CNY)
                 .build();
         List<Trip> newTrips = Arrays.asList(A, editedAlice);
         TripListStub newData = new TripListStub(newTrips);
 
-        assertThrows(DuplicateTripException.class, () -> addressBook.resetData(newData));
+        assertThrows(DuplicateTripException.class, () -> tripList.resetData(newData));
     }
 
     @Test
-    public void hasPerson_nullPerson_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> addressBook.hasTrip(null));
+    public void hasTrip_nullTrip_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> tripList.hasTrip(null));
     }
 
     @Test
-    public void hasPerson_personNotInAddressBook_returnsFalse() {
-        assertFalse(addressBook.hasTrip(A));
+    public void hasTrip_tripNotInTripList_returnsFalse() {
+        assertFalse(tripList.hasTrip(A));
     }
 
     @Test
-    public void hasPerson_personInAddressBook_returnsTrue() {
-        addressBook.addTrip(A);
-        assertTrue(addressBook.hasTrip(A));
+    public void hasTrip_tripInTripList_returnsTrue() {
+        tripList.addTrip(A);
+        assertTrue(tripList.hasTrip(A));
     }
 
     @Test
-    public void hasPerson_personWithSameIdentityFieldsInAddressBook_returnsTrue() {
-        addressBook.addTrip(A);
+    public void hasTrip_tripWithSameIdentityFieldsInTripList_returnsTrue() {
+        tripList.addTrip(A);
         Trip editedAlice = new TripBuilder(A).withLocation(VALID_LOCATION_CNY)
                 .build();
-        assertTrue(addressBook.hasTrip(editedAlice));
+        assertTrue(tripList.hasTrip(editedAlice));
     }
 
     @Test
-    public void getPersonList_modifyList_throwsUnsupportedOperationException() {
-        assertThrows(UnsupportedOperationException.class, () -> addressBook.getTripList().remove(0));
+    public void getTripList_modifyList_throwsUnsupportedOperationException() {
+        assertThrows(UnsupportedOperationException.class, () -> tripList.getTripList().remove(0));
     }
 
     /**
