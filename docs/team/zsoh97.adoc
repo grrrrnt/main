@@ -72,4 +72,5 @@ added JUnit tests for itinerary's model and storage.
 * https://ay1920s2-cs2103t-f09-4.github.io/main/DeveloperGuide.html#data-storage[Figure 20. Activity diagram for adding a new trip]
 * https://ay1920s2-cs2103t-f09-4.github.io/main/DeveloperGuide.html#data-storage[Figure 21. Activity diagram for adding a new activity]
 
+
 _{To be updated in the future}_
