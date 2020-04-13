@@ -21,8 +21,7 @@ public class Entry {
     private Location location;
 
     /**
-     * Constructs journal entry.
-     * Date and time are automatically initialised to the date and time at which the user creates the journal entry.
+     * Constructs journal entry with optional fields left empty (or pseudo null).
      */
     public Entry(LocalDate date, LocalTime time) {
         // Initialises entry with user-input date and time.
@@ -35,7 +34,7 @@ public class Entry {
     }
 
     /**
-     * Temporary constructor for demonstration purposes, will remove later.
+     * Constructor for demonstration and testing purposes.
      */
     public Entry(LocalDate date, LocalTime time, String text, Feeling feeling, Weather weather, String location) {
         this.text = text;

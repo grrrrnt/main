@@ -20,7 +20,7 @@ import seedu.volant.journal.logic.commands.SortCommand;
 import seedu.volant.trip.model.Journal;
 
 /**
- * Parses user input when on the JOURNAL page..
+ * Parses user input when on the JOURNAL page.
  */
 public class JournalInputParser {
 

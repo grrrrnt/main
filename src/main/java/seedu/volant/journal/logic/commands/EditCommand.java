@@ -26,7 +26,7 @@ import seedu.volant.journal.model.JournalModelManager;
 import seedu.volant.journal.model.Weather;
 
 /**
- * Adds an entry to the Journal.
+ * Edits an existing entry in the EntryList.
  */
 public class EditCommand extends Command {
 

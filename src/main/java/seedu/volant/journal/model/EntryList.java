@@ -61,7 +61,7 @@ public class EntryList implements ReadOnlyEntryList {
     }
 
     /**
-     * Returns true if a entry with the same identity as {@code entry} exists in the address book.
+     * Returns true if a entry with the same identity as {@code entry} exists in the entry list.
      */
     public boolean hasEntry(Entry entry) {
         requireNonNull(entry);

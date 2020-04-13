@@ -22,11 +22,11 @@ import seedu.volant.journal.model.util.OldestDateTimeComparator;
 import seedu.volant.journal.model.util.SortType;
 
 /**
- * A list of persons that enforces uniqueness between its elements and does not allow nulls.
- * A trip is considered unique by comparing using {@code Entry#isSameEntry(Entry)}. As such, adding and updating of
- * persons uses Entry#isSameEntry(Entry) for equality so as to ensure that the trip being added or updated is
- * unique in terms of identity in the UniqueEntryList. However, the removal of a trip uses Entry#equals(Object) so
- * as to ensure that the trip with exactly the same fields will be removed.
+ * A list of entries that enforces uniqueness between its elements and does not allow nulls.
+ * An entry is considered unique by comparing using {@code Entry#isSameEntry(Entry)}. As such, adding and updating of
+ * entries uses Entry#isSameEntry(Entry) for equality so as to ensure that the entry being added or updated is
+ * unique in terms of identity in the UniqueEntryList. However, the removal of an entry uses Entry#equals(Object) so
+ * as to ensure that the entry with exactly the same fields will be removed.
  *
  * Supports a minimal set of list operations.
  *
@@ -39,7 +39,7 @@ public class UniqueEntryList implements Iterable<Entry> {
 
 
     /**
-     * Returns true if the list contains an equivalent trip as the given argument.
+     * Returns true if the list contains an equivalent entry as the given argument.
      *
      */
     public boolean contains(Entry toCheck) {
@@ -119,29 +119,14 @@ public class UniqueEntryList implements Iterable<Entry> {
     }
 
     /**
-     * Replaces the contents of this list with {@code activities}.
-     * {@code activities} must not contain duplicate activities.
+     * Replaces the contents of this list with {@code entries}.
+     * {@code entries} must not contain duplicate entries.
      */
 
-    public void setEntries(List<Entry> activities) {
-        requireAllNonNull(activities);
-
-        /* TODO: Implement methods to check for duplicate/clashing activities
-        if (!activitiesAreUnique(activities)) {
-            throw new DuplicateEntryException();
-        }
-        */
-
-        internalList.setAll(activities);
+    public void setEntries(List<Entry> entries) {
+        requireAllNonNull(entries);
+        internalList.setAll(entries);
     }
-    /*
-
-    public void setEntries(UniqueEntryList replacement) {
-        requireNonNull(replacement);
-        internalList.setAll(replacement.internalList);
-    }
-
-   */
 
     /**
      * Sorts the EntryList based on given SortType
@@ -190,18 +175,4 @@ public class UniqueEntryList implements Iterable<Entry> {
         return internalList.hashCode();
     }
 
-    /*
-     * Returns true if {@code activities} contains only unique activities.
-
-    private boolean activitiesAreUnique(List<Entry> activities) {
-        for (int i = 0; i < activities.size() - 1; i++) {
-            for (int j = i + 1; j < activities.size(); j++) {
-                if (activities.get(i).isSameEntry(activities.get(j))) {
-                    return false;
-                }
-            }
-        }
-        return true;
-    }
-    */
 }

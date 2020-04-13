@@ -40,8 +40,7 @@ public class JsonSerializableEntryList {
     }
 
     /**
-     * Converts this address book into the model's {@code EntryList} object.
-     *
+     * Converts this entry list into the model's {@code EntryList} object.
      * @throws IllegalValueException if there were any data constraints violated.
      */
     public EntryList toModelType() throws IllegalValueException {

@@ -130,8 +130,7 @@ public class JournalModelManager implements Model {
     //=========== Filtered Trip List Accessors =============================================================
 
     /**
-     * Returns an unmodifiable view of the list of {@code Entry} backed by the internal list of
-     * {@code versionedAddressBook}
+     * Returns an unmodifiable view of the list of {@code Entry}.
      */
 
     public ObservableList<Entry> getFilteredEntryList() {
