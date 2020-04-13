@@ -83,7 +83,7 @@ For example, the `JOURNAL` view has its own `JournalLogicManager` and `JournalMo
 for command execution on the `JOURNAL` page.
 
 .Class Diagram of the Journal Logic Component
-image::JournalLogicDiagram.png[align="center"]
+image::JournalLogic.png[align="center"]
 
 [discrete]
 ==== How the architecture components interact with each other
@@ -146,7 +146,7 @@ _More details on the implementation of view switching can be found in <<implemen
 
 [[fig-LogicClassDiagram1]]
 .Structure of the Logic Component
-image::JournalLogicDiagram.png[align="center"]
+image::JournalLogic.png[align="center"]
 
 *API* :
 link:{repoURL}/src/main/java/seedu/location/logic/Logic.java[`Logic.java`]
@@ -160,13 +160,13 @@ link:{repoURL}/src/main/java/seedu/location/logic/Logic.java[`Logic.java`]
 Given below is the Sequence Diagram for interactions within the `Logic` component of the Itinerary feature for the `execute("delete 1")` API call.
 
 .Interactions Inside the Logic Component for the `delete 1` Command
-image::DeleteCommandItinerary.png[align="center"]
+image::DeleteItinerary.png[align="center"]
 
 [[Design-Model]]
 === Model component
 
 .Structure of the Model Component in Journal
-image::JournalModelClassDiagram.png[align="center"]
+image::JournalModelDiagram.png[align="center"]
 
 *API* : link:{repoURL}/src/main/java/seedu/location/model/Model.java[`Model.java`]
 
@@ -178,7 +178,7 @@ The `Model` for `JOURNAL`,
 * does not depend on any of the other three components.
 
 .Structure of the Model Component in Itinerary
-image::ItineraryModel.png[align="center"]
+image::ItineraryModelDiagram.png[align="center"]
 
 The `Model` for `ITINERARY`,
 
