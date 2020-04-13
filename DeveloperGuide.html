@@ -42,10 +42,10 @@
 <li><a href="#instructions-for-manual-testing">Appendix G: Instructions for Manual Testing</a>
 <ul class="sectlevel2">
 <li><a href="#launch-and-shutdown">G.1. Launch and Shutdown</a></li>
-<li><a href="#deleting-a-trip">G.2. Deleting a trip</a></li>
+<li><a href="#deleting-a-code-trip-code">G.2. Deleting a <code>TRIP</code></a></li>
 <li><a href="#saving-data">G.3. Saving data</a></li>
-<li><a href="#deleting-an-activity">G.4. Deleting an activity</a></li>
-<li><a href="#deleting-a-journal-entry">G.5. Deleting a journal entry</a></li>
+<li><a href="#deleting-an-code-activity-code">G.4. Deleting an <code>activity</code></a></li>
+<li><a href="#deleting-an-code-entry-code">G.5. Deleting an <code>entry</code></a></li>
 </ul>
 </li>
 </ul>
@@ -105,7 +105,7 @@ This icon denotes important details to take note of during development.
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="Design-Architecture"><a class="link" href="#Design-Architecture">3.1. Architecture</a></h3>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/ArchitectureDiagram.png" alt="ArchitectureDiagram">
 </div>
@@ -185,7 +185,7 @@ is on the <code>ITINERARY</code> page, the <code>add</code> command modifies the
 <p>For example, the <code>JOURNAL</code> view has its own <code>JournalLogicManager</code> and <code>JournalModelManager</code> to provide the context
 for command execution on the <code>JOURNAL</code> page.</p>
 </div>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/JournalLogicDiagram.png" alt="JournalLogicDiagram">
 </div>
@@ -196,7 +196,7 @@ for command execution on the <code>JOURNAL</code> page.</p>
 <p>The <em>Sequence Diagram</em> below shows how the components interact with each other for the scenario where the user issues
 the command <code>back</code> when in a <code>TRIP</code> view. View switching is executed by the <code>Ui</code> component.</p>
 </div>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/ArchitectureSequenceDiagram.png" alt="ArchitectureSequenceDiagram">
 </div>
@@ -206,7 +206,7 @@ the command <code>back</code> when in a <code>TRIP</code> view. View switching i
 <p>The <em>Sequence Diagram</em> below illustrates how the components interact with each other for the scenario where the user issues the command <code>goto 1</code> when in a <code>HomePage</code> view.
 View switching is executed by the <code>Ui</code> component.</p>
 </div>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/gotoCommandSequenceDiagram.png" alt="gotoCommandSequenceDiagram">
 </div>
@@ -219,7 +219,7 @@ View switching is executed by the <code>Ui</code> component.</p>
 </div>
 <div class="sect2">
 <h3 id="Design-Ui"><a class="link" href="#Design-Ui">3.2. UI component</a></h3>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/UIClassDiagram.png" alt="UIClassDiagram">
 </div>
@@ -275,7 +275,7 @@ For example, <code>goto</code>, <code>back</code> and <code>home</code> navigati
 </li>
 </ol>
 </div>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/ArchitectureSequenceDiagram.png" alt="ArchitectureSequenceDiagram">
 </div>
@@ -284,16 +284,13 @@ For example, <code>goto</code>, <code>back</code> and <code>home</code> navigati
 </div>
 </div>
 <div class="paragraph">
-<p>DIAGRAM TO BE INSERTED HERE</p>
-</div>
-<div class="paragraph">
 <p><em>More details on the implementation of view switching can be found in <a href="#implementation-view-switching">Section 4.1, &#8220;View Switching for Navigation Commands&#8221;</a>.</em></p>
 </div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="Design-Logic"><a class="link" href="#Design-Logic">3.3. Logic component</a></h3>
-<div id="fig-LogicClassDiagram1" class="imageblock">
+<div id="fig-LogicClassDiagram1" class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/JournalLogicDiagram.png" alt="JournalLogicDiagram">
 </div>
@@ -325,7 +322,7 @@ For example, <code>goto</code>, <code>back</code> and <code>home</code> navigati
 <div class="paragraph">
 <p>Given below is the Sequence Diagram for interactions within the <code>Logic</code> component of the Itinerary feature for the <code>execute("delete 1")</code> API call.</p>
 </div>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/DeleteCommandItinerary.png" alt="DeleteCommandItinerary">
 </div>
@@ -334,23 +331,17 @@ For example, <code>goto</code>, <code>back</code> and <code>home</code> navigati
 </div>
 <div class="sect2">
 <h3 id="Design-Model"><a class="link" href="#Design-Model">3.4. Model component</a></h3>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/JournalModelClassDiagram.png" alt="JournalModelClassDiagram">
 </div>
 <div class="title">Figure 9. Structure of the Model Component in Journal</div>
 </div>
-<div class="imageblock">
-<div class="content">
-<img src="images/ItineraryModel.png" alt="ItineraryModel">
-</div>
-<div class="title">Figure 10. Structure of the Model Component in Itinerary</div>
-</div>
 <div class="paragraph">
 <p><strong>API</strong> : <a href="https://github.com/AY1920S2-CS2103T-F09-4/main/src/main/java/seedu/location/model/Model.java"><code>Model.java</code></a></p>
 </div>
 <div class="paragraph">
-<p>The <code>Model</code>,</p>
+<p>The <code>Model</code> for <code>JOURNAL</code>,</p>
 </div>
 <div class="ulist">
 <ul>
@@ -358,10 +349,35 @@ For example, <code>goto</code>, <code>back</code> and <code>home</code> navigati
 <p>stores a <code>UserPref</code> object that represents the user&#8217;s preferences.</p>
 </li>
 <li>
-<p>stores the Address Book data.</p>
+<p>stores an <code>Entry</code> 's data.</p>
 </li>
 <li>
-<p>exposes an unmodifiable <code>ObservableList&lt;Person&gt;</code> that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.</p>
+<p>exposes an unmodifiable <code>ObservableList&lt;Entry&gt;</code> that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.</p>
+</li>
+<li>
+<p>does not depend on any of the other three components.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="images/ItineraryModel.png" alt="ItineraryModel">
+</div>
+<div class="title">Figure 10. Structure of the Model Component in Itinerary</div>
+</div>
+<div class="paragraph">
+<p>The <code>Model</code> for <code>ITINERARY</code>,</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>stores a <code>UserPref</code> object that represents the user&#8217;s preferences.</p>
+</li>
+<li>
+<p>stores an <code>Activity</code> 's data.</p>
+</li>
+<li>
+<p>exposes an unmodifiable <code>ObservableList&lt;Activity&gt;</code> that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.</p>
 </li>
 <li>
 <p>does not depend on any of the other three components.</p>
@@ -371,7 +387,7 @@ For example, <code>goto</code>, <code>back</code> and <code>home</code> navigati
 </div>
 <div class="sect2">
 <h3 id="Design-Storage"><a class="link" href="#Design-Storage">3.5. Storage component</a></h3>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/StorageClassDiagram.png" alt="StorageClassDiagram">
 </div>
@@ -389,7 +405,7 @@ For example, <code>goto</code>, <code>back</code> and <code>home</code> navigati
 <p>can save <code>UserPref</code> objects in json format and read it back.</p>
 </li>
 <li>
-<p>can save the XYZList data in json format and read it back.</p>
+<p>can save the <code>XYZList</code> data in json format and read it back.</p>
 </li>
 </ul>
 </div>
@@ -452,8 +468,11 @@ appropriate functions to facilitate view switching.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations"><a class="link" href="#design-considerations">4.1.2. Design Considerations</a></h4>
-
+<h4 id="special-cases"><a class="link" href="#special-cases">4.1.2. Special Cases</a></h4>
+<div class="paragraph">
+<p>When <code>back</code> command is used in the <a href="#root-page">[root-page]</a>, this would not have any effect on the current GUI being
+displayed.</p>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -463,7 +482,7 @@ appropriate functions to facilitate view switching.</p>
 
 </div>
 <div class="sect3">
-<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">4.2.2. Design Considerations</a></h4>
+<h4 id="design-considerations"><a class="link" href="#design-considerations">4.2.2. Design Considerations</a></h4>
 
 </div>
 </div>
@@ -474,7 +493,7 @@ appropriate functions to facilitate view switching.</p>
 
 </div>
 <div class="sect3">
-<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">4.3.2. Design Considerations</a></h4>
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">4.3.2. Design Considerations</a></h4>
 
 </div>
 </div>
@@ -1287,6 +1306,10 @@ appropriate functions to facilitate view switching.</p>
 <dd>
 <p>Commands that require multiple lines of user input for execution.</p>
 </dd>
+<dt class="hdlist1"><a id="root-page"></a> Root Page</dt>
+<dd>
+<p>The first page the shows up when Volant is opened. By default, this is the <code>HOME</code> page.</p>
+</dd>
 <dt class="hdlist1"><a id="one-shot-c"></a> One-shot Commands</dt>
 <dd>
 <p>Commands that are executed using only a single line of user input.</p>
@@ -1299,36 +1322,46 @@ appropriate functions to facilitate view switching.</p>
 <h2 id="product-survey"><a class="link" href="#product-survey">Appendix F: Product Survey</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><strong>Product Name</strong></p>
+<p><strong>Volant</strong></p>
 </div>
 <div class="paragraph">
-<p>Author: &#8230;&#8203;</p>
+<p>Author: Team Volant</p>
 </div>
-<div class="paragraph">
-<p>Pros:</p>
-</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Pros</dt>
+<dd>
 <div class="ulist">
 <ul>
 <li>
-<p>&#8230;&#8203;</p>
+<p>The product is effective in assisting solo travellers to plan and execute their trips.</p>
 </li>
 <li>
-<p>&#8230;&#8203;</p>
+<p>GUI is very aesthetic looking, pleasing to the eyes.</p>
+</li>
+<li>
+<p>The available commands are intuitive, and are easy to use and remember.</p>
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p>Cons:</p>
-</div>
+</dd>
+<dt class="hdlist1">Cons</dt>
+<dd>
 <div class="ulist">
 <ul>
 <li>
-<p>&#8230;&#8203;</p>
+<p>The fremium model proposed can be a bit expensive.</p>
 </li>
 <li>
-<p>&#8230;&#8203;</p>
+<p>A dark mode can be included. Some users prefer a GUI with dark mode.</p>
+</li>
+<li>
+<p>More features can be integrated. These features can be included in version 2.0.</p>
 </li>
 </ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -1389,26 +1422,26 @@ Expected: The most recent window size and location is retained.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-a-trip"><a class="link" href="#deleting-a-trip">G.2. Deleting a trip</a></h3>
+<h3 id="deleting-a-code-trip-code"><a class="link" href="#deleting-a-code-trip-code">G.2. Deleting a <code>TRIP</code></a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Deleting a trip while all trips are listed</p>
+<p>Deleting a <code>TRIP</code> while all <code>TRIPS</code> are listed</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>Prerequisites: List all trips using the <code>list</code> command. Multiple trips in the list.</p>
+<p>Prerequisites: List all <code>TRIPS</code> using the <code>list</code> command. Multiple <code>TRIPS</code> are present in the list.</p>
 </li>
 <li>
 <p>Test case: <code>delete 1</code><br>
-Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.</p>
+Expected: First contact is deleted from the list. Details of the deleted <code>TRIP</code> are shown in the status message. Timestamp in the status bar is updated.</p>
 </li>
 <li>
 <p>Test case: <code>delete 0</code><br>
-Expected: No trip is deleted. Error details shown in the status message. Status bar remains the same.</p>
+Expected: No <code>TRIP</code> is deleted. Error details shown in the status message. Status bar remains the same.</p>
 </li>
 <li>
-<p>Other incorrect delete commands to try: <code>delete</code>, <code>delete x</code> (where x is larger than the list size) <em>{give more}</em><br>
+<p>Other incorrect delete commands to try: <code>delete</code>, <code>delete x</code> (where x is larger than the list size) <br>
 Expected: Similar to previous.</p>
 </li>
 </ol>
@@ -1441,26 +1474,26 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-an-activity"><a class="link" href="#deleting-an-activity">G.4. Deleting an activity</a></h3>
+<h3 id="deleting-an-code-activity-code"><a class="link" href="#deleting-an-code-activity-code">G.4. Deleting an <code>activity</code></a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Deleting an activity in the activity list</p>
+<p>Deleting an <code>activity</code> in the <code>ITINERARY</code></p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>Prerequisites: A trip has already been created.</p>
+<p>Prerequisites: A <code>TRIP</code> has already been created.</p>
 </li>
 <li>
 <p>Test case: <code>delete 1</code><br>
-Expected: First activity is deleted from the itinerary of the current trip. Current activity list is updated.</p>
+Expected: First <code>activity</code> is deleted from the <code>ITINERARY</code> of the current <code>TRIP</code>. Current <code>activity</code> list is updated.</p>
 </li>
 <li>
 <p>Test case: <code>delete 0</code><br>
-Expected: No activity is deleted. Error details shown in the status message</p>
+Expected: No <code>activity</code> is deleted. Error details shown in the status message</p>
 </li>
 <li>
-<p>Other incorrect delete commands to try: <code>delete</code>, <code>delete x</code> (where x is larger than the itinerary size) <em>{give more}</em><br>
+<p>Other incorrect delete commands to try: <code>delete</code>, <code>delete x</code> (where x is larger than the itinerary size)<br>
 Expected: Similar to previous.</p>
 </li>
 </ol>
@@ -1473,26 +1506,26 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-a-journal-entry"><a class="link" href="#deleting-a-journal-entry">G.5. Deleting a journal entry</a></h3>
+<h3 id="deleting-an-code-entry-code"><a class="link" href="#deleting-an-code-entry-code">G.5. Deleting an <code>entry</code></a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Deleting an entry in the entry list</p>
+<p>Deleting an <code>entry</code> in the <code>JOURNAL</code></p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>Prerequisites: A trip has already been created.</p>
+<p>Prerequisites: A <code>TRIP</code> has already been created.</p>
 </li>
 <li>
 <p>Test case: <code>delete 1</code><br>
-Expected: First entry is deleted from the journal of the current trip. Current entry list is updated.</p>
+Expected: First <code>entry</code> is deleted from the <code>JOURNAL</code> of the current <code>TRIP</code>. Current <code>entry</code> list is updated.</p>
 </li>
 <li>
 <p>Test case: <code>delete 0</code><br>
-Expected: No entry is deleted. Error details shown in the status message</p>
+Expected: No <code>entry</code> is deleted. Error details shown in the status message</p>
 </li>
 <li>
-<p>Other incorrect delete commands to try: <code>delete</code>, <code>delete x</code> (where x is larger than the journal size) <em>{give more}</em><br>
+<p>Other incorrect delete commands to try: <code>delete</code>, <code>delete x</code> (where x is larger than the journal size)<br>
 Expected: Similar to previous.</p>
 </li>
 </ol>
@@ -1505,4 +1538,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-12 15:04:58 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 03:01:15 UTC</div></div></div></body></html>
