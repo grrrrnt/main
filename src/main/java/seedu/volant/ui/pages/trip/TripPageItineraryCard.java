@@ -38,7 +38,7 @@ public class TripPageItineraryCard extends UiPart<Region> {
         itineraryCardIcon.setImage(itineraryCardImg);
 
         itineraryTitle.setText("Itinerary");
-        numActivities.setText("You have " + feature.getNumItems() + " activities in you itinerary.");
+        numActivities.setText("You have " + feature.getNumItems() + " activities in your itinerary.");
     }
 
 }

@@ -234,6 +234,102 @@ appropriate functions to facilitate view switching.
 When `back` command is used in the <<root-page>>, this would not have any effect on the current GUI being
 displayed.
 
+=== Data Storage
+All data (trip details, journal entry details and itinerary details) is saved in the `main.data` directory.
+
+==== Organisation
+
+.Data Storage in Volant
+image::user-guide/data-storage.png[align="center"]
+
+The data files are organised in a way that trip details are stored in `volant.json`, while journal and itinerary details
+are stored in a `journal.json` file and a `itinerary.json` file respectively. Both of these data files are organised
+under a directory that represents the trip that the journal and itinerary are associated with.
+
+The following explanation provides more details about these data files:
+
+* Within the `main.data` directory, the `volant.json` file contains a list of JSON objects, each representing a trip,
+with key-value pairs identifying the trip name, location and date range.Upon creation of a trip named "ABC", the
+`volant.json` file is updated with a new JSON object representing the trip. The `main.data.ABC` directory is also
+created.
+
+* When an activity is added to the itinerary, a `itinerary.json` file is created in the `main.data.ABC` directory,
+containing a list of JSON objects, each representing an activity, with key-value pairs identifying the activity title,
+location, date and time.
+
+* When an entry is added to the journal, a `journal.json` file is created in the `main.data.ABC` directory, containing
+a list of JSON objects, each representing a journal entry, with key-value pairs identifying the entry content, date,
+time, location, feeling and weather.
+
+==== Design Considerations
+Pros:
+
+* Each data file can be kept small in size.
+* This allows for faster retrieval of trip/journal/itinerary information from these data files.
+
+Cons:
+
+* There is no single data file that provides an overview of all of a user's data.
+
+==== Implementation: Adding a new trip/activity
+Given below is an example usage scenario where a user adds a new trip:
+
+1. The user executes the add command and provides the name, location and date range.
+2. A new `Trip` object is created with the specified name, location and date range.
+3. In `HomeModelManager`, the `Trip` object is added to the `TripList`.
+4. A new folder is created in the `main.data` directory with the specified trip name.
+5. `HomeLogicManager` accesses the `volant.json` file in the `main.data` directory.
+6. Each `Trip` object in the `TripList` is converted into a `JsonAdaptedTrip` object.
+7. A new `JsonSerializableTripList` object is created with the `JsonAdaptedTrip` objects.
+8. The new `JsonSerializableTripList` object is saved to the `volant.json` data file.
+9. The program log displays a success message.
+
+The following activity diagram summarises what happens when a user adds a new trip:
+
+.Activity diagram for adding a new trip
+image::addTripStorageActivityDiagram.png[align="center"]
+
+The process is similar for the scenario where the user adds a new activity to the itinerary, and the `itinerary.json`
+data file is updated. The following activity diagram summarises this process:
+
+.Activity diagram for adding a new activity
+image::addActivityStorageActivityDiagram.png[align="center"]
+
+==== Implementation: Editing a trip
+Given below is an example usage scenario where a user edits a trip:
+
+1. The user executes the edit command and provides the updated details.
+2. `HomeLogicManager` checks if the name of the trip was updated. If it was, a new directory will be created with the
+new trip name. Data files in the previous folder are moved into this new folder. Following that, the old folder is
+deleted.
+3. `HomeLogicManager` accesses the `volant.json` file in the `main.data` directory.
+4. Each `Trip` object in the `TripList` is converted into a `JsonAdaptedTrip` object.
+5. A new `JsonSerializableTripList` object is created with the `JsonAdaptedTrip` objects.
+6. The new `JsonSerializableTripList` object is saved to the `volant.json` data file.
+7. The program log displays a success message.
+
+The following activity diagram summarises what happens when a user edits a trip:
+
+.Activity diagram for editing a trip
+image::editTripStorageActivityDiagram.png[align="center"]
+
+==== Implementation: Deleting a journal entry/itinerary activity
+Given below is an example usage scenario where a user deletes a journal entry:
+
+1. The user executes the delete command.
+2. In `JournalModelManager`, the identified `Entry` is removed from the `EntryList`.
+3. `JournalLogicManager` accesses the `journal.json` file in the specific trip directory.
+4. Each remaining `Entry` object in the `EntryList` is converted into a `JsonAdaptedEntry` object.
+5. A new `JsonSerializableEntryList` object is created with the `JsonAdaptedEntry` objects.
+6. The new `JsonSerializableEntryList` object is saved to the `journal.json` data file.
+7. The program log displays a success message.
+
+This process is the same for scenarios where the user deletes an itinerary activity. The following activity diagram
+summarises what happens when a user deletes a journal entry or itinerary activity:
+
+.Activity diagram for deleting a journal entry/itinerary activity
+image::deleteStorageActivityDiagram.png[align="center"]
+
 // Please refer to above template
 === Some Other Command
 ==== Implementation
