@@ -26,7 +26,7 @@ how you can use and navigate through Volant's features to help you with your tra
 Volant is a travel companion application for solo travellers for who *prefer to use a desktop app to manage their travels*.
 
 .Home page of Volant
-image::Ui.png[width="790"][align="center"]
+image::Ui.png[align="center"]
 
 Volant is *optimized for those who prefer to work with a Command Line Interface* (CLI) while still having the benefits of a Graphical User Interface (GUI).
 If you can type fast, Volant can get you planning, executing and reflecting on your trip faster than traditional GUI apps. All while enjoying our retro inspired GUI.
@@ -117,7 +117,7 @@ the directory you have stored in Volant JAR file in. This folder will store all 
 The data folder also contains a file, `volant.json` that stores your trip list and their details such as the `TRIP_NAME`, `LOCATION` and date range of all your trips
 
 .Simple diagram of data storage in Volant
-image::user-guide/data-storage.png[width="300"][align="center"]
+image::user-guide/data-storage.png[align="center"]
 
 IMPORTANT: Please do not touch or edit the `volant.json` file or the data of all your trips might be lost!
 
@@ -138,7 +138,7 @@ This section covers the different commands that you can use on the pages in Vola
 This section covers the different components of a page in Volant and teaches you on how to utilise Volant's GUI.
 
 .The different components of a page in Volant
-image::user-guide/ui-components.png[width="600"][align="center"]
+image::user-guide/ui-components.png[align="center"]
 
 There are four major components that you will be using in Volant, which will be referenced in the upcoming sections.
 
@@ -166,19 +166,19 @@ Additionally, there are a number of commands that are universal, and will work o
 |===
 | Page                  | Details
 |`HOME` page            a| .`HOME` page
-image::user-guide/home-page.png[width="300"][align="center"]
+image::user-guide/home-page.png[align="center"]
 
 Volant's `HOME` page, featuring the entire list of trips in Volant, sorted in upcoming and past `TRIP` s.
 |`TRIP` page            a| .`TRIP` page
-image::user-guide/trip-page.png[width="300"][align="center"]
+image::user-guide/trip-page.png[align="center"]
 
 A page featuring the details of a specific `TRIP`, including the `TRIP` 's `ITINERARY` and `JOURNAL`.
 |`JOURNAL` page         a| .`JOURNAL` page
-image::user-guide/journal-page.png[width="300"][align="center"]
+image::user-guide/journal-page.png[align="center"]
 
 A page displaying the `JOURNAL` of a specific `TRIP`.
 |`ITINERARY` page       a| .`ITINERARY` page
-image::user-guide/itinerary-page.png[width="300"][align="center"]
+image::user-guide/itinerary-page.png[align="center"]
 
 A page displaying the `ITINERARY` of a specific `TRIP`.
 |===
@@ -223,7 +223,7 @@ TIP: You can also execute this command by using the kbd:[F1] key on your keyboar
 A separate help window will appear with details on the available commands for the current page you are on, and their usage.
 
 .Help window
-image::user-guide/helpwindow.png[width="600"][align="center"]
+image::user-guide/helpwindow.png[align="center"]
 
 
 [[refresh]]
@@ -246,11 +246,11 @@ For example, after using the `find` command on the `HOME` page (See <<home-find>
 To return the `HOME` page to its original state (listing all trips), you can use the `rf` command.
 
 .Result of `find` command
-image::user-guide/refresh-command-before.png[width="300"][align="center"]
+image::user-guide/refresh-command-before.png[align="center"]
 1) After you have used the `find` command on the `HOME` page, only the results of the command will be displayed.
 
 .Result of `refresh` command
-image::user-guide/refresh-command-after.png[width="300"][align="center"]
+image::user-guide/refresh-command-after.png[align="center"]
 2) After using the `rf` command, the `HOME` page will return to its original state and will list all trips.
 
 ==== Going back to a previous page: `back`
@@ -270,11 +270,11 @@ depending on which page you are currently on.
 For example, if you are in a `TRIP` page, using the `back` command will navigate you to the `TRIP` page associated with the `ITINERARY`.
 
 .`back` command on `ITINERARY` page
-image::user-guide/back-command-before.png[width="300"][align="center"]
+image::user-guide/back-command-before.png[align="center"]
 You are on the `ITINERARY` page of a specific `TRIP`
 
 .Result of `back` command
-image::user-guide/back-command-after.png[width="300"][align="center"]
+image::user-guide/back-command-after.png[align="center"]
 After using the `back` command, you will be moved to the `TRIP` page of the specific `TRIP`
 
 
@@ -312,11 +312,11 @@ For example, if you would like to return to the `HOME` page of Volant from an `I
 command will conveniently move you directly to the `HOME` page.
 
 .`home` command on `ITINERARY` page
-image::user-guide/back-command-before.png[width="300"][align="center"]
+image::user-guide/back-command-before.png[align="center"]
 1) You are on the `ITINERARY` page of a specific `TRIP`.
 
 .Result of `home` command
-image::user-guide/home-page.png[width="300"][align="center"]
+image::user-guide/home-page.png[align="center"]
 2) After using the `home` command, you will be moved to the `HOME` page.
 
 ==== Exiting the app: `exit`
@@ -340,7 +340,7 @@ The app will close.
 The `HOME` page consists of a list of all your upcoming and past trips.
 
 .The different components displayed in the Home page.
-image::user-guide/home-components.png[width="600"][align="center"]
+image::user-guide/home-components.png[align="center"]
 
 From this page, you can manipulate your trip list, as well as navigate to other pages.
 
@@ -364,11 +364,11 @@ NOTE: `INDEX` must be a positive integer value, within range of the number of en
 For example, you are on the `HOME` page and would like to navigate to the `TRIP` page of the trip, _Winter Break_.
 
 .`goto` command on `HOME` page
-image::user-guide/home-goto-before.png[width="300"][align="center"]
+image::user-guide/home-goto-before.png[align="center"]
 1) You are on the `HOME` page and you want to navigate to the `TRIP` page of the 3rd `TRIP`, _Winter Break_.
 
 .Result of `goto` command
-image::user-guide/home-goto-after.png[width="300"][align="center"]
+image::user-guide/home-goto-after.png[align="center"]
 2) After using the `goto` command, you will be navigated to the 3rd `TRIP`, _Winter Break_.
 
 
@@ -406,11 +406,11 @@ Entering the command `add n/Graduation Trip l/Bangkok d/01-06-2020 to 05-06-2020
 `TRIP` to your trip list.
 
 .`add` command on `HOME` page
-image::user-guide/home-add-before.png[width="300"][align="center"]
+image::user-guide/home-add-before.png[align="center"]
 1) You would like to add a `TRIP` to your trip list and enter the `add` command including the specific metadata of the `TRIP`.
 
 .Result of `add` command
-image::user-guide/home-add-after.png[width="600"][align="center"]
+image::user-guide/home-add-after.png[align="center"]
 2) After using the `add` command, the new `TRIP` will be added to your trip list and displayed under _UPCOMING TRIPS_.
 
 
@@ -444,11 +444,11 @@ For example, you would like to delete the second `TRIP` on your trip list, _Grad
 Entering the command `delete 2`, will delete the second `TRIP` from your trip list.
 
 .`delete` command on `HOME` page
-image::user-guide/home-delete-before.png[width="600"][align="center"]
+image::user-guide/home-delete-before.png[align="center"]
 1) You want to delete the second trip on your trip list, "Graduation Trip".
 
 .Result of `delete` command
-image::user-guide/home-delete-after.png[width="300"][align="center"]
+image::user-guide/home-delete-after.png[align="center"]
 2) After using the `delete` command, the trip will be removed from your trip list.
 
 [IMPORTANT]
@@ -492,11 +492,11 @@ Entering the command `edit 1 n/Family Trip 2020 l/Frankfurt` will edit the speci
 and these changes will be reflected on Volant's GUI.
 
 .`edit` command on `HOME` page
-image::user-guide/home-edit-before.png[width="600"][align="center"]
+image::user-guide/home-edit-before.png[align="center"]
 1) You want to edit the `TRIP_NAME` and `LOCATION` of the first `TRIP` in your trip list.
 
 .Result of `edit` command
-image::user-guide/home-edit-after.png[width="600"][align="center"]
+image::user-guide/home-edit-after.png[align="center"]
 2) After using the `edit` command, the `TRIP_NAME` and `LOCATION` of the `TRIP` will be changed accordingly.
 
 [[home-find]]
@@ -526,11 +526,11 @@ For example, you would like search for a trip on the trip list with the `KEYWORD
 Volant will locate all `TRIP` s with the `KEYWORD`, "fuji", and display all matching results.
 
 .`find` command on `HOME` page
-image::user-guide/home-find-before.png[width="300"][align="center"]
+image::user-guide/home-find-before.png[align="center"]
 1) You want to search for all `TRIP` s with names containing the `KEYWORD`, "fuji".
 
 .Result of `find` command
-image::user-guide/home-find-after.png[width="300"][align="center"]
+image::user-guide/home-find-after.png[align="center"]
 2) After using the `find` command, Volant will display all trips with the specified `KEYWORD`.
 
 [TIP]
@@ -573,11 +573,12 @@ For example, you are on the `TRIP` page and would like to view your itinerary fo
 `goto` command, Volant will navigate you to the `TRIP` 's  `ITINERARY` page.
 
 .`goto` command on `TRIP` page
-image::user-guide/trip-goto-before.png[width="300"][align="center"]
+image::user-guide/trip-goto-before.png[align="center"]
+
 1) You are on the `TRIP` page of the trip "Family Trip".
 
 .Result of `goto` command
-image::user-guide/trip-goto-after.png[width="300"][align="center"]
+image::user-guide/trip-goto-after.png[align="center"]
 2) After using the `goto` command, you will be navigated to the `TRIP` 's `ITINERARY` page.
 
 === Itinerary Page
@@ -585,7 +586,7 @@ The `ITINERARY` page of a specific trip consists of a list of all the planned ac
 Here, you can manipulate the list of `JOURNAL` entries, as well as navigate to other pages.
 
 .`ITINERARY` page
-image::user-guide/itinerary-components.png[width="600"][align="center"]
+image::user-guide/itinerary-components.png[align="center"]
 
 From this page, you can manipulate the itinerary, as well as navigate to other pages.
 
@@ -613,11 +614,11 @@ Adds a new activity to your itinerary.
 A new activity titled *Flight to Singapore* at *Berlin Brandenburg Airport* at *07:00 AM* on *24th December 2020* is added to the `TRIP` 's `ITINERARY`.
 
 .`add` command on `ITINERARY` page
-image::user-guide/itinerary-add-before.png[width="300"][align="center"]
+image::user-guide/itinerary-add-before.png[align="center"]
 1) You would like to add a new `ACTIVITY` into your `ITINERARY` with the specified metadata.
 
 .Result of `add` command
-image::user-guide/itinerary-add-after.png[width="600"][align="center"]
+image::user-guide/itinerary-add-after.png[align="center"]
 2) After using the `add` command, a new `ACTIVITY` will be added to the `ITINERARY`.
 
 
@@ -647,11 +648,11 @@ Deletes the activity at a specified `INDEX`.
 The fourth `ACTIVITY` on the `ITINERARY` is deleted.
 
 .`delete` command on `ITINERARY` page
-image::user-guide/itinerary-delete-before.png[width="600"][align="center"]
+image::user-guide/itinerary-delete-before.png[align="center"]
 1) You wish to delete the `ACTIVITY` at `INDEX` 4 from your `ITINERARY`.
 
 .Result of `delete` command
-image::user-guide/itinerary-delete-after.png[width="300"][align="center"]
+image::user-guide/itinerary-delete-after.png[align="center"]
 2) After using `delete` command, the `ACTIVITY` at `INDEX` 4 is deleted.
 
 ==== Editing an activity: `edit`
@@ -682,11 +683,11 @@ Edits the details of an existing `ACTIVITY` in the `ITINERARY`.
 The second `ACTIVITY` in the `ITINERARY` has been edited to reflect the new location *Starbucks* and the new time *10:00AM*.
 
 .`edit` command on `ITINERARY` page
-image::user-guide/itinerary-edit-before.png[width="600"][align="center"]
+image::user-guide/itinerary-edit-before.png[align="center"]
 1) You wish to `edit` the `LOCATION` and `TIME` of the `ACTIVITY` at `INDEX` 2.
 
 .Result of `edit` command
-image::user-guide/itinerary-edit-after.png[width="600"][align="center"]
+image::user-guide/itinerary-edit-after.png[align="center"]
 2) After using `edit` command, the `LOCATION` and `TIME` of the `ACTIVITY` at `INDEX` 2 will be
 updated accordingly.
 
@@ -712,11 +713,11 @@ Filters the activity list of your itinerary for activity/activities that match(e
 All activities whose name consists of the keyword "ferry" are displayed.
 
 .`find` command on `ITINERARY` page
-image::user-guide/itinerary-find-before.png[width="300"][align="center"]
+image::user-guide/itinerary-find-before.png[align="center"]
 1) You wish to `find` all activities that include the keyword "ferry".
 
 .Result of `find` command
-image::user-guide/itinerary-find-after.png[width="300"][align="center"]
+image::user-guide/itinerary-find-after.png[align="center"]
 2) After using `find` command, all activities that include the keyword "ferry" are displayed.
 
 === Journal
@@ -725,7 +726,7 @@ The `JOURNAL` page of a specific `TRIP` consists of a list of all the journal en
 Here, you can manipulate the list of `JOURNAL` entries, as well as navigate to other pages.
 
 .`JOURNAL` page
-image::user-guide/journal-components.png[width="600"][align="center"]
+image::user-guide/journal-components.png[align="center"]
 
 
 ==== Adding a journal entry: `add`
@@ -768,11 +769,11 @@ If you would like to record a new `JOURNAL` entry, this command adds a new entry
 Adds a new journal entry to the entry list with the specified content, date, time, location and feeling fields.
 
 .`add` command in `JOURNAL` page
-image::user-guide/journal-add-before.png[width="300"][align="center"]
+image::user-guide/journal-add-before.png[align="center"]
 1) You want to add an `ENTRY` to the `JOURNAL` with the specified metadata.
 
 .Result of `add` command
-image::user-guide/journal-add-after.png[width="300"][align="center"]
+image::user-guide/journal-add-after.png[align="center"]
 2) After using the `add` command, a new `ENTRY` is added to the `JOURNAL`.
 
 ==== Deleting a journal entry: `delete`
@@ -803,11 +804,11 @@ If you would like to remove an `ENTRY` from the journal, this command deletes th
 The `ENTRY` at the specified `INDEX` will be deleted.
 
 .`delete` command in `JOURNAL` page
-image::user-guide/journal-delete-before.png[width="600"][align="center"]
+image::user-guide/journal-delete-before.png[align="center"]
 1) You wish to delete the `ENTRY` at `INDEX` 1.
 
 .Result of `delete` command
-image::user-guide/journal-delete-after.png[width="300"][align="center"]
+image::user-guide/journal-delete-after.png[align="center"]
 2) After using `delete` command, the `ENTRY` at `INDEX` 1 will be deleted and the indices of the remaining entries are
 updated as necessary.
 
@@ -834,11 +835,11 @@ a new weather, this command allows you to edit the entry at a specified `INDEX`.
 Changes `WEATHER` of the second `ENTRY` to *SNOWY*.
 
 .`edit` command on `JOURNAL` page
-image::user-guide/journal-edit-before.png[width="600"][align="center"]
+image::user-guide/journal-edit-before.png[align="center"]
 1) You wish to `edit` the weather field of the `ENTRY` at `INDEX` 2.
 
 .Result of `edit` command
-image::user-guide/journal-edit-after.png[width="600"][align="center"]
+image::user-guide/journal-edit-after.png[align="center"]
 2) After using the `edit` command, the `WEATHER` field of the `ENTRY` at `INDEX` 2 will be updated accordingly.
 
 ==== Sorting a list of current journal entries: `sort`
@@ -867,11 +868,11 @@ If you would like to arrange your journal entries in a certain order, this comma
 Sorts the list of `JOURNAL` entries by oldest to newest.
 
 .`sort` command on `JOURNAL` page
-image::user-guide/journal-sort-oldest-before.png[width="300"][align="center"]
+image::user-guide/journal-sort-oldest-before.png[align="center"]
 1) You wish to sort the entries by oldest first.
 
 .Result of `sort` command
-image::user-guide/journal-sort-oldest-after.png[width="300"][align="center"]
+image::user-guide/journal-sort-oldest-after.png[align="center"]
 2) After using the `sort` command, the order of the entries will be sorted from oldest to newest.
 
 == FAQ
