@@ -15,7 +15,7 @@ import seedu.volant.ui.pages.home.HomePage;
 
 
 /**
- * Page containing details of a Trip as well as a menu of TripFeatures.
+ * Page containing activity list of an Itinerary.
  */
 public class ItineraryPage extends UiPart<Region> {
     private static final String FXML = "itinerary/ItineraryPage.fxml";
@@ -46,6 +46,7 @@ public class ItineraryPage extends UiPart<Region> {
         protected void updateItem(Activity activity, boolean empty) {
             super.updateItem(activity, empty);
             if (empty || activity == null) {
+                setGraphic(null);
                 setStyle("-fx-background-color: #fff;");
             } else {
                 setGraphic(new ItineraryPageCard(activity, getIndex() + 1).getRoot());

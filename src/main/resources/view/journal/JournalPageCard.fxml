@@ -49,7 +49,7 @@
 
             <!-- ID of journal entry -->
             <HBox alignment="CENTER_RIGHT" prefHeight="10.0" prefWidth="120.0" styleClass="hBox-journal-id">
-                   <Label fx:id="id" alignment="BOTTOM_RIGHT" prefHeight="19.0" prefWidth="120.0" styleClass="label-journal-id" text="\$entryID"/>
+                   <Label fx:id="entryIndex" alignment="BOTTOM_RIGHT" prefHeight="19.0" prefWidth="120.0" styleClass="label-journal-id" text="\$entryID"/>
             </HBox>
         </VBox>
 

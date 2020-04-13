@@ -937,6 +937,13 @@ Use this list as a quick and convenient reference.
 
 |====================================================
 
+[[navigation-summary]]
+=== Graphical Summary of Navigation Commands
+Below is a useful "cheat sheet" of all navigation commands used to navigate through the pages in Volant.
+
+.Graphical summary of navigation commands in Volant
+image::/{imagesDir}/navigation-cheatsheet.png[width="800"]
+
 <<<<
 
 == Glossary

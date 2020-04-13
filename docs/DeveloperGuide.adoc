@@ -331,15 +331,64 @@ summarises what happens when a user deletes a journal entry or itinerary activit
 image::deleteStorageActivityDiagram.png[align="center"]
 
 // Please refer to above template
-=== Some Other Command
+=== Add Trip Command in Home Page
 ==== Implementation
+Adding a trip
+
+The add trip feature allows user to add a trip to Volant. This feature is facilitated by `HomeInputParser`, `AddCommandParser` and `AddCommand`.
+
+Given below is an example usage scenario and how the trip add mechanism behaves at each step:
+
+1. The user executes the add command in `HOME` page and provides the required metadata in the correct format to be added.
+2. `HomeInputParser` parses the input by the user to check if the input provided contains a valid command keyword.
+3. `AddCommandParser` parses the remaining input by the user for metadata denoted with prefixes.
+4. `AddCommandParser` checks if the metadata input by the user is in the desired format.
+5. `AddCommandParser` creates a new `AddCommand` based on the metadata provided.
+6. `HomeLogicManager` executes the `AddCommand`.
+7. `HomeModelManager` checks if the new `TRIP` has any logical conflicts with existing `TRIP`(s)
+8. `HomeModelManager` adds the module to the `UniqueActivityList`.
+9. A new folder with the `TRIP` name is created.
+10. `HomeLogicManager` updates storage with updated `UniqueActivityList`.
+11. `MainWindow` receives `CommandResult` from `HomeLogicManager` containing success message to be displayed to user.
+12. Trips displayed in `MainWindow` are updated and `MainWindow` displays success message.
+
+The following activity diagram summarizes what happens when a user executes a add trip command:
+
+.Activity Diagram for `add` Command
+image::AddTripActivityDiagram.png[]
 ==== Design Considerations
 
-=== Some Other Command
+===== Aspect: How data is stored
+* **Alternative 1 (current choice):** Saves the trip details in main volant json folder and create a folder corresponding to `TRIP` name.
+** Pros: Easy to implement.
+** Cons: Less organised as all trip details are stored in one location. Any error in the way one trip is stored will cause all trips not to be loaded.
+* **Alternative 2:** Create a individual json file for each trip details.
+** Pros: An error in the file of one trip will not affect the loading of other trips.
+** Cons: Harder to implement retrieval
+
+=== Sorting entries in Journal Page
 ==== Implementation
-==== Design Considerations
+Sorting journal entries
 
+The sort feature allows user to sort the entries in the `JOURNAL` of a trip. This feature is facilitated by `JournalInputParser`, `SortCommandParser` and `SortCommand`.
 
+Given below is an example usage scenario and how the trip add mechanism behaves at each step:
+
+1. The user executes the sort command in `JOURNAL` page and provides a field which they want the entries to be sorted by.
+2. `JournalInputParser` parses the input by the user to check if the input provided contains a valid command keyword.
+3. `SortCommandParser` parses the remaining input by the user for field.
+4. `SortCommandParser` checks if the field input by the user is a valid field to sort by.
+5. `SortCommandParser` creates a new `SortCommand` based on the field provided.
+6. `JournalLogicManager` executes the `SortCommand`.
+7. `JournalModelManager` sorts the entries according to the input field.
+8. `JournalLogicManager` updates storage with updated `UniqueEntryList`.
+9. `MainWindow` receives `CommandResult` from `HomeLogicManager` containing success message to be displayed to user.
+10. Jounral entries displayed in `MainWindow` are updated and `MainWindow` displays success message.
+
+The following activity diagram summarizes what happens when a user executes a add trip command:
+
+.Activity Diagram for `sort` Command
+image::sortActivityDiagram.png[]
 
 ////
 === [Proposed] Undo/Redo feature

@@ -45,7 +45,7 @@ public class JournalPageCard extends UiPart<Region> {
     private Label entryWeather;
 
     @FXML
-    private Label id;
+    private Label entryIndex;
 
     @FXML
     private ImageView locationIcon;
@@ -65,7 +65,7 @@ public class JournalPageCard extends UiPart<Region> {
 
         this.entry = entry;
 
-        id.setText(Integer.toString(displayedIndex));
+        entryIndex.setText(Integer.toString(displayedIndex));
         entryTitle.setText(entry.getText());
         entryDate.setText(entry.getDateAsString() + ",");
         entryTime.setText(entry.getTimeAsString());

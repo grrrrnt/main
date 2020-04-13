@@ -23,36 +23,65 @@ it is primarily based off of the Address Book 3 application developed by the CS2
 You can view my code contributions to this project
 https://nus-cs2103-ay1920s2.github.io/tp-dashboard/#search=raniceyue&sort=groupTitle&sortWithin=title&since=&timeframe=commit&mergegroup=false&groupSelect=groupByRepos&breakdown=false[on RepoSense].
 
-* *Major Enhancement:* Implemented mechanism for view switching
-** What it does: Allows users to navigate between different pages in the application and execute commands in different contexts.
-More information about this enhancement can be found https://www.ranice.net/main/DeveloperGuide.html#view-switching[here].
-** Justification: Rather than placing all features in one messy singular view, users are able to focus on one single view.
-** Highlights: The implementation of the view switching mechanism was a bottleneck for our team project as in order to
-implement and test the other features of the application, developers must be able to switch between views.
+==== Enhancements Implemented
 
-* *Major Enhancement:* Implemented Home Page of application
-** What it does: Allows users to view and manipulate the trip list in the application.
+* *Major Enhancement:* Implemented mechanism for view switching through `MainWindow.java`
+** *What it does* +
+    Allows users to navigate between different pages in the application and execute commands in different contexts.
+More information about this enhancement can be found https://www.ranice.net/main/DeveloperGuide.html#view-switching[here].
+** *Justification* +
+    Rather than placing all features in one messy singular view, users are able to focus on one single view.
+** *Highlights* +
+    The implementation of the view switching mechanism was a bottleneck for our team project as in order to
+implement and test the other features of the application, developers must be able to switch between views.
++
+This was not easy to do, I spent a lot of time trying to figure out the mechanics of how to do it as it involves refactoring
+the logic of the program and the `.fxml` files in order to see the results. Because of this mechanism, every page has to
+have its own logic and model to accommodate similar keywords being used on each page.
++
+Rather than creating custom commands for each page and a single logic component, it is neater to abstract and create a
+logic and model component for each page. That way commands with a single keyword e.g. `add`, `delete` can be used on
+multiple pages. This also makes it more convenient and user friendly for users.
+
+
+* *Major Enhancement:* Implemented all navigation commands
+** *What it does* +
+Allows users to navigate between different pages conveniently through short commands such as `back` and `goto`. +
+
+
+** *Justification* +
+Rather than moving the mouse to click buttons, users can easily navigate through the pages without moving their hands away
+from the keyboard.
+====
+*Map of Navigation Commands* +
+
+image::{imagesDir}/navigation-cheatsheet.png[width="600"]
+====
+
+
+
+* *Major Enhancement:* Implemented Home Page of application +
+** What it does: Allows users to view and manipulate the trip list in the application, and view past and upcoming trips.
+
 
 * *Major Enhancement:* Designed the GUI for the application
-** Credits: Main design was inspired by https://en.wikipedia.org/wiki/Windows_1.0[Windows 1.0]
+** *Justification* +
+I wanted to completely move away from the Address Book 3 design and differentiate our application from
+the rest of the teams.
+** *Credits* +
+Main design was inspired by https://en.wikipedia.org/wiki/Windows_1.0[Windows 1.0]
 
-
-* *Other Contributions*
-** Project management
-*** Managed overall team workflow as a team leader
-*** Managed and reviewed team PRs before merging
-*** Managed other miscellaneous logistics on Github such as the issue tracker
-** Documentation
-*** Customised the `asciidoctor.css` file to create a more aesthetically pleasing application.
-** Project Branding
-*** Designed the Volant's logo
-*** Credits: Logo design was inspired
-by https://www.google.com/search?q=patagonia+logo&tbm=isch&ved=2ahUKEwjrrpjwlrroAhUaj0sFHeZuDbkQ2-cCegQIABAA&oq=patagonia+logo&gs_lcp=CgNpbWcQAzIECCMQJzIECCMQJzIECAAQQzIECAAQQzICCAAyAggAMgIIADICCAAyAggAMgIIAFCTJFijJWDPJmgAcAB4AIABMogBXpIBATKYAQCgAQGqAQtnd3Mtd2l6LWltZw&sclient=img&ei=hbF9XqvYKZqertoP5t21yAs&bih=629&biw=1340#imgrc=3QLx2EoUdugRJM[Patagonia].
-
+* *Major Enhancement:* Implemented Help Windows for different views
+** *What it does* +
+Every view on the application has a custom Help Window detailing the commands that can be used on each page.
+** *Justification* +
+Implementing a general help page with every single command is not convenient for users as they have to scroll through
+the entire help page to find the commands for the page they are on. It is much more convenient to directly show users
+what commands can be used on the page they are specifically on.
 
 === Contributions to User Guide
 ==== Sections Written
-* Section 1
+* Created all screenshots in the UG.
 * Section 2
 * Section 3
 
@@ -62,4 +91,23 @@ by https://www.google.com/search?q=patagonia+logo&tbm=isch&ved=2ahUKEwjrrpjwlrro
 * Section 2
 * Section 3
 
-_{To be updated in the future}_
+==== Diagrams
+* Figure n
+
+=== Contributions to team-based tasks
+** *Project Management*
+*** Managed overall team workflow as a team leader.
+*** Managed and reviewed team PRs before merging.
+*** Managed other miscellaneous logistics on Github such as the issue tracker, Travis and Codacy.
+** *Team Website*
+*** Customised the `asciidoctor.css` file to create a more aesthetically pleasing website.
+** *Project Branding*
+*** Designed Volant's logo and repo thumbnail.
+*** Credits: Logo design was inspired
+by https://www.google.com/search?q=patagonia+logo&tbm=isch&ved=2ahUKEwjrrpjwlrroAhUaj0sFHeZuDbkQ2-cCegQIABAA&oq=patagonia+logo&gs_lcp=CgNpbWcQAzIECCMQJzIECCMQJzIECAAQQzIECAAQQzICCAAyAggAMgIIADICCAAyAggAMgIIAFCTJFijJWDPJmgAcAB4AIABMogBXpIBATKYAQCgAQGqAQtnd3Mtd2l6LWltZw&sclient=img&ei=hbF9XqvYKZqertoP5t21yAs&bih=629&biw=1340#imgrc=3QLx2EoUdugRJM[Patagonia].
+
+
+=== Contributions beyond the project team
+https://github.com/nus-cs2103-AY1920S2/forum/issues?q=is%3Aissue+author%3Araniceyue[
+Here is a link to the issues I have made in the module's Github forum.]
+I have made a total of 7 issues, one sharing technical information and another which I resolved on my own.
