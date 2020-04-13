@@ -27,13 +27,15 @@
 <li><a href="#specific-help-windows-for-different-pages">4.2. Specific Help Windows for different pages</a></li>
 <li><a href="#adding-a-trip-in-home-page">4.3. Adding a trip in Home Page</a></li>
 <li><a href="#sorting-entries-in-journal-page">4.4. Sorting entries in Journal Page</a></li>
-<li><a href="#deleting-trip-in-home-page">4.5. Deleting Trip in Home Page</a></li>
-<li><a href="#adding-an-activity-in-itinerary-page">4.6. Adding an activity in Itinerary Page</a></li>
-<li><a href="#finding-activities-in-itinerary-page">4.7. Finding activities in Itinerary Page</a></li>
-<li><a href="#refreshing-trips-in-home-page">4.8. Refreshing trips in Home Page</a></li>
-<li><a href="#data-storage">4.9. Data Storage</a></li>
-<li><a href="#logging">4.10. Logging</a></li>
-<li><a href="#Implementation-Configuration">4.11. Configuration</a></li>
+<li><a href="#adding-activities-in-itinerary-page">4.5. Adding activities in Itinerary Page</a></li>
+<li><a href="#finding-activities-in-itinerary-page">4.6. Finding activities in Itinerary Page</a></li>
+<li><a href="#deleting-trip-in-home-page">4.7. Deleting Trip in Home Page</a></li>
+<li><a href="#adding-an-activity-in-itinerary-page">4.8. Adding an activity in Itinerary Page</a></li>
+<li><a href="#finding-activities-in-itinerary-page-2">4.9. Finding activities in Itinerary Page</a></li>
+<li><a href="#refreshing-trips-in-home-page">4.10. Refreshing trips in Home Page</a></li>
+<li><a href="#data-storage">4.11. Data Storage</a></li>
+<li><a href="#logging">4.12. Logging</a></li>
+<li><a href="#Implementation-Configuration">4.13. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">5. Documentation</a></li>
@@ -48,11 +50,9 @@
 <li><a href="#instructions-for-manual-testing">Appendix G: Instructions for Manual Testing</a>
 <ul class="sectlevel2">
 <li><a href="#launch-and-shutdown">G.1. Launch and Shutdown</a></li>
-<li><a href="#adding-a-code-trip-code">G.2. Adding a <code>TRIP</code></a></li>
-<li><a href="#deleting-a-code-trip-code">G.3. Deleting a <code>TRIP</code></a></li>
+<li><a href="#adding">G.2. Adding</a></li>
+<li><a href="#deleting">G.3. Deleting</a></li>
 <li><a href="#saving-data">G.4. Saving data</a></li>
-<li><a href="#deleting-an-code-activity-code">G.5. Deleting an <code>activity</code></a></li>
-<li><a href="#deleting-an-code-entry-code">G.6. Deleting an <code>entry</code></a></li>
 </ul>
 </li>
 </ul>
@@ -624,6 +624,9 @@ the window to reach the section that details commands for the page that they are
 <div class="sect3">
 <h4 id="implementation-4"><a class="link" href="#implementation-4">4.3.1. Implementation</a></h4>
 <div class="paragraph">
+<p>Adding a trip</p>
+</div>
+<div class="paragraph">
 <p>The add trip feature allows user to add a trip to Volant. This feature is facilitated by <code>HomeInputParser</code>, <code>AddCommandParser</code>, and <code>AddCommand</code>.</p>
 </div>
 <div class="paragraph">
@@ -762,20 +765,199 @@ The sort feature allows user to sort the entries in the <code>JOURNAL</code> of 
 </ol>
 </div>
 <div class="paragraph">
-<p>The following activity diagram summarises what happens when a user executes a sort journal command:</p>
+<p>The following activity diagram summarizes what happens when a user executes a sort journal command:</p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
-<img src="images/SortActivityDiagram.png" alt="SortActivityDiagram" width="]">
+<img src="images/sortActivityDiagram.png" alt="sortActivityDiagram" width="]">
 </div>
 <div class="title">Figure 14. Activity Diagram for <code>sort</code> Command</div>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-trip-in-home-page"><a class="link" href="#deleting-trip-in-home-page">4.5. Deleting Trip in Home Page</a></h3>
+<h3 id="adding-activities-in-itinerary-page"><a class="link" href="#adding-activities-in-itinerary-page">4.5. Adding activities in Itinerary Page</a></h3>
 <div class="sect3">
 <h4 id="implementation-6"><a class="link" href="#implementation-6">4.5.1. Implementation</a></h4>
+<div class="paragraph">
+<p>Adding an activity</p>
+</div>
+<div class="paragraph">
+<p>The add activity feature allows user to add an activity to a current trip. This feature is faciliated by <code>ItineraryInputParser</code>, <code>AddCommandParser</code>, and <code>AddCommand</code>.</p>
+</div>
+<div class="paragraph">
+<p>Given below is an example usage scenario and how the activity add mechanism behaves at each step:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The user executes the add command in <code>ITINERARY</code> page and provides the required metadata in the correct format to be added.</p>
+</li>
+<li>
+<p><code>ItineraryInputParser</code> parses the input by the user to check if the input provided contains a valid command keyword.</p>
+</li>
+<li>
+<p><code>AddCommandParser</code> parses the remaining input by the user for metadata denoted with prefixes.</p>
+</li>
+<li>
+<p><code>AddCommandParser</code> checks if the metadata input by the user is in the desired format.</p>
+</li>
+<li>
+<p><code>AddCommandParser</code> creates a new <code>AddCommand</code> based on the metadata provided.</p>
+</li>
+<li>
+<p><code>ItineraryLogicManager</code> executes the <code>AddCommand</code>.</p>
+</li>
+<li>
+<p><code>ItineraryModelManager</code> checks if the new <code>ACTIVITY</code> has any logical conflicts with existing <code>ACTIVITY</code>(s)</p>
+</li>
+<li>
+<p><code>ItineraryModelManager</code> adds the activity to the <code>UniqueActivityList</code>.</p>
+</li>
+<li>
+<p>The <code>itinerary.json</code> file in the current trip folder in storage is updated</p>
+</li>
+<li>
+<p><code>ItineraryLogicManager</code> updates storage with updated <code>UniqueActivityList</code>.</p>
+</li>
+<li>
+<p><code>MainWindow</code> receives <code>CommandResult</code> from <code>ItineraryLogicManager</code> containing success message to be displayed to user.</p>
+</li>
+<li>
+<p>Activities displayed in <code>MainWindow</code> are updated and <code>MainWindow</code> displays success message.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The following activity diagram summarizes what happens when a user executes a add activity command:</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="images/AddActivity.png" alt="AddActivity" width="]">
+</div>
+<div class="title">Figure 15. Activity Diagram for <code>add</code> Command</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">4.5.2. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-prerequisite-of-the-command"><a class="link" href="#aspect-prerequisite-of-the-command">Aspect: Prerequisite of the command</a></h5>
+<div class="paragraph">
+<p>Since each trip is associated with one itinerary, when the user wants to use the add activity command, a trip must have already been created. This is why the order of the scence switching is important as it disallows user to create an activity that is not associated with any trip.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="finding-activities-in-itinerary-page"><a class="link" href="#finding-activities-in-itinerary-page">4.6. Finding activities in Itinerary Page</a></h3>
+<div class="sect3">
+<h4 id="implementation-7"><a class="link" href="#implementation-7">4.6.1. Implementation</a></h4>
+<div class="paragraph">
+<p>Finding an activity</p>
+</div>
+<div class="paragraph">
+<p>The find activity feature allows user to find one or several activities in the current trip with matching keywords provided. This feature is faciliated by <code>ItineraryInputParser</code>, <code>FindCommandParser</code>, and <code>FindCommand</code>.</p>
+</div>
+<div class="paragraph">
+<p>Given below is an example usage scenario and how the activity find mechanism behaves at each step:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The user executes the find command in <code>ITINERARY</code> page and provides one or several field(s) which they want to be displayed with the current keyword.</p>
+</li>
+<li>
+<p><code>ItineraryInputParser</code> parses the input by the user to check if the input provided contains a valid command keyword.</p>
+</li>
+<li>
+<p><code>FindCommandParser</code> parses the remaining input by the user for fields to be found.</p>
+</li>
+<li>
+<p><code>FindCommandParser</code> checks if the field input by the user is a valid field to find.</p>
+</li>
+<li>
+<p><code>FindCommandParser</code> creates a new <code>FindCommand</code> based on the fields provided.</p>
+</li>
+<li>
+<p><code>ItineraryLogicManager</code> executes the <code>FindCommand</code>.</p>
+</li>
+<li>
+<p>A new find predicate is created to check for matching keyword from the current list of activities.</p>
+</li>
+<li>
+<p><code>ItineraryModelManager</code> checks the current <code>UniqueActivityList</code> to find activities with matching keywords provided based on the predicate created.</p>
+</li>
+<li>
+<p><code>ItineraryModelManager</code> updates the activities that matched in the <code>FilteredActivityList</code>.</p>
+</li>
+<li>
+<p><code>MainWindow</code> receives <code>CommandResult</code> from <code>ItineraryLogicManager</code> containing success message to be displayed to user.</p>
+</li>
+<li>
+<p>Jounral entries displayed in <code>MainWindow</code> are updated and <code>MainWindow</code> displays success message.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The following activity diagram summarizes what happens when a user executes a find activity command:</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="images/FindItinerary.png" alt="FindItinerary" width="]">
+</div>
+<div class="title">Figure 16. Activity Diagram for <code>find</code> Command</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">4.6.2. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-syntax-of-the-find-command-2"><a class="link" href="#aspect-syntax-of-the-find-command-2">Aspect: Syntax of the find command</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Users are allowed to find according to specific fields. This is done by adding the prefixes(t/ for <code>title</code>, l/ for <code>location</code>, d/ for <code>date</code>, and t/ for <code>time</code>) before the keyword to be found</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Allows users to be very specific in the find command. This means that users can find activities with the keywords in the specific field that they want. This implementation also allows users to append one find command with multiple fields to narrow down the search in less steps.</p>
+</li>
+<li>
+<p>Cons: Cannot find the same keyword for multiple fields. The current implementation can also cause the CLI by the users to be longer as there is a need to specify the fields to find. Furthermore, this implementation is more troublesome to implement.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Users can find with one or a few keywords without the need to specify the fields.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: The commands would be a lot shorter and easy to use. This allows for cross-field search which is not possible with the current implementation. This implementation is also easier to implement.</p>
+</li>
+<li>
+<p>Cons: This makes it difficult to narrow down the search if the users want to be specific about which field the keyword is in. The current implementation allows for greater freedom in choosing the fields to search for, something this implementation would not be able to accomplish. Furthermore, as <code>date</code> and <code>time</code> have different format from <code>location</code> and <code>title</code>, the specified field would make it easier for users to search for activities with the same <code>date</code> or <code>time</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The following activity diagram summarises what happens when a user executes a sort journal command:</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="images/SortActivityDiagram.png" alt="SortActivityDiagram" width="]">
+</div>
+<div class="title">Figure 17. Activity Diagram for <code>sort</code> Command</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="deleting-trip-in-home-page"><a class="link" href="#deleting-trip-in-home-page">4.7. Deleting Trip in Home Page</a></h3>
+<div class="sect3">
+<h4 id="implementation-8"><a class="link" href="#implementation-8">4.7.1. Implementation</a></h4>
 <div class="paragraph">
 <p>The delete trip feature allows user to delete a trip in Volant. This feature is faciliated by <code>HomeInputParser</code>, <code>DeleteCommandParser</code>, and <code>DeleteCommand</code>.</p>
 </div>
@@ -826,11 +1008,11 @@ The sort feature allows user to sort the entries in the <code>JOURNAL</code> of 
 <div class="content">
 <img src="images/deleteTripActivityDiagram.png" alt="deleteTripActivityDiagram" width="]">
 </div>
-<div class="title">Figure 15. Activity Diagram for <code>delete</code> Command</div>
+<div class="title">Figure 18. Activity Diagram for <code>delete</code> Command</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">4.5.2. Design Considerations</a></h4>
+<h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">4.7.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-to-delete-the-trip"><a class="link" href="#aspect-how-to-delete-the-trip">Aspect: How to delete the trip</a></h5>
 <div class="paragraph">
@@ -840,9 +1022,9 @@ The sort feature allows user to sort the entries in the <code>JOURNAL</code> of 
 </div>
 </div>
 <div class="sect2">
-<h3 id="adding-an-activity-in-itinerary-page"><a class="link" href="#adding-an-activity-in-itinerary-page">4.6. Adding an activity in Itinerary Page</a></h3>
+<h3 id="adding-an-activity-in-itinerary-page"><a class="link" href="#adding-an-activity-in-itinerary-page">4.8. Adding an activity in Itinerary Page</a></h3>
 <div class="sect3">
-<h4 id="implementation-7"><a class="link" href="#implementation-7">4.6.1. Implementation</a></h4>
+<h4 id="implementation-9"><a class="link" href="#implementation-9">4.8.1. Implementation</a></h4>
 <div class="paragraph">
 <p>The add activity feature allows user to add an activity to a current trip. This feature is faciliated by <code>ItineraryInputParser</code>, <code>AddCommandParser</code>, and <code>AddCommand</code>.</p>
 </div>
@@ -896,13 +1078,13 @@ The sort feature allows user to sort the entries in the <code>JOURNAL</code> of 
 <div class="content">
 <img src="images/AddActivity.png" alt="AddActivity" width="]">
 </div>
-<div class="title">Figure 16. Activity Diagram for <code>add</code> Command</div>
+<div class="title">Figure 19. Activity Diagram for <code>add</code> Command</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">4.6.2. Design Considerations</a></h4>
+<h4 id="design-considerations-7"><a class="link" href="#design-considerations-7">4.8.2. Design Considerations</a></h4>
 <div class="sect4">
-<h5 id="aspect-prerequisite-of-the-command"><a class="link" href="#aspect-prerequisite-of-the-command">Aspect: Prerequisite of the command</a></h5>
+<h5 id="aspect-prerequisite-of-the-command-2"><a class="link" href="#aspect-prerequisite-of-the-command-2">Aspect: Prerequisite of the command</a></h5>
 <div class="paragraph">
 <p>Since each trip is associated with one itinerary, when the user wants to use the add activity command, a trip must have already been created. This is why the order of the scence switching is important as it disallows user to create an activity that is not associated with any trip.</p>
 </div>
@@ -910,9 +1092,9 @@ The sort feature allows user to sort the entries in the <code>JOURNAL</code> of 
 </div>
 </div>
 <div class="sect2">
-<h3 id="finding-activities-in-itinerary-page"><a class="link" href="#finding-activities-in-itinerary-page">4.7. Finding activities in Itinerary Page</a></h3>
+<h3 id="finding-activities-in-itinerary-page-2"><a class="link" href="#finding-activities-in-itinerary-page-2">4.9. Finding activities in Itinerary Page</a></h3>
 <div class="sect3">
-<h4 id="implementation-8"><a class="link" href="#implementation-8">4.7.1. Implementation</a></h4>
+<h4 id="implementation-10"><a class="link" href="#implementation-10">4.9.1. Implementation</a></h4>
 <div class="paragraph">
 <p>The find activity feature allows user to find one or several activities in the current trip with matching keywords provided. This feature is faciliated by <code>ItineraryInputParser</code>, <code>FindCommandParser</code>, and <code>FindCommand</code>.</p>
 </div>
@@ -963,13 +1145,13 @@ The sort feature allows user to sort the entries in the <code>JOURNAL</code> of 
 <div class="content">
 <img src="images/FindItinerary.png" alt="FindItinerary" width="]">
 </div>
-<div class="title">Figure 17. Activity Diagram for <code>find</code> Command</div>
+<div class="title">Figure 20. Activity Diagram for <code>find</code> Command</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">4.7.2. Design Considerations</a></h4>
+<h4 id="design-considerations-8"><a class="link" href="#design-considerations-8">4.9.2. Design Considerations</a></h4>
 <div class="sect4">
-<h5 id="aspect-syntax-of-the-find-command-2"><a class="link" href="#aspect-syntax-of-the-find-command-2">Aspect: Syntax of the find command</a></h5>
+<h5 id="aspect-syntax-of-the-find-command-3"><a class="link" href="#aspect-syntax-of-the-find-command-3">Aspect: Syntax of the find command</a></h5>
 <div class="ulist">
 <ul>
 <li>
@@ -1004,9 +1186,9 @@ The sort feature allows user to sort the entries in the <code>JOURNAL</code> of 
 </div>
 </div>
 <div class="sect2">
-<h3 id="refreshing-trips-in-home-page"><a class="link" href="#refreshing-trips-in-home-page">4.8. Refreshing trips in Home Page</a></h3>
+<h3 id="refreshing-trips-in-home-page"><a class="link" href="#refreshing-trips-in-home-page">4.10. Refreshing trips in Home Page</a></h3>
 <div class="sect3">
-<h4 id="implementation-9"><a class="link" href="#implementation-9">4.8.1. Implementation</a></h4>
+<h4 id="implementation-11"><a class="link" href="#implementation-11">4.10.1. Implementation</a></h4>
 <div class="paragraph">
 <p>The refresh feature allows user to repopulate the current page with the same data in the storage. This feature is faciliated by <code>HomeInputParser</code>, <code>RefreshCommandParser</code>, and <code>RefreshCommand</code>.</p>
 </div>
@@ -1045,11 +1227,11 @@ The sort feature allows user to sort the entries in the <code>JOURNAL</code> of 
 <div class="content">
 <img src="images/rfActivityDiagram.png" alt="rfActivityDiagram" width="]">
 </div>
-<div class="title">Figure 18. Activity Diagram for <code>rf</code> Command</div>
+<div class="title">Figure 21. Activity Diagram for <code>rf</code> Command</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-7"><a class="link" href="#design-considerations-7">4.8.2. Design Considerations</a></h4>
+<h4 id="design-considerations-9"><a class="link" href="#design-considerations-9">4.10.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-to-get-the-list-to-repopulate-the-data-with"><a class="link" href="#aspect-how-to-get-the-list-to-repopulate-the-data-with">Aspect: How to get the list to repopulate the data with</a></h5>
 <div class="paragraph">
@@ -1059,17 +1241,17 @@ The sort feature allows user to sort the entries in the <code>JOURNAL</code> of 
 </div>
 </div>
 <div class="sect2">
-<h3 id="data-storage"><a class="link" href="#data-storage">4.9. Data Storage</a></h3>
+<h3 id="data-storage"><a class="link" href="#data-storage">4.11. Data Storage</a></h3>
 <div class="paragraph">
 <p>All data (trip details, journal entry details and itinerary details) is saved in the <code>main.data</code> directory.</p>
 </div>
 <div class="sect3">
-<h4 id="organisation"><a class="link" href="#organisation">4.9.1. Organisation</a></h4>
+<h4 id="organisation"><a class="link" href="#organisation">4.11.1. Organisation</a></h4>
 <div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/user-guide/data-storage.png" alt="data storage">
 </div>
-<div class="title">Figure 19. Data Storage in Volant</div>
+<div class="title">Figure 22. Data Storage in Volant</div>
 </div>
 <div class="paragraph">
 <p>The data files are organised in a way that trip details are stored in <code>volant.json</code>, while journal and itinerary details
@@ -1101,7 +1283,7 @@ time, location, feeling and weather.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-8"><a class="link" href="#design-considerations-8">4.9.2. Design Considerations</a></h4>
+<h4 id="design-considerations-10"><a class="link" href="#design-considerations-10">4.11.2. Design Considerations</a></h4>
 <div class="paragraph">
 <p>Pros:</p>
 </div>
@@ -1127,7 +1309,7 @@ time, location, feeling and weather.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="data-storage-implementation-adding-a-new-trip-activity"><a class="link" href="#data-storage-implementation-adding-a-new-trip-activity">4.9.3. Data storage implementation: Adding a new trip/activity</a></h4>
+<h4 id="data-storage-implementation-adding-a-new-trip-activity"><a class="link" href="#data-storage-implementation-adding-a-new-trip-activity">4.11.3. Data storage implementation: Adding a new trip/activity</a></h4>
 <div class="paragraph">
 <p>Given below is an example usage scenario where a user adds a new trip:</p>
 </div>
@@ -1169,7 +1351,7 @@ time, location, feeling and weather.</p>
 <div class="content">
 <img src="images/addTripStorageActivityDiagram.png" alt="addTripStorageActivityDiagram">
 </div>
-<div class="title">Figure 20. Activity diagram for adding a new trip</div>
+<div class="title">Figure 23. Activity diagram for adding a new trip</div>
 </div>
 <div class="paragraph">
 <p>The process is similar for the scenario where the user adds a new activity to the itinerary, and the <code>itinerary.json</code>
@@ -1179,11 +1361,11 @@ data file is updated. The following activity diagram summarises this process:</p
 <div class="content">
 <img src="images/addActivityStorageActivityDiagram.png" alt="addActivityStorageActivityDiagram">
 </div>
-<div class="title">Figure 21. Activity diagram for adding a new activity</div>
+<div class="title">Figure 24. Activity diagram for adding a new activity</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="data-storage-implementation-editing-a-trip"><a class="link" href="#data-storage-implementation-editing-a-trip">4.9.4. Data storage implementation: Editing a trip</a></h4>
+<h4 id="data-storage-implementation-editing-a-trip"><a class="link" href="#data-storage-implementation-editing-a-trip">4.11.4. Data storage implementation: Editing a trip</a></h4>
 <div class="paragraph">
 <p>Given below is an example usage scenario where a user edits a trip:</p>
 </div>
@@ -1221,11 +1403,11 @@ deleted.</p>
 <div class="content">
 <img src="images/editTripStorageActivityDiagram.png" alt="editTripStorageActivityDiagram">
 </div>
-<div class="title">Figure 22. Activity diagram for editing a trip</div>
+<div class="title">Figure 25. Activity diagram for editing a trip</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="data-storage-implementation-deleting-a-journal-entry-itinerary-activity"><a class="link" href="#data-storage-implementation-deleting-a-journal-entry-itinerary-activity">4.9.5. Data storage implementation: Deleting a journal entry/itinerary activity</a></h4>
+<h4 id="data-storage-implementation-deleting-a-journal-entry-itinerary-activity"><a class="link" href="#data-storage-implementation-deleting-a-journal-entry-itinerary-activity">4.11.5. Data storage implementation: Deleting a journal entry/itinerary activity</a></h4>
 <div class="paragraph">
 <p>Given below is an example usage scenario where a user deletes a journal entry:</p>
 </div>
@@ -1262,19 +1444,19 @@ summarises what happens when a user deletes a journal entry or itinerary activit
 <div class="content">
 <img src="images/deleteStorageActivityDiagram.png" alt="deleteStorageActivityDiagram">
 </div>
-<div class="title">Figure 23. Activity diagram for deleting a journal entry/itinerary activity</div>
+<div class="title">Figure 26. Activity diagram for deleting a journal entry/itinerary activity</div>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">4.10. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">4.12. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 4.11, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 4.13, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -1305,7 +1487,7 @@ summarises what happens when a user deletes a journal entry or itinerary activit
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">4.11. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">4.13. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -1603,7 +1785,7 @@ summarises what happens when a user deletes a journal entry or itinerary activit
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1e. V is unable to detect a valid keyword</p>
+<p>1e. V is unable to detect a valid command keyword</p>
 </li>
 <li>
 <p>1e1. V outputs error informing user of invalid command</p>
@@ -1618,7 +1800,7 @@ summarises what happens when a user deletes a journal entry or itinerary activit
 <p><strong>Precondition: </strong>User is in the home page</p>
 </div>
 <div class="paragraph">
-<p><strong>Guarantee: </strong>Information of existing trip will be changed</p>
+<p><strong>Guarantee: </strong>Metadata of existing trip will be changed</p>
 </div>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
@@ -1626,16 +1808,13 @@ summarises what happens when a user deletes a journal entry or itinerary activit
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User requests to edit certain detail(s) of trip at specified index</p>
+<p>User inputs command to edit an existing trip</p>
 </li>
 <li>
-<p>V requests for details to be overwritten/edited</p>
+<p>V updates metadata of corresponding trip according to user input</p>
 </li>
 <li>
-<p>User enters new trip details</p>
-</li>
-<li>
-<p>V edits trip in the trip list</p>
+<p>Trip list is updated and the changes are reflected for user to see</p>
 <div class="paragraph">
 <p>Use case ends</p>
 </div>
@@ -1648,10 +1827,10 @@ summarises what happens when a user deletes a journal entry or itinerary activit
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>3c. V is unable to detect any specified fields to edit</p>
+<p>1a. V is unable to detect any specified fields to edit</p>
 </li>
 <li>
-<p>3c1. V outputs error informing user that a field to edit must be specified</p>
+<p>1a1. V outputs error informing user that a field to edit must be specified</p>
 <div class="paragraph">
 <p>Use case ends</p>
 </div>
@@ -1661,10 +1840,10 @@ summarises what happens when a user deletes a journal entry or itinerary activit
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>3a. V detects an invalid index i.e. index out of range or negative index</p>
+<p>1b. V detects an invalid index i.e. index out of range or negative index</p>
 </li>
 <li>
-<p>3a1. V outputs error informing user of invalid index specified</p>
+<p>1b1. V outputs error informing user of invalid index specified</p>
 <div class="paragraph">
 <p>Use case ends</p>
 </div>
@@ -1674,10 +1853,10 @@ summarises what happens when a user deletes a journal entry or itinerary activit
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>3b. V detects invalid characters for the fields</p>
+<p>1c. V detects invalid characters for the fields</p>
 </li>
 <li>
-<p>3b1. V outputs error informing user of invalid command</p>
+<p>1c1. V outputs error informing user of invalid command</p>
 <div class="paragraph">
 <p>Use case ends</p>
 </div>
@@ -1687,10 +1866,10 @@ summarises what happens when a user deletes a journal entry or itinerary activit
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>3c. V is unable to detect a valid keyword</p>
+<p>1d. V is unable to detect a valid command keyword</p>
 </li>
 <li>
-<p>3c1. V outputs error informing user of invalid command</p>
+<p>1d1. V outputs error informing user of invalid command</p>
 <div class="paragraph">
 <p>Use case ends</p>
 </div>
@@ -1739,7 +1918,7 @@ summarises what happens when a user deletes a journal entry or itinerary activit
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1b. V is unable to detect a valid keyword</p>
+<p>1b. V is unable to detect a valid command keyword</p>
 </li>
 <li>
 <p>1b1. V outputs error informing user of invalid command</p>
@@ -1794,7 +1973,7 @@ summarises what happens when a user deletes a journal entry or itinerary activit
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>2b. V is unable to detect a valid keyword</p>
+<p>2b. V is unable to detect a valid command keyword</p>
 </li>
 <li>
 <p>2b1. V outputs error informing user of invalid command</p>
@@ -1859,7 +2038,7 @@ summarises what happens when a user deletes a journal entry or itinerary activit
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1c. V is unable to detect a valid keyword</p>
+<p>1c. V is unable to detect a valid command keyword</p>
 </li>
 <li>
 <p>1c1. V outputs error informing user of invalid command</p>
@@ -1869,10 +2048,25 @@ summarises what happens when a user deletes a journal entry or itinerary activit
 </li>
 </ul>
 </div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1d. V detects that text field is greater 280 characters long</p>
+</li>
+<li>
+<p>1d1. V outputs error informing user of character limit and how many characters over the limit their input was</p>
+<div class="paragraph">
+<p>Use case ends</p>
+</div>
+</li>
+</ul>
+</div>
 <h3 id="uc06-adding-activities-into-itinerary" class="discrete">UC06 - Adding Activities into Itinerary</h3>
 <div class="paragraph">
-<p><strong>Precondition: </strong>User is already in the Itinerary page of the Trip
-<strong>Guarantee: </strong>A new activity will be added to the Itinerary</p>
+<p><strong>Precondition: </strong>User is already in the Itinerary page of the Trip</p>
+</div>
+<div class="paragraph">
+<p><strong>Guarantee: </strong>A new activity will be added to the Itinerary</p>
 </div>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
@@ -1922,7 +2116,331 @@ summarises what happens when a user deletes a journal entry or itinerary activit
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1c. V is unable to detect a valid keyword</p>
+<p>1c. V is unable to detect a valid command keyword</p>
+</li>
+<li>
+<p>1c1. V outputs error informing user of invalid command</p>
+<div class="paragraph">
+<p>Use case ends</p>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="uc07-editing-existing-journal-entry" class="discrete">UC07 - Editing Existing Journal Entry</h3>
+<div class="paragraph">
+<p><strong>Precondition: </strong>User is on the Journal page and has added one or more entries already</p>
+</div>
+<div class="paragraph">
+<p><strong>Guarantee: </strong>Metadata of an existing entry will be changed</p>
+</div>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User inputs command to edit an entry</p>
+</li>
+<li>
+<p>V updates metadata of corresponding entry according to user input</p>
+</li>
+<li>
+<p>Entry list is updated and the changes are reflected for user to see</p>
+<div class="paragraph">
+<p>Use case ends</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. V is unable to detect any specified fields to edit</p>
+</li>
+<li>
+<p>1a1. V outputs error informing user that a field to edit must be specified</p>
+<div class="paragraph">
+<p>Use case ends</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1b. V detects incorrect date or time format</p>
+</li>
+<li>
+<p>1b1. V outputs error informing user that the acceptable format for date and time input</p>
+<div class="paragraph">
+<p>Use case ends</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1c. V detects an invalid index i.e. index out of range or negative index</p>
+</li>
+<li>
+<p>1c1. V outputs error informing user of invalid index specified</p>
+<div class="paragraph">
+<p>Use case ends</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1d. V detects invalid characters for the fields</p>
+</li>
+<li>
+<p>1d1. V outputs error informing user of invalid command</p>
+<div class="paragraph">
+<p>Use case ends</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1e. V is unable to detect a valid command keyword</p>
+</li>
+<li>
+<p>1e1. V outputs error informing user of invalid command</p>
+<div class="paragraph">
+<p>Use case ends</p>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="uc08-editing-existing-activity" class="discrete">UC08 - Editing Existing Activity</h3>
+<div class="paragraph">
+<p><strong>Precondition: </strong>User is on the Itinerary page and has added one or more activities already</p>
+</div>
+<div class="paragraph">
+<p><strong>Guarantee: </strong>Metadata of an existing activity will be changed</p>
+</div>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User inputs command to edit an activity.</p>
+</li>
+<li>
+<p>V updates metadata of corresponding activity according to user input</p>
+</li>
+<li>
+<p>Activity list is updated and the changes are reflected for user to see</p>
+<div class="paragraph">
+<p>Use case ends</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. V is unable to detect any specified fields to edit</p>
+</li>
+<li>
+<p>1a1. V outputs error informing user that a field to edit must be specified</p>
+<div class="paragraph">
+<p>Use case ends</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1b. V detects incorrect date or time format</p>
+</li>
+<li>
+<p>1b1. V outputs error informing user that the acceptable format for date and time input</p>
+<div class="paragraph">
+<p>Use case ends</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1c. V detects an invalid index i.e. index out of range or negative index</p>
+</li>
+<li>
+<p>1c1. V outputs error informing user of invalid index specified</p>
+<div class="paragraph">
+<p>Use case ends</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1d. V detects invalid characters for the fields</p>
+</li>
+<li>
+<p>1d1. V outputs error informing user of invalid command</p>
+<div class="paragraph">
+<p>Use case ends</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1e. V is unable to detect a valid command keyword</p>
+</li>
+<li>
+<p>1e1. V outputs error informing user of invalid command</p>
+<div class="paragraph">
+<p>Use case ends</p>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="uc09-sorting-journal-entries" class="discrete">UC09 - Sorting Journal Entries</h3>
+<div class="paragraph">
+<p><strong>Precondition: </strong>User is on the Journal page and has added one or more entries already</p>
+</div>
+<div class="paragraph">
+<p><strong>Guarantee: </strong>Entry list will be sorted</p>
+</div>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User inputs sort command</p>
+</li>
+<li>
+<p>V sorts the entry list according to user&#8217;s input</p>
+</li>
+<li>
+<p>Entry list is updated and the sorted list is displayed to the user</p>
+<div class="paragraph">
+<p>Use case ends</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Extensions</p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. V does not detect an argument for sort type in user&#8217;s input</p>
+</li>
+<li>
+<p>1a1. V outputs error message informing user to include a sort type</p>
+<div class="paragraph">
+<p>Use case ends</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1b. V detects invalid characters for the sort type input</p>
+</li>
+<li>
+<p>1b1. V outputs error informing user of invalid sort type</p>
+<div class="paragraph">
+<p>Use case ends</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1c. V is unable to detect a valid command keyword</p>
+</li>
+<li>
+<p>1c1. V outputs error informing user of invalid command</p>
+<div class="paragraph">
+<p>Use case ends</p>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="uc10-finding-itinerary-activities" class="discrete">UC10 - Finding Itinerary Activities</h3>
+<div class="paragraph">
+<p><strong>Precondition: </strong>User is on the Itinerary page and has added one or more activities already</p>
+</div>
+<div class="paragraph">
+<p><strong>Guarantee: </strong>Activity list containing matching search terms is displayed</p>
+</div>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User inputs find command</p>
+</li>
+<li>
+<p>V checks the activity list for activities with metadata that matches the given search term(s)</p>
+</li>
+<li>
+<p>V outputs an activity list containing all the activities matching the given search term(s)</p>
+<div class="paragraph">
+<p>Use case ends</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Extensions</p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. V does not find any activities that match the given search term(s)</p>
+</li>
+<li>
+<p>1a1. V outputs message informing user that no matching activities were found</p>
+<div class="paragraph">
+<p>Use case ends</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1b. V detects invalid characters for the given search term(s)</p>
+</li>
+<li>
+<p>1b1. V outputs error informing user of invalid command</p>
+<div class="paragraph">
+<p>Use case ends</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1c. V is unable to detect a valid command keyword</p>
 </li>
 <li>
 <p>1c1. V outputs error informing user of invalid command</p>
@@ -1967,9 +2485,6 @@ summarises what happens when a user deletes a journal entry or itinerary activit
 <p>Volant should work for a single user only.</p>
 </li>
 </ol>
-</div>
-<div class="paragraph">
-<p><em>{More to be added in future development}</em></p>
 </div>
 </div>
 </div>
@@ -2105,20 +2620,29 @@ Expected: The most recent window size and location is retained.</p>
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em></p>
-</div>
 </div>
 <div class="sect2">
-<h3 id="adding-a-code-trip-code"><a class="link" href="#adding-a-code-trip-code">G.2. Adding a <code>TRIP</code></a></h3>
+<h3 id="adding"><a class="link" href="#adding">G.2. Adding</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Adding a <code>TRIP</code> to an empty trip list</p>
+<p>Adding a <code>TRIP</code> to an empty or populated trip list</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>Prerequisites:</p>
+<p>Prerequisites: NA</p>
+</li>
+<li>
+<p>Test case: <code>add n/Bali 2020 l/Bali d/02-01-2020 to 02-05-2020</code></p>
+</li>
+<li>
+<p>Expected: <code>TRIP</code> with corresponding details is added to trip list.</p>
+</li>
+<li>
+<p>Test case: <code>add n/Bali 2020 l/Bali d/2020-01-02 to 2020-05-02</code></p>
+</li>
+<li>
+<p>Expected: No <code>TRIP</code> added. Error details shown in status message.</p>
 </li>
 </ol>
 </div>
@@ -2127,7 +2651,7 @@ Expected: The most recent window size and location is retained.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-a-code-trip-code"><a class="link" href="#deleting-a-code-trip-code">G.3. Deleting a <code>TRIP</code></a></h3>
+<h3 id="deleting"><a class="link" href="#deleting">G.3. Deleting</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2152,36 +2676,6 @@ Expected: Similar to previous.</p>
 </ol>
 </div>
 </li>
-</ol>
-</div>
-<div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="saving-data"><a class="link" href="#saving-data">G.4. Saving data</a></h3>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Dealing with missing/corrupted data files</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p><em>{explain how to simulate a missing/corrupted file and the expected behavior}</em></p>
-</li>
-</ol>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="deleting-an-code-activity-code"><a class="link" href="#deleting-an-code-activity-code">G.5. Deleting an <code>activity</code></a></h3>
-<div class="olist arabic">
-<ol class="arabic">
 <li>
 <p>Deleting an <code>activity</code> in the <code>ITINERARY</code></p>
 <div class="olist loweralpha">
@@ -2208,16 +2702,6 @@ Expected: Similar to previous.</p>
 </ol>
 </div>
 </li>
-</ol>
-</div>
-<div class="paragraph">
-<p><em>{more test cases &#8230;&#8203;}</em></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="deleting-an-code-entry-code"><a class="link" href="#deleting-an-code-entry-code">G.6. Deleting an <code>entry</code></a></h3>
-<div class="olist arabic">
-<ol class="arabic">
 <li>
 <p>Deleting an <code>entry</code> in the <code>JOURNAL</code></p>
 <div class="olist loweralpha">
@@ -2242,9 +2726,23 @@ Expected: Similar to previous.</p>
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p><em>{more test cases &#8230;&#8203;}</em></p>
+</div>
+<div class="sect2">
+<h3 id="saving-data"><a class="link" href="#saving-data">G.4. Saving data</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Dealing with missing/corrupted data files</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p><em>{explain how to simulate a missing/corrupted file and the expected behavior}</em></p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 14:59:29 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 15:08:02 UTC</div></div></div></body></html>
