@@ -37,21 +37,25 @@ page.
 ** Justification: This feature allows users to navigate more quickly from the Trip page to the subsequent feature pages.
 This is especially useful since the words "itinerary" and "journal" may be long or commonly misspelled.
 
+* *Other Contributions*
+** Source code
+*** Implemented colour-changing enter button as an Easter egg
+
 === Contributions to User Guide
 ==== Sections Written
-* https://github.com/AY1920S2-CS2103T-F09-4/main/blob/master/docs/UserGuide.adoc#fast-in-app-navigation[Section 3.6. Fast In-App Navigation]
-* https://github.com/AY1920S2-CS2103T-F09-4/main/blob/master/docs/UserGuide.adoc#journal-1[Section 4.6. Journal]
-* https://github.com/AY1920S2-CS2103T-F09-4/main/blob/master/docs/UserGuide.adoc#command-summary[Section 6.1. Command Summary]
+* https://github.com/AY1920S2-CS2103T-F09-4/main/blob/master/docs/UserGuide.adoc#journal-1[Section 4.7. Journal]
+* https://github.com/AY1920S2-CS2103T-F09-4/main/blob/master/docs/UserGuide.adoc#faq[Section 5. FAQ]
 * Updated format of User Guide (with Ranice)
-* Prepared and embedded diagrams to all sections of User Guide
 * Reviewed all sections of User Guide for mid-v1.3 submission
 * Reviewed all sections of User Guide for v1.3 submission
 * Reviewed all sections of User Guide for v1.4 submission
+* Proof-reading and standardising of language use in User Guide for v1.3 submission
+* Proof-reading and standardising of language use in User Guide for v1.4 submission
+* PDF formatting of User Guide for v1.4 submission
 
 === Contributions to Developer Guide
 ==== Sections Written
-* Section 1
-* Section 2
-* Section 3
-
-_{To be updated in the future}_
+* UML diagram for Logic component in Journal
+* UML diagram for Model component in Journal
+* Implementation of data storage section
+* PDF formatting of Developer Guide for v1.4 submission
