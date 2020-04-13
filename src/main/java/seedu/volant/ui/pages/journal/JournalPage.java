@@ -15,7 +15,7 @@ import seedu.volant.ui.pages.home.HomePage;
 
 
 /**
- * Page containing details of a Trip as well as a menu of TripFeatures.
+ * Page containing entry list of a Journal.
  */
 public class JournalPage extends UiPart<Region> {
     private static final String FXML = "journal/JournalPage.fxml";
@@ -46,6 +46,7 @@ public class JournalPage extends UiPart<Region> {
         protected void updateItem(Entry entry, boolean empty) {
             super.updateItem(entry, empty);
             if (empty || entry == null) {
+                setGraphic(null);
                 setStyle("-fx-background-color: #fff;");
             } else {
                 setGraphic(new JournalPageCard(entry, getIndex() + 1).getRoot());

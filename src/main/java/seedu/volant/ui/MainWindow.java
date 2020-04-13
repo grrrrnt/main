@@ -322,14 +322,19 @@ public class MainWindow extends UiPart<Stage> {
             logic.getStorage().setVolantFilePath(Paths.get("data", trip.getName() + "/itinerary.json"));
             Optional<ReadOnlyActivityList> activityListOptional = logic.getStorage().readActivityList();
             activityList = new ActivityList(activityListOptional.get());
-
-            logic.getStorage().setVolantFilePath(Paths.get("data", trip.getName() + "/journal.json"));
-            Optional<ReadOnlyEntryList> entryListOptional = logic.getStorage().readEntryList();
-            entryList = new EntryList(entryListOptional.get());
         } catch (IOException | DataConversionException | NoSuchElementException e) {
             activityList = new ActivityList();
             entryList = new EntryList();
         }
+
+        try {
+            logic.getStorage().setVolantFilePath(Paths.get("data", trip.getName() + "/journal.json"));
+            Optional<ReadOnlyEntryList> entryListOptional = logic.getStorage().readEntryList();
+            entryList = new EntryList(entryListOptional.get());
+        } catch (IOException | DataConversionException | NoSuchElementException e) {
+            entryList = new EntryList();
+        }
+
         trip.setTripFeatureList(new TripFeatureList(new Itinerary(activityList), new Journal(entryList)));
     }
 

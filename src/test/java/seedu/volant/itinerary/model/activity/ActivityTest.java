@@ -79,4 +79,5 @@ public class ActivityTest {
         editedA = new ActivityBuilder(A).withTime(B.getTime().toString()).build();
         assertFalse(A.isSameActivity(editedA));
     }
+
 }

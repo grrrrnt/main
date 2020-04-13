@@ -70,6 +70,7 @@ public class HomePage extends UiPart<Region> {
         protected void updateItem(Trip trip, boolean empty) {
             super.updateItem(trip, empty);
             if (empty || trip == null) {
+                setGraphic(null);
                 setStyle("-fx-background-color: " + "#fff" + ";");
             } else {
                 setGraphic(new HomePageTripCard(trip, getIndex() + 1).getRoot());
