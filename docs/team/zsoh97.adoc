@@ -51,9 +51,9 @@ added JUnit tests for itinerary's model and storage.
 === Contributions to User Guide
 ==== Sections Written
 * Transferred early stage user guide in google doc to adoc.
-* https://github.com/AY1920S2-CS2103T-F09-4/main/blob/master/docs/UserGuide.adoc#1-introduction[Section 1. Introduction]
-* https://github.com/AY1920S2-CS2103T-F09-4/main/blob/master/docs/UserGuide.adoc#3-features[Section 3. Features]
-* https://github.com/AY1920S2-CS2103T-F09-4/main/blob/master/docs/UserGuide.adoc#commands-for-the-home-page[Section 4.4. Commands for the Home Page]
+* https://ay1920s2-cs2103t-f09-4.github.io/main/UserGuide.html#introduction-zeke[Section 1. Introduction]
+* https://ay1920s2-cs2103t-f09-4.github.io/main/UserGuide.html#Features[Section 3. Features]
+* https://ay1920s2-cs2103t-f09-4.github.io/main/UserGuide.html#commands-for-the-home-page-zeke[Section 4.4. Commands for the Home Page]
 * Formatted command summary to table form
 
 === Contributions to Developer Guide
@@ -66,11 +66,12 @@ added JUnit tests for itinerary's model and storage.
 
 ==== Diagrams
 * https://ay1920s2-cs2103t-f09-4.github.io/main/DeveloperGuide.html#Design-Architecture[Figure 4. Component interactions for `goto 1` command in the `HOME` page view.]
+* https://ay1920s2-cs2103t-f09-4.github.io/main/DeveloperGuide.html#Design-Ui[Figure 5. Structure of the UI Component when a user is on a `TRIP` page]
 * https://ay1920s2-cs2103t-f09-4.github.io/main/DeveloperGuide.html#Design-Storage[Figure 11. Structure of the Storage Component]
-* https://ay1920s2-cs2103t-f09-4.github.io/main/DeveloperGuide.html#deleting-trip-in-home-page[Figure 15. Activity Diagram for `delete` Command]
-* https://ay1920s2-cs2103t-f09-4.github.io/main/DeveloperGuide.html#refreshing-trips-in-home-page[Figure 18. Activity Diagram for `rf` Command]
-* https://ay1920s2-cs2103t-f09-4.github.io/main/DeveloperGuide.html#data-storage[Figure 20. Activity diagram for adding a new trip]
-* https://ay1920s2-cs2103t-f09-4.github.io/main/DeveloperGuide.html#data-storage[Figure 21. Activity diagram for adding a new activity]
+* https://ay1920s2-cs2103t-f09-4.github.io/main/DeveloperGuide.html#deleting-trip-in-home-page[Figure 18. Activity Diagram for `delete` Command]
+* https://ay1920s2-cs2103t-f09-4.github.io/main/DeveloperGuide.html#refreshing-trips-in-home-page[Figure 21. Activity Diagram for `rf` Command]
+* https://ay1920s2-cs2103t-f09-4.github.io/main/DeveloperGuide.html#data-storage[Figure 23. Activity diagram for adding a new trip]
+* https://ay1920s2-cs2103t-f09-4.github.io/main/DeveloperGuide.html#data-storage[Figure 24. Activity diagram for adding a new activity]
 
 
 _{To be updated in the future}_

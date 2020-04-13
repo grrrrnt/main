@@ -56,7 +56,7 @@ from the keyboard.
 ====
 *Map of Navigation Commands* +
 
-image::{imagesDir}/navigation-cheatsheet.png[width="800"]
+image::user-guide/navigation-cheatsheet.png[width="800"]
 ====
 
 * *Major Enhancement:* Implemented Home Page of application +
@@ -85,9 +85,10 @@ what commands can be used on the page they are specifically on.
 === Contributions to User Guide
 ==== Sections Written
 * Created all screenshots and diagrams in the User Guide.
-* https://ay1920s2-cs2103t-f09-4.github.io/main/UserGuide.html#quick-start[2. Quick Start]
-* https://ay1920s2-cs2103t-f09-4.github.io/main/UserGuide.html#universal-commands[4.3 Universal Commands]
-* https://ay1920s2-cs2103t-f09-4.github.io/main/UserGuide.html#glossary[7. Glossary]
+* https://ay1920s2-cs2103t-f09-4.github.io/main/UserGuide.html#quick-start-ranice[2. Quick Start]
+* https://ay1920s2-cs2103t-f09-4.github.io/main/UserGuide.html#universal-commands-ranice[4.3 Universal Commands]
+* https://ay1920s2-cs2103t-f09-4.github.io/main/UserGuide.html#glossary-ranice[7. Glossary]
+
 
 === Contributions to Developer Guide
 ==== Sections Written
