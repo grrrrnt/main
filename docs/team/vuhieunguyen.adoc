@@ -37,16 +37,21 @@ added JUnit tests for itinerary's model and storage.
 
 === Contributions to User Guide
 ==== Sections Written
-* https://github.com/AY1920S2-CS2103T-F09-4/main/blob/master/docs/UserGuide.adoc#itinerary-page[Section 4.6. Itinerary Page]
-* https://github.com/AY1920S2-CS2103T-F09-4/main/blob/master/docs/UserGuide.adoc#6-command-summary[Section 6. Command Summary]
+* https://ay1920s2-cs2103t-f09-4.github.io/main/UserGuide.html#commands-for-the-itinerary-page-nguyen[Section 4.6. Itinerary Page]
+* https://ay1920s2-cs2103t-f09-4.github.io/main/UserGuide.html#command-summary-nguyen[Section 6. Command Summary]
 
 === Contributions to Developer Guide
 ==== Sections Written
-* https://github.com/AY1920S2-CS2103T-F09-4/main/blob/master/docs/DeveloperGuide.adoc#Design-Model[Section 3.4. Model] (Itinerary portion)
-* https://github.com/AY1920S2-CS2103T-F09-4/main/blob/master/docs/DeveloperGuide.adoc#411-implementation[Section 4.1.2. Special Cases]
-* https://github.com/AY1920S2-CS2103T-F09-4/main/blob/master/docs/DeveloperGuide.adoc#46-adding-an-activity-in-itinerary-page[Section 4.6. Adding an activity in Itinerary Page]
-* https://github.com/AY1920S2-CS2103T-F09-4/main/blob/master/docs/DeveloperGuide.adoc#47-finding-activities-in-itinerary-page[Section 4.7. Finding activities in Itinerary Page]
-* https://github.com/AY1920S2-CS2103T-F09-4/main/blob/master/docs/Testing.adoc[Section 6. Testing]
-* https://github.com/AY1920S2-CS2103T-F09-4/main/blob/master/docs/DeveloperGuide.adoc#appendix-f-product-survey[Appendix F: Product Survey]
-* https://github.com/AY1920S2-CS2103T-F09-4/main/blob/master/docs/DeveloperGuide.adoc#appendix-g-instructions-for-manual-testing[Appendix G: Instructions for manual testing]
-* Figure 7, 10, 16, 17 of Developer Guide.
+* https://ay1920s2-cs2103t-f09-4.github.io/main/DeveloperGuide.html#Design-Model[Section 3.4. Model] (Itinerary portion)
+* https://ay1920s2-cs2103t-f09-4.github.io/main/DeveloperGuide.html#special-cases[Section 4.1.3. Special Cases]
+* https://ay1920s2-cs2103t-f09-4.github.io/main/DeveloperGuide.html#adding-activities-in-itinerary-page[Section 4.5. Adding an activity in Itinerary Page]
+* https://ay1920s2-cs2103t-f09-4.github.io/main/DeveloperGuide.html#finding-activities-in-itinerary-page[Section 4.6. Finding activities in Itinerary Page]
+* https://ay1920s2-cs2103t-f09-4.github.io/main/Testing.html#types-of-tests[Section 6.2 Types of tests]
+* https://ay1920s2-cs2103t-f09-4.github.io/main/DeveloperGuide.html#product-survey[Appendix F: Product Survey]
+* https://ay1920s2-cs2103t-f09-4.github.io/main/DeveloperGuide.html#instructions-for-manual-testing[Appendix G: Instructions for manual testing]
+
+==== Figures Contributed
+* Figure 7. Interactions Inside the Logic Component for the `delete 1` Command
+* Figure 10. Structure of the Model Component in Itinerary
+* Figure 15. Activity Diagram for `add` Command
+* Figure 16. Activity Diagram for `find` Command
